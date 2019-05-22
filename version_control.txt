@@ -1,0 +1,84 @@
+?check about E_wid-pid/H_wid-pid file generation
+
+Module1
+
+sh run_alignment.sh GeoE01 GeoH01
+
+=> codes running in this module =>
+echo $HOME_alignment => /home/kishori/a/Alignment1
+
+1. split_into_tmp.py
+2. generate_facts.py
+3. lwg_knowledge_base.py
+4. writeFact.py (writeFact_old.py)
+5. run_new_stanford-parser.sh
+
+=> Files genertaed by this module =>
+
+-rw-rw-r-- 1 kishori kishori     92 May 18 16:01 E_sentence
+-rw-rw-r-- 1 kishori kishori     93 May 18 16:01 H_sentence
+-rw-rw-r-- 1 kishori kishori    387 May 18 16:01 H_wid-word.dat
+-rw-rw-r-- 1 kishori kishori     30 May 18 16:01 H_punct-position-wid.dat
+-rw-rw-r-- 1 kishori kishori    354 May 18 16:01 E_wid-word.dat
+-rw-rw-r-- 1 kishori kishori     30 May 18 16:01 E_punct-position-wid.dat
+-rw-rw-r-- 1 kishori kishori    224 May 18 16:01 H_def_lwg-wid-word-postpositions
+-rw-rw-r-- 1 kishori kishori    389 May 18 16:01 E_constituency_parse
+-rw-rw-r-- 1 kishori kishori    260 May 18 16:01 E_constituency_one_line_parse
+-rw-rw-r-- 1 kishori kishori    480 May 18 16:01 E_typed_dependency_parse
+-rw-rw-r-- 1 kishori kishori    616 May 18 16:01 E_conll_parse
+
+=> Changed needed in this module
+Generation of H/E_wid-word.dat should be done using fmt
+Debug/error check should be generated in Alignment1
+=============================================================================
+Module 2
+Ayushi's module
+run_all.sh
+
+=============================================================================
+
+Module 3
+Generation of parser grouping facts (H/E_clause_v1) using AnuLibrary (which is old writeFact)
+
+sh run_parser.sh GeoE01
+
+=> 
+1. AnuLibrary.py
+2. writeFact.py
+3. Ealignment_parser_tree_in_one_line-for-all-sentences.py
+4. Halignment_parser_tree_in_one_line-for-all-sentences.py
+
+=>
+-rw-rw-r-- 1 kishori kishori   1331 May 18 17:30 E_clause_words_v1
+-rw-rw-r-- 1 kishori kishori    926 May 18 17:30 E_clause_v1
+-rw-rw-r-- 1 kishori kishori   2761 May 18 17:30 E_clause_template
+-rw-rw-r-- 1 kishori kishori    341 May 18 17:31 H_word_id_parser_id_mapping.dat
+-rw-rw-r-- 1 kishori kishori    411 May 18 17:31 H_parser_id_word_mapping.dat
+-rw-rw-r-- 1 kishori kishori   1067 May 18 17:31 H_conll_facts.dat
+-rw-rw-r-- 1 kishori kishori    940 May 18 17:31 H_parse.dat
+-rw-rw-r-- 1 kishori kishori   1199 May 18 17:31 H_clause_words_v1
+-rw-rw-r-- 1 kishori kishori    824 May 18 17:31 H_clause_v1
+-rw-rw-r-- 1 kishori kishori   2441 May 18 17:31 H_clause_template
+
+H_grouping_error and E_grouping_error generated in Alignment1
+
+=> Changes need to be done in this module:
+call every function in a serial way and not in modular way. just like the way did in final_parse_hindi.ipynb but not chnaging the old code.
+
+=================================================================================
+Module 4
+
+Parser Sanity check module 
+
+
+
+final_parse_hindi.ipynb 
+
+
+
+
+
+
+
+
+
