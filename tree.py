@@ -1,137 +1,48 @@
-import writeFact
-import pandas as pd
-import re
-import operator
-import sys,  writeFact, os, pandas as pd, numpy as np
-import inspect
-
-def extractUnlabelledDependency(relation_df):
-    cid = relation_df['PID'].tolist() ;     hid = relation_df['PIDWITH'].tolist() ;     cid_hid=[]
-    for i in range(0,len(cid)):
-        cid_hid.append((cid[i], hid[i]))
-    return(cid_hid)
-def checkLwgParseAgainstDefiniteLWG(relation_df,vib_lwg,tam_lwg, wid_word_list, cid_hid):
-    print("hello")
+from __future__ import print_function
+from itertools import groupby
+from operator import itemgetter
+import networkx as nx
+from networkx.drawing.nx_agraph import write_dot, graphviz_layout
+import matplotlib.pyplot as plt
+import sys,  writeFact, os, pandas as pd, numpy as np, itertools
+import networkx as nx
+import matplotlib.pyplot as plt
 
 
 
-def create_hindi_dataframe(parse):
-    df= pd.read_csv(parse, sep='\t',names=['PID','WORD','1-','POS','2-','3-','PIDWITH','RELATION','4-','5-'])
-    df.index = np.arange(1,len(df)+1)
-    df1= df[['PID','WORD','POS','RELATION','PIDWITH']]
-    pid = df1.PID.apply(lambda x : 'P'+str(x))
-    pidwith = df1.PIDWITH.apply(lambda x : 'P'+str(x))
-    relation_df =  pd.concat([pid, df1.WORD,df1.POS, df1.RELATION, pidwith], axis=1)
-    return relation_df
-
-def create_english_dataframe(parse, rawFile, tmpSentPath, alignment_path):
-    df= pd.read_csv(parse, sep='\t',names=['PID','WORD','WORD_ROOT','POS','POS_STANFORD','1-','PIDWITH','RELATION','2-','3-'])
-    df.index = np.arange(1,len(df)+1)
-    df1= df[['PID','WORD','WORD_ROOT','POS','POS_STANFORD','RELATION','PIDWITH']]
-    pid = df1.PID.apply(lambda x : 'P'+str(x))
-    pidwith = df1.PIDWITH.apply(lambda x : 'P'+str(x))
-    relation_df = pd.concat([pid, df1.WORD, df1.WORD_ROOT, df1.POS, df1.POS_STANFORD, df1.RELATION, pidwith], axis=1)
-    return relation_df
-#==============================================================================================
-def create_hindi_facts(parse, rawFile, tmpSentPath, alignment_path):
-    with open(alignment_path+"/vibhakti","r") as f:
-        vibhaktis = f.read().splitlines() 
-    [wid_word_list,punctlist,wid_word_dict]=writeFact.createH_wid_word_and_PunctFact(rawFile)
-    item2WriteInFacts, def_lwg_item, all_vib_ids = writeFact.lwg_of_postprocessors(wid_word_list,vibhaktis)  
-    relation_df = create_hindi_dataframe(parse)
-    #print(relation_df)
-    [wid_pid,p_w, wid_pos_list, wid_rel_list]=writeFact.createWID_PID(wid_word_list, relation_df['PID'].tolist(),relation_df['WORD'].tolist(),relation_df['POS'].tolist(), relation_df['RELATION'].tolist())
-#     print(wid_pid)
+def reverse_tuple_list(cid_hid):
+    hid_cid=[]
+    for i,j in cid_hid:
+        hid_cid.append((j,i))
+    hid_cid_new = hid_cid.copy()
+#     for k in end_nodes:
+#         hid_cid_new.append((k, -1))
+    return(hid_cid)
     
-    writeFact.add(wid_pid,"H_wid-pid",tmpSentPath+"/H_word_id_parser_id_mapping.dat")
-    #writeFact.debug_check(tmpSentPath+"/H_word_id_parser_id_mapping.dat")
-    writeFact.addLists([relation_df['PID'].tolist(),relation_df['WORD'].tolist()],"H_pid-word",tmpSentPath+"/H_parser_id_word_mapping.dat")
-    #writeFact.debug_check(tmpSentPath+"/H_parser_id_word_mapping.dat")
-    writeFact.addLists([relation_df['POS'].tolist(),relation_df['RELATION'].tolist(),relation_df['PID'].tolist(),relation_df['WORD'].tolist(),relation_df['PIDWITH'].tolist()],"H_pos1-relation-pid1-word1-pid2",tmpSentPath+"/H_conll_facts.dat")
-    #writeFact.debug_check(tmpSentPath+"/H_conll_facts.dat")
-       
-        
-    relation_df.PID = relation_df.PID.replace(p_w)
-    relation_df.PIDWITH = relation_df.PIDWITH.replace(p_w)
-#     print(relation_df)
+
+def show_parse_information(relation_df):
+    PID = relation_df['PID'].tolist()
+    POS = relation_df['POS'].tolist()
+    WORD = relation_df['WORD'].tolist()
+    PIDWITH = relation_df['PIDWITH'].tolist()
+    RELATION = relation_df['RELATION'].tolist()
     
-    relation_df = relation_df[~relation_df["PID"].astype(str).str.startswith('P', na=False)]
-    relation_df = relation_df[~relation_df["RELATION"].astype(str).str.startswith('punct', na=False)]
-    #relation_df = relation_df[~relation_df["POS"].astype(str).str.startswith('PUNCT', na=False)]
-          
-    writeFact.addLists([relation_df['POS'].tolist(),relation_df['RELATION'].tolist(),relation_df['PID'].tolist(),relation_df['WORD'].tolist(),relation_df['PIDWITH'].tolist()],"H_pos1-relation-cid-word1-hid",tmpSentPath+"/H_parse.dat")
-#     tam_lwg = writeFact.extract_tam_lwg_ids()
+    #filecontent = open(rawFile,"r").read()
+    #filename = rawFile.split('/')[-1]
 
-    cid_hid = extractUnlabelledDependency(relation_df)
-    #print(cid_hid)
-    
-#     display(relation_df)
-    which_language = 'H'
-    #tree(relation_df, wid_word_list, cid_hid, wid_pos_list, wid_rel_list, which_language, tmpSentPath, rawFile)
-#     dff = for_anand(rawFile, relation_df) ; #     return(dff) ;#     checkLwgParseAgainstDefiniteLWG(relation_df,def_lwg_item,tam_lwg, wid_word_list, cid_hid)
-    cid = relation_df['PID'].tolist()
-    hid = relation_df['PIDWITH'].tolist()
-    sub_tree={}
-
-    for h,c in zip(hid, cid):
-	
-        if h in sub_tree:
-            sub_tree[h].append(c)
-        else:
-            sub_tree[h] = [c]
-
-
-
-    #for h,c in zip(hid, cid):
-	
-        #if str(h) in sub_tree:
-         #   sub_tree[str(h)].append(str(c))
-        #else:
-         #   sub_tree[str(h)] = [str(c)]
-	
-    return([relation_df,wid_word_list,punctlist,wid_word_dict, item2WriteInFacts, def_lwg_item, all_vib_ids,wid_pid,p_w, wid_pos_list, wid_rel_list,cid_hid, sub_tree])
-
-#==================================================================================================
-def create_english_facts(parse, rawFile, tmpSentPath):
-    relation_df = create_english_dataframe(parse)
-    [wid_word_list,punctlist,wid_word_dict]=writeFact.createH_wid_word_and_PunctFact(rawFile)
-
-#     print(relation_df)
-    [wid_pid,p_w, wid_pos_list, wid_rel_list]= writeFact.createWID_PID(wid_word_list,relation_df['PID'].tolist(),
-    relation_df['WORD'].tolist(),relation_df['POS'].tolist(), relation_df['RELATION'].tolist())
-    
-    
-#     print(wid_pid)
-    writeFact.add(wid_pid,"E_wid-pid",tmpSentPath+"/E_word_id_parser_id_mapping.dat")
-    #writeFact.debug_check(tmpSentPath+"/E_word_id_parser_id_mapping.dat")
-    writeFact.addLists([relation_df['PID'].tolist(),relation_df['WORD'].tolist()],"E_pid-word",tmpSentPath+"/E_parser_id_word_mapping.dat") 
-    #writeFact.debug_check(tmpSentPath+"/E_parser_id_word_mapping.dat")
-    writeFact.addLists([relation_df['POS'].tolist(),relation_df['RELATION'].tolist(),relation_df['PID'].tolist(),relation_df['WORD'].tolist(),relation_df['PIDWITH'].tolist()],"E_pos1-relation-pid1-word1-pid2",tmpSentPath+"/E_conll_facts.dat") 
-    #writeFact.debug_check(tmpSentPath+"/E_conll_facts.dat")
-
-    relation_df.PID = relation_df.PID.replace(p_w)
-    relation_df.PIDWITH = relation_df.PIDWITH.replace(p_w)
-#     print(relation_df)
-    relation_df = relation_df[~relation_df["PID"].astype(str).str.startswith('P', na=False)] 
-    relation_df = relation_df[~relation_df["RELATION"].astype(str).str.startswith('punct', na=False)]
-    #relation_df = relation_df[~relation_df["POS"].astype(str).str.startswith('PUNCT', na=False)]
-#     print(relation_df)
-
-    
-    modified_pidwith=relation_df['PIDWITH'].tolist()
-    modified_pid=relation_df['PID'].tolist()
-    word_pidwith= [wid_word_dict[k] for k in modified_pidwith] #was working in python2
-    word_pid= [wid_word_dict[k] for k in modified_pid]         #was working in python2
-#     print(relation_df)
-
-    writeFact.addLists([relation_df['PID'].tolist(),relation_df['WORD'].tolist(),relation_df['POS'].tolist(),relation_df['POS_STANFORD'].tolist(),relation_df['RELATION'].tolist(),relation_df['PIDWITH'].tolist(),word_pidwith],"E_pos1-pos_std1-relation-cwid-cword-hwid-hword",tmpSentPath+"/E_parse.dat")
-#     writeFact.debug_check(tmpSentPath+"/E_parse.dat")
-    cid_hid = extractUnlabelledDependency(relation_df)
-#     print(cid_hid)
-    which_language = 'E'
-    tree(relation_df, wid_word_list, cid_hid, wid_pos_list, wid_rel_list, which_language, tmpSentPath, rawFile)
-#     print(relation_df, wid_word_list, cid_hid, wid_pos_list, wid_rel_list)
-#====================================================================================================
+    #print (color.BOLD + folder_name+"/" + filename,": ", filecontent, end='' + color.END) 
+    #print (color.BOLD + folder_name+"/" + filename,": ", filecontent, end='' + color.END)
+    horiz = [('PID',PID),('WORDS',WORD)]
+    horiz_df = pd.DataFrame.from_items(horiz)
+#     horiz_df.style.apply(highlight_if_AUX, axis=0)
+    horiz_df = horiz_df.set_index('PID').T
+    print(horiz_df)
+    print("==============================================")
+    pidwith1 = remove_duplicates_from_list(PIDWITH)
+    print("Internal nodes & root node: ",pidwith1)
+    end_nodes = list_substraction(PID,pidwith1) 
+    end_nodes_list = [[i] for i in end_nodes]
+    print("End nodes(",len(end_nodes),") :",end_nodes)
 
 #input: 2, output: 3.. where node 3 is head of node 2
 def find_head_node(node, cid_hid):
@@ -241,48 +152,38 @@ def convert_int_elements_to_string(list_of_paths):
         a.append(joined)
     return(a)
     
-# draws a tree from edges (cid_hid), nodes in tree are in a list (PID) and stored in fileloaction.      
-def draw_tree(PID,RELATION, cid_hid, filelocation, filecontent, which_language):
-    
-#     print(len(RELATION), len(cid_hid))
-    
+#Draws a tree for dataframe created from conll
+def draw_tree(relation_df, cid_hid, which_lang, tmpSentPath):
+    PID = relation_df['PID'].tolist()
+    POS = relation_df['POS'].tolist()
+    WORD = relation_df['WORD'].tolist()
+    PIDWITH = relation_df['PIDWITH'].tolist()
+    RELATION = relation_df['RELATION'].tolist()
+
+
     edges={}
     for i in zip(cid_hid, RELATION):
         edges[i[0]]=i[1]
     
-#     G=nx.Graph()
     G = nx.DiGraph()
-#     DiGraph.reverse(copy=True)
 
     G.add_nodes_from(PID)
     G.add_edges_from(cid_hid)
 
-#     write_dot(G,'test.dot')
-    plt.title('Dependency tree of ' + filelocation )
-#     plt.text( 0,0, filecontent)
     pos =graphviz_layout(G, prog='dot')
     nx.draw(G, pos, with_labels=True, arrows=True, edge_color='black', node_color='yellow')
     nx.draw_networkx_edge_labels(G,pos,edge_labels= edges,font_color='red')
 
-    #     plt.savefig('nx_test.png')
 
+    if os.path.exists(tmpSentPath + which_lang +"_tree.png"):
+        os.remove(tmpSentPath + which_lang +"_tree.png")
+    else:
+        #print("The file does not exist")    
+        #plt.savefig(tmpSentPath + '/' + folder_name +'_'+ which_lang +"_tree.png")
+        plt.savefig( tmpSentPath + which_lang +"_tree.png")
+        #plt.show()
+    return(nx) 
 
-    '''pos = nx.spring_layout(G, k=0.25,iterations=15)
-    plt.figure()    
-    nx.draw(G,pos,edge_color='black',width=1,linewidths=1,\
-    node_size=400,node_color='yellow',alpha=0.9,\
-    labels={node:node for node in G.nodes()})
-    
-    nx.draw_networkx_edge_labels(G,pos,edge_labels= edges,font_color='red')
-    plt.axis('off')'''
-    
-
-#     nx.draw(G)
-#     plt.savefig("graph.png", dpi=1000)
-
-    plt.savefig(tmpSentPath + '/'+filelocation+'_'+which_language+"_tree.png")
-    plt.show()
-    
 def debug(expression):
     frame = sys._getframe(1)
 #     print(expression, '=', repr(eval(expression, frame.f_globals, frame.f_locals)))    
@@ -586,6 +487,5 @@ def find_single_AUX(pid, pos):
         all_single_aux.append(single_aux)
         all_single_aux = remove_duplicates_from_list(all_single_aux)
     print("# of single auxes",all_single_aux)
-    return(all_single_aux)
+    return(all_single_aux)   
     
-

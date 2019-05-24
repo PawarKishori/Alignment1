@@ -6,11 +6,28 @@ import inspect
 
 hindi_punct=['_','_',"'","!",'"',"#","$","%","&","'","(",")",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","]","^","_","`","{","|","}","~","'"]
 
+#Takes a tree in dataframe format, maps all parser ids(pid) to word ids(wid) returns the dataframe of a tree containing wids.
+def convertPIDsToWIDs(relation_df):
+    relation_df.PID = relation_df.PID.replace(p_w)
+    relation_df.PIDWITH = relation_df.PIDWITH.replace(p_w)
+#     print(relation_df)
+    
+    relation_df = relation_df[~relation_df["PID"].astype(str).str.startswith('P', na=False)]
+    relation_df = relation_df[~((relation_df["RELATION"].astype(str).str.startswith('punct', na=False)) & (relation_df["POS"].astype(str).str.startswith('PUNCT', na=False)))]
+#     relation_df = relation_df[~relation_df["RELATION"].astype(str).str.startswith('punct', na=False)]
+#     print(relation_df)
+    return(relation_df)
+
+
+
+#takes a tree in dataframe and returns list of tuple of edges in the tree
 def extractUnlabelledDependency(relation_df):
     cid = relation_df['PID'].tolist() ;     hid = relation_df['PIDWITH'].tolist() ;     cid_hid=[]
     for i in range(0,len(cid)):
+	#child_id-head_id
         cid_hid.append((cid[i], hid[i]))
     return(cid_hid)
+
 
 def createH_wid_word_and_PunctFact(sent):
     with open(sent,"r") as f:
