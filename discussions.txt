@@ -1,0 +1,6 @@
+
+discussions on multi-root to write a rule:
+a/csnlp
+2.5_cl_100   2.7_geo      2.7_geo_out  2.9_Geo      2.9_geo_out
+
+
