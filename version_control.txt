@@ -68,6 +68,18 @@ call every function in a serial way and not in modular way. just like the way di
 =================================================================================
 Module 4
 
+new_parser.ipynb
+
+=>
+-rw-rw-r-- 1 kishori kishori    360 May 24 13:03 H_wid-pid
+-rw-rw-r-- 1 kishori kishori    425 May 24 13:03 H_pid-wid.dat
+-rw-rw-r-- 1 kishori kishori   1062 May 24 13:03 H_conll_facts.dat
+-rw-rw-r-- 1 kishori kishori   1130 May 24 13:03 H_parse.dat
+-rw-rw-r-- 1 kishori kishori  21626 May 24 13:03 H_tree.png
+
+
+
+===================================================================================
 Parser Sanity check module 
 
 

@@ -8,6 +8,14 @@ import sys,  writeFact, os, pandas as pd, numpy as np, itertools
 import networkx as nx
 import matplotlib.pyplot as plt
 
+def extractNew_wid_word_dictionary(relation_df):
+    WID = relation_df['PID'].tolist()
+    WORD = relation_df['WORD'].tolist()
+    wid_word_dict={}
+    wid_word_dict[0]= 'wroot'
+    for i in range(0,len(WID)):
+        wid_word_dict[WID[i]]=WORD[i]
+    return(wid_word_dict)
 
 
 def reverse_tuple_list(cid_hid):
