@@ -13,6 +13,14 @@ def extractUnlabelledDependency(relation_df):
 def checkLwgParseAgainstDefiniteLWG(relation_df,vib_lwg,tam_lwg, wid_word_list, cid_hid):
     print("hello")
 
+def create_dataframe(parse):
+    df= pd.read_csv(parse, sep='\t',names=['PID','WORD','1-','POS','2-','3-','PIDWITH','RELATION','4-','5-'])
+    df.index = np.arange(1,len(df)+1)
+    df1= df[['PID','WORD','POS','RELATION','PIDWITH']]
+    #pid = df1.PID.apply(lambda x : 'P'+str(x))
+    #pidwith = df1.PIDWITH.apply(lambda x : 'P'+str(x))
+    relation_df =  pd.concat([df1.PID, df1.WORD,df1.POS, df1.RELATION, df1.PIDWITH], axis=1)
+    return relation_df
 
 
 def create_hindi_dataframe(parse):
