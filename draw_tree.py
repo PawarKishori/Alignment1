@@ -1,6 +1,7 @@
+
+#env requiremnets : conda activate python3.6
 #This code has dependency of graphviz [and import libraries..]
 # This code will create a tree named H(which_lang)_tree.png in the 2.1 folder.
-
 
 from __future__ import print_function
 from itertools import groupby
