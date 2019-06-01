@@ -68,26 +68,18 @@ call every function in a serial way and not in modular way. just like the way di
 =================================================================================
 Module 4
 
-new_parser.ipynb
+sh run_parser1.sh
 
-=>
--rw-rw-r-- 1 kishori kishori    153 Jun  1 15:26 E_wid-pid
--rw-rw-r-- 1 kishori kishori    202 Jun  1 15:26 E_pid-wid.dat
--rw-rw-r-- 1 kishori kishori    513 Jun  1 15:26 E_conll_facts.dat
--rw-rw-r-- 1 kishori kishori    427 Jun  1 15:26 E_parse.dat
--rw-rw-r-- 1 kishori kishori    189 Jun  1 15:26 H_wid-pid
--rw-rw-r-- 1 kishori kishori    247 Jun  1 15:26 H_pid-wid.dat
--rw-rw-r-- 1 kishori kishori    617 Jun  1 15:26 H_conll_facts.dat
--rw-rw-r-- 1 kishori kishori    520 Jun  1 15:26 H_parse.dat
-
-
--rw-rw-r-- 1 kishori kishori    360 May 24 13:03 H_wid-pid
--rw-rw-r-- 1 kishori kishori    425 May 24 13:03 H_pid-wid.dat
--rw-rw-r-- 1 kishori kishori   1062 May 24 13:03 H_conll_facts.dat
--rw-rw-r-- 1 kishori kishori   1130 May 24 13:03 H_parse.dat
--rw-rw-r-- 1 kishori kishori  21626 May 24 13:03 H_tree.png
-
-
+-rw-rw-r-- 1 kishori kishori    153 Jun  1 15:29 E_wid-pid
+-rw-rw-r-- 1 kishori kishori    202 Jun  1 15:29 E_pid-wid.dat
+-rw-rw-r-- 1 kishori kishori    513 Jun  1 15:29 E_conll_facts.dat
+-rw-rw-r-- 1 kishori kishori    427 Jun  1 15:29 E_parse.dat
+-rw-rw-r-- 1 kishori kishori  19294 Jun  1 15:29 E_tree.png
+-rw-rw-r-- 1 kishori kishori    189 Jun  1 15:32 H_wid-pid
+-rw-rw-r-- 1 kishori kishori    247 Jun  1 15:32 H_pid-wid.dat
+-rw-rw-r-- 1 kishori kishori    617 Jun  1 15:32 H_conll_facts.dat
+-rw-rw-r-- 1 kishori kishori    520 Jun  1 15:32 H_parse.dat
+-rw-rw-r-- 1 kishori kishori  22943 Jun  1 15:32 H_tree.png
 
 ===================================================================================
 Parser Sanity check module 
