@@ -4,7 +4,7 @@ import operator
 import sys,  writeFact, os, pandas as pd, numpy as np
 import inspect
 
-hindi_punct=['_','_',"'","!",'"',"#","$","%","&","'","(",")",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","]","^","_","`","{","|","}","~","'"]
+hindi_punct=['।','_','_',"'","!",'"',"#","$","%","&","'","(",")",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","]","^","_","`","{","|","}","~","'"]
 
 #Takes a tree in dataframe format, maps all parser ids(pid) to word ids(wid) returns the dataframe of a tree containing wids.
 def convertPIDsToWIDs(relation_df):

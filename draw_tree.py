@@ -14,12 +14,19 @@ from networkx.drawing.nx_agraph import write_dot, graphviz_layout
 import matplotlib.pyplot as plt
 import sys,  writeFact, os
 
-path = '/home/kishori/rule1E_tmp/2.1/'
-which_lang = 'E'
-relation_df = AnuLibrary.create_dataframe(path + 'E_conll_parse')  
+path = '/home/kishori/a/tmp_anu_dir/tmp/GeoE01_tmp/2.45/'
+#which_lang = 'H_cc_'
+#relation_df = AnuLibrary.create_dataframe(path + 'cc_resolved.dat')  
+
+
+#which_lang = 'E_cc'
+#relation_df = AnuLibrary.create_dataframe(path + 'cc_resolved_eng.dat')  
 
 #which_lang = 'H'
 #relation_df = AnuLibrary.create_dataframe(path + 'hindi_dep_parser_original.dat')  
+which_lang = 'E'
+relation_df = AnuLibrary.create_dataframe(path + 'E_conll_parse')  
+
 
 relation_df
 # n = df.shape[0]

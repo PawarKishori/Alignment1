@@ -67,7 +67,7 @@ def create_hindi_facts(parse, rawFile, tmpSentPath, alignment_path):
     relation_df = relation_df[~relation_df["RELATION"].astype(str).str.startswith('punct', na=False)]
     #relation_df = relation_df[~relation_df["POS"].astype(str).str.startswith('PUNCT', na=False)]
           
-    writeFact.addLists([relation_df['POS'].tolist(),relation_df['RELATION'].tolist(),relation_df['PID'].tolist(),relation_df['WORD'].tolist(),relation_df['PIDWITH'].tolist()],"H_pos1-relation-cid-word1-hid",tmpSentPath+"/H_parse.dat")
+#    writeFact.addLists([relation_df['POS'].tolist(),relation_df['RELATION'].tolist(),relation_df['PID'].tolist(),relation_df['WORD'].tolist(),relation_df['PIDWITH'].tolist()],"H_pos1-relation-cid-word1-hid",tmpSentPath+"/H_parse.dat")
 #     tam_lwg = writeFact.extract_tam_lwg_ids()
 
     cid_hid = extractUnlabelledDependency(relation_df)
