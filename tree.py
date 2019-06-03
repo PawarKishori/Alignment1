@@ -8,21 +8,21 @@ import sys,  writeFact, os, pandas as pd, numpy as np, itertools
 import networkx as nx
 import matplotlib.pyplot as plt
 
-def extractNew_wid_word_dictionary(relation_df):
-    WID = relation_df['PID'].tolist()
-    WORD = relation_df['WORD'].tolist()
-    wid_word_dict={}
-    wid_word_dict[0]= 'wroot'
-    for i in range(0,len(WID)):
-        wid_word_dict[WID[i]]=WORD[i]
-    return(wid_word_dict)
 
+def head_to_children_dict(hid_cid):
+    new_dict= {}
+    for i in hid_cid:
+        if i[0] in new_dict:
+            new_dict[i[0]].append(i[1])
+        else:
+            new_dict[i[0]]= [i[1]]
+    return(new_dict)
 
 def reverse_tuple_list(cid_hid):
     hid_cid=[]
     for i,j in cid_hid:
         hid_cid.append((j,i))
-    hid_cid_new = hid_cid.copy()
+#    hid_cid_new = hid_cid.copy()
 #     for k in end_nodes:
 #         hid_cid_new.append((k, -1))
     return(hid_cid)
@@ -46,9 +46,9 @@ def show_parse_information(relation_df):
     horiz_df = horiz_df.set_index('PID').T
     print(horiz_df)
     print("==============================================")
-    pidwith1 = remove_duplicates_from_list(PIDWITH)
+    pidwith1 = tree.remove_duplicates_from_list(PIDWITH)
     print("Internal nodes & root node: ",pidwith1)
-    end_nodes = list_substraction(PID,pidwith1) 
+    end_nodes = tree.list_substraction(PID,pidwith1) 
     end_nodes_list = [[i] for i in end_nodes]
     print("End nodes(",len(end_nodes),") :",end_nodes)
 
@@ -74,6 +74,8 @@ def find_sibling (node, cid_hid, hid_cid):
     siblings = find_children (head, hid_cid)
     head = find_head_node(node, cid_hid)
     siblings_with_head = siblings + [head]
+    if len(siblings)==0:
+        siblings=[node]
     return (siblings, siblings_with_head)
 
 #input 1, output: [1,3,6,7]...  where 7 is root of tree, (7-> 6), (6->3), (3->1)  and (a-> b) represents b is child of a
@@ -183,14 +185,10 @@ def draw_tree(relation_df, cid_hid, which_lang, tmpSentPath):
     nx.draw_networkx_edge_labels(G,pos,edge_labels= edges,font_color='red')
 
 
-    if os.path.exists(tmpSentPath + which_lang +"_tree.png"):
-        os.remove(tmpSentPath + which_lang +"_tree.png")
-    else:
-        #print("The file does not exist")    
-        #plt.savefig(tmpSentPath + '/' + folder_name +'_'+ which_lang +"_tree.png")
-        plt.savefig( tmpSentPath + which_lang +"_tree.png")
-        #plt.show()
-    return(nx) 
+    #plt.savefig(tmpSentPath + '/' + folder_name +'_'+ which_lang +"_tree.png")
+    plt.savefig( tmpSentPath + which_lang +"_tree.png")
+    #plt.show()
+    
 
 def debug(expression):
     frame = sys._getframe(1)
