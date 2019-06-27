@@ -21,10 +21,12 @@ import os,sys
 # In[6]:
 
 
-for i in range(1,101):
+for i in range(25,26):
     
     alignment_path = '.'
     tmp_path=os.getenv('HOME_anu_tmp')+'/tmp/'
+    
+
     folder_name = tmp_path + sys.argv[1] + '_tmp'
     #folder_name ='/home/kishori/a/tmp_anu_dir/tmp/GeoE01_tmp'
     sent_number = str(i)
@@ -41,7 +43,7 @@ for i in range(1,101):
     except Exception:
         print("Old Error/Key error", sent_number)
         continue
-
+    print(wid_word_list)
 # check_relation_df_correct_or_wrong_and_integrate_in_create_hindi_df
     #print(cid_hid_dict)
 #     print(wid_word_dict)
@@ -63,9 +65,9 @@ for i in range(1,101):
         return(clause)
     
     
-    filename = which_lang + '_clause_v1'
-    filename_w = which_lang + '_clause_words_v1'
-    filename_template = which_lang + '_clause_template'
+    filename = which_lang + '_grouping_ids.dat'
+    filename_w = which_lang + '_grouping_words.dat'
+    filename_template = which_lang + '_grouping_template.dat'
     
     g = open(tmpSentPath + filename_template, 'w')
     w = open(tmpSentPath + filename_w, 'w')
@@ -82,14 +84,14 @@ for i in range(1,101):
                 clause_list_string = [str(i) for i in clause_list]
                 string = " ".join(clause_list_string)
                 #print(string)
-                f.write('(E_clause_hid-clause_elements\t'+ str(i[0]) + '\t' + string + ')\n')
+                f.write('(H_grp_hid-grp_elem_ids\t'+ str(i[0]) + '\t' + string + ')\n')
               
                 
                 clause_list_word = [wid_word_dict[i] for i in clause_list]
                 string_words = ' '.join(clause_list_word)
                 #print(string_words)
-                w.write('(E_clause_hword-clause_element_words\t'+ wid_word_dict[i[0]] + '\t' + string_words + ')\n')
-                g.write('(clause (language hindi) (cl_head_id '+ str(i[0]) +') (cl_head_word '+  wid_word_dict[i[0]] +' ) (cl_element_ids '+ string +') (cl_element_words '+ string_words +'))\n')
+                w.write('(H_grp_hword-grp_elem_words\t'+ wid_word_dict[i[0]] + '\t' + string_words + ')\n')
+                g.write('(H_group (language hindi) (grp_hid '+ str(i[0]) +') (grp_head_word '+  wid_word_dict[i[0]] +' ) (grp_element_ids '+ string +') (grp_element_words '+ string_words +'))\n')
 
     except Exception:
         print(string)

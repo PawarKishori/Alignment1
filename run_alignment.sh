@@ -9,7 +9,7 @@ file_dir=$1'_tmp'
 n=  cat $1 | wc -l
 echo "For loop will execute for "
 echo $n
-END=100
+END=101
 #for i in $(seq 1 $n)
 for i in $(seq 1 $END)
 do
@@ -30,7 +30,7 @@ do
 
         #++++++++++++++++++++++++++++++++++++++++ ENGLISH PARSER OUTPUT GENERATION MODULE ++++++++++++++++++++++++++++++++++++++++++
         #Run Stanford parser for english sentence parse 
-        #sh $HOME_alignment/run_new_stanford-parser.sh $tmp_path/E_sentence $tmp_path >> temp
+        sh $HOME_alignment/run_new_stanford-parser.sh $tmp_path/E_sentence $tmp_path >> temp
         #Generating English parser facts from E_conll_parse and E_sentence
 	
 
@@ -39,6 +39,7 @@ do
 
         #touch $tmp_path/clips_error_kishori
         #myclips -f  $HOME_alignment/tmp_run_Qth.bat  >  $tmp_path/clips_error_kishori
+        myclips -f  $HOME_alignment/final_Pth.bat  >>  $tmp_path/clips_error_kishori
 
 
 

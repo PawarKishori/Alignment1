@@ -77,7 +77,7 @@ for i in range(1,101):
 #     tree.show_parse_information(relation_df)
 
     hid_cid = tree.reverse_tuple_list(cid_hid)
-    tree.draw_tree(relation_df, hid_cid, which_lang, tmpSentPath)
+    #tree.draw_tree(relation_df, hid_cid, which_lang, tmpSentPath)
 
 
 #     verb = extract_id_of_i_value_from_j_column_list("VERB",POS)

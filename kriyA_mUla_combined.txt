@@ -7246,6 +7246,7 @@ unnawa_kara	1
 unnawi_kara	1
 upaBoga_kara	1
 upacaryA_kara	1
+upacAra_kara	1
 upa_cunAva_karA	1
 upacunAva_karA	1
 upahAsa_kara	1

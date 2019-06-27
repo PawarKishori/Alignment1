@@ -18,14 +18,13 @@
 (save-facts "E_ancestor-successor.dat" local Head-Level-Successor_depth-Ancestor-Successor)
 (clear)
 ;---------------------------------------------------------
-(load "new_alignment.clp")
-(bind ?*hpath* (str-cat ?*hpath* "/parser.clp"))
-(load ?*hpath*)
-(load-facts "E_chunk_ids.dat")
-(load-facts "parser_alignment.dat")
-(load-facts "H_clause_v1")
-(run)
-
-(save-facts "A_parser.dat"  local chunk_type-name-headid-ids)
+;(load "new_alignment.clp")
+;(bind ?*hpath* (str-cat ?*hpath* "/parser.clp"))
+;(load ?*hpath*)
+;(load-facts "E_chunk_ids.dat")
+;;(load-facts "parser_alignment.dat")
+;(load-facts "H_clause_v1")
+;(run)
+;(save-facts "A_parser.dat"  local chunk_type-name-headid-ids)
 
 (exit)

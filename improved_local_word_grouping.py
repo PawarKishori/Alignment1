@@ -7,21 +7,21 @@ path =""
 
 ignore_path = ['/home/akanksha/Alignment/tam_local/cl_english_100_detok_tmp/2.49/','/home/akanksha/Alignment/tam_local/cl_english_100_detok_tmp/2.24/','/home/akanksha/Alignment/tam_local/cl_english_100_detok_tmp/2.64/','/home/akanksha/Alignment/tam_local/cl_english_100_detok_tmp/2.74/','/home/akanksha/Alignment/tam_local/cl_english_100_detok_tmp/2.78/'
 ,'/home/akanksha/Alignment/tam_local/cl_english_100_detok_tmp/2.83/','/home/akanksha/Alignment/tam_local/cl_english_100_detok_tmp/2.85/']
-
 #if path[-1]!="/":
 #    path+="/"
-path_kriya_mul = sys.argv[1]
-# path = '/home/akanksha/tmp_anu_dir/eng_cl_random_25_2_detok_tmp/2.4/'
-# path_kriya_mul = "/home/akanksha/Alignment/tam_local/"
+# path_kriya_mul = sys.argv[1]
+# path = '/home/akanksha/Alignment/tam_local/ss/home/user/forked/tmp_anu_dir/tmp/eng_cl_random_25_3_detok_tmp/2.2/'
+# path="/home/akanksha/Alignment/tam_local/eng_cl_random_25_1_detok_tmp/2.16/"
+path_kriya_mul = "/home/kishori/a/Alignment1/"
 if path_kriya_mul[-1]!="/":
     path_kriya_mul+="/"
-path_all_tam = sys.argv[2]  
-# path_all_tam = "/home/akanksha/Alignment/tam_local/"
+# path_all_tam = sys.argv[2]  
+path_all_tam = "/home/kishori/a/anusaaraka/Anu_data/"
 if path_all_tam[-1]!="/":
     path_all_tam+="/"
 
 
-with open(path_kriya_mul + "/kriyA_mUla_combined.txt","r") as g:
+with open(path_kriya_mul+"kriyA_mUla_combined.txt","r") as g:
     kriya_mul = g.read()    
 with open(path+"manual_hin.morph.dat","r") as g:
     data = g.read()
@@ -38,6 +38,7 @@ punct = string.punctuation
 with open(path+"pos.dat","r") as g:
     pos = g.read().strip()    
 pos_ = [each_pos.strip(")").split("\t")[1:] for each_pos in pos.splitlines()]
+pos_ = list(filter(lambda x:x[-1]!="SYM",pos_))
 pos_grp=[]
 for i in range(len(pos_)-1,-1,-1):
     if pos_[i][1] not in punct:
@@ -100,18 +101,17 @@ if abbrevation:
 morph_dict = []
 lm=0
 for k in sentence_dictionary:
-   if k[1].isdigit() and old_morph_dict[lm][0].isdigit():
-       l=list(old_morph_dict[lm])
-       lm+=1
-       l[3] = str(k[0]+1)
-   elif k[1].isdigit():
-       continue
-   else:
-       l=list(old_morph_dict[lm])
-       lm+=1
-       l[3] = str(k[0]+1)
-   morph_dict.append(tuple(l))
-
+    if k[1].isdigit() and old_morph_dict[lm][0].isdigit():
+        l=list(old_morph_dict[lm])
+        lm+=1
+        l[3] = str(k[0]+1)
+    elif k[1].isdigit():
+        continue
+    else:
+        l=list(old_morph_dict[lm])
+        lm+=1
+        l[3] = str(k[0]+1)
+    morph_dict.append(tuple(l))
 
 tam__ = [i.split("\t")[1:] for i in re.sub(' +', '\t', tam_.strip()).split("\n")]
 tam_1= list(map(itemgetter(0), groupby(tam__)))
@@ -149,18 +149,19 @@ for each_ele in range((len(morph_dict)-1),-1,-1):
             continue
     elif morph_dict[each_ele][0] == "se" or  morph_dict[each_ele][0] == "kI":
         continue
-    elif len(morph_dict[each_ele][1]) == 1 and morph_dict[each_ele][1][0] == "v" :
-        tam_i3 = tam_final_grp[morph_dict[each_ele][0]]+"_"+lwg.strip("_")
-        tam_i13 = morph_dict[each_ele][0]+"_"+lwg.strip("_")
-        if tam_i3.strip("_") in all_tam__ or tam_i3.strip("_") in all_tam__1:
-            tam_i=tam_i3.strip("_")
-            tam_root =  morph_dict[each_ele][2][0]
-            tam_root=tam_root.strip("_")
+    elif len(morph_dict[each_ele][1]) == 1 and pos_[each_ele][2][0].lower()=="v": 
+        if morph_dict[each_ele][0] in tam_final_grp:  
+            tam_i3 = tam_final_grp[morph_dict[each_ele][0]]+"_"+lwg.strip("_")
+            tam_i13 = morph_dict[each_ele][0]+"_"+lwg.strip("_")
+            if tam_i3.strip("_") in all_tam__ or tam_i3.strip("_") in all_tam__1:
+                tam_i=tam_i3.strip("_")
+                tam_root =  morph_dict[each_ele][2][0]
+                tam_root=tam_root.strip("_")
         lwg = morph_dict[each_ele][0]+"_"+lwg
         wrd_id  = morph_dict[each_ele][3]+" "+wrd_id
         lwg_= ["_"+k for k in morph_dict[each_ele][2]]
         prev_verb = 1
-    elif morph_dict[each_ele][0] in tam_final_grp and pos_grp[each_ele][1][0]=="V":
+    elif morph_dict[each_ele][0] in tam_final_grp and pos_[each_ele][2][0].lower()=="v":
         tam_i12 = tam_final_grp[morph_dict[each_ele][0]]+"_"+lwg.strip("_")
         tam_i112 = morph_dict[each_ele][0]+"_"+lwg.strip("_")
         if tam_i12.strip("_") in all_tam__ or tam_i12.strip("_") in all_tam__1:
@@ -278,6 +279,7 @@ with open(path+"manual_local_word_group.dat","w") as g:
         g.write(k)
         g.write("\n")
 
+        
 with open(path+"revised_manual_local_word_group.dat","w") as g:
     for i in final_fact_:
         k="\t".join(i)

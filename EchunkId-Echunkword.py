@@ -9,7 +9,7 @@
 
 import sys
 tmp_path = '/home/kishori/a/tmp_anu_dir/tmp/'
-file_name = 'GeoE01'
+file_name = 'Geo_chap2_E1_detok'
 
 
 for i in range(1,101):

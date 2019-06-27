@@ -33,7 +33,16 @@ Debug/error check should be generated in Alignment1
 =============================================================================
 Module 2
 Ayushi's module
-run_all.sh
+
+sh run_all.sh Geo_chap2_E1_detok Geo_chap2_H1_detok_charu_wx
+
+
+Manual changes for running Ayushi's code:
+	modified:   improved_local_word_grouping.py
+	modified:   kriyA_mUla_combined.txt
+	modified:   replace_multiwords_in_corpus.py
+	modified:   run_all.sh
+
 
 =============================================================================
 

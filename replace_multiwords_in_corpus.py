@@ -8,7 +8,7 @@ def main():
 	with open(corpus_file_path+"/"+sys.argv[1],"r") as g:
 		corpus = g.read()
 
-	for line in open ("ilci_H2E_multi","r"):
+	for line in open ("Geo_multi_H2E.txt","r"):
 		mwe_dict_hnd.append(" ".join((line.strip().split('\t')[0].split("_"))))
 		#mwe_dict_eng.append(" ".join((line.strip().split('\t')[1].split("_"))))		
 	#print (mwe_dict_hnd[5])
