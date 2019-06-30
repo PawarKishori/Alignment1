@@ -1,0 +1,11 @@
+1	इन्सुलिन	_	NOUN	_	_	0	root	_	_
+2	की	_	ADP	_	_	1	case	_	_
+3	कमी	_	PRON	_	_	1	case	_	_
+4	से	_	PART	_	_	3	dep	_	_
+5	रक्त	_	NOUN	_	_	3	case	_	_
+6	में	_	PRON	_	_	5	case	_	_
+7	शर्करा	_	NOUN	_	_	0	root	_	_
+8	बढ़	_	VERB	_	_	7	aux:pass	_	_
+9	जाती	_	AUX	_	_	8	aux:pass	_	_
+10	है	_	AUX	_	_	9	aux:pass	_	_
+11	।	_	PUNCT	_	_	9	punct	_	_

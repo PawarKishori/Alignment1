@@ -1,0 +1,11 @@
+1	चिकित्सक	_	PROPN	_	_	3	nmod	_	_
+2	या	_	ADP	_	_	1	case	_	_
+3	दंतचिकित्सक	_	NOUN	_	_	9	obl	_	_
+4	के	_	ADP	_	_	3	case	_	_
+5	पास	_	PRON	_	_	3	case	_	_
+6	जाकर	_	NOUN	_	_	5	case	_	_
+7	जाँच	_	NOUN	_	_	8	compound	_	_
+8	अवश्य	_	PART	_	_	9	advmod	_	_
+9	करवा	_	VERB	_	_	0	root	_	_
+10	लें	_	AUX	_	_	9	aux	_	_
+11	।	_	PUNCT	_	_	9	punct	_	_

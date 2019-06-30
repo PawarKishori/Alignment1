@@ -1,0 +1,12 @@
+1	जन्मजात	_	PROPN	_	_	2	compound	_	_
+2	उपदंश	_	PROPN	_	_	0	root	_	_
+3	(	_	PUNCT	_	_	4	punct	_	_
+4	सिफिलिस	_	PROPN	_	_	2	nmod	_	_
+5	)	_	PUNCT	_	_	4	punct	_	_
+6	के	_	ADP	_	_	2	dislocated	_	_
+7	कारण	_	NOUN	_	_	2	dislocated	_	_
+8	बच्चे	_	NOUN	_	_	0	root	_	_
+9	का	_	VERB	_	_	8	aux:pass	_	_
+10	मृत	_	ADP	_	_	9	aux:pass	_	_
+11	जन्म	_	AUX	_	_	10	aux:pass	_	_
+12	।	_	PUNCT	_	_	9	punct	_	_

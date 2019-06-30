@@ -1,0 +1,14 @@
+1	दिमाग	_	PRON	_	_	3	nmod	_	_
+2	का	_	ADP	_	_	1	case	_	_
+3	जितना	_	PRON	_	_	14	obl	_	_
+4	ज्यादा	_	NOUN	_	_	3	case	_	_
+5	इस्तेमाल	_	NOUN	_	_	6	compound	_	_
+6	करेंगे	_	PROPN	_	_	8	nmod	_	_
+7	वह	_	ADP	_	_	6	case	_	_
+8	उतना	_	NOUN	_	_	14	compound	_	_
+9	ही	_	PART	_	_	8	dep	_	_
+10	तेज	_	PRON	_	_	9	aux:pass	_	_
+11	और	_	PART	_	_	10	dep	_	_
+12	सक्षम	_	PART	_	_	14	compound	_	_
+13	बनेगा	_	AUX	_	_	12	aux:pass	_	_
+14	।	_	PUNCT	_	_	0	root	_	_

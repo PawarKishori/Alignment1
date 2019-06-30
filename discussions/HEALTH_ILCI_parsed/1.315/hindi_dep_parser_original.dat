@@ -1,0 +1,11 @@
+1	रोशनी	_	PRON	_	_	3	nmod	_	_
+2	मे	_	ADP	_	_	1	case	_	_
+3	इंद्र	_	PRON	_	_	4	nmod	_	_
+4	धनुष	_	NOUN	_	_	0	root	_	_
+5	के	_	PART	_	_	4	case	_	_
+6	समान	_	PRON	_	_	8	det	_	_
+7	रंगीन	_	PRON	_	_	8	nmod	_	_
+8	गोले	_	NOUN	_	_	0	root	_	_
+9	दिखाई	_	PART	_	_	10	advmod	_	_
+10	देना	_	VERB	_	_	8	aux:pass	_	_
+11	।	_	PUNCT	_	_	10	punct	_	_

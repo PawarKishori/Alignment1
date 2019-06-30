@@ -1,0 +1,8 @@
+1	यह	_	PRON	_	_	0	root	_	_
+2	कैसे	_	PRON	_	_	0	root	_	_
+3	होता	_	AUX	_	_	2	aux:pass	_	_
+4	है	_	AUX	_	_	3	aux:pass	_	_
+5	?	_	PUNCT	_	_	3	punct	_	_
+6	RD	_	PROPN	_	_	8	compound	_	_
+7	_	_	PUNCT	_	_	8	punct	_	_
+8	PUNC	_	PROPN	_	_	0	root	_	_

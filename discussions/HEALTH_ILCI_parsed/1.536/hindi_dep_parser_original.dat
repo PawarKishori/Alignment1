@@ -1,0 +1,14 @@
+1	स्नायुओं	_	PROPN	_	_	3	nmod	_	_
+2	को	_	ADP	_	_	1	case	_	_
+3	क्षति	_	PRON	_	_	5	compound	_	_
+4	डायबिटीज	_	NOUN	_	_	5	compound	_	_
+5	पैरों	_	PROPN	_	_	7	nmod	_	_
+6	और	_	ADP	_	_	5	case	_	_
+7	हाथों	_	NOUN	_	_	9	nmod	_	_
+8	की	_	ADP	_	_	7	case	_	_
+9	स्नायुओं	_	NOUN	_	_	12	nmod	_	_
+10	को	_	ADP	_	_	9	case	_	_
+11	क्षति	_	PRON	_	_	12	nmod	_	_
+12	पहुँचाती	_	NOUN	_	_	0	root	_	_
+13	है	_	AUX	_	_	12	cop	_	_
+14	।	_	PUNCT	_	_	12	punct	_	_

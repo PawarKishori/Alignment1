@@ -1,0 +1,17 @@
+1	एच	_	PUNCT	_	_	3	punct	_	_
+2	.	_	PUNCT	_	_	3	punct	_	_
+3	आई	_	VERB	_	_	5	punct	_	_
+4	.	_	PUNCT	_	_	5	punct	_	_
+5	वी	_	VERB	_	_	0	root	_	_
+6	.	_	PUNCT	_	_	5	punct	_	_
+7	का	_	PROPN	_	_	0	root	_	_
+8	अर्थ	_	PROPN	_	_	7	case	_	_
+9	है	_	ADP	_	_	8	case	_	_
+10	'	_	PUNCT	_	_	11	punct	_	_
+11	ह्यूमन	_	ADJ	_	_	15	amod	_	_
+12	इम्यूनो	_	PROPN	_	_	15	compound	_	_
+13	-	_	PUNCT	_	_	15	punct	_	_
+14	डेफिशिएंशी	_	PROPN	_	_	15	compound	_	_
+15	वायरस	_	PROPN	_	_	8	aux:pass	_	_
+16	'	_	PUNCT	_	_	15	punct	_	_
+17	।	_	PUNCT	_	_	7	punct	_	_

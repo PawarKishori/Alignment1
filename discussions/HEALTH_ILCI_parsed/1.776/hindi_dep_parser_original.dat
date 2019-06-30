@@ -1,0 +1,11 @@
+1	पोलियो	_	PRON	_	_	8	nsubj	_	_
+2	बीमारी	_	NOUN	_	_	3	compound	_	_
+3	खासतौर	_	NOUN	_	_	8	obj	_	_
+4	पर	_	ADP	_	_	3	case	_	_
+5	छोटे	_	NOUN	_	_	8	nsubj	_	_
+6	बच्चों	_	NOUN	_	_	8	obj	_	_
+7	पर	_	ADP	_	_	6	case	_	_
+8	हमला	_	VERB	_	_	0	root	_	_
+9	करती	_	AUX	_	_	8	aux	_	_
+10	है	_	AUX	_	_	9	aux:pass	_	_
+11	।	_	PUNCT	_	_	8	punct	_	_

@@ -1,0 +1,10 @@
+1	प्रजनन	_	PROPN	_	_	0	root	_	_
+2	एवं	_	VERB	_	_	1	case	_	_
+3	बाल	_	DET	_	_	5	nummod	_	_
+4	स्वास्थ्य	_	ADJ	_	_	5	amod	_	_
+5	कार्यक्रम	_	NOUN	_	_	7	nmod	_	_
+6	के	_	ADP	_	_	5	case	_	_
+7	अंतर्गत	_	NOUN	_	_	0	root	_	_
+8	मुख्य	_	PART	_	_	0	root	_	_
+9	कार्य	_	AUX	_	_	8	aux:pass	_	_
+10	।	_	PUNCT	_	_	8	punct	_	_

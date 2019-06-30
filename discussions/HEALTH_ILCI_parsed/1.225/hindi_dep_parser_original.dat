@@ -1,0 +1,11 @@
+1	अपेंडिक्श	_	PROPN	_	_	9	obl	_	_
+2	में	_	ADP	_	_	1	case	_	_
+3	सूजन	_	NOUN	_	_	5	nmod	_	_
+4	आ	_	PUNCT	_	_	5	punct	_	_
+5	जाने	_	NOUN	_	_	1	conj	_	_
+6	पर	_	ADP	_	_	1	case	_	_
+7	अपेंडिक्श	_	NOUN	_	_	9	nsubj	_	_
+8	निकालने	_	NOUN	_	_	9	nsubj	_	_
+9	के	_	VERB	_	_	0	root	_	_
+10	लिए	_	AUX	_	_	9	aux	_	_
+11	।	_	PUNCT	_	_	9	punct	_	_

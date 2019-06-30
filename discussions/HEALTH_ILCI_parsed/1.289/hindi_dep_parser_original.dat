@@ -1,0 +1,15 @@
+1	दृष्टिहीनता	_	PROPN	_	_	3	nmod	_	_
+2	का	_	ADP	_	_	1	case	_	_
+3	मुख्य	_	NOUN	_	_	9	nmod	_	_
+4	कारण	_	NOUN	_	_	3	case	_	_
+5	मोतियाबिंद	_	NOUN	_	_	9	nmod	_	_
+6	है	_	ADP	_	_	5	case	_	_
+7	जो	_	VERB	_	_	5	dep	_	_
+8	कुल	_	DET	_	_	9	det	_	_
+9	अंधता	_	NOUN	_	_	11	nmod	_	_
+10	का	_	ADP	_	_	9	case	_	_
+11	लगभग	_	NOUN	_	_	13	nsubj	_	_
+12	55	_	NUM	_	_	13	nummod	_	_
+13	प्रतिशत	_	NOUN	_	_	0	root	_	_
+14	है	_	AUX	_	_	13	cop	_	_
+15	।	_	PUNCT	_	_	13	punct	_	_

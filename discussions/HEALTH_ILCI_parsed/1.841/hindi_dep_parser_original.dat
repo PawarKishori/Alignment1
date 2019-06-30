@@ -1,0 +1,16 @@
+1	क्षय	_	PRON	_	_	0	root	_	_
+2	रोग	_	AUX	_	_	1	case	_	_
+3	का	_	PRON	_	_	2	dep	_	_
+4	इलाज	_	PRON	_	_	0	root	_	_
+5	है	_	PART	_	_	4	case	_	_
+6	परन्तु	_	NOUN	_	_	0	root	_	_
+7	थोड़ा	_	PRON	_	_	6	case	_	_
+8	स्वस्थ	_	NOUN	_	_	9	nsubj	_	_
+9	होने	_	NOUN	_	_	0	root	_	_
+10	पर	_	ADP	_	_	9	case	_	_
+11	रोगी	_	NOUN	_	_	9	case	_	_
+12	इलाज	_	NOUN	_	_	11	case	_	_
+13	छोड़	_	VERB	_	_	12	aux:pass	_	_
+14	देता	_	AUX	_	_	13	aux:pass	_	_
+15	है	_	AUX	_	_	14	aux:pass	_	_
+16	।	_	PUNCT	_	_	13	punct	_	_

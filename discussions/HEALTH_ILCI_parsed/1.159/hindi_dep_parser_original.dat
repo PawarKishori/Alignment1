@@ -1,0 +1,15 @@
+1	स्नान	_	PRON	_	_	5	nmod	_	_
+2	के	_	ADP	_	_	1	case	_	_
+3	बाद	_	DET	_	_	5	det	_	_
+4	रोएँदार	_	NOUN	_	_	5	compound	_	_
+5	तौलिये	_	NOUN	_	_	7	nmod	_	_
+6	से	_	ADP	_	_	5	case	_	_
+7	शरीर	_	NOUN	_	_	0	root	_	_
+8	को	_	AUX	_	_	7	dep	_	_
+9	ऊपर	_	PRON	_	_	8	aux:pass	_	_
+10	से	_	PART	_	_	9	dep	_	_
+11	नीचे	_	NOUN	_	_	15	compound	_	_
+12	की	_	PART	_	_	11	dep	_	_
+13	ओर	_	VERB	_	_	11	aux:pass	_	_
+14	रगडें	_	AUX	_	_	13	aux:pass	_	_
+15	।	_	PUNCT	_	_	7	punct	_	_

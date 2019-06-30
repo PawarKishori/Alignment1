@@ -1,0 +1,9 @@
+1	चार	_	PRON	_	_	3	det	_	_
+2	-	_	PUNCT	_	_	3	punct	_	_
+3	चार	_	NOUN	_	_	4	compound	_	_
+4	घंटे	_	PROPN	_	_	6	nmod	_	_
+5	पर	_	ADP	_	_	4	case	_	_
+6	फीवर	_	NOUN	_	_	0	root	_	_
+7	को	_	VERB	_	_	6	aux:pass	_	_
+8	मापें	_	AUX	_	_	7	aux:pass	_	_
+9	।	_	PUNCT	_	_	7	punct	_	_

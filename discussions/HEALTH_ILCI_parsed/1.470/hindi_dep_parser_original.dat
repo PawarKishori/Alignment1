@@ -1,0 +1,9 @@
+1	18	_	PROPN	_	_	2	nummod	_	_
+2	वर्ष	_	NOUN	_	_	5	nmod	_	_
+3	से	_	ADP	_	_	2	case	_	_
+4	पहले	_	DET	_	_	5	det	_	_
+5	शारीरिक	_	NOUN	_	_	8	nsubj	_	_
+6	सम्बन्ध	_	NOUN	_	_	8	compound	_	_
+7	न	_	PUNCT	_	_	6	punct	_	_
+8	बनाना	_	VERB	_	_	0	root	_	_
+9	।	_	PUNCT	_	_	8	punct	_	_

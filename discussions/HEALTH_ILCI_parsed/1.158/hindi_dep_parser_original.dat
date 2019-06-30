@@ -1,0 +1,13 @@
+1	नाक	_	PRON	_	_	12	nsubj	_	_
+2	के	_	PART	_	_	1	case	_	_
+3	नथुनों	_	NOUN	_	_	4	compound	_	_
+4	में	_	PRON	_	_	12	obl	_	_
+5	रोज	_	ADP	_	_	4	case	_	_
+6	सुबह	_	NOUN	_	_	8	det	_	_
+7	-	_	PUNCT	_	_	8	punct	_	_
+8	शाम	_	NOUN	_	_	9	compound	_	_
+9	अखरोट	_	NOUN	_	_	12	obl	_	_
+10	का	_	ADP	_	_	9	case	_	_
+11	तेल	_	ADP	_	_	9	case	_	_
+12	लगाएँ	_	VERB	_	_	0	root	_	_
+13	।	_	PUNCT	_	_	12	punct	_	_

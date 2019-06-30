@@ -1,0 +1,17 @@
+1	अब	_	PRON	_	_	15	nsubj	_	_
+2	टीका	_	DET	_	_	3	det	_	_
+3	उपलब्ध	_	NOUN	_	_	15	nsubj	_	_
+4	है	_	AUX	_	_	3	case	_	_
+5	और	_	PART	_	_	3	dep	_	_
+6	हेपेटाइटिस	_	PROPN	_	_	8	compound	_	_
+7	-	_	PUNCT	_	_	8	punct	_	_
+8	ए	_	PROPN	_	_	15	nsubj	_	_
+9	के	_	ADP	_	_	8	case	_	_
+10	खिलाफ	_	NOUN	_	_	8	case	_	_
+11	सुरक्षा	_	NOUN	_	_	15	nsubj	_	_
+12	का	_	ADP	_	_	11	case	_	_
+13	सर्वाधिक	_	NOUN	_	_	15	nsubj	_	_
+14	व्यवहार्य	_	NOUN	_	_	15	nsubj	_	_
+15	उपाय	_	VERB	_	_	0	root	_	_
+16	है	_	AUX	_	_	15	aux	_	_
+17	।	_	PUNCT	_	_	15	punct	_	_

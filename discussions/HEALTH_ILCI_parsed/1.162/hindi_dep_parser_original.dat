@@ -1,0 +1,16 @@
+1	मोबाइल	_	PRON	_	_	14	obl	_	_
+2	फोन	_	AUX	_	_	1	case	_	_
+3	,	_	PUNCT	_	_	2	punct	_	_
+4	इंटरनेट	_	PROPN	_	_	7	nsubj	_	_
+5	से	_	ADP	_	_	4	case	_	_
+6	जिंदगी	_	NOUN	_	_	7	nsubj	_	_
+7	आसान	_	VERB	_	_	14	advcl	_	_
+8	तो	_	AUX	_	_	7	aux	_	_
+9	हुई	_	PRON	_	_	14	nsubj	_	_
+10	है	_	PART	_	_	9	case	_	_
+11	लेकिन	_	PRON	_	_	14	nsubj	_	_
+12	इसके	_	DET	_	_	11	case	_	_
+13	नुकसान	_	NOUN	_	_	14	nsubj	_	_
+14	भी	_	VERB	_	_	0	root	_	_
+15	हैं	_	AUX	_	_	14	aux	_	_
+16	।	_	PUNCT	_	_	14	punct	_	_

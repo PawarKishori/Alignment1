@@ -1,0 +1,17 @@
+1	इसलिए	_	PRON	_	_	2	nmod	_	_
+2	शुरू	_	NOUN	_	_	15	obl	_	_
+3	में	_	DET	_	_	4	det	_	_
+4	औषधियों	_	NOUN	_	_	15	obl	_	_
+5	का	_	ADP	_	_	4	case	_	_
+6	सेवन	_	NOUN	_	_	15	obl	_	_
+7	किया	_	NOUN	_	_	6	case	_	_
+8	जाए	_	PRON	_	_	7	aux:pass	_	_
+9	और	_	AUX	_	_	8	aux:pass	_	_
+10	साथ	_	AUX	_	_	9	aux:pass	_	_
+11	में	_	PRON	_	_	8	aux:pass	_	_
+12	योग	_	PRON	_	_	11	case	_	_
+13	का	_	PART	_	_	15	mark	_	_
+14	अभ्यास	_	NOUN	_	_	15	compound	_	_
+15	किया	_	VERB	_	_	0	root	_	_
+16	जाए	_	AUX	_	_	15	aux:pass	_	_
+17	।	_	PUNCT	_	_	15	punct	_	_

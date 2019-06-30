@@ -1,0 +1,8 @@
+1	त्वचा	_	PRON	_	_	2	nmod	_	_
+2	शरीर	_	NOUN	_	_	6	nmod	_	_
+3	का	_	PART	_	_	2	dep	_	_
+4	सबसे	_	NOUN	_	_	6	nmod	_	_
+5	बड़ा	_	PRON	_	_	4	case	_	_
+6	तंत्र	_	NOUN	_	_	0	root	_	_
+7	है	_	AUX	_	_	6	cop	_	_
+8	।	_	PUNCT	_	_	6	punct	_	_

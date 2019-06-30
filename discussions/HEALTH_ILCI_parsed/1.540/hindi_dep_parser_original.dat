@@ -1,0 +1,17 @@
+1	डायबिटीज	_	PROPN	_	_	0	root	_	_
+2	आपकी	_	NOUN	_	_	3	det	_	_
+3	आँखों	_	NOUN	_	_	5	nmod	_	_
+4	की	_	ADP	_	_	3	case	_	_
+5	रेटिना	_	NOUN	_	_	0	root	_	_
+6	को	_	ADP	_	_	5	case	_	_
+7	क्षति	_	PRON	_	_	8	compound	_	_
+8	पहुँचा	_	NOUN	_	_	0	root	_	_
+9	सकती	_	VERB	_	_	8	aux:pass	_	_
+10	है	_	AUX	_	_	9	aux	_	_
+11	,	_	PUNCT	_	_	9	punct	_	_
+12	जिससे	_	PRON	_	_	14	obl	_	_
+13	अंधापन	_	NOUN	_	_	14	nsubj	_	_
+14	हो	_	VERB	_	_	9	advcl	_	_
+15	सकता	_	AUX	_	_	14	aux	_	_
+16	है	_	AUX	_	_	15	aux:pass	_	_
+17	।	_	PUNCT	_	_	9	punct	_	_

@@ -1,0 +1,13 @@
+1	एक	_	PRON	_	_	12	nsubj	_	_
+2	डाक्टर	_	NOUN	_	_	12	nsubj	_	_
+3	के	_	VERB	_	_	2	case	_	_
+4	लिए	_	AUX	_	_	3	aux:pass	_	_
+5	सभी	_	PRON	_	_	6	det	_	_
+6	मरीज	_	NOUN	_	_	12	obl	_	_
+7	एक	_	PART	_	_	6	dep	_	_
+8	से	_	AUX	_	_	6	aux	_	_
+9	हैं	_	AUX	_	_	6	aux:pass	_	_
+10	फिर	_	PRON	_	_	11	det	_	_
+11	भेदभाव	_	NOUN	_	_	12	nsubj	_	_
+12	कैसा	_	VERB	_	_	0	root	_	_
+13	।	_	PUNCT	_	_	12	punct	_	_

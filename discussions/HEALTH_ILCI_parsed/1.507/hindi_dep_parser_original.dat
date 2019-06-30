@@ -1,0 +1,9 @@
+1	घर	_	PRON	_	_	7	nsubj	_	_
+2	के	_	PRON	_	_	3	det	_	_
+3	आसपास	_	PRON	_	_	7	nsubj	_	_
+4	पानी	_	NOUN	_	_	7	nsubj	_	_
+5	न	_	PUNCT	_	_	4	punct	_	_
+6	इकट्ठा	_	NOUN	_	_	4	compound	_	_
+7	होने	_	VERB	_	_	0	root	_	_
+8	दें	_	AUX	_	_	7	aux	_	_
+9	।	_	PUNCT	_	_	7	punct	_	_

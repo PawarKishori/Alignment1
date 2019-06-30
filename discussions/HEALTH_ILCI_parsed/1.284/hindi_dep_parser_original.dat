@@ -1,0 +1,13 @@
+1	एच	_	PUNCT	_	_	0	root	_	_
+2	.	_	PUNCT	_	_	3	punct	_	_
+3	आई	_	PROPN	_	_	7	punct	_	_
+4	.	_	PUNCT	_	_	7	punct	_	_
+5	वी	_	PROPN	_	_	7	compound	_	_
+6	.	_	PUNCT	_	_	5	punct	_	_
+7	एड्स	_	PROPN	_	_	13	obl	_	_
+8	छूत	_	ADP	_	_	13	compound	_	_
+9	का	_	VERB	_	_	8	aux:pass	_	_
+10	रोग	_	PRON	_	_	9	aux:pass	_	_
+11	नहीं	_	AUX	_	_	10	aux:pass	_	_
+12	है	_	AUX	_	_	11	aux:pass	_	_
+13	।	_	PUNCT	_	_	1	punct	_	_

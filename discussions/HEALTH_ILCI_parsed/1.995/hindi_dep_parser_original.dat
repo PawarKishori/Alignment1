@@ -1,0 +1,8 @@
+1	कांटेक्ट	_	PROPN	_	_	0	root	_	_
+2	लेंस	_	NOUN	_	_	0	root	_	_
+3	उम्दा	_	PRON	_	_	4	nmod	_	_
+4	क्वालिटी	_	NOUN	_	_	6	nmod	_	_
+5	की	_	ADP	_	_	4	case	_	_
+6	होनी	_	NOUN	_	_	0	root	_	_
+7	चाहिये	_	VERB	_	_	6	aux	_	_
+8	।	_	PUNCT	_	_	7	punct	_	_

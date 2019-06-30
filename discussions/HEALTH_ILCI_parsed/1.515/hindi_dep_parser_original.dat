@@ -1,0 +1,17 @@
+1	रोग	_	PRON	_	_	2	det	_	_
+2	प्रकोप	_	NOUN	_	_	3	nsubj	_	_
+3	के	_	VERB	_	_	7	acl:relcl	_	_
+4	समय	_	AUX	_	_	3	aux:pass	_	_
+5	,	_	PUNCT	_	_	4	punct	_	_
+6	ज्वर	_	PROPN	_	_	7	compound	_	_
+7	होने	_	NOUN	_	_	9	nmod	_	_
+8	पर	_	ADP	_	_	7	case	_	_
+9	नजदीक	_	NOUN	_	_	15	obl	_	_
+10	के	_	ADP	_	_	9	case	_	_
+11	सरकारी	_	NOUN	_	_	15	nsubj	_	_
+12	अस्पताल	_	NOUN	_	_	15	nsubj	_	_
+13	प्रा०स्वा०केन्द्र	_	NOUN	_	_	15	obl	_	_
+14	में	_	ADP	_	_	13	case	_	_
+15	उपचार	_	VERB	_	_	0	root	_	_
+16	लें	_	AUX	_	_	15	aux	_	_
+17	।	_	PUNCT	_	_	15	punct	_	_

@@ -1,0 +1,14 @@
+1	खाना	_	PRON	_	_	2	det	_	_
+2	निगलने	_	NOUN	_	_	12	obl	_	_
+3	या	_	ADP	_	_	2	case	_	_
+4	शौच	_	ADP	_	_	3	case	_	_
+5	में	_	PRON	_	_	12	nsubj	_	_
+6	कष्ट	_	NOUN	_	_	12	obl	_	_
+7	होना	_	PROPN	_	_	6	case	_	_
+8	,	_	PUNCT	_	_	7	punct	_	_
+9	लगातार	_	PROPN	_	_	7	conj	_	_
+10	अपच	_	CCONJ	_	_	9	case	_	_
+11	या	_	PART	_	_	10	dep	_	_
+12	कब्ज	_	VERB	_	_	0	root	_	_
+13	रहना	_	AUX	_	_	12	aux	_	_
+14	।	_	PUNCT	_	_	12	punct	_	_

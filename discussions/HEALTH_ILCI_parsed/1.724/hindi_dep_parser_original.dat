@@ -1,0 +1,7 @@
+1	बहुत	_	DET	_	_	2	det	_	_
+2	जल्दी	_	ADV	_	_	0	root	_	_
+3	,	_	PUNCT	_	_	2	punct	_	_
+4	ज्यादातर	_	NOUN	_	_	5	compound	_	_
+5	गुस्सा	_	NOUN	_	_	0	root	_	_
+6	होना	_	VERB	_	_	5	aux	_	_
+7	।	_	PUNCT	_	_	6	punct	_	_

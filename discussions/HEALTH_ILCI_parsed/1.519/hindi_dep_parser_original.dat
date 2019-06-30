@@ -1,0 +1,17 @@
+1	डायबिटीज	_	PROPN	_	_	0	root	_	_
+2	एक	_	ADP	_	_	1	case	_	_
+3	ऐसी	_	DET	_	_	1	case	_	_
+4	बीमारी	_	NOUN	_	_	8	nmod	_	_
+5	है	_	ADP	_	_	4	case	_	_
+6	जिसके	_	PRON	_	_	8	nmod	_	_
+7	परिणामस्वरूप	_	PROPN	_	_	8	compound	_	_
+8	रक्त	_	VERB	_	_	14	obl	_	_
+9	में	_	DET	_	_	14	cc	_	_
+10	बहुत	_	NOUN	_	_	14	nsubj	_	_
+11	अधिक	_	NOUN	_	_	14	nsubj	_	_
+12	शर्करा	_	NOUN	_	_	14	nsubj	_	_
+13	ग्लूकोज	_	NOUN	_	_	14	nsubj	_	_
+14	हो	_	VERB	_	_	0	root	_	_
+15	जाती	_	AUX	_	_	14	aux	_	_
+16	है	_	AUX	_	_	15	aux:pass	_	_
+17	।	_	PUNCT	_	_	14	punct	_	_

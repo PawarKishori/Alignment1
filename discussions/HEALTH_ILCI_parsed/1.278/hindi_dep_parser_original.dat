@@ -1,0 +1,6 @@
+1	शारीरिक	_	NOUN	_	_	4	nsubj	_	_
+2	स्वच्छता	_	NOUN	_	_	4	nsubj	_	_
+3	पर	_	PART	_	_	2	dep	_	_
+4	ध्यान	_	VERB	_	_	0	root	_	_
+5	दें	_	AUX	_	_	4	aux	_	_
+6	।	_	PUNCT	_	_	4	punct	_	_

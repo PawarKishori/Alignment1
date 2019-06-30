@@ -1,0 +1,10 @@
+1	टी	_	PUNCT	_	_	0	root	_	_
+2	.	_	PUNCT	_	_	1	punct	_	_
+3	बी	_	PROPN	_	_	5	compound	_	_
+4	.	_	PUNCT	_	_	5	punct	_	_
+5	निमोनिया	_	PROPN	_	_	10	obl	_	_
+6	आदि	_	ADP	_	_	5	case	_	_
+7	घेर	_	VERB	_	_	5	case	_	_
+8	लेते	_	VERB	_	_	7	aux:pass	_	_
+9	हैं	_	AUX	_	_	8	aux:pass	_	_
+10	।	_	PUNCT	_	_	1	punct	_	_

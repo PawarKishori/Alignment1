@@ -1,0 +1,10 @@
+1	घर	_	PRON	_	_	0	root	_	_
+2	की	_	PRON	_	_	3	det	_	_
+3	खिड़कियों	_	NOUN	_	_	0	root	_	_
+4	दरवाजों	_	PROPN	_	_	5	compound	_	_
+5	रोशनदानों	_	PROPN	_	_	7	nmod	_	_
+6	पर	_	ADP	_	_	5	case	_	_
+7	महीन	_	NOUN	_	_	0	root	_	_
+8	जाली	_	VERB	_	_	7	aux:pass	_	_
+9	लगवायें	_	AUX	_	_	8	aux:pass	_	_
+10	।	_	PUNCT	_	_	8	punct	_	_

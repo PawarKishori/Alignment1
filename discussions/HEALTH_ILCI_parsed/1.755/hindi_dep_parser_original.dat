@@ -1,0 +1,17 @@
+1	मातृ	_	PRON	_	_	14	obl	_	_
+2	एवं	_	DET	_	_	3	det	_	_
+3	शिशु	_	NOUN	_	_	14	obl	_	_
+4	कल्याण	_	NOUN	_	_	9	compound	_	_
+5	सेवाओं	_	PROPN	_	_	9	nmod	_	_
+6	के	_	ADP	_	_	5	case	_	_
+7	अन्तर्गत	_	NOUN	_	_	9	amod	_	_
+8	उत्तराखण्ड	_	PROPN	_	_	9	compound	_	_
+9	राज्य	_	PROPN	_	_	14	obl	_	_
+10	में	_	CCONJ	_	_	12	cc	_	_
+11	निम्न	_	PRON	_	_	12	amod	_	_
+12	कार्यक्रम	_	NOUN	_	_	14	nsubj	_	_
+13	चलाये	_	NOUN	_	_	14	compound	_	_
+14	जा	_	VERB	_	_	0	root	_	_
+15	रहे	_	AUX	_	_	14	aux:pass	_	_
+16	हैं	_	AUX	_	_	15	aux:pass	_	_
+17	।	_	PUNCT	_	_	14	punct	_	_

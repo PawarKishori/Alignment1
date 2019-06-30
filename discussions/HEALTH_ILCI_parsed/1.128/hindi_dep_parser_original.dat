@@ -1,0 +1,13 @@
+1	इसके	_	PRON	_	_	2	det	_	_
+2	अलावा	_	PRON	_	_	4	nmod	_	_
+3	दूध	_	ADP	_	_	2	case	_	_
+4	पीना	_	SCONJ	_	_	11	obl	_	_
+5	,	_	PUNCT	_	_	4	punct	_	_
+6	गाजर	_	NOUN	_	_	7	compound	_	_
+7	खाना	_	PROPN	_	_	9	nmod	_	_
+8	भी	_	ADP	_	_	7	case	_	_
+9	फायदेमंद	_	NOUN	_	_	11	nsubj	_	_
+10	साबित	_	PART	_	_	11	advmod	_	_
+11	होता	_	VERB	_	_	0	root	_	_
+12	है	_	AUX	_	_	11	aux	_	_
+13	।	_	PUNCT	_	_	11	punct	_	_

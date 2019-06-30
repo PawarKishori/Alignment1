@@ -1,0 +1,17 @@
+1	हालांकि	_	PROPN	_	_	15	nsubj	_	_
+2	मीजल्स	_	NOUN	_	_	5	obl	_	_
+3	के	_	ADP	_	_	2	case	_	_
+4	लिए	_	PRON	_	_	2	case	_	_
+5	उठाए	_	VERB	_	_	15	nmod	_	_
+6	गये	_	PRON	_	_	5	case	_	_
+7	पहले	_	NOUN	_	_	15	nmod	_	_
+8	कदम	_	AUX	_	_	7	case	_	_
+9	का	_	SCONJ	_	_	7	case	_	_
+10	उद्देश्य	_	PROPN	_	_	13	compound	_	_
+11	प्राथमिक	_	PROPN	_	_	13	compound	_	_
+12	टीकाकरण	_	PROPN	_	_	13	compound	_	_
+13	कार्यक्रम	_	PROPN	_	_	15	nmod	_	_
+14	का	_	ADP	_	_	13	case	_	_
+15	कार्यान्वयन	_	NOUN	_	_	0	root	_	_
+16	है	_	AUX	_	_	15	cop	_	_
+17	।	_	PUNCT	_	_	15	punct	_	_

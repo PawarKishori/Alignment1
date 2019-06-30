@@ -1,0 +1,22 @@
+,,,,,,,vibhati
+Sentence:प्रियंका को इस जगह पर अपनी दादी के साथ बचपन के कुछ दिन गुजारने का अवसर मिला है ।,Sentence ID:dev-s349,NOUN ID:13,Word:दिन,VERB ID:14,Word:गुजारने,relation:obl,kA
+Sentence:अलबत्ता शाम के वक्त जरूर वह होटल परिसर में कुछ देर टहलीं ।,Sentence ID:dev-s359,NOUN ID:11,Word:देर,VERB ID:12,Word:टहलीं,relation:obl,pof
+Sentence:घायल संजय को हेडगेवार अस्पताल में भर्ती कराया गया है जबकि चार अन्य को प्राइवेट अस्पताल ले जाया गया ।,Sentence ID:dev-s462,NOUN ID:16,Word:अस्पताल,VERB ID:17,Word:ले,relation:obl,pof
+"Sentence:पंजाब, हरियाणा और चंडीगढ़ में बुधवार सुबह हुई हल्की बारिश से लोगों के चेहरे खुशी से जरूर खिल उठे लेकिन मानसून के लिए अभी उन्हें कुछ दिन और इंतजार करना होगा ।",Sentence ID:dev-s514,NOUN ID:8,Word:सुबह,VERB ID:9,Word:हुई,relation:obl,pof
+"Sentence:मौसम विभाग ने बताया कि इन जगहों पर बुधवार सुबह हुई बारिश, मानसून की वर्षा नहीं थी ।",Sentence ID:dev-s515,NOUN ID:10,Word:सुबह,VERB ID:11,Word:हुई,relation:obl,pof
+Sentence:सुबह हुई हल्की बारिश से तापमान कम हुआ है और लोगों को गर्मी से राहत मिली है ।,Sentence ID:dev-s521,NOUN ID:1,Word:सुबह,VERB ID:2,Word:हुई,relation:obl,pof
+Sentence:मंगलवार की रात एसएसपी ए. एस. रॉय की अगुआई में पुलिस टीम ने यूनीवर्सिटी जाकर वहाँ के सुरक्षा अधिकारी से भी इस संबंध में बात की ।,Sentence ID:dev-s599,NOUN ID:14,Word:यूनीवर्सिटी,VERB ID:15,Word:जाकर,relation:obl,-
+"Sentence:हालांकि, उनके प्रेस सचिव स्कॉट मैकक्लेलन ने बाद में जोर देकर कहा कि बुश ने आतंकवादी हमले के कारण बीच में शिखर बैठक नहीं छोड़ी थी ।",Sentence ID:dev-s626,NOUN ID:11,Word:जोर,VERB ID:12,Word:देकर,relation:obl,pof(jora_denA)
+Sentence:वरुण गांधी ने आज कहा कि स्वस्थ लोकतंत्र में वंशवाद का कोई स्थान नहीं है ।,Sentence ID:dev-s761,NOUN ID:4,Word:आज,VERB ID:5,Word:कहा,relation:obl,k7
+Sentence:हालांकि आयोग ने इस बात पर आश्चर्य प्रकट किया कि कमलनाथ पुलिस अधिकारियों से संपर्क किये बगैर कानून व्यवस्था की चिंता के लिए गुरुद्वारा पहुंच गये ।,Sentence ID:dev-s788,NOUN ID:24,Word:गुरुद्वारा,VERB ID:25,Word:पहुंच,relation:obl,k7
+Sentence:खारो में बना यह पुल चौथी बार बहा है ।,Sentence ID:dev-s852,NOUN ID:7,Word:बार,VERB ID:8,Word:बहा,relation:obl,adveb
+"Sentence:सुलेमान ने बताया कि 'यहां से सिर्फ एक घंटे का सफर है, लेकिन इस दूरी को पाटने में कई दशक लग गए",Sentence ID:dev-s868,NOUN ID:22,Word:दशक,VERB ID:23,Word:लग,relation:obl,adverb
+Sentence:इन आसनों को एक बार करने में तकरीबन १० मिनट का समय लगता है ।,Sentence ID:dev-s904,NOUN ID:5,Word:बार,VERB ID:6,Word:करने,relation:obl,adverb
+Sentence:उन्होंने कहा है कि कृषि और औद्योगिक क्षेत्र को बढ़ावा देकर विकास की गति बढ़ाने पर जोर दिया गया है ।,Sentence ID:dev-s1018,NOUN ID:17,Word:जोर,VERB ID:18,Word:दिया,relation:obl,pof(jora_denA)
+Sentence:बेउर जेल के जेलर भोला सिंह और कुछ अन्य कर्मचारियों ने कारागार विभाग को कल दिए गए एक लिखित आवेदन में बताया है कि माकपा विधायक अजित सरकार की हत्या के मामले में जेल में बंद पप्पू यादव ने मुलाकातियों से मिलने से मना करने पर उन्हें जान से मारने की धमकी दी ।,Sentence ID:dev-s1165,NOUN ID:15,Word:कल,VERB ID:16,Word:दिए,relation:obl,k7
+Sentence:इन मछुआरों ने बताया कि मछलियाँ यह क्षेत्र छोड़ कर दूसरे स्थानों पर जा चुकी हैं ।,Sentence ID:dev-s1179,NOUN ID:8,Word:क्षेत्र,VERB ID:9,Word:छोड़,relation:obl,ko ellipse
+Sentence:नारायणन दस किलोमीटर पैदल चलकर स्कूल जाते थे ।,Sentence ID:dev-s1243,NOUN ID:6,Word:स्कूल,VERB ID:7,Word:जाते,relation:obl,k2
+Sentence:अटवाल ने जोर देकर कहा कि सत्तापक्ष और विपक्ष के बीच वह अच्छा तालमेल बिठाने की कोशिश करेंगे ।,Sentence ID:dev-s1333,NOUN ID:3,Word:जोर,VERB ID:4,Word:देकर,relation:obl,pof(jora_denA)
+Sentence:मुशर्रफ ने जोर देकर कहा कि कश्मीर केंद्रीय मसला है और इसका हल होते ही दोनों देशों का संबंध सहज हो जाएगा ।,Sentence ID:dev-s1437,NOUN ID:3,Word:जोर,VERB ID:4,Word:देकर,relation:obl,pof(jora_denA)
+Sentence:पूर्व प्रधानमंत्री की भाजपा विधायक और गोंडा से लोकसभा उम्मीदवार घनश्याम शुक्ला की पिछले महीने हुई मौत की जांच को लेकर कुछ शिकायतें थीं ।,Sentence ID:dev-s1477,NOUN ID:15,Word:महीने,VERB ID:16,Word:हुई,relation:obl,meM ellipse
+"Sentence:केंद्रीय गृह मंत्रालय ने बुधवार देर रात 'सामान्य अलर्ट' जारी कर दिया, जिसमें खासतौर पर मुंबई एयरपोर्ट का जिक्र करते हुए सुरक्षा बलों से हवाई अड्डे आने वाले सभी वाहनों पर कड़ी निगरानी रखने को कहा गया है ।",Sentence ID:dev-s1502,NOUN ID:29,Word:अड्डे,VERB ID:30,Word:आने,relation:obl,para ellipse

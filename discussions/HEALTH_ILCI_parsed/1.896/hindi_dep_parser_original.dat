@@ -1,0 +1,17 @@
+1	पीतज्वर	_	PROPN	_	_	3	nmod	_	_
+2	के	_	ADP	_	_	1	case	_	_
+3	महामारी	_	NOUN	_	_	7	nmod	_	_
+4	के	_	ADP	_	_	3	case	_	_
+5	रूप	_	PRON	_	_	3	case	_	_
+6	मे	_	PART	_	_	5	dep	_	_
+7	फैलने	_	PROPN	_	_	9	nmod	_	_
+8	से	_	ADP	_	_	7	case	_	_
+9	मृत्यु	_	NOUN	_	_	15	nsubj	_	_
+10	दर	_	ADP	_	_	9	case	_	_
+11	85	_	NUM	_	_	12	nummod	_	_
+12	%	_	NOUN	_	_	13	nummod	_	_
+13	तक	_	NOUN	_	_	15	obl	_	_
+14	चली	_	ADP	_	_	13	case	_	_
+15	जाती	_	VERB	_	_	0	root	_	_
+16	है	_	AUX	_	_	15	aux	_	_
+17	।	_	PUNCT	_	_	15	punct	_	_

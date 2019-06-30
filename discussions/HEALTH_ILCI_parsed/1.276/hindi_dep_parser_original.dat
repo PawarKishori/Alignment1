@@ -1,0 +1,11 @@
+1	धूम्रपान	_	SCONJ	_	_	0	root	_	_
+2	,	_	PUNCT	_	_	3	punct	_	_
+3	मद्यपान	_	PROPN	_	_	1	conj	_	_
+4	,	_	PUNCT	_	_	11	punct	_	_
+5	नशीली	_	PROPN	_	_	6	compound	_	_
+6	दवाओं	_	NOUN	_	_	11	compound	_	_
+7	का	_	ADP	_	_	6	dep	_	_
+8	सेवन	_	VERB	_	_	11	compound	_	_
+9	न	_	PUNCT	_	_	8	punct	_	_
+10	करें	_	VERB	_	_	8	aux	_	_
+11	।	_	PUNCT	_	_	1	punct	_	_

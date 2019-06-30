@@ -1,0 +1,10 @@
+1	विटामिन	_	NOUN	_	_	3	compound	_	_
+2	-	_	PUNCT	_	_	3	punct	_	_
+3	सी	_	NOUN	_	_	9	obl	_	_
+4	की	_	ADP	_	_	3	case	_	_
+5	भारी	_	NOUN	_	_	6	amod	_	_
+6	मात्रा	_	VERB	_	_	8	nsubj	_	_
+7	न	_	PUNCT	_	_	6	punct	_	_
+8	ली	_	VERB	_	_	9	compound	_	_
+9	जाये	_	VERB	_	_	0	root	_	_
+10	।	_	PUNCT	_	_	9	punct	_	_

@@ -1,0 +1,12 @@
+1	प्राकृतिक	_	PROPN	_	_	2	compound	_	_
+2	चिकित्सा	_	PROPN	_	_	10	nmod	_	_
+3	(	_	PUNCT	_	_	5	punct	_	_
+4	नेचुरोपैथी	_	PROPN	_	_	5	compound	_	_
+5	naturopathy	_	PROPN	_	_	2	nmod	_	_
+6	)	_	PUNCT	_	_	5	punct	_	_
+7	एक	_	ADP	_	_	2	dislocated	_	_
+8	चिकित्सा	_	NOUN	_	_	10	compound	_	_
+9	-	_	PUNCT	_	_	10	punct	_	_
+10	दर्शन	_	NOUN	_	_	0	root	_	_
+11	है	_	AUX	_	_	10	cop	_	_
+12	।	_	PUNCT	_	_	10	punct	_	_

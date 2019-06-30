@@ -1,0 +1,11 @@
+1	इससे	_	PRON	_	_	0	root	_	_
+2	हड्डियाँ	_	PROPN	_	_	3	compound	_	_
+3	कमजोर	_	PROPN	_	_	5	nmod	_	_
+4	हो	_	ADP	_	_	3	case	_	_
+5	जाती	_	NOUN	_	_	0	root	_	_
+6	हैं	_	PRON	_	_	5	case	_	_
+7	और	_	PART	_	_	6	dep	_	_
+8	गलने	_	NOUN	_	_	0	root	_	_
+9	लगती	_	VERB	_	_	8	aux:pass	_	_
+10	हैं	_	AUX	_	_	9	aux:pass	_	_
+11	।	_	PUNCT	_	_	9	punct	_	_

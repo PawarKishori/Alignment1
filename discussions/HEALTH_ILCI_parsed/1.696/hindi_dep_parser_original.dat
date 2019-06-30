@@ -1,0 +1,16 @@
+1	इसके	_	PRON	_	_	0	root	_	_
+2	बाद	_	PRON	_	_	1	case	_	_
+3	यह	_	PART	_	_	2	dep	_	_
+4	वायरस	_	PRON	_	_	6	nmod	_	_
+5	पूरे	_	DET	_	_	4	case	_	_
+6	रक्तप्रवाह	_	NOUN	_	_	0	root	_	_
+7	में	_	CCONJ	_	_	10	cc	_	_
+8	फैलकर	_	PRON	_	_	10	nmod	_	_
+9	प्राइमरी	_	NOUN	_	_	10	compound	_	_
+10	बीमारी	_	NOUN	_	_	0	root	_	_
+11	का	_	ADP	_	_	10	dep	_	_
+12	रूप	_	ADP	_	_	11	aux:pass	_	_
+13	ले	_	VERB	_	_	12	aux:pass	_	_
+14	लेता	_	AUX	_	_	13	aux:pass	_	_
+15	है	_	AUX	_	_	14	aux:pass	_	_
+16	।	_	PUNCT	_	_	13	punct	_	_

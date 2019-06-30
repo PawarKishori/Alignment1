@@ -1,0 +1,10 @@
+1	दंतचिकित्सक	_	PROPN	_	_	3	nmod	_	_
+2	से	_	ADP	_	_	1	case	_	_
+3	दाँतों	_	NOUN	_	_	6	nmod	_	_
+4	की	_	ADP	_	_	3	case	_	_
+5	जाँच	_	NOUN	_	_	6	compound	_	_
+6	नियमित	_	NOUN	_	_	0	root	_	_
+7	रूप	_	ADP	_	_	6	aux:pass	_	_
+8	से	_	VERB	_	_	7	aux:pass	_	_
+9	कराएँ	_	AUX	_	_	8	aux:pass	_	_
+10	।	_	PUNCT	_	_	7	punct	_	_

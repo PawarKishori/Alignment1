@@ -1,0 +1,16 @@
+1	कोई	_	PRON	_	_	2	det	_	_
+2	बात	_	PRON	_	_	0	root	_	_
+3	तभी	_	PRON	_	_	2	case	_	_
+4	लंबे	_	NOUN	_	_	0	root	_	_
+5	समय	_	AUX	_	_	4	aux:pass	_	_
+6	तक	_	AUX	_	_	5	aux:pass	_	_
+7	याद	_	PRON	_	_	6	case	_	_
+8	रहती	_	NOUN	_	_	0	root	_	_
+9	है	_	PART	_	_	8	dep	_	_
+10	जब	_	AUX	_	_	9	aux	_	_
+11	उस	_	SCONJ	_	_	14	mark	_	_
+12	पर	_	PART	_	_	11	dep	_	_
+13	ध्यान	_	PART	_	_	14	advmod	_	_
+14	दिया	_	VERB	_	_	8	acl	_	_
+15	जाए	_	AUX	_	_	14	aux	_	_
+16	।	_	PUNCT	_	_	8	punct	_	_

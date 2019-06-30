@@ -1,0 +1,15 @@
+1	मानसिक	_	PRON	_	_	0	root	_	_
+2	रोगी	_	NOUN	_	_	0	root	_	_
+3	को	_	PRON	_	_	2	dep	_	_
+4	ठीक	_	DET	_	_	5	det	_	_
+5	करना	_	NOUN	_	_	13	obl	_	_
+6	और	_	ADP	_	_	5	case	_	_
+7	परिवार	_	NOUN	_	_	13	nsubj	_	_
+8	व	_	PUNCT	_	_	9	punct	_	_
+9	समाज	_	NOUN	_	_	7	compound	_	_
+10	की	_	ADP	_	_	9	case	_	_
+11	कठिनाई	_	NOUN	_	_	13	obl	_	_
+12	को	_	PART	_	_	11	dep	_	_
+13	कम	_	VERB	_	_	2	aux:pass	_	_
+14	करना	_	AUX	_	_	13	aux:pass	_	_
+15	।	_	PUNCT	_	_	13	punct	_	_

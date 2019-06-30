@@ -1,0 +1,17 @@
+1	यौन	_	DET	_	_	2	det	_	_
+2	जनित	_	NOUN	_	_	3	compound	_	_
+3	रोगों	_	PRON	_	_	5	nmod	_	_
+4	के	_	ADP	_	_	3	case	_	_
+5	बचाव	_	NOUN	_	_	0	root	_	_
+6	से	_	ADP	_	_	5	case	_	_
+7	एचआईवी	_	NOUN	_	_	5	case	_	_
+8	संक्रमण	_	NOUN	_	_	10	nmod	_	_
+9	का	_	ADP	_	_	8	case	_	_
+10	खतरा	_	NOUN	_	_	13	nmod	_	_
+11	भी	_	PART	_	_	10	case	_	_
+12	कम	_	PART	_	_	10	dep	_	_
+13	किया	_	NOUN	_	_	0	root	_	_
+14	जा	_	VERB	_	_	13	aux:pass	_	_
+15	सकता	_	AUX	_	_	14	aux	_	_
+16	है	_	AUX	_	_	15	aux:pass	_	_
+17	।	_	PUNCT	_	_	14	punct	_	_

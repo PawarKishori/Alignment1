@@ -1,0 +1,14 @@
+1	बड़ी	_	DET	_	_	2	det	_	_
+2	आंत	_	PRON	_	_	4	det	_	_
+3	के	_	PRON	_	_	2	case	_	_
+4	कैंसर	_	NOUN	_	_	6	nmod	_	_
+5	के	_	ADP	_	_	4	case	_	_
+6	कारण	_	NOUN	_	_	12	nsubj	_	_
+7	मल	_	PART	_	_	6	dep	_	_
+8	के	_	PART	_	_	6	dep	_	_
+9	साथ	_	PRON	_	_	8	case	_	_
+10	रक्त	_	VERB	_	_	12	compound	_	_
+11	आ	_	PUNCT	_	_	10	punct	_	_
+12	सकता	_	VERB	_	_	0	root	_	_
+13	है	_	AUX	_	_	12	cop	_	_
+14	।	_	PUNCT	_	_	12	punct	_	_

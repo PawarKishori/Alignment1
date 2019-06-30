@@ -1,0 +1,8 @@
+1	बुखार	_	PRON	_	_	0	root	_	_
+2	ज्यादा	_	NOUN	_	_	1	case	_	_
+3	लंबे	_	NOUN	_	_	0	root	_	_
+4	समय	_	ADP	_	_	3	aux:pass	_	_
+5	तक	_	VERB	_	_	4	aux:pass	_	_
+6	रहता	_	AUX	_	_	5	aux:pass	_	_
+7	है	_	AUX	_	_	6	aux:pass	_	_
+8	।	_	PUNCT	_	_	5	punct	_	_

@@ -1,0 +1,9 @@
+1	लैपरोस्कोपिक	_	PROPN	_	_	7	nsubj	_	_
+2	विधि	_	ADP	_	_	1	case	_	_
+3	में	_	ADP	_	_	2	case	_	_
+4	ये	_	ADP	_	_	3	case	_	_
+5	संभावनाएँ	_	NOUN	_	_	7	nsubj	_	_
+6	नगण्य	_	PART	_	_	7	advmod	_	_
+7	होती	_	VERB	_	_	0	root	_	_
+8	हैं	_	AUX	_	_	7	aux:pass	_	_
+9	।	_	PUNCT	_	_	7	punct	_	_

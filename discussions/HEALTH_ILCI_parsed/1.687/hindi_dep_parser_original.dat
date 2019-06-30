@@ -1,0 +1,10 @@
+1	अपने	_	PRON	_	_	6	nsubj	_	_
+2	आस	_	PRON	_	_	4	det	_	_
+3	-	_	PUNCT	_	_	4	punct	_	_
+4	पास	_	NOUN	_	_	5	det	_	_
+5	पानी	_	NOUN	_	_	6	compound	_	_
+6	इकट्ठा	_	VERB	_	_	8	xcomp	_	_
+7	न	_	PUNCT	_	_	6	punct	_	_
+8	होने	_	VERB	_	_	0	root	_	_
+9	दें	_	AUX	_	_	8	aux	_	_
+10	।	_	PUNCT	_	_	8	punct	_	_

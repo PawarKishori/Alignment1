@@ -1,0 +1,8 @@
+1	करते	_	PRON	_	_	2	det	_	_
+2	रहें	_	NOUN	_	_	7	nsubj	_	_
+3	हल्की	_	ADJ	_	_	6	nmod	_	_
+4	-	_	PUNCT	_	_	3	punct	_	_
+5	फुल्की	_	ADJ	_	_	3	compound	_	_
+6	शारीरिक	_	NOUN	_	_	7	compound	_	_
+7	गतिविधियाँ	_	NOUN	_	_	0	root	_	_
+8	।	_	PUNCT	_	_	7	punct	_	_

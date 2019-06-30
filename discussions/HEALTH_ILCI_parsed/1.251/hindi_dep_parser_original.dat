@@ -1,0 +1,17 @@
+1	बिना	_	PRON	_	_	0	root	_	_
+2	उबली	_	NOUN	_	_	0	root	_	_
+3	हुई	_	AUX	_	_	2	aux	_	_
+4	या	_	SCONJ	_	_	2	dep	_	_
+5	पहले	_	PRON	_	_	2	case	_	_
+6	से	_	PART	_	_	5	case	_	_
+7	इस्तेमाल	_	NOUN	_	_	8	compound	_	_
+8	की	_	ADP	_	_	5	case	_	_
+9	गई	_	AUX	_	_	8	aux	_	_
+10	सुई	_	AUX	_	_	5	case	_	_
+11	के	_	SCONJ	_	_	10	dep	_	_
+12	प्रयोग	_	PROPN	_	_	14	nmod	_	_
+13	से	_	ADP	_	_	12	case	_	_
+14	एड्स	_	VERB	_	_	0	root	_	_
+15	फैलता	_	PART	_	_	16	advmod	_	_
+16	है	_	AUX	_	_	14	cop	_	_
+17	|	_	PUNCT	_	_	14	punct	_	_

@@ -25,7 +25,8 @@ with open(path_kriya_mul+"kriyA_mUla_combined.txt","r") as g:
     kriya_mul = g.read()    
 with open(path+"manual_hin.morph.dat","r") as g:
     data = g.read()
-with open(path+"H_wid-word.dat","r") as g:
+#with open(path+"H_wid-word.dat","r") as g:
+with open(path+"H_wordid-word_mapping.dat","r") as g:
     fact_ = g.read()
 with open(path+"H_sentence","r") as g:
     sentence = g.read().strip()

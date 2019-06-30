@@ -1,0 +1,17 @@
+1	प्रतिरक्षण	_	PROPN	_	_	2	compound	_	_
+2	क्षमता	_	PROPN	_	_	4	nmod	_	_
+3	कम	_	ADP	_	_	2	case	_	_
+4	होने	_	NOUN	_	_	14	obl	_	_
+5	पर	_	AUX	_	_	4	aux	_	_
+6	ये	_	PART	_	_	4	dep	_	_
+7	व्यक्ति	_	NOUN	_	_	10	nmod	_	_
+8	को	_	ADP	_	_	7	case	_	_
+9	ये	_	PART	_	_	7	case	_	_
+10	संक्रमण	_	NOUN	_	_	14	obl	_	_
+11	बड़ी	_	DET	_	_	12	cc	_	_
+12	आसानी	_	NOUN	_	_	14	obj	_	_
+13	से	_	ADP	_	_	12	case	_	_
+14	दबोच	_	VERB	_	_	0	root	_	_
+15	लेते	_	AUX	_	_	14	aux	_	_
+16	है	_	AUX	_	_	15	aux:pass	_	_
+17	।	_	PUNCT	_	_	14	punct	_	_

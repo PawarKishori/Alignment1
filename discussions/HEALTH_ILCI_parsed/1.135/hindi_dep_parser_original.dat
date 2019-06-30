@@ -1,0 +1,15 @@
+1	यौगिक	_	PRON	_	_	2	nmod	_	_
+2	अभ्यास	_	NOUN	_	_	0	root	_	_
+3	से	_	PART	_	_	2	dep	_	_
+4	इस	_	AUX	_	_	3	aux	_	_
+5	रोग	_	AUX	_	_	12	obl	_	_
+6	पर	_	SCONJ	_	_	12	mark	_	_
+7	निश्‍चित	_	PROPN	_	_	10	nmod	_	_
+8	ही	_	ADP	_	_	7	case	_	_
+9	विजय	_	NOUN	_	_	10	compound	_	_
+10	प्राप्त	_	NOUN	_	_	12	nsubj	_	_
+11	की	_	ADP	_	_	10	dep	_	_
+12	जा	_	VERB	_	_	2	aux:pass	_	_
+13	सकती	_	AUX	_	_	12	aux:pass	_	_
+14	है	_	AUX	_	_	13	aux:pass	_	_
+15	।	_	PUNCT	_	_	2	punct	_	_

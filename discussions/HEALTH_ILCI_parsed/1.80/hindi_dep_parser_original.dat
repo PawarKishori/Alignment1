@@ -1,0 +1,9 @@
+1	इस	_	PRON	_	_	0	root	_	_
+2	परिस्थिति	_	NOUN	_	_	0	root	_	_
+3	में	_	ADP	_	_	2	case	_	_
+4	लकवा	_	NOUN	_	_	0	root	_	_
+5	भी	_	VERB	_	_	4	aux:pass	_	_
+6	मार	_	AUX	_	_	5	aux:pass	_	_
+7	सकता	_	AUX	_	_	6	aux:pass	_	_
+8	है	_	AUX	_	_	7	aux:pass	_	_
+9	।	_	PUNCT	_	_	5	punct	_	_

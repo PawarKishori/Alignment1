@@ -1,0 +1,17 @@
+1	बुखार	_	PRON	_	_	0	root	_	_
+2	की	_	ADP	_	_	1	case	_	_
+3	जाँच	_	NOUN	_	_	1	case	_	_
+4	करें	_	NOUN	_	_	3	case	_	_
+5	और	_	ADP	_	_	4	case	_	_
+6	अन्य	_	PRON	_	_	0	root	_	_
+7	जरूरी	_	PRON	_	_	6	case	_	_
+8	जाँच	_	NOUN	_	_	14	nsubj	_	_
+9	के	_	PART	_	_	8	case	_	_
+10	पश्चात	_	NOUN	_	_	12	nmod	_	_
+11	ही	_	ADP	_	_	10	case	_	_
+12	कालाजार	_	NOUN	_	_	14	nsubj	_	_
+13	प्रमाणित	_	NOUN	_	_	14	nsubj	_	_
+14	हो	_	VERB	_	_	7	aux:pass	_	_
+15	सकता	_	AUX	_	_	14	aux	_	_
+16	है	_	AUX	_	_	15	aux:pass	_	_
+17	।	_	PUNCT	_	_	14	punct	_	_

@@ -1,0 +1,8 @@
+1	कुछ	_	DET	_	_	2	det	_	_
+2	दिनों	_	NOUN	_	_	5	obl	_	_
+3	से	_	ADP	_	_	2	case	_	_
+4	हल्का	_	NOUN	_	_	5	compound	_	_
+5	फीवर	_	VERB	_	_	0	root	_	_
+6	रहता	_	AUX	_	_	5	aux:pass	_	_
+7	है	_	AUX	_	_	6	aux:pass	_	_
+8	।	_	PUNCT	_	_	5	punct	_	_

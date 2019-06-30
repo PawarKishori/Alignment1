@@ -2,7 +2,8 @@ import sys
 mwe_list=[]
 #sent_dir_path="/home/user/forked/tmp_anu_dir/tmp/mwe_E_tmp/2.1/"
 #corpus_hindi_file="/home/user/forked/alignment_manju/"
-with open("H_wid-word.dat","r") as g:
+#with open("H_wid-word.dat","r") as g:
+with open("H_wordid-word_mapping.dat","r") as g:
 	data = g.read()
 for line in open("Hindi_sent_mwes_underscored.dat","r"):
         mwe_list=[word for word in line.strip().split() if "_" in word]

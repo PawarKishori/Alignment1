@@ -1,0 +1,17 @@
+1	हर्निया	_	PROPN	_	_	3	nmod	_	_
+2	के	_	ADP	_	_	1	case	_	_
+3	आपरेशन	_	NOUN	_	_	7	nmod	_	_
+4	के	_	ADP	_	_	3	case	_	_
+5	बाद	_	ADP	_	_	4	aux:pass	_	_
+6	तीन	_	PRON	_	_	7	det	_	_
+7	महीनों	_	NOUN	_	_	13	nsubj	_	_
+8	तक	_	AUX	_	_	7	case	_	_
+9	कोई	_	PRON	_	_	13	nsubj	_	_
+10	मेहनत	_	NOUN	_	_	13	nsubj	_	_
+11	-	_	PUNCT	_	_	12	punct	_	_
+12	मशक्कत	_	NOUN	_	_	10	compound	_	_
+13	का	_	VERB	_	_	16	advcl	_	_
+14	काम	_	ADP	_	_	13	aux	_	_
+15	न	_	PUNCT	_	_	13	punct	_	_
+16	करें	_	VERB	_	_	0	root	_	_
+17	।	_	PUNCT	_	_	16	punct	_	_

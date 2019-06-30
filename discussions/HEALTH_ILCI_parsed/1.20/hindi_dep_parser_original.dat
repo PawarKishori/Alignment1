@@ -1,0 +1,8 @@
+1	नियमित	_	PRON	_	_	0	root	_	_
+2	रूप	_	ADP	_	_	1	case	_	_
+3	से	_	SCONJ	_	_	2	dep	_	_
+4	कराएँ	_	PRON	_	_	5	nmod	_	_
+5	दाँतों	_	NOUN	_	_	0	root	_	_
+6	की	_	VERB	_	_	5	aux:pass	_	_
+7	जाँच	_	AUX	_	_	6	aux	_	_
+8	।	_	PUNCT	_	_	6	punct	_	_

@@ -1,0 +1,17 @@
+1	इसे	_	DET	_	_	2	det	_	_
+2	पीतज्वर	_	NOUN	_	_	4	compound	_	_
+3	इसलिये	_	NOUN	_	_	4	compound	_	_
+4	कहते	_	NOUN	_	_	7	nmod	_	_
+5	है	_	ADP	_	_	4	case	_	_
+6	क्योंकि	_	NOUN	_	_	7	compound	_	_
+7	इसके	_	NOUN	_	_	9	nmod	_	_
+8	कई	_	ADP	_	_	7	case	_	_
+9	रोगियों	_	NOUN	_	_	13	nmod	_	_
+10	मे	_	ADP	_	_	9	case	_	_
+11	पीलिया	_	NOUN	_	_	13	nmod	_	_
+12	के	_	ADP	_	_	11	case	_	_
+13	लक्षण	_	NOUN	_	_	14	compound	_	_
+14	नजर	_	VERB	_	_	0	root	_	_
+15	आते	_	AUX	_	_	14	aux:pass	_	_
+16	है	_	AUX	_	_	15	aux:pass	_	_
+17	।	_	PUNCT	_	_	14	punct	_	_

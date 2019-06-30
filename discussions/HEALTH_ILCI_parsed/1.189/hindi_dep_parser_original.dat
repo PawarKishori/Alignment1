@@ -1,0 +1,14 @@
+1	ज्यादा	_	PRON	_	_	2	case	_	_
+2	तनाव	_	NOUN	_	_	6	nmod	_	_
+3	से	_	ADP	_	_	2	case	_	_
+4	हार्मोन	_	ADJ	_	_	6	compound	_	_
+5	कोर्टिसाल	_	PROPN	_	_	6	compound	_	_
+6	दिमाग	_	PROPN	_	_	8	nmod	_	_
+7	के	_	ADP	_	_	6	case	_	_
+8	हिप्पोकैंपस	_	PROPN	_	_	0	root	_	_
+9	को	_	ADP	_	_	8	case	_	_
+10	गंभीर	_	PRON	_	_	0	root	_	_
+11	नुकसान	_	NOUN	_	_	10	case	_	_
+12	पहुँचाता	_	NOUN	_	_	11	aux:pass	_	_
+13	है	_	AUX	_	_	12	cop	_	_
+14	।	_	PUNCT	_	_	12	punct	_	_

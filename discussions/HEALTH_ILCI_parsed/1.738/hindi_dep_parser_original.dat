@@ -1,0 +1,14 @@
+1	स्कूल	_	PROPN	_	_	12	nsubj	_	_
+2	,	_	PUNCT	_	_	3	punct	_	_
+3	कॉलेजों	_	PROPN	_	_	1	conj	_	_
+4	,	_	PUNCT	_	_	5	punct	_	_
+5	सरकारी	_	PROPN	_	_	1	conj	_	_
+6	व	_	PUNCT	_	_	5	punct	_	_
+7	गैर	_	PROPN	_	_	9	compound	_	_
+8	-	_	PUNCT	_	_	9	punct	_	_
+9	सरकारी	_	PROPN	_	_	1	conj	_	_
+10	संस्थानों	_	PROPN	_	_	1	conj	_	_
+11	मे	_	ADP	_	_	10	case	_	_
+12	जाँच	_	VERB	_	_	0	root	_	_
+13	कराना	_	AUX	_	_	12	aux:pass	_	_
+14	।	_	PUNCT	_	_	12	punct	_	_

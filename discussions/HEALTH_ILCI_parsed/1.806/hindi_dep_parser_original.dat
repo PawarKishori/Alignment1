@@ -1,0 +1,15 @@
+1	नीचे	_	PRON	_	_	0	root	_	_
+2	दिये	_	NOUN	_	_	1	case	_	_
+3	गये	_	DET	_	_	2	case	_	_
+4	निर्देश	_	NOUN	_	_	0	root	_	_
+5	यौन	_	ADP	_	_	9	det	_	_
+6	जनित	_	NOUN	_	_	7	compound	_	_
+7	रोगों	_	NOUN	_	_	9	nmod	_	_
+8	के	_	ADP	_	_	7	case	_	_
+9	बचाव	_	NOUN	_	_	4	case	_	_
+10	में	_	PRON	_	_	11	cc	_	_
+11	सहायक	_	NOUN	_	_	12	nsubj	_	_
+12	हो	_	VERB	_	_	0	root	_	_
+13	सकते	_	VERB	_	_	12	aux	_	_
+14	हैं	_	AUX	_	_	13	aux:pass	_	_
+15	।	_	PUNCT	_	_	13	punct	_	_

@@ -1,0 +1,15 @@
+1	शरीर	_	PRON	_	_	3	nmod	_	_
+2	के	_	PART	_	_	1	case	_	_
+3	किसी	_	NOUN	_	_	0	root	_	_
+4	भाग	_	VERB	_	_	3	aux	_	_
+5	या	_	AUX	_	_	4	aux:pass	_	_
+6	अंग	_	PRON	_	_	0	root	_	_
+7	से	_	SCONJ	_	_	6	dep	_	_
+8	असामान्य	_	NOUN	_	_	11	nmod	_	_
+9	रूप	_	PRON	_	_	8	case	_	_
+10	से	_	PART	_	_	9	dep	_	_
+11	रक्त	_	NOUN	_	_	0	root	_	_
+12	या	_	VERB	_	_	11	aux:pass	_	_
+13	मवाद	_	AUX	_	_	12	aux:pass	_	_
+14	आना	_	AUX	_	_	13	aux:pass	_	_
+15	।	_	PUNCT	_	_	12	punct	_	_

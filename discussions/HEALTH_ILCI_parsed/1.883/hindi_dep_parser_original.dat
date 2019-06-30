@@ -1,0 +1,16 @@
+1	पीतज्वर	_	PROPN	_	_	3	nmod	_	_
+2	की	_	ADP	_	_	1	case	_	_
+3	शुरूआत	_	NOUN	_	_	5	compound	_	_
+4	संक्रमण	_	NOUN	_	_	5	nmod	_	_
+5	होने	_	NOUN	_	_	13	obl	_	_
+6	के	_	ADP	_	_	5	case	_	_
+7	3	_	NUM	_	_	10	nmod	_	_
+8	से	_	ADP	_	_	7	case	_	_
+9	5	_	NUM	_	_	10	nummod	_	_
+10	दिन	_	NOUN	_	_	13	obl	_	_
+11	बाद	_	ADP	_	_	10	case	_	_
+12	अचानक	_	NOUN	_	_	13	acl	_	_
+13	होते	_	VERB	_	_	0	root	_	_
+14	होती	_	AUX	_	_	13	aux:pass	_	_
+15	है	_	AUX	_	_	14	aux:pass	_	_
+16	|	_	PUNCT	_	_	13	punct	_	_

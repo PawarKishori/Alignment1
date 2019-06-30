@@ -1,0 +1,11 @@
+1	सुजाक	_	NOUN	_	_	5	nmod	_	_
+2	(	_	PUNCT	_	_	3	punct	_	_
+3	गनोरिया	_	NOUN	_	_	1	nmod	_	_
+4	)	_	PUNCT	_	_	3	punct	_	_
+5	संक्रमण	_	NOUN	_	_	0	root	_	_
+6	के	_	ADP	_	_	5	case	_	_
+7	कारण	_	NOUN	_	_	0	root	_	_
+8	शिशु	_	VERB	_	_	7	aux:pass	_	_
+9	में	_	AUX	_	_	8	aux:pass	_	_
+10	अंधापन	_	AUX	_	_	9	aux:pass	_	_
+11	।	_	PUNCT	_	_	8	punct	_	_

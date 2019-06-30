@@ -1,0 +1,13 @@
+1	`	_	PUNCT	_	_	3	punct	_	_
+2	`	_	PUNCT	_	_	3	punct	_	_
+3	प्रत्यारोपण	_	PROPN	_	_	5	nmod	_	_
+4	एक	_	ADP	_	_	3	case	_	_
+5	बहुत	_	NOUN	_	_	9	nmod	_	_
+6	ही	_	ADP	_	_	5	case	_	_
+7	समय	_	DET	_	_	9	nummod	_	_
+8	संवेदनशील	_	NOUN	_	_	9	amod	_	_
+9	प्रक्रिया	_	NOUN	_	_	0	root	_	_
+10	है	_	AUX	_	_	9	cop	_	_
+11	।	_	PUNCT	_	_	9	punct	_	_
+12	`	_	PUNCT	_	_	9	punct	_	_
+13	`	_	PUNCT	_	_	9	punct	_	_

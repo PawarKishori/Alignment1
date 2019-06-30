@@ -1,0 +1,11 @@
+1	लसिका	_	PRON	_	_	2	nmod	_	_
+2	ग्रन्थियों	_	NOUN	_	_	9	obj	_	_
+3	का	_	ADP	_	_	2	case	_	_
+4	एक	_	AUX	_	_	2	cop	_	_
+5	से	_	SCONJ	_	_	2	dep	_	_
+6	अधिक	_	PRON	_	_	7	compound	_	_
+7	स्थान	_	PRON	_	_	9	obj	_	_
+8	पर	_	ADP	_	_	7	case	_	_
+9	आकार	_	VERB	_	_	0	root	_	_
+10	बढ़ना	_	AUX	_	_	9	aux:pass	_	_
+11	।	_	PUNCT	_	_	9	punct	_	_

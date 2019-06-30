@@ -1,0 +1,11 @@
+1	मलेरिया	_	PRON	_	_	9	nsubj	_	_
+2	रोगाणु	_	NOUN	_	_	9	nsubj	_	_
+3	मादा	_	PRON	_	_	2	case	_	_
+4	एनाफिलीज	_	NOUN	_	_	5	compound	_	_
+5	मच्छर	_	PROPN	_	_	7	nmod	_	_
+6	के	_	ADP	_	_	5	case	_	_
+7	काटने	_	NOUN	_	_	9	nmod	_	_
+8	से	_	PART	_	_	7	dep	_	_
+9	फैलता	_	NOUN	_	_	0	root	_	_
+10	है	_	AUX	_	_	9	cop	_	_
+11	।	_	PUNCT	_	_	9	punct	_	_

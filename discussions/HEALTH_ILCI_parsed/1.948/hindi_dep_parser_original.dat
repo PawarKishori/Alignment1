@@ -1,0 +1,15 @@
+1	दर्द	_	PRON	_	_	12	nsubj	_	_
+2	के	_	PART	_	_	1	case	_	_
+3	साथ	_	PRON	_	_	2	case	_	_
+4	जी	_	PART	_	_	3	dep	_	_
+5	मिचलाने	_	NOUN	_	_	12	obl	_	_
+6	तथा	_	PRON	_	_	5	case	_	_
+7	उल्टी	_	PRON	_	_	8	nmod	_	_
+8	होने	_	NOUN	_	_	12	obl	_	_
+9	की	_	PART	_	_	8	case	_	_
+10	शिकायत	_	NOUN	_	_	12	compound	_	_
+11	भी	_	PART	_	_	10	dep	_	_
+12	हो	_	VERB	_	_	0	root	_	_
+13	सकती	_	AUX	_	_	12	aux:pass	_	_
+14	है	_	AUX	_	_	13	aux:pass	_	_
+15	।	_	PUNCT	_	_	12	punct	_	_

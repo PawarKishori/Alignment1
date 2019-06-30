@@ -1,0 +1,15 @@
+1	S.I.C.S	_	PROPN	_	_	13	nsubj	_	_
+2	(	_	PUNCT	_	_	6	punct	_	_
+3	Small	_	PROPN	_	_	6	compound	_	_
+4	Incision	_	PROPN	_	_	6	compound	_	_
+5	Cataract	_	PROPN	_	_	6	compound	_	_
+6	Surgry	_	PROPN	_	_	1	nmod	_	_
+7	)	_	PUNCT	_	_	6	punct	_	_
+8	विधि	_	NOUN	_	_	13	obl	_	_
+9	में	_	ADP	_	_	10	nummod	_	_
+10	टाँके	_	NOUN	_	_	13	obl	_	_
+11	नही	_	ADP	_	_	10	case	_	_
+12	लगाये	_	PART	_	_	13	advmod	_	_
+13	जाते	_	VERB	_	_	0	root	_	_
+14	हैं	_	AUX	_	_	13	aux	_	_
+15	।	_	PUNCT	_	_	13	punct	_	_

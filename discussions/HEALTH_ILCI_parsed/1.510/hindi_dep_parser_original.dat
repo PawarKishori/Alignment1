@@ -1,0 +1,13 @@
+1	शरीर	_	NOUN	_	_	12	nsubj	_	_
+2	पर	_	PRON	_	_	1	dep	_	_
+3	नीम	_	PRON	_	_	2	aux:pass	_	_
+4	का	_	PART	_	_	3	aux:pass	_	_
+5	तेल	_	PRON	_	_	4	aux:pass	_	_
+6	या	_	PART	_	_	5	aux:pass	_	_
+7	सरसों	_	PRON	_	_	12	nsubj	_	_
+8	के	_	ADP	_	_	7	case	_	_
+9	तेल	_	PRON	_	_	8	case	_	_
+10	का	_	PART	_	_	9	dep	_	_
+11	उपयोग	_	PART	_	_	12	advmod	_	_
+12	करें	_	VERB	_	_	0	root	_	_
+13	।	_	PUNCT	_	_	12	punct	_	_

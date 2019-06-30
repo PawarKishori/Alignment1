@@ -1,0 +1,7 @@
+1	खाने	_	PRON	_	_	4	obl	_	_
+2	के	_	PART	_	_	1	dep	_	_
+3	बाद	_	PRON	_	_	4	obj	_	_
+4	मुँह	_	VERB	_	_	0	root	_	_
+5	साफ	_	AUX	_	_	4	aux:pass	_	_
+6	करें	_	AUX	_	_	5	aux:pass	_	_
+7	।	_	PUNCT	_	_	4	punct	_	_

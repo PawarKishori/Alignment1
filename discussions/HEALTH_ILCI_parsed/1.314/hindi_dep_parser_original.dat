@@ -1,0 +1,14 @@
+1	प्रमुख	_	PRON	_	_	0	root	_	_
+2	लक्षण	_	PRON	_	_	5	nmod	_	_
+3	जिनके	_	PRON	_	_	5	nmod	_	_
+4	प्रकट	_	PRON	_	_	5	nmod	_	_
+5	होने	_	NOUN	_	_	0	root	_	_
+6	पर	_	SCONJ	_	_	0	root	_	_
+7	रोगी	_	NOUN	_	_	0	root	_	_
+8	को	_	PART	_	_	7	case	_	_
+9	डॉक्टर	_	NOUN	_	_	11	nmod	_	_
+10	से	_	ADP	_	_	9	case	_	_
+11	जाँच	_	NOUN	_	_	0	root	_	_
+12	करानी	_	PART	_	_	0	root	_	_
+13	चाहिए	_	AUX	_	_	12	aux:pass	_	_
+14	।	_	PUNCT	_	_	12	punct	_	_

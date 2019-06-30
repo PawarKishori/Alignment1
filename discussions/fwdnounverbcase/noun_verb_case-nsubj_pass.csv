@@ -1,0 +1,6 @@
+Sentence:उन्होंने आरोप लगाया कि आडवाणी ने जो कुछ कहा उसके गलत अर्थ निकाले गए हैं ।,Sentence ID:dev-s205,NOUN ID:12,Word:अर्थ,VERB ID:13,Word:निकाले,relation:nsubj:pass
+Sentence:वर्ष २००३ - ०४ में टेलीफोन कनेक्शन में तकरीबन ४० फीसदी वृद्धि दर्ज करने के बाद सर्वे में यह उम्मीद जताई गई है कि वर्ष २००४ - ०५ में यदि इसी गति से बढ़ोतरी हुई तो वर्ष २००५ - ०६ के अंत तक ग्राहकों की संख्या १५ करोड़ तक पहुंच जाएगी ।,Sentence ID:dev-s495,NOUN ID:20,Word:उम्मीद,VERB ID:21,Word:जताई,relation:nsubj:pass
+Sentence:सेना की जबावी कार्रवाई में तीन आतंकी मारे गए ।,Sentence ID:dev-s640,NOUN ID:7,Word:आतंकी,VERB ID:8,Word:मारे,relation:nsubj:pass
+Sentence:पंचकूला से मिली खबर के मुताबिक पुल टूटने की सूचना मिलते ही चंडीमंदिर स्थित पश्चिमी कमान मुख्यालय में आपातकालीन बैठक बुलाई गई ।,Sentence ID:dev-s854,NOUN ID:20,Word:बैठक,VERB ID:21,Word:बुलाई,relation:nsubj:pass
+Sentence:इसके अलावा पहाड़ी व आदिवासी क्षेत्रों के 500 से अधिक आबादी वाले गाँवों तक पक्की सड़कें पहुँचाई जाएँगी ।,Sentence ID:dev-s1642,NOUN ID:16,Word:सड़कें,VERB ID:17,Word:पहुँचाई,relation:nsubj:pass
+Sentence:मनमोहन ने कहा कि राजीव गाँधी ग्रामीण विद्युतीकरण योजना के तहत वर्ष 2009 तक देश के हर गाँव में बिजली पहुँचाई जाएगी ।,Sentence ID:dev-s1647,NOUN ID:20,Word:बिजली,VERB ID:21,Word:पहुँचाई,relation:nsubj:pass

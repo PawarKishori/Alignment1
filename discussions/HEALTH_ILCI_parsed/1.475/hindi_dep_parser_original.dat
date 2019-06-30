@@ -1,0 +1,11 @@
+1	धूम्रपान	_	PROPN	_	_	10	nsubj	_	_
+2	व	_	PUNCT	_	_	1	punct	_	_
+3	तम्बाकू	_	PROPN	_	_	1	conj	_	_
+4	से	_	ADP	_	_	3	case	_	_
+5	होने	_	NOUN	_	_	3	case	_	_
+6	वाले	_	NOUN	_	_	5	case	_	_
+7	नुकसान	_	NOUN	_	_	9	nmod	_	_
+8	की	_	ADP	_	_	7	case	_	_
+9	जानकारी	_	NOUN	_	_	10	nsubj	_	_
+10	देना	_	VERB	_	_	0	root	_	_
+11	।	_	PUNCT	_	_	10	punct	_	_

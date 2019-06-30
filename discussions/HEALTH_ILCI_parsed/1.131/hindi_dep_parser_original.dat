@@ -1,0 +1,8 @@
+1	योग	_	PRON	_	_	0	root	_	_
+2	से	_	PRON	_	_	0	root	_	_
+3	काबू	_	PRON	_	_	5	nmod	_	_
+4	हो	_	PART	_	_	3	case	_	_
+5	सकता	_	NOUN	_	_	0	root	_	_
+6	है	_	VERB	_	_	5	dep	_	_
+7	लकवा	_	AUX	_	_	6	aux:pass	_	_
+8	।	_	PUNCT	_	_	6	punct	_	_

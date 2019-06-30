@@ -1,0 +1,17 @@
+1	तो	_	PRON	_	_	0	root	_	_
+2	आइए	_	DET	_	_	3	det	_	_
+3	जानते	_	NOUN	_	_	0	root	_	_
+4	है	_	ADP	_	_	3	case	_	_
+5	कि	_	PRON	_	_	3	case	_	_
+6	नजर	_	PRON	_	_	5	case	_	_
+7	को	_	PART	_	_	6	case	_	_
+8	स्वस्थ	_	NOUN	_	_	0	root	_	_
+9	बनाए	_	NOUN	_	_	8	case	_	_
+10	रखने	_	VERB	_	_	0	root	_	_
+11	के	_	AUX	_	_	10	aux	_	_
+12	लिए	_	PRON	_	_	13	det	_	_
+13	कैसा	_	NOUN	_	_	10	case	_	_
+14	हो	_	PART	_	_	13	dep	_	_
+15	आपका	_	VERB	_	_	0	root	_	_
+16	आहार	_	AUX	_	_	15	aux	_	_
+17	।	_	PUNCT	_	_	15	punct	_	_

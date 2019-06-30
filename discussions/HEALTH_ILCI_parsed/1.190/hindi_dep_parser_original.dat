@@ -1,0 +1,9 @@
+1	अच्छी	_	PRON	_	_	3	nmod	_	_
+2	नींद	_	NOUN	_	_	1	case	_	_
+3	लेने	_	NOUN	_	_	7	nsubj	_	_
+4	से	_	ADP	_	_	3	case	_	_
+5	दिमाग	_	PRON	_	_	7	nsubj	_	_
+6	तरोताजा	_	NOUN	_	_	7	nsubj	_	_
+7	रहता	_	VERB	_	_	0	root	_	_
+8	है	_	AUX	_	_	7	aux	_	_
+9	।	_	PUNCT	_	_	7	punct	_	_

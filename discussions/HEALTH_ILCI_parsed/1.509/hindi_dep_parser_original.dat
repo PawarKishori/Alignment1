@@ -1,0 +1,17 @@
+1	मिट्टी	_	PRON	_	_	3	nsubj	_	_
+2	डालना	_	PRON	_	_	3	advmod	_	_
+3	संभव	_	NOUN	_	_	0	root	_	_
+4	न	_	PUNCT	_	_	3	punct	_	_
+5	हो	_	VERB	_	_	0	root	_	_
+6	सके	_	AUX	_	_	5	aux:pass	_	_
+7	तो	_	AUX	_	_	6	aux:pass	_	_
+8	उस	_	PRON	_	_	17	mark	_	_
+9	गड्ढे	_	NOUN	_	_	17	obl	_	_
+10	में	_	ADP	_	_	9	case	_	_
+11	मिट्टी	_	NOUN	_	_	17	obl	_	_
+12	का	_	ADP	_	_	11	case	_	_
+13	तेल	_	PRON	_	_	11	case	_	_
+14	आदि	_	VERB	_	_	13	aux:pass	_	_
+15	छिड़क	_	AUX	_	_	14	aux:pass	_	_
+16	दें	_	AUX	_	_	15	aux:pass	_	_
+17	।	_	PUNCT	_	_	5	punct	_	_

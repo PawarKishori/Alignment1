@@ -1,0 +1,17 @@
+1	हवा	_	DET	_	_	15	nsubj	_	_
+2	में	_	DET	_	_	3	det	_	_
+3	निहित	_	PRON	_	_	15	nsubj	_	_
+4	बूंदों	_	NOUN	_	_	3	case	_	_
+5	द्वारा	_	NOUN	_	_	6	compound	_	_
+6	आमतौर	_	PROPN	_	_	8	nmod	_	_
+7	पर	_	ADP	_	_	6	case	_	_
+8	वायरस	_	NOUN	_	_	10	nmod	_	_
+9	एक	_	ADP	_	_	8	case	_	_
+10	व्यक्ति	_	NOUN	_	_	13	nmod	_	_
+11	से	_	ADP	_	_	10	case	_	_
+12	दूसरे	_	PRON	_	_	13	nmod	_	_
+13	व्यक्ति	_	NOUN	_	_	15	nsubj	_	_
+14	तक	_	ADP	_	_	13	dep	_	_
+15	फैलता	_	VERB	_	_	0	root	_	_
+16	है	_	AUX	_	_	15	cop	_	_
+17	।	_	PUNCT	_	_	15	punct	_	_

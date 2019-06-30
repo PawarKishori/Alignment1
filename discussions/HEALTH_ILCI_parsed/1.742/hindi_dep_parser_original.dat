@@ -1,0 +1,10 @@
+1	किसी	_	PRON	_	_	0	root	_	_
+2	मानसिक	_	NOUN	_	_	3	compound	_	_
+3	रोगी	_	NOUN	_	_	5	nmod	_	_
+4	को	_	ADP	_	_	3	case	_	_
+5	दुबारा	_	NOUN	_	_	0	root	_	_
+6	रोगी	_	NOUN	_	_	5	case	_	_
+7	होने	_	NOUN	_	_	6	aux:pass	_	_
+8	से	_	VERB	_	_	7	aux:pass	_	_
+9	बचाना	_	AUX	_	_	8	aux:pass	_	_
+10	।	_	PUNCT	_	_	8	punct	_	_

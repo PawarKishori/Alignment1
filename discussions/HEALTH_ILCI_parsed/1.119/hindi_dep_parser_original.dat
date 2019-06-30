@@ -1,0 +1,14 @@
+1	भारतीय	_	PROPN	_	_	2	case	_	_
+2	व्यंजनों	_	NOUN	_	_	11	obl	_	_
+3	में	_	ADP	_	_	11	obl	_	_
+4	मेवे	_	NOUN	_	_	11	advcl	_	_
+5	आदि	_	AUX	_	_	4	aux	_	_
+6	का	_	PART	_	_	4	dep	_	_
+7	इस्तेमाल	_	NOUN	_	_	11	nsubj	_	_
+8	सदियों	_	NOUN	_	_	11	compound	_	_
+9	से	_	PART	_	_	8	aux:pass	_	_
+10	होता	_	VERB	_	_	9	aux:pass	_	_
+11	आ	_	PUNCT	_	_	0	root	_	_
+12	रहा	_	VERB	_	_	11	aux:pass	_	_
+13	है	_	AUX	_	_	12	aux:pass	_	_
+14	।	_	PUNCT	_	_	11	punct	_	_

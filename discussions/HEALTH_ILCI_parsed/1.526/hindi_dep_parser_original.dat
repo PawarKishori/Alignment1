@@ -1,0 +1,7 @@
+1	सेक्स	_	PRON	_	_	6	obl	_	_
+2	संबंधी	_	NOUN	_	_	1	case	_	_
+3	क्रियाओं	_	NOUN	_	_	6	obl	_	_
+4	में	_	ADP	_	_	3	case	_	_
+5	शारीरिक	_	NOUN	_	_	6	compound	_	_
+6	असमर्थता	_	VERB	_	_	0	root	_	_
+7	।	_	PUNCT	_	_	6	punct	_	_

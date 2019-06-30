@@ -1,0 +1,14 @@
+1	मरीज	_	PRON	_	_	6	obl	_	_
+2	को	_	ADP	_	_	1	case	_	_
+3	ज्यादा	_	NOUN	_	_	6	nsubj	_	_
+4	निश्चेतक	_	NOUN	_	_	6	obl	_	_
+5	दवा	_	ADP	_	_	4	case	_	_
+6	देनी	_	VERB	_	_	0	root	_	_
+7	पड़ती	_	AUX	_	_	6	aux:pass	_	_
+8	है	_	AUX	_	_	7	aux:pass	_	_
+9	,	_	PUNCT	_	_	6	punct	_	_
+10	जिसके	_	PRON	_	_	12	obl	_	_
+11	अपने	_	NOUN	_	_	12	obj	_	_
+12	नुकसान	_	VERB	_	_	6	acl:relcl	_	_
+13	हैं	_	AUX	_	_	12	aux	_	_
+14	।	_	PUNCT	_	_	6	punct	_	_

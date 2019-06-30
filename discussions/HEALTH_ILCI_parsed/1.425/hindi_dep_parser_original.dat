@@ -1,0 +1,17 @@
+1	मसूड़ों	_	SCONJ	_	_	0	root	_	_
+2	,	_	PUNCT	_	_	1	punct	_	_
+3	होठों	_	PROPN	_	_	5	nmod	_	_
+4	और	_	ADP	_	_	3	case	_	_
+5	गालों	_	NOUN	_	_	0	root	_	_
+6	के	_	NOUN	_	_	5	case	_	_
+7	रंग	_	DET	_	_	6	case	_	_
+8	में	_	PRON	_	_	9	det	_	_
+9	होने	_	NOUN	_	_	0	root	_	_
+10	वाले	_	NOUN	_	_	11	compound	_	_
+11	परिवर्तन	_	NOUN	_	_	13	nmod	_	_
+12	पर	_	ADP	_	_	11	case	_	_
+13	ध्यान	_	NOUN	_	_	0	root	_	_
+14	दिया	_	NOUN	_	_	0	root	_	_
+15	जाना	_	VERB	_	_	14	aux:pass	_	_
+16	चाहिए	_	AUX	_	_	15	aux:pass	_	_
+17	।	_	PUNCT	_	_	15	punct	_	_

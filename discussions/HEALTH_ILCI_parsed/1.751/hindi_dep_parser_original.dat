@@ -1,0 +1,9 @@
+1	हस्तान्तरण	_	PROPN	_	_	3	nmod	_	_
+2	की	_	ADP	_	_	1	case	_	_
+3	प्रक्रिया	_	NOUN	_	_	5	nmod	_	_
+4	अब	_	ADP	_	_	3	case	_	_
+5	पूर्ण	_	NOUN	_	_	6	compound	_	_
+6	हो	_	VERB	_	_	0	root	_	_
+7	चुकी	_	AUX	_	_	6	aux:pass	_	_
+8	है	_	AUX	_	_	7	aux:pass	_	_
+9	।	_	PUNCT	_	_	6	punct	_	_

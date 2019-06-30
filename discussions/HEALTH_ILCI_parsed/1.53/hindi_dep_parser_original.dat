@@ -1,0 +1,13 @@
+1	बासी	_	PRON	_	_	11	nsubj	_	_
+2	भोजन	_	NOUN	_	_	1	case	_	_
+3	व	_	PUNCT	_	_	2	punct	_	_
+4	सड़क	_	NOUN	_	_	11	obl	_	_
+5	किनारे	_	NOUN	_	_	11	obl	_	_
+6	बिकने	_	NOUN	_	_	11	obl	_	_
+7	वाले	_	ADP	_	_	6	case	_	_
+8	सामान	_	NOUN	_	_	10	nmod	_	_
+9	का	_	ADP	_	_	8	case	_	_
+10	सेवन	_	NOUN	_	_	11	compound	_	_
+11	नहीं	_	VERB	_	_	0	root	_	_
+12	करें	_	AUX	_	_	11	aux:pass	_	_
+13	।	_	PUNCT	_	_	11	punct	_	_

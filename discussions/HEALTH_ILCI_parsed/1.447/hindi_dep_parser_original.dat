@@ -1,0 +1,14 @@
+1	कोशिश	_	PRON	_	_	3	nmod	_	_
+2	की	_	ADP	_	_	1	case	_	_
+3	जाती	_	NOUN	_	_	12	nsubj	_	_
+4	है	_	AUX	_	_	3	cop	_	_
+5	कि	_	SCONJ	_	_	10	mark	_	_
+6	कैंसर	_	NOUN	_	_	10	obl	_	_
+7	का	_	PART	_	_	6	dep	_	_
+8	कोई	_	PRON	_	_	6	case	_	_
+9	भी	_	PART	_	_	6	dep	_	_
+10	कण	_	AUX	_	_	3	aux:pass	_	_
+11	न	_	PUNCT	_	_	3	punct	_	_
+12	रह	_	VERB	_	_	0	root	_	_
+13	जाए	_	AUX	_	_	12	aux:pass	_	_
+14	।	_	PUNCT	_	_	12	punct	_	_

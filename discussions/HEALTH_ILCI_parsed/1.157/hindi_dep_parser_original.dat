@@ -1,0 +1,7 @@
+1	खट्टी	_	PRON	_	_	2	nmod	_	_
+2	चीजों	_	NOUN	_	_	4	nmod	_	_
+3	के	_	ADP	_	_	2	case	_	_
+4	सेवन	_	NOUN	_	_	0	root	_	_
+5	से	_	VERB	_	_	4	aux:pass	_	_
+6	बचें	_	AUX	_	_	4	aux	_	_
+7	।	_	PUNCT	_	_	4	punct	_	_

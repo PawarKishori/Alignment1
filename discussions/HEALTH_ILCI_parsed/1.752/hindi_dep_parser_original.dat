@@ -1,0 +1,17 @@
+1	उत्तराखण्ड	_	PROPN	_	_	2	compound	_	_
+2	राज्य	_	PROPN	_	_	0	root	_	_
+3	में	_	ADP	_	_	2	case	_	_
+4	स्वास्थ्य	_	PROPN	_	_	8	amod	_	_
+5	विभाग	_	PRON	_	_	8	nmod	_	_
+6	द्वारा	_	NOUN	_	_	8	compound	_	_
+7	राष्ट्रीय	_	PROPN	_	_	8	compound	_	_
+8	मातृत्व	_	PROPN	_	_	2	conj	_	_
+9	लाभ	_	CCONJ	_	_	10	cc	_	_
+10	योजना	_	NOUN	_	_	12	nmod	_	_
+11	का	_	ADP	_	_	10	case	_	_
+12	कार्यान्वयन	_	NOUN	_	_	13	compound	_	_
+13	किया	_	NOUN	_	_	0	root	_	_
+14	जा	_	VERB	_	_	13	aux:pass	_	_
+15	रहा	_	AUX	_	_	14	aux:pass	_	_
+16	है	_	AUX	_	_	15	aux:pass	_	_
+17	।	_	PUNCT	_	_	14	punct	_	_

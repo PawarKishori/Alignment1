@@ -1,0 +1,16 @@
+1	अतः	_	DET	_	_	2	det	_	_
+2	संक्रमित	_	NOUN	_	_	7	compound	_	_
+3	व्यक्ति	_	PROPN	_	_	7	nmod	_	_
+4	विकसित	_	NOUN	_	_	7	compound	_	_
+5	होने	_	NOUN	_	_	7	nmod	_	_
+6	से	_	ADP	_	_	5	case	_	_
+7	पूर्व	_	NOUN	_	_	9	nmod	_	_
+8	ही	_	ADP	_	_	7	case	_	_
+9	बीमारी	_	NOUN	_	_	13	obl	_	_
+10	अन्य	_	PRON	_	_	9	case	_	_
+11	लोगों	_	NOUN	_	_	13	obj	_	_
+12	तक	_	PART	_	_	11	dep	_	_
+13	फैला	_	VERB	_	_	0	root	_	_
+14	सकता	_	AUX	_	_	13	aux:pass	_	_
+15	है	_	AUX	_	_	14	aux:pass	_	_
+16	।	_	PUNCT	_	_	13	punct	_	_

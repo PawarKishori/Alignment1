@@ -1,0 +1,12 @@
+1	घरों	_	PRON	_	_	4	nmod	_	_
+2	की	_	ADP	_	_	1	case	_	_
+3	खिड़कियों	_	PROPN	_	_	4	compound	_	_
+4	दरवाजों	_	PROPN	_	_	11	obl	_	_
+5	एवं	_	ADP	_	_	7	cc	_	_
+6	रोशन	_	NOUN	_	_	7	compound	_	_
+7	दानों	_	PROPN	_	_	9	nmod	_	_
+8	पर	_	ADP	_	_	7	case	_	_
+9	जाली	_	NOUN	_	_	11	nsubj	_	_
+10	अवश्य	_	PART	_	_	11	advmod	_	_
+11	लगायें	_	VERB	_	_	0	root	_	_
+12	।	_	PUNCT	_	_	11	punct	_	_

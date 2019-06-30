@@ -1,0 +1,17 @@
+1	बुखार	_	PRON	_	_	0	root	_	_
+2	सर्दी	_	SCONJ	_	_	1	case	_	_
+3	,	_	PUNCT	_	_	2	punct	_	_
+4	बदन	_	NOUN	_	_	5	det	_	_
+5	दर्द	_	NOUN	_	_	0	root	_	_
+6	जैसे	_	NOUN	_	_	7	obj	_	_
+7	फ्लू	_	NOUN	_	_	0	root	_	_
+8	में	_	VERB	_	_	7	aux:pass	_	_
+9	जनन	_	AUX	_	_	8	aux:pass	_	_
+10	अंग	_	PRON	_	_	7	aux:pass	_	_
+11	के	_	PART	_	_	10	dep	_	_
+12	आस	_	PROPN	_	_	14	compound	_	_
+13	-	_	PUNCT	_	_	14	punct	_	_
+14	पास	_	NOUN	_	_	0	root	_	_
+15	की	_	VERB	_	_	14	dep	_	_
+16	सूजन	_	AUX	_	_	15	aux	_	_
+17	।	_	PUNCT	_	_	15	punct	_	_

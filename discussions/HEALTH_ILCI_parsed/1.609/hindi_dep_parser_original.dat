@@ -1,0 +1,14 @@
+1	उत्तराखण्ड	_	PROPN	_	_	11	obl	_	_
+2	में	_	ADP	_	_	1	case	_	_
+3	यह	_	PART	_	_	1	case	_	_
+4	कार्यक्रम	_	NOUN	_	_	5	compound	_	_
+5	राज्य	_	PRON	_	_	11	obl	_	_
+6	के	_	ADP	_	_	5	aux:pass	_	_
+7	गठन	_	PRON	_	_	6	aux:pass	_	_
+8	से	_	AUX	_	_	7	aux:pass	_	_
+9	ही	_	SCONJ	_	_	11	mark	_	_
+10	चलाया	_	PRON	_	_	11	advmod	_	_
+11	जा	_	VERB	_	_	0	root	_	_
+12	रहा	_	AUX	_	_	11	aux	_	_
+13	है	_	AUX	_	_	12	aux:pass	_	_
+14	।	_	PUNCT	_	_	11	punct	_	_

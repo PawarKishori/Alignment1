@@ -1,0 +1,11 @@
+1	बच्चों	_	PROPN	_	_	0	root	_	_
+2	की	_	ADP	_	_	1	case	_	_
+3	छोटी	_	ADJ	_	_	6	compound	_	_
+4	-	_	PUNCT	_	_	3	punct	_	_
+5	छोटी	_	NOUN	_	_	3	compound	_	_
+6	बातों	_	NOUN	_	_	0	root	_	_
+7	से	_	ADP	_	_	6	case	_	_
+8	जल्दी	_	NOUN	_	_	0	root	_	_
+9	परेशान	_	NOUN	_	_	0	root	_	_
+10	होना	_	VERB	_	_	9	aux	_	_
+11	।	_	PUNCT	_	_	10	punct	_	_

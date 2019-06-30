@@ -1,0 +1,13 @@
+1	उत्तराखण्ड	_	PROPN	_	_	11	nsubj	_	_
+2	में	_	ADP	_	_	1	case	_	_
+3	बाल	_	DET	_	_	4	det	_	_
+4	मृत्यु	_	NOUN	_	_	11	nmod	_	_
+5	दर	_	ADP	_	_	4	case	_	_
+6	प्रत्येक	_	PROPN	_	_	4	case	_	_
+7	1000	_	NUM	_	_	8	nummod	_	_
+8	जीवित	_	NOUN	_	_	9	nmod	_	_
+9	जन्म	_	NOUN	_	_	6	case	_	_
+10	पर	_	ADP	_	_	9	case	_	_
+11	19	_	NUM	_	_	0	root	_	_
+12	है	_	AUX	_	_	11	cop	_	_
+13	।	_	PUNCT	_	_	11	punct	_	_

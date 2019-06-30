@@ -1,0 +1,9 @@
+1	ह्दय	_	PRON	_	_	0	root	_	_
+2	और	_	ADP	_	_	1	case	_	_
+3	रक्त	_	DET	_	_	4	compound	_	_
+4	वाहिनी	_	NOUN	_	_	6	nmod	_	_
+5	की	_	ADP	_	_	4	case	_	_
+6	बीमारी	_	NOUN	_	_	0	root	_	_
+7	एवं	_	VERB	_	_	6	aux:pass	_	_
+8	संक्रमण	_	VERB	_	_	7	aux:pass	_	_
+9	।	_	PUNCT	_	_	7	punct	_	_

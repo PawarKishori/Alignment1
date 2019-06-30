@@ -1,0 +1,15 @@
+1	अधिक	_	PRON	_	_	12	nsubj	_	_
+2	सिगरेट	_	NOUN	_	_	3	compound	_	_
+3	पीने	_	NOUN	_	_	5	amod	_	_
+4	से	_	ADP	_	_	3	dep	_	_
+5	फेफड़ों	_	SCONJ	_	_	12	obl	_	_
+6	,	_	PUNCT	_	_	5	punct	_	_
+7	स्वॉस	_	NOUN	_	_	9	nmod	_	_
+8	की	_	ADP	_	_	7	case	_	_
+9	नलियों	_	NOUN	_	_	12	obj	_	_
+10	का	_	ADP	_	_	9	case	_	_
+11	कैंसर	_	NOUN	_	_	12	compound	_	_
+12	अधिक	_	VERB	_	_	0	root	_	_
+13	होता	_	AUX	_	_	12	aux:pass	_	_
+14	है	_	AUX	_	_	13	aux:pass	_	_
+15	।	_	PUNCT	_	_	12	punct	_	_

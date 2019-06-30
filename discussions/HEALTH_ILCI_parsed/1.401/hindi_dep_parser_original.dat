@@ -1,0 +1,15 @@
+1	लसीका	_	PRON	_	_	4	compound	_	_
+2	ग्रंथियाँ	_	NOUN	_	_	4	compound	_	_
+3	कैंसर	_	PRON	_	_	4	compound	_	_
+4	कोशिकाओं	_	PROPN	_	_	6	nmod	_	_
+5	को	_	ADP	_	_	4	case	_	_
+6	छानकर	_	PRON	_	_	7	compound	_	_
+7	अपने	_	NOUN	_	_	13	obl	_	_
+8	तक	_	PART	_	_	7	case	_	_
+9	सीमित	_	PRON	_	_	10	nmod	_	_
+10	रखने	_	NOUN	_	_	13	obl	_	_
+11	का	_	PART	_	_	10	case	_	_
+12	प्रयत्‍न	_	NOUN	_	_	13	compound	_	_
+13	करती	_	VERB	_	_	0	root	_	_
+14	हैं	_	AUX	_	_	13	aux:pass	_	_
+15	।	_	PUNCT	_	_	13	punct	_	_

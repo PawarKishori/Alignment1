@@ -1,0 +1,40 @@
+;This is the batch file which loads, process and save the facts required for creating the Rth layer (taking alignment decisions)
+:q
+;--------------------------------------------------------------
+;--------------------------module to make sd_chunk_words.dat--------------
+(load "/home/kishori/a/Alignment1/replace_chunkids_by_chunk_words.clp")
+(load-facts "sd_chunk.dat")
+(load-facts "root.dat")
+(load-facts "original_word.dat")
+(run)
+(save-facts "sd_chunk_words.dat" local chunk_ids-sep-chunk_wrds)
+(save-facts "sd_chunk_roots.dat" local chunk_ids-sep-chunk_roots)
+
+;-------------------------module to make dictionary facts------
+(load "/home/kishori/a/Alignment1/create_align_corpus_specific_H2E_dic_words_facts.clp")
+(watch all)
+(load-facts "manual_word.dat")
+(load-facts "H_wid-word.dat")
+(load-facts "manual_mwe_facts.dat")
+(load-facts "H_def_lwg-wid-word-postpositions")
+;(load-facts "Aligned_clauses.dat")
+(run)
+(facts)
+(save-facts "Hindi_word_with_possible_corpus_specific_dict_eng_mngs_facts.dat" local H_id-H_word-E_word-mng_no-mng_type mwe_fact ) 
+(save-facts "corpus_specific_dic_facts_for_one_sent.dat" local Edict-Hdict)
+
+;--------------------------module for Rth layer alignment-----
+(load "/home/kishori/a/Alignment1/R_layer_alignment_rules.clp")
+;(load-facts "corpus_specific_dic_facts_for_one_sent.dat")
+(load-facts "id_Apertium_output1.dat")
+(load-facts "word_alignment_tmp.dat")
+;(load-facts "sd_chunk_words.dat")
+;(load-facts "sd_chunk_roots.dat")
+(load-facts "database_original_mng.dat")
+(load-facts "revised_manual_local_word_group.dat")
+(load-facts "word_alignment.dat")
+(load-facts "Words_Aligned_using_clauses.dat")
+(run)
+(facts)
+(save-facts "R_layer_final_facts.dat" local Eid-Eword-Hid-Hword)
+(exit)

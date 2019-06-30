@@ -1,0 +1,11 @@
+1	आर	_	AUX	_	_	0	root	_	_
+2	.	_	PUNCT	_	_	1	punct	_	_
+3	सी	_	AUX	_	_	2	aux:pass	_	_
+4	.	_	PUNCT	_	_	3	punct	_	_
+5	एच	_	PROPN	_	_	11	compound	_	_
+6	.	_	PUNCT	_	_	7	punct	_	_
+7	आउटरीय	_	NOUN	_	_	11	compound	_	_
+8	सेशनों	_	NOUN	_	_	11	compound	_	_
+9	का	_	VERB	_	_	8	aux:pass	_	_
+10	आयोजन	_	AUX	_	_	9	aux:pass	_	_
+11	।	_	PUNCT	_	_	1	punct	_	_

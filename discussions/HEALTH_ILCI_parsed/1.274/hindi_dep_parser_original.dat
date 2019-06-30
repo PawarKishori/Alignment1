@@ -1,0 +1,9 @@
+1	ऐसी	_	PRON	_	_	0	root	_	_
+2	कई	_	PART	_	_	1	case	_	_
+3	बीमारियाँ	_	NOUN	_	_	0	root	_	_
+4	हैं	_	PRON	_	_	5	det	_	_
+5	जिनका	_	NOUN	_	_	6	obl	_	_
+6	इलाज	_	VERB	_	_	0	root	_	_
+7	नहीं	_	AUX	_	_	6	aux:pass	_	_
+8	है	_	AUX	_	_	7	aux:pass	_	_
+9	।	_	PUNCT	_	_	6	punct	_	_

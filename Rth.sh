@@ -6,8 +6,8 @@
 
 tmp_dir_name=$1'_tmp'
 tmp_path=$HOME_anu_tmp/tmp/$tmp_dir_name
-
-for i in {1..100}
+END=`wc -l $1 | awk '{print $1}'`
+for i in $(seq 1 $END)
 do
 	sent_dir_name='2.'$i
 	echo $sent_dir_name
@@ -41,9 +41,9 @@ do
 		myclips -f  $HOME_alignment/run_Rth.bat  >  $sent_dir_path/Rth_clips_debug 
 #This python program creates the csv files for the alignment module. The file "clip_facts_to_csv_format.csv" is created in the respective sentence directory for all the sentences in a folder.
 #Eg: $HOME_anu_test/collaborator/tmp_anu_dir/tmp/rGitaE_Up_000_tmp/2.10 will have the corresponding "clip_facts_to_csv_format.csv" file at the specified path.
-		echo "creating clip_facts_to_csv_format.csv"
+		#echo "creating clip_facts_to_csv_format.csv"
 		#python $HOME_alignment/create_csv_from_clip_facts_latest_1.py
-		python $HOME_alignment/create_csv_new_words_and_ids.py 
+		#python $HOME_alignment/create_csv_new_words_and_ids.py 
 	fi
 done
 

@@ -1,0 +1,12 @@
+1	किसी	_	PRON	_	_	2	compound	_	_
+2	व्यक्ति	_	NOUN	_	_	0	root	_	_
+3	को	_	ADP	_	_	2	case	_	_
+4	एड्स	_	NOUN	_	_	0	root	_	_
+5	होने	_	NOUN	_	_	4	case	_	_
+6	पर	_	ADP	_	_	5	case	_	_
+7	निम्न	_	PRON	_	_	8	nmod	_	_
+8	दुष्परिणाम	_	NOUN	_	_	0	root	_	_
+9	सामने	_	PART	_	_	10	advmod	_	_
+10	आते	_	VERB	_	_	8	aux:pass	_	_
+11	हैं	_	AUX	_	_	10	aux:pass	_	_
+12	।	_	PUNCT	_	_	10	punct	_	_

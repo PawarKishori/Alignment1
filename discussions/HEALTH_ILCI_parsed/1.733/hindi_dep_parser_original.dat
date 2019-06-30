@@ -1,0 +1,17 @@
+1	रोगी	_	SCONJ	_	_	4	compound	_	_
+2	व	_	PUNCT	_	_	3	punct	_	_
+3	उसके	_	NOUN	_	_	4	compound	_	_
+4	परिवार	_	PROPN	_	_	6	nmod	_	_
+5	को	_	ADP	_	_	4	case	_	_
+6	सुनना	_	NOUN	_	_	10	nmod	_	_
+7	व	_	PUNCT	_	_	6	punct	_	_
+8	उसके	_	NOUN	_	_	6	compound	_	_
+9	मानसिक	_	NOUN	_	_	10	compound	_	_
+10	स्वास्थ्य	_	PROPN	_	_	12	nmod	_	_
+11	के	_	ADP	_	_	10	case	_	_
+12	बारे	_	NOUN	_	_	14	nmod	_	_
+13	मे	_	ADP	_	_	12	case	_	_
+14	जानकारी	_	NOUN	_	_	15	compound	_	_
+15	उपलब्ध	_	VERB	_	_	0	root	_	_
+16	कराना	_	AUX	_	_	15	aux:pass	_	_
+17	।	_	PUNCT	_	_	15	punct	_	_

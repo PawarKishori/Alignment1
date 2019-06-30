@@ -1,0 +1,11 @@
+1	बच्चों	_	PROPN	_	_	0	root	_	_
+2	को	_	ADP	_	_	1	case	_	_
+3	फास्ट	_	NOUN	_	_	11	obl	_	_
+4	फूड	_	VERB	_	_	3	case	_	_
+5	,	_	PUNCT	_	_	6	punct	_	_
+6	कुरकुरे	_	PROPN	_	_	9	compound	_	_
+7	,	_	PUNCT	_	_	9	cc	_	_
+8	आइसक्रीम	_	NOUN	_	_	9	compound	_	_
+9	नहीं	_	VERB	_	_	11	compound	_	_
+10	खिलायें	_	VERB	_	_	9	aux	_	_
+11	।	_	PUNCT	_	_	1	punct	_	_

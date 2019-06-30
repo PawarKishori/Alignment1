@@ -1,0 +1,11 @@
+1	क्षय	_	PRON	_	_	0	root	_	_
+2	रोग	_	DET	_	_	3	det	_	_
+3	पूर्ण	_	NOUN	_	_	0	root	_	_
+4	रूप	_	ADP	_	_	3	case	_	_
+5	से	_	AUX	_	_	4	aux:pass	_	_
+6	ठीक	_	PRON	_	_	3	case	_	_
+7	किया	_	NOUN	_	_	0	root	_	_
+8	जा	_	VERB	_	_	7	aux:pass	_	_
+9	सकता	_	AUX	_	_	8	aux:pass	_	_
+10	है	_	AUX	_	_	9	aux:pass	_	_
+11	।	_	PUNCT	_	_	8	punct	_	_

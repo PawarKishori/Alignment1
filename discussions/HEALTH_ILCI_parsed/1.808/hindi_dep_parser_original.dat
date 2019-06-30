@@ -1,0 +1,7 @@
+1	असामान्य	_	NOUN	_	_	0	root	_	_
+2	यौन	_	ADP	_	_	1	case	_	_
+3	संबंधों	_	NOUN	_	_	0	root	_	_
+4	से	_	VERB	_	_	3	aux:pass	_	_
+5	दूर	_	ADP	_	_	4	aux:pass	_	_
+6	रहें	_	AUX	_	_	5	aux:pass	_	_
+7	।	_	PUNCT	_	_	4	punct	_	_

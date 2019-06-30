@@ -1,0 +1,15 @@
+1	बालक	_	DET	_	_	2	compound	_	_
+2	बालिकाओं	_	NOUN	_	_	4	nmod	_	_
+3	को	_	ADP	_	_	2	case	_	_
+4	स्कूल	_	NOUN	_	_	14	obl	_	_
+5	जाते	_	NOUN	_	_	4	case	_	_
+6	समय	_	PRON	_	_	14	nsubj	_	_
+7	पूरी	_	NOUN	_	_	14	nsubj	_	_
+8	आस्तीन	_	NOUN	_	_	14	nsubj	_	_
+9	का	_	ADP	_	_	8	dep	_	_
+10	कपड़ा	_	ADV	_	_	8	case	_	_
+11	,	_	PUNCT	_	_	10	punct	_	_
+12	मोजे	_	NOUN	_	_	13	obl	_	_
+13	अवश्य	_	PRON	_	_	14	nsubj	_	_
+14	पहनायें	_	VERB	_	_	0	root	_	_
+15	।	_	PUNCT	_	_	14	punct	_	_

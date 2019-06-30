@@ -1,0 +1,10 @@
+1	हाथ	_	DET	_	_	2	det	_	_
+2	पैरों	_	NOUN	_	_	4	nmod	_	_
+3	की	_	ADP	_	_	2	case	_	_
+4	अंगुलियों	_	NOUN	_	_	6	obl	_	_
+5	में	_	ADP	_	_	4	case	_	_
+6	विकृति	_	VERB	_	_	0	root	_	_
+7	आ	_	PUNCT	_	_	6	punct	_	_
+8	रही	_	VERB	_	_	6	aux	_	_
+9	हो	_	AUX	_	_	8	aux:pass	_	_
+10	।	_	PUNCT	_	_	6	punct	_	_

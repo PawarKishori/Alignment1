@@ -1,0 +1,9 @@
+1	डेंगू	_	PRON	_	_	2	nmod	_	_
+2	बुखार	_	PRON	_	_	7	obl	_	_
+3	में	_	PRON	_	_	4	det	_	_
+4	कास्टायड	_	NOUN	_	_	7	nsubj	_	_
+5	दवाइयाँ	_	NOUN	_	_	7	nsubj	_	_
+6	न	_	PUNCT	_	_	5	punct	_	_
+7	ली	_	VERB	_	_	0	root	_	_
+8	जायें	_	AUX	_	_	7	aux:pass	_	_
+9	।	_	PUNCT	_	_	7	punct	_	_

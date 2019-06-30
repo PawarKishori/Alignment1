@@ -1,0 +1,8 @@
+1	हायाटस	_	NOUN	_	_	5	cc	_	_
+2	हर्निया	_	NOUN	_	_	4	nmod	_	_
+3	को	_	ADP	_	_	2	case	_	_
+4	दुरुस्त	_	NOUN	_	_	5	compound	_	_
+5	करने	_	VERB	_	_	0	root	_	_
+6	के	_	AUX	_	_	5	aux:pass	_	_
+7	लिए	_	AUX	_	_	6	aux:pass	_	_
+8	।	_	PUNCT	_	_	5	punct	_	_

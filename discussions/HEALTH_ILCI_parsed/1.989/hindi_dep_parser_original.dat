@@ -1,0 +1,16 @@
+1	इसके	_	DET	_	_	2	det	_	_
+2	अतिरिक्त	_	NOUN	_	_	3	nsubj	_	_
+3	शिर	_	VERB	_	_	0	root	_	_
+4	शूल	_	AUX	_	_	3	aux	_	_
+5	,	_	PUNCT	_	_	4	punct	_	_
+6	कंपन	_	PROPN	_	_	16	obl	_	_
+7	तथा	_	ADP	_	_	16	cc	_	_
+8	ज्वर	_	NOUN	_	_	16	compound	_	_
+9	भी	_	ADP	_	_	8	case	_	_
+10	अपनी	_	NOUN	_	_	16	obl	_	_
+11	चरम	_	PRON	_	_	12	cc	_	_
+12	सीमा	_	NOUN	_	_	16	compound	_	_
+13	पर	_	VERB	_	_	12	aux:pass	_	_
+14	रहता	_	AUX	_	_	13	aux	_	_
+15	है	_	AUX	_	_	14	aux:pass	_	_
+16	।	_	PUNCT	_	_	3	punct	_	_

@@ -1,0 +1,17 @@
+1	कोशिकाओं	_	PROPN	_	_	3	nmod	_	_
+2	के	_	ADP	_	_	1	case	_	_
+3	प्रभावित	_	NOUN	_	_	4	compound	_	_
+4	होने	_	VERB	_	_	0	root	_	_
+5	की	_	AUX	_	_	4	aux	_	_
+6	वजह	_	AUX	_	_	0	root	_	_
+7	से	_	SCONJ	_	_	6	dep	_	_
+8	रोगी	_	NOUN	_	_	14	obj	_	_
+9	के	_	VERB	_	_	12	dep	_	_
+10	बाल	_	AUX	_	_	9	aux:pass	_	_
+11	,	_	PUNCT	_	_	12	punct	_	_
+12	नाखून	_	PROPN	_	_	14	obl	_	_
+13	,	_	PUNCT	_	_	12	punct	_	_
+14	गिर	_	VERB	_	_	0	root	_	_
+15	सकते	_	AUX	_	_	14	aux:pass	_	_
+16	हैं	_	AUX	_	_	15	aux:pass	_	_
+17	।	_	PUNCT	_	_	14	punct	_	_

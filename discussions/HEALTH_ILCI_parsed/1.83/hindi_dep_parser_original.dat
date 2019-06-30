@@ -1,0 +1,17 @@
+1	इससे	_	PRON	_	_	3	nsubj	_	_
+2	अगर	_	DET	_	_	1	case	_	_
+3	अपने	_	VERB	_	_	15	obl	_	_
+4	आप	_	AUX	_	_	3	aux	_	_
+5	सही	_	DET	_	_	6	det	_	_
+6	महसूस	_	PRON	_	_	8	nmod	_	_
+7	नहीं	_	NOUN	_	_	6	case	_	_
+8	करते	_	NOUN	_	_	15	obl	_	_
+9	हैं	_	AUX	_	_	8	aux:pass	_	_
+10	तो	_	SCONJ	_	_	8	case	_	_
+11	एन्टीएलर्जिक	_	ADJ	_	_	12	compound	_	_
+12	टेबलेट	_	NOUN	_	_	14	nmod	_	_
+13	दस	_	ADP	_	_	12	case	_	_
+14	दिनों	_	NOUN	_	_	15	compound	_	_
+15	तक	_	VERB	_	_	0	root	_	_
+16	लें	_	AUX	_	_	15	aux:pass	_	_
+17	।	_	PUNCT	_	_	15	punct	_	_

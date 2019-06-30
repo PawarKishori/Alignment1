@@ -1,0 +1,10 @@
+1	इसका	_	PRON	_	_	2	det	_	_
+2	अभ्यास	_	NOUN	_	_	7	nsubj	_	_
+3	लेट	_	PRON	_	_	2	case	_	_
+4	कर	_	SCONJ	_	_	3	aux:pass	_	_
+5	ही	_	SCONJ	_	_	7	cc	_	_
+6	किया	_	NOUN	_	_	7	nsubj	_	_
+7	जा	_	VERB	_	_	0	root	_	_
+8	सकता	_	AUX	_	_	7	aux	_	_
+9	है	_	AUX	_	_	8	aux:pass	_	_
+10	।	_	PUNCT	_	_	7	punct	_	_

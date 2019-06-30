@@ -1,0 +1,16 @@
+1	जिलों	_	PRON	_	_	8	nsubj	_	_
+2	में	_	ADP	_	_	1	case	_	_
+3	यह	_	PART	_	_	2	aux:pass	_	_
+4	दर	_	PRON	_	_	1	dep	_	_
+5	सबसे	_	NOUN	_	_	7	nmod	_	_
+6	कम	_	PART	_	_	5	case	_	_
+7	पौड़ी	_	NOUN	_	_	8	compound	_	_
+8	में	_	AUX	_	_	0	root	_	_
+9	जब	_	AUX	_	_	8	aux:pass	_	_
+10	कि	_	SCONJ	_	_	13	mark	_	_
+11	सबसे	_	PRON	_	_	13	nsubj	_	_
+12	अधिक	_	PRON	_	_	13	nsubj	_	_
+13	हरिद्वार	_	NOUN	_	_	14	nsubj	_	_
+14	में	_	VERB	_	_	8	aux:pass	_	_
+15	है	_	AUX	_	_	14	aux	_	_
+16	।	_	PUNCT	_	_	8	punct	_	_

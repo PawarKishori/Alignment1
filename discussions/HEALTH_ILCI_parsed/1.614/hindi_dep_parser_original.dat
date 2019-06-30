@@ -1,0 +1,11 @@
+1	अन्तर	_	PRON	_	_	0	root	_	_
+2	जनपदीय	_	NOUN	_	_	1	case	_	_
+3	विभिन्नताएँ	_	PROPN	_	_	6	nmod	_	_
+4	भी	_	ADP	_	_	3	case	_	_
+5	इस	_	PART	_	_	3	dep	_	_
+6	अवधि	_	PRON	_	_	0	root	_	_
+7	में	_	ADP	_	_	6	case	_	_
+8	कम	_	VERB	_	_	7	aux:pass	_	_
+9	हुई	_	AUX	_	_	8	aux:pass	_	_
+10	हैं	_	AUX	_	_	9	aux:pass	_	_
+11	।	_	PUNCT	_	_	8	punct	_	_

@@ -1,0 +1,15 @@
+1	सामान्यत	_	PROPN	_	_	0	root	_	_
+2	:	_	PUNCT	_	_	1	punct	_	_
+3	ये	_	PRON	_	_	1	case	_	_
+4	पथरियाँ	_	NOUN	_	_	5	compound	_	_
+5	मूत्र	_	NOUN	_	_	7	nmod	_	_
+6	के	_	ADP	_	_	5	case	_	_
+7	रास्ते	_	NOUN	_	_	8	compound	_	_
+8	शरीर	_	NOUN	_	_	0	root	_	_
+9	से	_	ADP	_	_	8	case	_	_
+10	बाहर	_	NOUN	_	_	8	case	_	_
+11	निकाल	_	NOUN	_	_	12	nsubj	_	_
+12	दी	_	VERB	_	_	10	aux:pass	_	_
+13	जाती	_	VERB	_	_	12	aux	_	_
+14	हैं	_	AUX	_	_	13	aux:pass	_	_
+15	।	_	PUNCT	_	_	13	punct	_	_

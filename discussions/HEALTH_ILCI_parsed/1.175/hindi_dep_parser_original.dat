@@ -1,0 +1,15 @@
+1	यह	_	PRON	_	_	4	nsubj	_	_
+2	वे	_	PRON	_	_	4	nsubj	_	_
+3	लोग	_	PRON	_	_	4	det	_	_
+4	होते	_	NOUN	_	_	0	root	_	_
+5	हैं	_	PRON	_	_	4	case	_	_
+6	जो	_	SCONJ	_	_	5	aux:pass	_	_
+7	किसी	_	PRON	_	_	4	case	_	_
+8	चीज	_	PRON	_	_	7	case	_	_
+9	को	_	PRON	_	_	8	aux:pass	_	_
+10	देखकर	_	PRON	_	_	12	nmod	_	_
+11	या	_	ADP	_	_	10	case	_	_
+12	पढ़कर	_	NOUN	_	_	0	root	_	_
+13	सीखते	_	PART	_	_	12	aux:pass	_	_
+14	हैं	_	AUX	_	_	13	aux	_	_
+15	।	_	PUNCT	_	_	13	punct	_	_

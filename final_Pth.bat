@@ -1,0 +1,32 @@
+(load "new_alignment.clp")
+(bind ?*hpath* (str-cat ?*hpath* "/generate_necessary_facts.clp"))
+(load ?*hpath*)
+(load-facts "manual_lwg.dat")
+(load-facts "word_alignment_tmp1.dat")
+(watch activations)
+(watch rules)
+(watch facts)
+(run)
+(save-facts "word_alignment_tmp2.dat" local alignment_info)
+(clear)
+;====================================================================
+(load "new_alignment.clp")
+(bind ?*hpath* (str-cat ?*hpath* "/stop_Pth_layer_parser_clause_boundary_violations.clp"))
+(load ?*hpath*)
+(load-facts "word_alignment_tmp2.dat")
+(load-facts "E_chunk_ids.dat")
+(load-facts "H_grouping_template.dat")
+(watch facts)
+(run)
+(save-facts "corrected_pth.dat" local alignment_info)
+
+
+;(load-facts "manual_noun_grp.dat") vimdiff manual_noun_grp.dat n manual_lwg.dat
+;(load-facts "E_chunk_words.dat")
+;(load-facts "corpus_specific_dic_facts_for_one_sent.dat")
+;(load-facts "E_grouping_template.dat")
+;(load-facts "manual_lwg.dat")
+;(watch rules)
+;(watch activations)
+(exit)
+;====================================================================

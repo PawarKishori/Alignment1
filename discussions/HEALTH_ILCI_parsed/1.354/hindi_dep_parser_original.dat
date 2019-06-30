@@ -1,0 +1,14 @@
+1	कैंसर	_	PRON	_	_	2	nmod	_	_
+2	हमारे	_	NOUN	_	_	4	nmod	_	_
+3	गलत	_	ADP	_	_	2	case	_	_
+4	अचार	_	SCONJ	_	_	12	obl	_	_
+5	,	_	PUNCT	_	_	4	punct	_	_
+6	विचार	_	PROPN	_	_	7	nmod	_	_
+7	व्यवहार	_	NOUN	_	_	9	nmod	_	_
+8	और	_	ADP	_	_	7	case	_	_
+9	आहार	_	NOUN	_	_	11	nmod	_	_
+10	से	_	ADP	_	_	9	case	_	_
+11	उत्पन्न	_	NOUN	_	_	12	compound	_	_
+12	होता	_	VERB	_	_	0	root	_	_
+13	है	_	AUX	_	_	12	aux	_	_
+14	।	_	PUNCT	_	_	12	punct	_	_

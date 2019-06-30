@@ -1,0 +1,9 @@
+1	ब्रेन	_	PRON	_	_	2	nmod	_	_
+2	एक्सरसाइज	_	NOUN	_	_	0	root	_	_
+3	इसी	_	ADP	_	_	2	case	_	_
+4	फंडे	_	NOUN	_	_	0	root	_	_
+5	पर	_	VERB	_	_	4	aux:pass	_	_
+6	काम	_	PRON	_	_	5	aux:pass	_	_
+7	करती	_	AUX	_	_	6	aux:pass	_	_
+8	है	_	AUX	_	_	7	aux:pass	_	_
+9	।	_	PUNCT	_	_	5	punct	_	_

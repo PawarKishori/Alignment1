@@ -1,0 +1,10 @@
+1	औषधियों	_	PROPN	_	_	3	nmod	_	_
+2	की	_	ADP	_	_	1	case	_	_
+3	आपूर्ति	_	NOUN	_	_	5	compound	_	_
+4	भारत	_	ADP	_	_	3	case	_	_
+5	सरकार	_	PRON	_	_	6	nmod	_	_
+6	द्वारा	_	NOUN	_	_	7	nsubj	_	_
+7	की	_	VERB	_	_	0	root	_	_
+8	जाती	_	AUX	_	_	7	aux	_	_
+9	है	_	AUX	_	_	8	aux:pass	_	_
+10	।	_	PUNCT	_	_	7	punct	_	_

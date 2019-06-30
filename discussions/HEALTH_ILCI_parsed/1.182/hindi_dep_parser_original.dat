@@ -1,0 +1,14 @@
+1	नई	_	PRON	_	_	13	nsubj	_	_
+2	जानकारी	_	NOUN	_	_	6	nmod	_	_
+3	को	_	ADP	_	_	2	case	_	_
+4	किसी	_	DET	_	_	6	compound	_	_
+5	पुरानी	_	NOUN	_	_	6	compound	_	_
+6	जानकारी	_	NOUN	_	_	8	nmod	_	_
+7	से	_	ADP	_	_	6	case	_	_
+8	जोड़कर	_	NOUN	_	_	13	obl	_	_
+9	याद	_	DET	_	_	8	case	_	_
+10	रखने	_	NOUN	_	_	12	nmod	_	_
+11	का	_	ADP	_	_	10	case	_	_
+12	प्रयास	_	NOUN	_	_	13	nsubj	_	_
+13	करें	_	VERB	_	_	0	root	_	_
+14	।	_	PUNCT	_	_	13	punct	_	_

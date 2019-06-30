@@ -1,0 +1,17 @@
+1	चिकुनगुनिया	_	PROPN	_	_	6	nsubj	_	_
+2	रोग	_	ADP	_	_	1	case	_	_
+3	का	_	PART	_	_	1	case	_	_
+4	कोई	_	DET	_	_	5	det	_	_
+5	उपचार	_	NOUN	_	_	6	nsubj	_	_
+6	नहीं	_	VERB	_	_	9	acl:relcl	_	_
+7	है	_	AUX	_	_	6	aux	_	_
+8	,	_	PUNCT	_	_	6	punct	_	_
+9	ना	_	PRON	_	_	0	root	_	_
+10	ही	_	PART	_	_	9	case	_	_
+11	इसके	_	DET	_	_	9	case	_	_
+12	विरूद्ध	_	NOUN	_	_	14	nmod	_	_
+13	कोई	_	ADP	_	_	12	case	_	_
+14	टीका	_	NOUN	_	_	15	amod	_	_
+15	मिलता	_	PART	_	_	11	aux:pass	_	_
+16	है	_	AUX	_	_	11	cop	_	_
+17	।	_	PUNCT	_	_	9	punct	_	_

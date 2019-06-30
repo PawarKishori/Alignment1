@@ -1,0 +1,6 @@
+1	तपेदिक	_	NOUN	_	_	4	nsubj	_	_
+2	एक	_	ADP	_	_	1	case	_	_
+3	संक्रामक	_	NOUN	_	_	4	compound	_	_
+4	रोग	_	VERB	_	_	0	root	_	_
+5	है	_	AUX	_	_	4	aux	_	_
+6	।	_	PUNCT	_	_	4	punct	_	_

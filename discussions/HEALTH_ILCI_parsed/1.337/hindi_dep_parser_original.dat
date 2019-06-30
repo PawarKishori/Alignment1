@@ -1,0 +1,12 @@
+1	भूरा	_	PROPN	_	_	11	nsubj	_	_
+2	(	_	PUNCT	_	_	3	punct	_	_
+3	Gray	_	PROPN	_	_	1	nmod	_	_
+4	)	_	PUNCT	_	_	3	punct	_	_
+5	या	_	ADP	_	_	1	dislocated	_	_
+6	सफेद	_	NOUN	_	_	11	nsubj	_	_
+7	पुतली	_	NOUN	_	_	11	nsubj	_	_
+8	(	_	PUNCT	_	_	9	punct	_	_
+9	प्यूपिल	_	NOUN	_	_	7	nmod	_	_
+10	)	_	PUNCT	_	_	9	punct	_	_
+11	होना	_	VERB	_	_	0	root	_	_
+12	।	_	PUNCT	_	_	11	punct	_	_

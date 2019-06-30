@@ -1,0 +1,11 @@
+1	लगातार	_	PRON	_	_	0	root	_	_
+2	काफी	_	NOUN	_	_	0	root	_	_
+3	समय	_	AUX	_	_	2	case	_	_
+4	तक	_	SCONJ	_	_	2	dep	_	_
+5	खाँसी	_	PRON	_	_	9	obl	_	_
+6	आना	_	ADP	_	_	5	case	_	_
+7	या	_	PART	_	_	6	dep	_	_
+8	आवाज	_	NOUN	_	_	9	obj	_	_
+9	भारी	_	VERB	_	_	2	aux:pass	_	_
+10	होना	_	AUX	_	_	9	aux	_	_
+11	।	_	PUNCT	_	_	9	punct	_	_

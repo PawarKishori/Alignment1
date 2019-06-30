@@ -1,0 +1,16 @@
+1	बटन	_	PRON	_	_	3	det	_	_
+2	होल	_	DET	_	_	3	det	_	_
+3	सर्जरी	_	NOUN	_	_	0	root	_	_
+4	में	_	DET	_	_	3	case	_	_
+5	मरीज	_	NOUN	_	_	7	nmod	_	_
+6	को	_	ADP	_	_	5	case	_	_
+7	ऑपरेशन	_	NOUN	_	_	9	nmod	_	_
+8	के	_	ADP	_	_	7	case	_	_
+9	पश्‍चात	_	NOUN	_	_	11	nmod	_	_
+10	का	_	ADP	_	_	9	case	_	_
+11	दर्द	_	NOUN	_	_	12	compound	_	_
+12	बहुत	_	NOUN	_	_	0	root	_	_
+13	कम	_	VERB	_	_	12	aux:pass	_	_
+14	होता	_	AUX	_	_	13	aux:pass	_	_
+15	है	_	AUX	_	_	14	aux:pass	_	_
+16	।	_	PUNCT	_	_	13	punct	_	_

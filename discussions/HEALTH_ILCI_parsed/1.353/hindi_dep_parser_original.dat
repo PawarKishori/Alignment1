@@ -1,0 +1,11 @@
+1	कैंसर	_	PRON	_	_	4	nmod	_	_
+2	एक	_	ADP	_	_	1	case	_	_
+3	जीवन	_	NOUN	_	_	4	compound	_	_
+4	शैली	_	NOUN	_	_	9	nmod	_	_
+5	से	_	ADP	_	_	4	case	_	_
+6	उत्पन्न	_	NOUN	_	_	9	nsubj	_	_
+7	होने	_	NOUN	_	_	6	case	_	_
+8	वाली	_	NOUN	_	_	7	aux:pass	_	_
+9	बीमारी	_	NOUN	_	_	0	root	_	_
+10	है	_	AUX	_	_	9	cop	_	_
+11	।	_	PUNCT	_	_	9	punct	_	_

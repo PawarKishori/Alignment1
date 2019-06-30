@@ -1,0 +1,17 @@
+1	पुत्र	_	PRON	_	_	3	nmod	_	_
+2	की	_	ADP	_	_	1	case	_	_
+3	चाहत	_	NOUN	_	_	5	nmod	_	_
+4	ही	_	PART	_	_	3	case	_	_
+5	प्रबल	_	NOUN	_	_	16	obl	_	_
+6	है	_	PART	_	_	5	dep	_	_
+7	जो	_	AUX	_	_	5	cop	_	_
+8	कि	_	PRON	_	_	5	case	_	_
+9	राज्य	_	NOUN	_	_	15	nmod	_	_
+10	के	_	ADP	_	_	9	case	_	_
+11	भावी	_	NOUN	_	_	12	case	_	_
+12	प्रजनन	_	NOUN	_	_	15	nmod	_	_
+13	स्तर	_	NOUN	_	_	15	nmod	_	_
+14	को	_	PART	_	_	13	dep	_	_
+15	प्रभावित	_	NOUN	_	_	16	nsubj	_	_
+16	करेगा	_	VERB	_	_	0	root	_	_
+17	।	_	PUNCT	_	_	16	punct	_	_

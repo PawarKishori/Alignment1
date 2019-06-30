@@ -1,0 +1,11 @@
+1	एड्स	_	PRON	_	_	9	nsubj	_	_
+2	का	_	ADP	_	_	1	case	_	_
+3	पहला	_	PRON	_	_	9	nsubj	_	_
+4	मरीज	_	NOUN	_	_	9	nsubj	_	_
+5	भारत	_	PROPN	_	_	9	obl	_	_
+6	में	_	PRON	_	_	5	case	_	_
+7	1986	_	PROPN	_	_	9	obl	_	_
+8	में	_	ADP	_	_	7	case	_	_
+9	पाया	_	VERB	_	_	0	root	_	_
+10	गया	_	AUX	_	_	9	aux	_	_
+11	।	_	PUNCT	_	_	9	punct	_	_

@@ -1,0 +1,10 @@
+1	यहाँ	_	PRON	_	_	3	nmod	_	_
+2	पर	_	ADP	_	_	1	case	_	_
+3	पक्षाघात	_	NOUN	_	_	8	nsubj	_	_
+4	हेतु	_	PRON	_	_	3	case	_	_
+5	प्रमुख	_	NOUN	_	_	8	nsubj	_	_
+6	यौगिक	_	PRON	_	_	7	nmod	_	_
+7	निदान	_	NOUN	_	_	8	nsubj	_	_
+8	प्रस्तुत	_	NOUN	_	_	0	root	_	_
+9	हैं	_	AUX	_	_	8	cop	_	_
+10	।	_	PUNCT	_	_	8	punct	_	_

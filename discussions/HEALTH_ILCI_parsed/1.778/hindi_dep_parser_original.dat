@@ -1,0 +1,7 @@
+1	पोलियो	_	PRON	_	_	5	nsubj	_	_
+2	अत्यधिक	_	NOUN	_	_	5	nmod	_	_
+3	छूत	_	ADP	_	_	2	case	_	_
+4	की	_	PART	_	_	5	dep	_	_
+5	बीमारी	_	NOUN	_	_	0	root	_	_
+6	है	_	AUX	_	_	5	cop	_	_
+7	।	_	PUNCT	_	_	5	punct	_	_

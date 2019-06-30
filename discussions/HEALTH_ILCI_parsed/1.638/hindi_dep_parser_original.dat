@@ -1,0 +1,10 @@
+1	बृहत	_	DET	_	_	9	nsubj	_	_
+2	निर्माण	_	NOUN	_	_	3	compound	_	_
+3	कार्य	_	PRON	_	_	6	nmod	_	_
+4	एव	_	ADP	_	_	3	case	_	_
+5	स्वास्थ्य	_	ADJ	_	_	6	compound	_	_
+6	इकाईयों	_	NOUN	_	_	8	nmod	_	_
+7	की	_	ADP	_	_	6	case	_	_
+8	मरम्मत	_	NOUN	_	_	9	nsubj	_	_
+9	नवीनीकरण	_	VERB	_	_	0	root	_	_
+10	।	_	PUNCT	_	_	9	punct	_	_

@@ -1,0 +1,6 @@
+1	डायबिटीज	_	PROPN	_	_	3	nmod	_	_
+2	से	_	ADP	_	_	1	case	_	_
+3	होने	_	NOUN	_	_	0	root	_	_
+4	वाली	_	NOUN	_	_	0	root	_	_
+5	समस्याएँ	_	VERB	_	_	4	aux	_	_
+6	।	_	PUNCT	_	_	5	punct	_	_

@@ -1,0 +1,6 @@
+1	बार	_	PRON	_	_	3	compound	_	_
+2	-	_	PUNCT	_	_	1	punct	_	_
+3	बार	_	NOUN	_	_	4	obj	_	_
+4	पेशाब	_	VERB	_	_	0	root	_	_
+5	आना	_	AUX	_	_	4	aux:pass	_	_
+6	।	_	PUNCT	_	_	4	punct	_	_

@@ -1,0 +1,8 @@
+1	फिर	_	DET	_	_	2	det	_	_
+2	त्वचा	_	NOUN	_	_	4	nmod	_	_
+3	पर	_	ADP	_	_	2	case	_	_
+4	निशान	_	NOUN	_	_	6	nsubj	_	_
+5	लगाया	_	PART	_	_	6	advmod	_	_
+6	जाता	_	VERB	_	_	0	root	_	_
+7	है	_	AUX	_	_	6	aux	_	_
+8	।	_	PUNCT	_	_	6	punct	_	_

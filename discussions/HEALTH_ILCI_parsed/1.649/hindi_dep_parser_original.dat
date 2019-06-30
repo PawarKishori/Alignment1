@@ -1,0 +1,16 @@
+1	किन्तु	_	PRON	_	_	2	compound	_	_
+2	राज्य	_	PRON	_	_	8	nmod	_	_
+3	में	_	DET	_	_	2	case	_	_
+4	उपरोक्त	_	NOUN	_	_	8	compound	_	_
+5	कार्यक्रम	_	PROPN	_	_	8	compound	_	_
+6	महिला	_	PRON	_	_	8	nmod	_	_
+7	स्वास्थ्य	_	PROPN	_	_	8	compound	_	_
+8	कार्यकर्मी	_	PROPN	_	_	10	nmod	_	_
+9	के	_	ADP	_	_	8	case	_	_
+10	सहयोग	_	NOUN	_	_	12	nmod	_	_
+11	से	_	ADP	_	_	10	case	_	_
+12	चलाया	_	NOUN	_	_	13	compound	_	_
+13	जा	_	VERB	_	_	0	root	_	_
+14	रहा	_	AUX	_	_	13	aux:pass	_	_
+15	है	_	AUX	_	_	14	aux:pass	_	_
+16	।	_	PUNCT	_	_	13	punct	_	_

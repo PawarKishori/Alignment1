@@ -1,0 +1,10 @@
+1	मुँह	_	PRON	_	_	2	compound	_	_
+2	सूखने	_	NOUN	_	_	4	nmod	_	_
+3	पर	_	ADP	_	_	2	case	_	_
+4	बैक्टीरिया	_	NOUN	_	_	0	root	_	_
+5	हमला	_	ADP	_	_	4	case	_	_
+6	तेज	_	PRON	_	_	5	aux:pass	_	_
+7	कर	_	VERB	_	_	6	aux:pass	_	_
+8	देते	_	AUX	_	_	7	aux:pass	_	_
+9	हैं	_	AUX	_	_	8	aux:pass	_	_
+10	।	_	PUNCT	_	_	8	punct	_	_

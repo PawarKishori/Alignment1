@@ -1,0 +1,11 @@
+1	सोते	_	PRON	_	_	10	nsubj	_	_
+2	समय	_	DET	_	_	3	det	_	_
+3	मच्छरदानी	_	NOUN	_	_	6	nmod	_	_
+4	अथवा	_	ADP	_	_	3	case	_	_
+5	मच्छररोधी	_	NOUN	_	_	6	compound	_	_
+6	अगरबत्ती	_	PROPN	_	_	8	nmod	_	_
+7	का	_	ADP	_	_	6	case	_	_
+8	प्रयोग	_	NOUN	_	_	10	nsubj	_	_
+9	अवश्य	_	PART	_	_	10	advmod	_	_
+10	करें	_	VERB	_	_	0	root	_	_
+11	।	_	PUNCT	_	_	10	punct	_	_

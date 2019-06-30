@@ -1,0 +1,11 @@
+1	डायबिटीज	_	PROPN	_	_	4	nmod	_	_
+2	से	_	ADP	_	_	1	case	_	_
+3	निम्न	_	PRON	_	_	4	compound	_	_
+4	समस्याएँ	_	NOUN	_	_	8	obl	_	_
+5	एवं	_	CCONJ	_	_	7	cc	_	_
+6	जटिलताएँ	_	NOUN	_	_	7	compound	_	_
+7	उत्पन्न	_	NOUN	_	_	8	nsubj	_	_
+8	हो	_	VERB	_	_	0	root	_	_
+9	सकती	_	VERB	_	_	8	aux	_	_
+10	हैं	_	AUX	_	_	9	aux:pass	_	_
+11	।	_	PUNCT	_	_	9	punct	_	_

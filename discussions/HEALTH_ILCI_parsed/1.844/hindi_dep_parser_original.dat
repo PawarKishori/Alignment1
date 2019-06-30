@@ -1,0 +1,14 @@
+1	जिसे	_	PRON	_	_	12	nsubj	_	_
+2	डाट्स	_	NOUN	_	_	12	nsubj	_	_
+3	(	_	PUNCT	_	_	4	punct	_	_
+4	डायरेक्टली	_	PROPN	_	_	6	compound	_	_
+5	आबजर्ब्ड	_	PROPN	_	_	6	compound	_	_
+6	ट्रीटमेंट	_	PROPN	_	_	2	nmod	_	_
+7	विद	_	CCONJ	_	_	10	cc	_	_
+8	सार्ट	_	PROPN	_	_	10	compound	_	_
+9	कोर्स	_	PROPN	_	_	10	compound	_	_
+10	कीमोथेरपी	_	PROPN	_	_	2	nmod	_	_
+11	)	_	PUNCT	_	_	10	punct	_	_
+12	कहते	_	VERB	_	_	0	root	_	_
+13	हैं	_	AUX	_	_	12	aux:pass	_	_
+14	।	_	PUNCT	_	_	12	punct	_	_

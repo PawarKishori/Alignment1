@@ -1,0 +1,9 @@
+1	रक्त	_	PRON	_	_	8	nsubj	_	_
+2	में	_	DET	_	_	3	det	_	_
+3	शर्करा	_	NOUN	_	_	8	obl	_	_
+4	की	_	ADP	_	_	3	case	_	_
+5	अधिकता	_	SCONJ	_	_	3	case	_	_
+6	,	_	PUNCT	_	_	5	punct	_	_
+7	दीर्घकालीन	_	NOUN	_	_	8	obl	_	_
+8	जटिलताएँ	_	VERB	_	_	0	root	_	_
+9	।	_	PUNCT	_	_	8	punct	_	_

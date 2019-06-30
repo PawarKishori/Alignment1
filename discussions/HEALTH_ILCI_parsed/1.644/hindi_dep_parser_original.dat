@@ -1,0 +1,13 @@
+1	वर्ष	_	PROPN	_	_	11	nsubj	_	_
+2	2004	_	PROPN	_	_	4	nmod	_	_
+3	-	_	PUNCT	_	_	2	punct	_	_
+4	2005	_	PROPN	_	_	11	obl	_	_
+5	में	_	ADP	_	_	4	case	_	_
+6	560	_	NUM	_	_	8	nummod	_	_
+7	अप्रशिक्षित	_	NOUN	_	_	8	amod	_	_
+8	दाईयों	_	NOUN	_	_	10	nmod	_	_
+9	को	_	ADP	_	_	8	case	_	_
+10	प्रशिक्षित	_	NOUN	_	_	11	compound	_	_
+11	किया	_	VERB	_	_	0	root	_	_
+12	गया	_	AUX	_	_	11	aux	_	_
+13	।	_	PUNCT	_	_	11	punct	_	_

@@ -1,0 +1,11 @@
+1	अस्पताल	_	PROPN	_	_	3	nmod	_	_
+2	की	_	ADP	_	_	1	case	_	_
+3	सूची	_	NOUN	_	_	5	nmod	_	_
+4	जहाँ	_	NOUN	_	_	3	case	_	_
+5	कैंसर	_	NOUN	_	_	7	nmod	_	_
+6	के	_	ADP	_	_	5	case	_	_
+7	इलाज	_	NOUN	_	_	9	nmod	_	_
+8	की	_	PART	_	_	7	dep	_	_
+9	सुविधा	_	NOUN	_	_	0	root	_	_
+10	है	_	AUX	_	_	9	cop	_	_
+11	।	_	PUNCT	_	_	9	punct	_	_

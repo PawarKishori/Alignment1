@@ -1,0 +1,10 @@
+1	कुष्ठ	_	PRON	_	_	5	nmod	_	_
+2	रोग	_	ADP	_	_	1	case	_	_
+3	के	_	PART	_	_	1	dep	_	_
+4	मुख्य	_	PRON	_	_	5	nmod	_	_
+5	लक्षण	_	PRON	_	_	8	nmod	_	_
+6	एवं	_	DET	_	_	5	case	_	_
+7	पहचान	_	NOUN	_	_	8	nsubj	_	_
+8	निम्नलिखित	_	NOUN	_	_	0	root	_	_
+9	हैं	_	AUX	_	_	8	cop	_	_
+10	।	_	PUNCT	_	_	8	punct	_	_

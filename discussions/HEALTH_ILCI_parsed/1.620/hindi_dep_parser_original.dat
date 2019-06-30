@@ -1,0 +1,12 @@
+1	लगभग	_	PRON	_	_	0	root	_	_
+2	42	_	NUM	_	_	3	nummod	_	_
+3	प्रतिशत	_	NOUN	_	_	5	nmod	_	_
+4	जन्म	_	ADP	_	_	3	case	_	_
+5	गम्भीर	_	NOUN	_	_	0	root	_	_
+6	खतरे	_	NOUN	_	_	5	case	_	_
+7	वाली	_	NOUN	_	_	0	root	_	_
+8	श्रेणी	_	NOUN	_	_	0	root	_	_
+9	में	_	VERB	_	_	8	aux:pass	_	_
+10	आते	_	AUX	_	_	9	aux:pass	_	_
+11	हैं	_	AUX	_	_	10	aux:pass	_	_
+12	।	_	PUNCT	_	_	9	punct	_	_

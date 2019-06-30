@@ -1,0 +1,11 @@
+1	शल्य	_	ADJ	_	_	3	nsubj	_	_
+2	-	_	PUNCT	_	_	3	punct	_	_
+3	चिकित्सा	_	ADJ	_	_	4	amod	_	_
+4	कैंसर	_	NOUN	_	_	9	nsubj	_	_
+5	के	_	ADP	_	_	4	case	_	_
+6	चरण	_	ADP	_	_	9	obl	_	_
+7	पर	_	PART	_	_	6	dep	_	_
+8	निर्भर	_	NOUN	_	_	9	nsubj	_	_
+9	करता	_	VERB	_	_	0	root	_	_
+10	है	_	AUX	_	_	9	aux	_	_
+11	।	_	PUNCT	_	_	9	punct	_	_

@@ -1,0 +1,13 @@
+1	संक्रमित	_	PROPN	_	_	2	compound	_	_
+2	व्यक्ति	_	PROPN	_	_	11	obl	_	_
+3	के	_	ADP	_	_	2	case	_	_
+4	साथ	_	DET	_	_	2	case	_	_
+5	भेदभाव	_	NOUN	_	_	6	nmod	_	_
+6	नाइंसाफी	_	NOUN	_	_	11	nsubj	_	_
+7	है	_	ADP	_	_	6	case	_	_
+8	और	_	PART	_	_	6	dep	_	_
+9	हमारी	_	PRON	_	_	10	nmod	_	_
+10	अनभिज्ञता	_	NOUN	_	_	11	nsubj	_	_
+11	का	_	VERB	_	_	0	root	_	_
+12	संकेत	_	AUX	_	_	11	aux:pass	_	_
+13	।	_	PUNCT	_	_	11	punct	_	_

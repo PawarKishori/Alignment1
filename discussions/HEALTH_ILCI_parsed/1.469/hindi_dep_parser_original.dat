@@ -1,0 +1,16 @@
+1	अधिक	_	PRON	_	_	15	nsubj	_	_
+2	मिर्च	_	SCONJ	_	_	15	obl	_	_
+3	,	_	PUNCT	_	_	4	punct	_	_
+4	तला	_	PROPN	_	_	2	conj	_	_
+5	,	_	PUNCT	_	_	6	punct	_	_
+6	भूना	_	PROPN	_	_	2	conj	_	_
+7	,	_	PUNCT	_	_	8	punct	_	_
+8	मांस	_	PROPN	_	_	2	conj	_	_
+9	,	_	PUNCT	_	_	10	punct	_	_
+10	घी	_	VERB	_	_	2	conj	_	_
+11	,	_	PUNCT	_	_	12	cc	_	_
+12	मदिरा	_	PROPN	_	_	15	obl	_	_
+13	में	_	ADP	_	_	15	obl	_	_
+14	कमी	_	ADP	_	_	13	aux:pass	_	_
+15	करना	_	VERB	_	_	0	root	_	_
+16	।	_	PUNCT	_	_	15	punct	_	_

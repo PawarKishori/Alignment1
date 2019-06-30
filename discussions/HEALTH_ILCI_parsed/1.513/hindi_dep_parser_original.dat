@@ -1,0 +1,8 @@
+1	घर	_	PRON	_	_	7	nsubj	_	_
+2	में	_	DET	_	_	3	det	_	_
+3	कीटनाशक	_	NOUN	_	_	7	nsubj	_	_
+4	दवाओं	_	PRON	_	_	6	nmod	_	_
+5	का	_	ADP	_	_	4	case	_	_
+6	छिड़काव	_	NOUN	_	_	7	nsubj	_	_
+7	करवायें	_	VERB	_	_	0	root	_	_
+8	।	_	PUNCT	_	_	7	punct	_	_

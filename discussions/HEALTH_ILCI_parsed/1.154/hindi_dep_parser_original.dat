@@ -1,0 +1,11 @@
+1	प्रतिदिन	_	NOUN	_	_	10	nsubj	_	_
+2	दस	_	ADP	_	_	1	case	_	_
+3	से	_	VERB	_	_	1	case	_	_
+4	बीस	_	DET	_	_	5	det	_	_
+5	मिनट	_	NOUN	_	_	10	obl	_	_
+6	तक	_	ADP	_	_	5	case	_	_
+7	इसका	_	NOUN	_	_	8	det	_	_
+8	अभ्यास	_	NOUN	_	_	10	nsubj	_	_
+9	अवश्य	_	PART	_	_	10	advmod	_	_
+10	करें	_	VERB	_	_	0	root	_	_
+11	।	_	PUNCT	_	_	10	punct	_	_

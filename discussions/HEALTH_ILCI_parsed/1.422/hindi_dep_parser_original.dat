@@ -1,0 +1,13 @@
+1	मुख	_	PRON	_	_	10	nsubj	_	_
+2	के	_	PRON	_	_	3	compound	_	_
+3	ऊतकों	_	PRON	_	_	6	nmod	_	_
+4	का	_	ADP	_	_	3	case	_	_
+5	परिवर्तन	_	NOUN	_	_	6	compound	_	_
+6	कैंसर	_	PRON	_	_	8	nmod	_	_
+7	की	_	ADP	_	_	6	case	_	_
+8	आरम्भिक	_	NOUN	_	_	9	compound	_	_
+9	स्थिति	_	NOUN	_	_	10	nsubj	_	_
+10	हो	_	VERB	_	_	0	root	_	_
+11	सकती	_	AUX	_	_	10	aux	_	_
+12	है	_	AUX	_	_	11	aux:pass	_	_
+13	।	_	PUNCT	_	_	10	punct	_	_

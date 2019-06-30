@@ -1,0 +1,16 @@
+1	मानव	_	PRON	_	_	14	nsubj	_	_
+2	मे	_	AUX	_	_	1	case	_	_
+3	यह	_	PRON	_	_	14	nsubj	_	_
+4	विषाणु	_	PROPN	_	_	6	nmod	_	_
+5	भी	_	ADP	_	_	4	case	_	_
+6	मलेरिया	_	NOUN	_	_	14	nsubj	_	_
+7	की	_	ADP	_	_	6	case	_	_
+8	भाँति	_	PRON	_	_	9	nmod	_	_
+9	मच्छर	_	NOUN	_	_	14	obl	_	_
+10	की	_	ADP	_	_	9	dep	_	_
+11	लार	_	PRON	_	_	9	case	_	_
+12	से	_	PART	_	_	11	dep	_	_
+13	प्रवेश	_	NOUN	_	_	14	nsubj	_	_
+14	करता	_	VERB	_	_	0	root	_	_
+15	है	_	AUX	_	_	14	aux	_	_
+16	।	_	PUNCT	_	_	14	punct	_	_

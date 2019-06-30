@@ -1,0 +1,11 @@
+1	पानी	_	PRON	_	_	0	root	_	_
+2	की	_	ADP	_	_	1	case	_	_
+3	मात्रा	_	NOUN	_	_	4	compound	_	_
+4	ज्यादा	_	NOUN	_	_	0	root	_	_
+5	लें	_	ADP	_	_	4	case	_	_
+6	और	_	PART	_	_	4	dep	_	_
+7	यूरीन	_	PRON	_	_	9	nmod	_	_
+8	कल्चर	_	PART	_	_	9	obj	_	_
+9	जाँच	_	VERB	_	_	0	root	_	_
+10	करायें	_	VERB	_	_	9	aux	_	_
+11	।	_	PUNCT	_	_	9	punct	_	_

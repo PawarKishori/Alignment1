@@ -1,0 +1,7 @@
+1	नगरीय	_	PRON	_	_	2	nmod	_	_
+2	प्रजनन	_	NOUN	_	_	6	nsubj	_	_
+3	एवं	_	VERB	_	_	2	case	_	_
+4	बाल	_	DET	_	_	5	det	_	_
+5	स्वास्थ्य	_	NOUN	_	_	6	compound	_	_
+6	कार्यक्रम	_	VERB	_	_	0	root	_	_
+7	।	_	PUNCT	_	_	6	punct	_	_

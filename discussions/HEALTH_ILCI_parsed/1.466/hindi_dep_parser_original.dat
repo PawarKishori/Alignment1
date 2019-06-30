@@ -1,0 +1,13 @@
+1	तम्बाकू	_	SCONJ	_	_	3	nmod	_	_
+2	व	_	PUNCT	_	_	1	punct	_	_
+3	तम्बाकूओं	_	PROPN	_	_	6	nmod	_	_
+4	से	_	ADP	_	_	3	case	_	_
+5	सम्बन्धित	_	ADJ	_	_	6	compound	_	_
+6	वस्तुओं	_	NOUN	_	_	12	obl	_	_
+7	से	_	ADP	_	_	6	case	_	_
+8	बचाव	_	NOUN	_	_	11	amod	_	_
+9	व	_	PUNCT	_	_	8	punct	_	_
+10	परित्याग	_	NOUN	_	_	8	compound	_	_
+11	प्रदूषण	_	NOUN	_	_	12	nsubj	_	_
+12	नियत्रंण	_	VERB	_	_	0	root	_	_
+13	।	_	PUNCT	_	_	12	punct	_	_

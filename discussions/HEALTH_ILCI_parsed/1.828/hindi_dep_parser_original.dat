@@ -1,0 +1,17 @@
+1	क्षय	_	PRON	_	_	15	nsubj	_	_
+2	रोग	_	AUX	_	_	1	case	_	_
+3	से	_	SCONJ	_	_	2	dep	_	_
+4	भारत	_	PRON	_	_	2	case	_	_
+5	में	_	DET	_	_	4	case	_	_
+6	महिलाएँ	_	NOUN	_	_	9	nmod	_	_
+7	सबसे	_	NOUN	_	_	6	case	_	_
+8	अधिक	_	NOUN	_	_	9	obj	_	_
+9	मरती	_	VERB	_	_	15	nsubj	_	_
+10	हैं	_	DET	_	_	9	aux:pass	_	_
+11	बजाय	_	NOUN	_	_	15	nsubj	_	_
+12	किसी	_	NOUN	_	_	15	nsubj	_	_
+13	अन्य	_	NOUN	_	_	14	det	_	_
+14	संक्रमित	_	NOUN	_	_	15	nsubj	_	_
+15	बीमारी	_	VERB	_	_	0	root	_	_
+16	के	_	AUX	_	_	15	cop	_	_
+17	।	_	PUNCT	_	_	15	punct	_	_

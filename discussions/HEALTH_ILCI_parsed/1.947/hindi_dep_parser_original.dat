@@ -1,0 +1,17 @@
+1	दर्द	_	PRON	_	_	3	nsubj	_	_
+2	फैल	_	PRON	_	_	3	nsubj	_	_
+3	सकता	_	NOUN	_	_	16	obl	_	_
+4	है	_	AUX	_	_	3	aux	_	_
+5	या	_	PRON	_	_	6	case	_	_
+6	बाजू	_	SCONJ	_	_	3	nmod	_	_
+7	,	_	PUNCT	_	_	8	punct	_	_
+8	श्रोणि	_	PROPN	_	_	6	conj	_	_
+9	,	_	PUNCT	_	_	16	punct	_	_
+10	उरू	_	PROPN	_	_	16	obl	_	_
+11	मूल	_	AUX	_	_	16	obl	_	_
+12	,	_	PUNCT	_	_	13	punct	_	_
+13	गुप्तांगो	_	PROPN	_	_	11	conj	_	_
+14	तक	_	ADP	_	_	13	dep	_	_
+15	बढ़	_	PRON	_	_	16	nsubj	_	_
+16	सकता	_	VERB	_	_	0	root	_	_
+17	है	_	AUX	_	_	16	aux	_	_

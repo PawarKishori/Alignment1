@@ -1,0 +1,17 @@
+1	अशोधित	_	PRON	_	_	2	case	_	_
+2	जन्मदर	_	NOUN	_	_	5	nmod	_	_
+3	तथा	_	VERB	_	_	2	case	_	_
+4	सकल	_	DET	_	_	5	det	_	_
+5	प्रजनन	_	NOUN	_	_	7	nmod	_	_
+6	दर	_	ADP	_	_	5	case	_	_
+7	नगरीय	_	NOUN	_	_	14	nmod	_	_
+8	तथा	_	ADP	_	_	10	nummod	_	_
+9	ग्रामीण	_	ADJ	_	_	10	amod	_	_
+10	क्षेत्रों	_	NOUN	_	_	14	nmod	_	_
+11	में	_	ADP	_	_	10	case	_	_
+12	भिन्न	_	NOUN	_	_	14	compound	_	_
+13	-	_	PUNCT	_	_	14	punct	_	_
+14	भिन्न	_	NOUN	_	_	0	root	_	_
+15	रही	_	VERB	_	_	14	case	_	_
+16	है	_	AUX	_	_	15	aux	_	_
+17	।	_	PUNCT	_	_	15	punct	_	_

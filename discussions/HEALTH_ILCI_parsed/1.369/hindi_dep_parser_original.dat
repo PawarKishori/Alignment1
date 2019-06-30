@@ -1,0 +1,10 @@
+1	कैंसर	_	PRON	_	_	7	nsubj	_	_
+2	1000	_	NUM	_	_	5	nmod	_	_
+3	से	_	ADP	_	_	2	case	_	_
+4	अधिक	_	NOUN	_	_	5	amod	_	_
+5	बीमारीयों	_	NOUN	_	_	7	nsubj	_	_
+6	का	_	ADP	_	_	5	case	_	_
+7	एक	_	VERB	_	_	0	root	_	_
+8	समूह	_	AUX	_	_	7	aux:pass	_	_
+9	है	_	AUX	_	_	8	aux:pass	_	_
+10	।	_	PUNCT	_	_	7	punct	_	_

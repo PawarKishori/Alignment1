@@ -1,0 +1,9 @@
+1	मेरा	_	PRON	_	_	0	root	_	_
+2	बच्चा	_	PRON	_	_	1	case	_	_
+3	दस्त	_	NOUN	_	_	6	nmod	_	_
+4	और	_	PART	_	_	3	case	_	_
+5	बुखार	_	PRON	_	_	6	nmod	_	_
+6	दोनों	_	PART	_	_	0	root	_	_
+7	पीड़ित	_	PART	_	_	8	advmod	_	_
+8	है	_	AUX	_	_	6	cop	_	_
+9	?	_	PUNCT	_	_	6	punct	_	_

@@ -1,0 +1,6 @@
+1	डायबिटीज	_	PROPN	_	_	3	nmod	_	_
+2	की	_	ADP	_	_	1	case	_	_
+3	दीर्घ	_	NOUN	_	_	5	nsubj	_	_
+4	कालिक	_	PART	_	_	5	advmod	_	_
+5	जटिलताएँ	_	VERB	_	_	0	root	_	_
+6	।	_	PUNCT	_	_	5	punct	_	_

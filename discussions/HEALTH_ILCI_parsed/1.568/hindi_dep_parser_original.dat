@@ -1,0 +1,17 @@
+1	सुअर	_	PRON	_	_	3	nmod	_	_
+2	के	_	ADP	_	_	1	case	_	_
+3	बाड़ों	_	PRON	_	_	5	nmod	_	_
+4	में	_	DET	_	_	3	case	_	_
+5	मच्छरों	_	NOUN	_	_	7	nmod	_	_
+6	को	_	ADP	_	_	5	case	_	_
+7	जाने	_	NOUN	_	_	9	nmod	_	_
+8	से	_	ADP	_	_	7	case	_	_
+9	रोकने	_	NOUN	_	_	16	nsubj	_	_
+10	के	_	ADP	_	_	9	case	_	_
+11	लिये	_	NOUN	_	_	16	nsubj	_	_
+12	महीन	_	NOUN	_	_	11	case	_	_
+13	जाली	_	NOUN	_	_	15	nmod	_	_
+14	का	_	PART	_	_	13	case	_	_
+15	प्रयोग	_	NOUN	_	_	16	nsubj	_	_
+16	करें	_	VERB	_	_	0	root	_	_
+17	।	_	PUNCT	_	_	16	punct	_	_

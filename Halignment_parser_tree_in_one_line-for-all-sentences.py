@@ -16,7 +16,7 @@ import sys,  writeFact, os, pandas as pd, numpy as np, itertools
 import networkx as nx
 import matplotlib.pyplot as plt
 import AnuLibrary
-import os,sys
+import os,sys, H_Modules
 
 # In[6]:
 
@@ -43,7 +43,11 @@ for i in range(25,26):
     except Exception:
         print("Old Error/Key error", sent_number)
         continue
+    modified_wid_word_list = H_Modules.wordid_word_mapping(tmpSentPath, relation_df)
+    modified_wid_word_list.append((0,'wroot')) 
     print(wid_word_list)
+    print(relation_df)
+    print(modified_wid_word_list)
 # check_relation_df_correct_or_wrong_and_integrate_in_create_hindi_df
     #print(cid_hid_dict)
 #     print(wid_word_dict)

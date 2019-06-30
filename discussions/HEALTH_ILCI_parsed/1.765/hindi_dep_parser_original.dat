@@ -1,0 +1,10 @@
+1	उत्तराखण्ड	_	PROPN	_	_	8	obl	_	_
+2	में	_	CCONJ	_	_	1	case	_	_
+3	मात्र	_	PRON	_	_	6	amod	_	_
+4	21	_	NUM	_	_	5	nummod	_	_
+5	प्रतिशत	_	NOUN	_	_	6	amod	_	_
+6	संस्थागत	_	NOUN	_	_	8	nsubj	_	_
+7	प्रसव	_	PART	_	_	8	advmod	_	_
+8	होते	_	VERB	_	_	0	root	_	_
+9	हैं	_	AUX	_	_	8	aux	_	_
+10	।	_	PUNCT	_	_	8	punct	_	_

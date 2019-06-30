@@ -1,0 +1,16 @@
+1	जानकारी	_	PROPN	_	_	3	nmod	_	_
+2	को	_	ADP	_	_	1	case	_	_
+3	किसी	_	NOUN	_	_	0	root	_	_
+4	रंग	_	AUX	_	_	0	root	_	_
+5	,	_	PUNCT	_	_	6	punct	_	_
+6	सुगंध	_	PROPN	_	_	16	obl	_	_
+7	,	_	PUNCT	_	_	10	cc	_	_
+8	स्वाद	_	PROPN	_	_	10	nmod	_	_
+9	से	_	ADP	_	_	8	case	_	_
+10	जोड़कर	_	NOUN	_	_	6	conj	_	_
+11	याद	_	ADP	_	_	6	case	_	_
+12	रखने	_	NOUN	_	_	16	compound	_	_
+13	की	_	VERB	_	_	12	aux:pass	_	_
+14	आदत	_	AUX	_	_	13	aux:pass	_	_
+15	डालें	_	AUX	_	_	14	aux:pass	_	_
+16	।	_	PUNCT	_	_	4	punct	_	_

@@ -1,0 +1,13 @@
+1	एंटामीबा	_	PROPN	_	_	3	nmod	_	_
+2	दो	_	ADP	_	_	1	case	_	_
+3	रूपों	_	NOUN	_	_	11	obl	_	_
+4	में	_	DET	_	_	3	case	_	_
+5	शरीर	_	NOUN	_	_	11	nsubj	_	_
+6	की	_	ADP	_	_	5	case	_	_
+7	वृहत्	_	PRON	_	_	8	nmod	_	_
+8	आंत्र	_	PRON	_	_	11	nsubj	_	_
+9	में	_	PRON	_	_	8	case	_	_
+10	विद्यमान	_	NOUN	_	_	11	nsubj	_	_
+11	रहता	_	VERB	_	_	0	root	_	_
+12	है	_	AUX	_	_	11	aux	_	_
+13	।	_	PUNCT	_	_	11	punct	_	_

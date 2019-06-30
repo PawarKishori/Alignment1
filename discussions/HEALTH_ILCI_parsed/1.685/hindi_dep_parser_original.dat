@@ -1,0 +1,17 @@
+1	सोते	_	PRON	_	_	0	root	_	_
+2	समय	_	DET	_	_	3	det	_	_
+3	मच्छरदानी	_	NOUN	_	_	0	root	_	_
+4	प्रयोग	_	NOUN	_	_	0	root	_	_
+5	करें	_	NOUN	_	_	0	root	_	_
+6	अथवा	_	NOUN	_	_	0	root	_	_
+7	सरसों	_	PROPN	_	_	0	root	_	_
+8	नीम	_	ADP	_	_	7	case	_	_
+9	का	_	VERB	_	_	7	case	_	_
+10	तेल	_	PRON	_	_	9	case	_	_
+11	शरीर	_	NOUN	_	_	14	nmod	_	_
+12	के	_	ADP	_	_	11	case	_	_
+13	खुले	_	NOUN	_	_	14	compound	_	_
+14	अंगों	_	PRON	_	_	0	root	_	_
+15	पर	_	PART	_	_	14	case	_	_
+16	लगायें	_	VERB	_	_	15	aux	_	_
+17	।	_	PUNCT	_	_	16	punct	_	_

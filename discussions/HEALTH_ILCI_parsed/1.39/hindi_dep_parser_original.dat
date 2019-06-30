@@ -1,0 +1,8 @@
+1	नमक	_	PRON	_	_	0	root	_	_
+2	और	_	PRON	_	_	0	root	_	_
+3	शराब	_	PRON	_	_	5	nmod	_	_
+4	का	_	PART	_	_	3	case	_	_
+5	सेवन	_	NOUN	_	_	0	root	_	_
+6	कम	_	VERB	_	_	5	dep	_	_
+7	करें	_	AUX	_	_	6	aux:pass	_	_
+8	।	_	PUNCT	_	_	6	punct	_	_

@@ -1,0 +1,10 @@
+1	अपने	_	PRON	_	_	2	det	_	_
+2	आपको	_	NOUN	_	_	3	det	_	_
+3	हमेशा	_	PRON	_	_	8	obl	_	_
+4	सही	_	DET	_	_	3	case	_	_
+5	समझना	_	NOUN	_	_	7	nmod	_	_
+6	और	_	ADP	_	_	5	case	_	_
+7	दूसरो	_	NOUN	_	_	8	compound	_	_
+8	को	_	VERB	_	_	0	root	_	_
+9	गलत	_	AUX	_	_	8	aux:pass	_	_
+10	।	_	PUNCT	_	_	8	punct	_	_

@@ -1,0 +1,7 @@
+1	समय	_	PRON	_	_	0	root	_	_
+2	से	_	PRON	_	_	5	nsubj	_	_
+3	एन्सेफलाइटिस	_	PROPN	_	_	5	nmod	_	_
+4	का	_	ADP	_	_	3	case	_	_
+5	टीका	_	NOUN	_	_	0	root	_	_
+6	लगवाएँ	_	VERB	_	_	5	aux	_	_
+7	।	_	PUNCT	_	_	6	punct	_	_

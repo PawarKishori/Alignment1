@@ -1,0 +1,17 @@
+1	एच	_	PUNCT	_	_	0	root	_	_
+2	.	_	PUNCT	_	_	3	punct	_	_
+3	आई	_	PROPN	_	_	0	root	_	_
+4	.	_	PUNCT	_	_	17	punct	_	_
+5	वी	_	PROPN	_	_	17	compound	_	_
+6	.	_	PUNCT	_	_	5	punct	_	_
+7	और	_	PROPN	_	_	17	compound	_	_
+8	एड्स	_	PROPN	_	_	7	case	_	_
+9	के	_	ADP	_	_	8	case	_	_
+10	खिलाफ़	_	PRON	_	_	15	obl	_	_
+11	देश	_	ADP	_	_	10	case	_	_
+12	की	_	PART	_	_	11	dep	_	_
+13	महायात्रा	_	NOUN	_	_	15	obl	_	_
+14	में	_	ADP	_	_	13	case	_	_
+15	शामिल	_	VERB	_	_	8	aux:pass	_	_
+16	हों	_	AUX	_	_	15	aux	_	_
+17	।	_	PUNCT	_	_	3	punct	_	_

@@ -1,0 +1,13 @@
+1	मछली	_	SCONJ	_	_	0	root	_	_
+2	,	_	PUNCT	_	_	1	punct	_	_
+3	अखरोट	_	NOUN	_	_	5	nmod	_	_
+4	और	_	ADP	_	_	3	case	_	_
+5	बादाम	_	NOUN	_	_	6	nmod	_	_
+6	खाने	_	NOUN	_	_	0	root	_	_
+7	से	_	AUX	_	_	6	dep	_	_
+8	भी	_	PART	_	_	0	root	_	_
+9	दिमाग	_	PART	_	_	0	root	_	_
+10	तेज	_	ADP	_	_	9	case	_	_
+11	होता	_	AUX	_	_	10	aux:pass	_	_
+12	है	_	AUX	_	_	11	aux	_	_
+13	।	_	PUNCT	_	_	11	punct	_	_

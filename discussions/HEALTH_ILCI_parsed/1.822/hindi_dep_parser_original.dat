@@ -1,0 +1,15 @@
+1	चूँकि	_	PRON	_	_	0	root	_	_
+2	इससे	_	NOUN	_	_	1	case	_	_
+3	अधिक	_	NOUN	_	_	2	case	_	_
+4	युवा	_	NOUN	_	_	0	root	_	_
+5	मरते	_	NOUN	_	_	4	case	_	_
+6	हैं	_	PRON	_	_	0	root	_	_
+7	इसलिए	_	NOUN	_	_	8	compound	_	_
+8	सामाजिक	_	NOUN	_	_	10	nmod	_	_
+9	और	_	ADP	_	_	8	case	_	_
+10	आर्थिक	_	NOUN	_	_	0	root	_	_
+11	हानि	_	NOUN	_	_	10	case	_	_
+12	अधिक	_	VERB	_	_	11	aux:pass	_	_
+13	होती	_	AUX	_	_	12	aux:pass	_	_
+14	है	_	AUX	_	_	13	aux:pass	_	_
+15	।	_	PUNCT	_	_	12	punct	_	_

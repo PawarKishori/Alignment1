@@ -1,0 +1,7 @@
+1	इसका	_	PRON	_	_	0	root	_	_
+2	उपचार	_	PRON	_	_	0	root	_	_
+3	सभी	_	PRON	_	_	2	case	_	_
+4	अस्पतालों	_	NOUN	_	_	0	root	_	_
+5	में	_	VERB	_	_	4	aux	_	_
+6	है	_	AUX	_	_	5	aux	_	_
+7	।	_	PUNCT	_	_	5	punct	_	_

@@ -1,0 +1,8 @@
+1	पीतज्वर	_	PROPN	_	_	4	nmod	_	_
+2	का	_	ADP	_	_	1	case	_	_
+3	कोई	_	PRON	_	_	4	det	_	_
+4	वास्तविक	_	NOUN	_	_	6	nsubj	_	_
+5	उपचार	_	PART	_	_	6	advmod	_	_
+6	नहीं	_	VERB	_	_	0	root	_	_
+7	है	_	AUX	_	_	6	aux	_	_
+8	।	_	PUNCT	_	_	6	punct	_	_

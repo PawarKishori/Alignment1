@@ -1,0 +1,15 @@
+1	प्राकृतिक	_	PROPN	_	_	10	nsubj	_	_
+2	चिकित्सा	_	NOUN	_	_	3	compound	_	_
+3	जीवन	_	VERB	_	_	10	nmod	_	_
+4	कला	_	AUX	_	_	10	cc	_	_
+5	तथा	_	DET	_	_	6	det	_	_
+6	विज्ञान	_	NOUN	_	_	10	nmod	_	_
+7	में	_	ADP	_	_	10	nmod	_	_
+8	एक	_	PART	_	_	7	dep	_	_
+9	संपूर्ण	_	NOUN	_	_	10	amod	_	_
+10	क्रांति	_	NOUN	_	_	0	root	_	_
+11	है	_	AUX	_	_	10	cop	_	_
+12	।	_	PUNCT	_	_	11	punct	_	_
+13	RD	_	PROPN	_	_	15	compound	_	_
+14	_	_	PUNCT	_	_	15	punct	_	_
+15	PUNC	_	PROPN	_	_	0	root	_	_

@@ -1,0 +1,12 @@
+1	यदि	_	DET	_	_	2	det	_	_
+2	लगातार	_	NOUN	_	_	0	root	_	_
+3	बुखार	_	PROPN	_	_	0	root	_	_
+4	आ	_	PUNCT	_	_	3	punct	_	_
+5	रहा	_	VERB	_	_	0	root	_	_
+6	है	_	ADP	_	_	5	dep	_	_
+7	तो	_	PART	_	_	5	dep	_	_
+8	उसकी	_	PRON	_	_	9	compound	_	_
+9	जाँच	_	NOUN	_	_	7	case	_	_
+10	अवश्य	_	PART	_	_	11	advmod	_	_
+11	करायें	_	VERB	_	_	9	aux:pass	_	_
+12	।	_	PUNCT	_	_	11	punct	_	_

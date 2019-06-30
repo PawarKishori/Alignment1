@@ -1,0 +1,14 @@
+1	बच्चों	_	PROPN	_	_	3	nmod	_	_
+2	की	_	ADP	_	_	1	case	_	_
+3	तुलना	_	NOUN	_	_	6	nmod	_	_
+4	मे	_	ADP	_	_	3	case	_	_
+5	छोटीमाता	_	NOUN	_	_	6	compound	_	_
+6	किशोरों	_	NOUN	_	_	8	nmod	_	_
+7	और	_	ADP	_	_	6	case	_	_
+8	वयस्कों	_	NOUN	_	_	12	nsubj	_	_
+9	में	_	ADP	_	_	8	case	_	_
+10	अधिक	_	NOUN	_	_	12	nsubj	_	_
+11	गंभीर	_	PART	_	_	12	advmod	_	_
+12	होती	_	VERB	_	_	0	root	_	_
+13	है	_	AUX	_	_	12	aux	_	_
+14	।	_	PUNCT	_	_	12	punct	_	_

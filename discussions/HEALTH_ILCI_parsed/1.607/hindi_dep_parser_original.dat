@@ -1,0 +1,11 @@
+1	अतः	_	DET	_	_	2	det	_	_
+2	प्रजनन	_	NOUN	_	_	0	root	_	_
+3	एवं	_	VERB	_	_	2	case	_	_
+4	बाल	_	DET	_	_	5	det	_	_
+5	स्वास्थ्य	_	NOUN	_	_	6	amod	_	_
+6	कार्यक्रम	_	NOUN	_	_	7	compound	_	_
+7	अवधारणा	_	NOUN	_	_	0	root	_	_
+8	का	_	VERB	_	_	7	aux:pass	_	_
+9	जन्म	_	VERB	_	_	8	aux	_	_
+10	हुआ	_	AUX	_	_	9	aux:pass	_	_
+11	।	_	PUNCT	_	_	9	punct	_	_
