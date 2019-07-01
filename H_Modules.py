@@ -7,6 +7,13 @@ from anytree import (RenderTree, ContRoundStyle)
 from anytree.exporter import DotExporter 
 from IPython.display import Image
 
+def get_vib():
+	path_vib ="/home/kailash/n_tree-master/vibhakti"
+	f1 = open(path_vib)
+	vib = list(f1)
+	f1.close()
+	return(vib)
+
 #Function to create dataframe
 def create_dataframe(parse, path, filename):
 	count = 0
@@ -80,7 +87,7 @@ def punct_info(path_des, path, filename):
 		print(e)
 		k = 0
 		f = open(path+'/H_log.dat', 'a+')
-		f.write(filename +'\tRequired files not present-2\n')
+		f.write(filename +'\tH_sentence not present\n')
 		f.close()
 		return([k, punct_info1])
 
@@ -154,6 +161,56 @@ def form_final_json_tree(relation_df, node, sub_tree, clause):
 	clause.append(']\n}')
 	return(clause)
 
+#Function to modify output to add edge labels
+def add_edge_labels(path_des, filename):
+	f = open(path_des+filename)
+	h = list(f)
+	f.close()
+	space_separate = {}
+	for i in range(len(h)):
+		space_separate[i] = re.split(r' ', h[i])
+	for i in range(len(space_separate)):
+		if len(space_separate[i]) == 5:
+			und_sep = []
+			und_sep = re.split(r'[_]', space_separate[i][-1])
+			und_sep[-2] = und_sep[-2]+'";\n'
+			und_sep = und_sep[0:-1]
+			ele = und_sep[0]
+			for j in range(1, len(und_sep)):
+				ele = ele+'_'+und_sep[j]
+			space_separate[i][-1] = ele
+		for j in range(len(space_separate[i])):
+			if space_separate[i][j] == '->':
+				und_sep = []
+				und_sep = re.split(r'[_]', space_separate[i][j-1])
+				ele = und_sep[0]
+				for k in range(1, len(und_sep)-1):
+					ele = ele+'_'+und_sep[k]
+				ele = ele+'"'
+				space_separate[i][j-1] = ele
+				und_sep = []
+				und_sep = re.split(r'[_]', space_separate[i][j+1])
+				ele = und_sep[0]
+				for k in range(1, len(und_sep)-1):
+					ele = ele+'_'+und_sep[k]
+				ele = ele+'"'
+				space_separate[i][j+1] = ele
+				space_separate[i].append('[label="'+und_sep[-1][0:-3]+'" fontcolor="Red"]'+und_sep[-1][-2:])
+	f = open(path_des+'/H_sentence_updated')
+	sentence = f.readline()
+	f.close()
+	sentence1 = wx_utf_converter_sentence(sentence).rstrip()
+	f = open(path_des+filename, 'w+')
+	for i in range(len(space_separate)):
+		for j in space_separate[i]:
+			if j[-2:] != '\n':
+				f.write(str(j)+' ')
+			else:
+				f.write(str(j)) 
+		if i == 0:
+			f.write('    labelloc="t";\n     label="'+sentence1+'\\n\\n"\n ')
+	f.close()
+
 #Function to draw tree
 def drawtree(string, path_des, path, filename):
 	try:
@@ -161,12 +218,8 @@ def drawtree(string, path_des, path, filename):
 		importer = JsonImporter()
 		root = importer.import_(string)
 		print(RenderTree(root, style=ContRoundStyle()))
-		DotExporter(root).to_picture(path_des+filename)
-		Image(filename=path_des+filename)
-		
-		DotExporter(root).to_dotfile(path_des+ "/tree.dot")
-		#Source.from_file(path_des + "/tree.dot")
-		#DotExporter(path_des+"/tree.dot").to_picture(path_des+"/tree.dot")
+		DotExporter(root).to_dotfile(path_des+filename)
+		add_edge_labels(path_des, filename)
 		return(error_flag)
 	except:
 		error_flag = 1
@@ -177,9 +230,7 @@ def drawtree(string, path_des, path, filename):
 
 #Function to correct obl errors
 def obl_err(relation_df, sub_tree, path, filename):
-	path_vib ="vibhakti"
-	f1 = open(path_vib)
-	vib = list(f1)
+	vib = get_vib()
 	for i in range(0, len(vib)):
 		vib[i] = vib[i].rstrip()
 	new_rel = ""
@@ -228,7 +279,6 @@ def obl_err(relation_df, sub_tree, path, filename):
 						fobl.write(filename+'\t'+str(lol)+'\tobl occurs without case or mark as children\n')
 				else:
 					fobl.write(filename+'\t'+str(lol)+'\tobl occurs without case or mark as children\n')
-	f1.close()
 	fobl.close()
 	return ([relation_df, sub_tree])
 
@@ -366,9 +416,7 @@ def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
 def lwg(path_des, path, filename):
 	try:
 		error_flag = 0
-		path_vib ="vibhakti"
-		f = open(path_vib)
-		vib = list(f)
+		vib = get_vib()
 		for i in range(0, len(vib)):
 			vib[i] = vib[i].rstrip()
 		vib_list = []
@@ -393,11 +441,10 @@ def lwg(path_des, path, filename):
 					if word2 in vib:
 						word = word+ "_" + vib_list[i+2]
 				f_lwg.write("(H_def_lwg-wid-word-postpositions\t"+word+"\t"+str(i)+"\t"+vib_list[i-1]+"\t"+str(i+1)+")\n")
-				print("***************************************************************\n")
 	except:
 		error_flag = 1
 		f = open(path+'/H_log.dat', 'a+')
-		f.write(filename +'\tRequired files not present-2\n')
+		f.write(filename +'\tH_sentence not present\n')
 		f.close()
 	return(error_flag)
 
@@ -509,7 +556,6 @@ def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
 			print('')
 	if flag == 1:
 		#relation deletion and updation
-		print(list1)
 		f = open(path+'/tam_vib_error_log', 'a+')
 		for j in list1:
 			if j not in sub_tree:
@@ -520,7 +566,7 @@ def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
 		return(relation_df)
 	else:
 		f = open(path+'/H_log.dat', 'a+')
-		f.write(filename +'\tRequired files not present-3\n')
+		f.write(filename +'\tBoth revised_manual_local_word_group.dat as well as manual_local_word_group.dat are not present\n')
 		f.close()
 		return(relation_df)
 

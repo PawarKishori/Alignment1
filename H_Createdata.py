@@ -56,7 +56,6 @@ for parse in files:
 
 	#Calling function to draw tree initial tree
 	file = '/H_tree_initial.png'
-	#file = '/H_tree_initial.png'
 	H_Modules.drawtree(string, path_des, path, file)
 
 	#Calling function to correct obl errors
@@ -83,7 +82,7 @@ for parse in files:
 	if error_flag == 1:
 		continue
 
-	#Calling functions from to get mappings of wordid-word and parserid-wordid
+	#Calling function to get mappings of wordid-word and parserid-wordid
 	wordid_word = H_Modules.wordid_word_mapping(relation_df)
 	parserid_wordid = H_Modules.parserid_wordid_mapping(relation_df)
 
@@ -97,16 +96,13 @@ for parse in files:
 	H_Modules.write_parserid_wordid(path_des, parserid_wordid)
 
 	#Calling function to create lwg
-	#print("####################################################")
 	error_flag = H_Modules.lwg(path_des, path, filename)
-	#print("####################################################")
 
 	#Calling function to update tam and vibakthi details
 	relation_df = H_Modules.tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
 
 	#Calling function to create a dictionary
 	sub_tree = H_Modules.create_dict(relation_df)
-
 
 	#Udpate UTF
 	relation_df = H_Modules.wx_utf_converter(relation_df.iloc[:, 0:-1])

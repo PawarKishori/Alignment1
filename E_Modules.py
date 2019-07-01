@@ -7,13 +7,20 @@ from anytree import (RenderTree, ContRoundStyle)
 from anytree.exporter import DotExporter 
 from IPython.display import Image
 
+def get_vib():
+	path_vib ="/home/kailash/n_tree-master/vibhakti"
+	f1 = open(path_vib)
+	vib = list(f1)
+	f1.close()
+	return(vib)
+
 #Function to create dataframe
 def create_dataframe(parse, path, filename):
 	count = 0
 	error_flag = 0
-	df= pd.read_csv(parse, sep='\t',names=['PID','WORD','1-','POS','2-','3-','PIDWITH','RELATION','4-','5-'], index_col = False, quoting = 3)
+	df = pd.read_csv(parse, sep='\t',names=['PID','WORD','1-','POS','2-','3-','PIDWITH','RELATION','4-','5-'], quoting = 3, index_col = False)
 	df.index = np.arange(1,len(df)+1)
-	df1= df[['PID','WORD','POS','RELATION','PIDWITH']]
+	df1 = df[['PID','WORD','POS','RELATION','PIDWITH']]
 	relation_df =  pd.concat([df1.PID, df1.WORD,df1.POS, df1.RELATION, df1.PIDWITH], axis=1)
 	for i in range(len(relation_df)):
 		if relation_df.iloc[i]['RELATION'] == 'root':
@@ -25,7 +32,6 @@ def create_dataframe(parse, path, filename):
 		f.close()
 	if count != 1:
 		error_flag = 1
-		print(path)
 		f = open(path+'/E_log.dat', 'a+')
 		f.write(filename +'\tMore than 1 tree\n')
 		f.close()
@@ -34,19 +40,31 @@ def create_dataframe(parse, path, filename):
 #Function to save punctuation information
 def punct_info(path_des, path, filename):
 	try:
-		punct=['=','-',')','/',',','+','"','`','!','^','(','@','#','{','*','.',"'",'|','?','}','%','[','$',';','_','>','~',':','&','<',']']
+		punct_info1 = []
+		punct=['!','"','#','$','%','&',"'",'(',')','*','+',',','-','.','/',':',';','<','=','>','?','@','[','\\',']','^','_','`','{','|','}','~']
 		f = open(path_des+'/E_sentence')
+		space_separate_final = []
 		sentence = f.readline()
 		space_separate = re.split(r' ',sentence)
 		space_separate[-1] = space_separate[-1].rstrip()
-		f1 = open(path_des+"/E_punct_info.dat", 'w+')
 		k = 0
+		for i in range(0, len(space_separate)):
+			if space_separate[i] != '':
+				space_separate_final.append(space_separate[i])
+		space_separate = space_separate_final
+		f2 = open(path_des+"/E_sentence_updated", 'w+')
+		for i in range(0, len(space_separate)):
+			if i == len(space_separate) - 1:
+				f2.write(space_separate[i]+'\n')
+			else:
+				f2.write(space_separate[i]+' ')
+		f2.close()
 		for i in range(0, len(space_separate)):
 			if space_separate[i] not in punct:
 				k = k+1
-			right = 0
-			left = 0
-			middle = 0
+				right = 0
+				left = 0
+				middle = 0
 			if space_separate[i][-1] in punct:
 				right = 1
 				word_r = space_separate[i][0:-1]
@@ -58,20 +76,20 @@ def punct_info(path_des, path, filename):
 				word_l = space_separate[i-1]
 				word_r = space_separate[i+1]
 			if middle == 1:
-				f1.write("(E_punc-pos-ID\t"+space_separate[i]+"\tM\t"+str(k)+"\t"+str(k+1)+")\n")
+				punct_info1.append([space_separate[i], 'M', k, k+1])
 			elif left == 1:
-				f1.write("(E_punc-pos-ID\t"+space_separate[i][0]+"\tL\t"+str(k+1)+")\n")
+				punct_info1.append([space_separate[i][0], 'L', k, -1])
 			elif right == 1:
-				f1.write("(E_punc-pos-ID\t"+space_separate[i][-1]+"\tR\t"+str(k+1)+")\n")
-		f1.close()
+				punct_info1.append([space_separate[i][-1], 'R', -1, k])
 		f.close()
-		return(k)
-	except:
+		return([k, punct_info1])
+	except Exception as e:
+		print(e)
 		k = 0
 		f = open(path+'/E_log.dat', 'a+')
-		f.write(filename +'\tRequired files not present-2\n')
+		f.write(filename +'\tE_sentence not present\n')
 		f.close()
-		return(k)
+		return([k, punct_info1])
 
 #Function to convert PID to WID and update corresponding Parent ID's
 def data_PID_PIDWITH_mod(relation_df, dflen, path, filename):
@@ -143,6 +161,56 @@ def form_final_json_tree(relation_df, node, sub_tree, clause):
 	clause.append(']\n}')
 	return(clause)
 
+#Function to modify output to add edge labels
+def add_edge_labels(path_des, filename):
+	f = open(path_des+filename)
+	h = list(f)
+	f.close()
+	space_separate = {}
+	for i in range(len(h)):
+		space_separate[i] = re.split(r' ', h[i])
+	for i in range(len(space_separate)):
+		if len(space_separate[i]) == 5:
+			und_sep = []
+			und_sep = re.split(r'[_]', space_separate[i][-1])
+			und_sep[-2] = und_sep[-2]+'";\n'
+			und_sep = und_sep[0:-1]
+			ele = und_sep[0]
+			for j in range(1, len(und_sep)):
+				ele = ele+'_'+und_sep[j]
+			space_separate[i][-1] = ele
+		for j in range(len(space_separate[i])):
+			if space_separate[i][j] == '->':
+				und_sep = []
+				und_sep = re.split(r'[_]', space_separate[i][j-1])
+				ele = und_sep[0]
+				for k in range(1, len(und_sep)-1):
+					ele = ele+'_'+und_sep[k]
+				ele = ele+'"'
+				space_separate[i][j-1] = ele
+				und_sep = []
+				und_sep = re.split(r'[_]', space_separate[i][j+1])
+				ele = und_sep[0]
+				for k in range(1, len(und_sep)-1):
+					ele = ele+'_'+und_sep[k]
+				ele = ele+'"'
+				space_separate[i][j+1] = ele
+				space_separate[i].append('[label="'+und_sep[-1][0:-3]+'" fontcolor="Red"]'+und_sep[-1][-2:])
+	f = open(path_des+'/E_sentence_updated')
+	sentence = f.readline()
+	f.close()
+	sentence1 = sentence.rstrip()
+	f = open(path_des+filename, 'w+')
+	for i in range(len(space_separate)):
+		for j in space_separate[i]:
+			if j[-2:] != '\n':
+				f.write(str(j)+' ')
+			else:
+				f.write(str(j)) 
+		if i == 0:
+			f.write('    labelloc="t";\n     label="'+sentence1+'\\n\\n"\n ')
+	f.close()
+
 #Function to draw tree
 def drawtree(string, path_des, path, filename):
 	try:
@@ -150,8 +218,8 @@ def drawtree(string, path_des, path, filename):
 		importer = JsonImporter()
 		root = importer.import_(string)
 		print(RenderTree(root, style=ContRoundStyle()))
-		DotExporter(root).to_picture(path_des+filename)
-		Image(filename=path_des+filename)
+		DotExporter(root).to_dotfile(path_des+filename)
+		add_edge_labels(path_des, filename)
 		return(error_flag)
 	except:
 		error_flag = 1
@@ -162,9 +230,7 @@ def drawtree(string, path_des, path, filename):
 
 #Function to correct obl errors
 def obl_err(relation_df, sub_tree, path, filename):
-	path_vib ="/home/kailash/n_tree-master/vibhakti"
-	f1 = open(path_vib)
-	vib = list(f1)
+	vib = get_vib()
 	for i in range(0, len(vib)):
 		vib[i] = vib[i].rstrip()
 	new_rel = ""
@@ -213,7 +279,6 @@ def obl_err(relation_df, sub_tree, path, filename):
 						fobl.write(filename+'\t'+str(lol)+'\tobl occurs without case or mark as children\n')
 				else:
 					fobl.write(filename+'\t'+str(lol)+'\tobl occurs without case or mark as children\n')
-	f1.close()
 	fobl.close()
 	return ([relation_df, sub_tree])
 
@@ -234,7 +299,7 @@ def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
 	conjunctions = ['and']
 	solo_conj = ['but']
 	try:
-		f = open(path+'/cc_list', 'r+')
+		f = open(path+'/E_cc_list', 'r+')
 		list_of_cc = list(f)
 		f.close()
 	except:
@@ -243,7 +308,7 @@ def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
 		list_of_cc[i] = list_of_cc[i].rstrip()
 	mod = 0
 	conj = 1
-	f = open(path+'/E_cc_log.dat', 'a+')
+	f = open(path+'/E_cc_log', 'a+')
 	i = -1
 	while i < len(stack)-1:
 		i = i+1
@@ -323,12 +388,12 @@ def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
 		if i[1] == 'cc':
 			if i[3] not in list_of_cc:
 				list_of_cc.append(i[3])
-				if i[3] not in solo_conj:
-					for j in stack:
-						if j[0] == i[2] and j[1] != 'conj':
-							f.write(filename+'\t'+i[3]+' cannot ocur without conj\n')
-							mod = 0
-							break
+			if i[3] not in solo_conj:
+				for j in stack:
+					if j[0] == i[2] and j[1] != 'conj':
+						f.write(filename+'\t'+i[3]+' cannot ocur without conj\n')
+						mod = 0
+						break
 	if mod == 1:
 		f.write(str(filename)+'\tconj-cc correction made\n')
 		for i in sub_tree:
@@ -351,16 +416,14 @@ def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
 def lwg(path_des, path, filename):
 	try:
 		error_flag = 0
-		path_vib ="/home/kailash/n_tree-master/vibhakti"
-		f = open(path_vib)
-		vib = list(f)
+		vib = get_vib()
 		for i in range(0, len(vib)):
 			vib[i] = vib[i].rstrip()
 		vib_list = []
-		with open(path_des + "/E_sentence", "r") as f:
+		with open(path_des + "/E_sentence_updated", "r") as f:
 			for line in f:
 				vib_list.extend(line.split())
-		punct=['=','-',')','/',',','+','"','`','!','^','(','@','#','{','*','.',"'",'|','?','}','%','[','$',';','_','>','~',':','&','<',']']
+		punct = ['!','"','#','$','%','&',"'",'(',')','*','+',',','-','.','/',':',';','<','=','>','?','@','[','\\',']','^','_','`','{','|','}','~']
 		for i in range(0, len(vib_list)):
 			if vib_list[i][-1] in punct:
 				vib_list[i] = vib_list[i][0:-1]
@@ -381,13 +444,14 @@ def lwg(path_des, path, filename):
 	except:
 		error_flag = 1
 		f = open(path+'/E_log.dat', 'a+')
-		f.write(filename +'\tRequired files not present-2\n')
+		f.write(filename +'\tE_sentence not present\n')
 		f.close()
 	return(error_flag)
 
 #function to update tam and vibakthi details
 def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename):
 	list1 = []
+	stack = BFS(relation_df, sub_tree)
 	if error_flag == 0:
 		#Vib file opening
 		vib_path = path_des+'/E_def_lwg-wid-word-postpositions_new'
@@ -414,19 +478,41 @@ def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
 		#TAM updation
 		for i in range(0, len(tam)):
 			if tam[i][5] != '0)':
+				error_flag = 0
+				pos1 = []
+				head = -1
 				split = tam[i][5].split()
-				try:
-					split[1]
-					relation_df.loc[relation_df.PID == int(split[0]), 'WORD'] = tam[i][4]
-					pos = int(split[1][0:-1])
-					list1.append(pos)
-				except:
-					print("")
+				for j in range(0, len(split)):
+					if j == len(split) - 1:
+						pos = int(split[j][0:-1])
+					else:
+						pos = int(split[j])
+					pos1.append(pos)
+				for j in range(0, len(pos1)):
+					id = relation_df.loc[relation_df.PID == pos1[j], 'PIDWITH'].iloc[0]
+					if id not in pos1:
+						if head != -1:
+							error_flag = 1
+							f = open(path+'/E_log.dat', 'a+')
+							f.write(str(filename) +'\tlwg parser mismatch around node '+str(head)+'\n')
+							f.close()
+							break
+						else:
+							head = pos1[j]
+				if error_flag != 1:
+					relation_df.loc[relation_df.PID == head, 'WORD'] = tam[i][4]
+					dele = []
+					for j in range(0, len(stack)):
+						if stack[j][0] in pos1 and stack[j][0] != head:
+							dele.append(stack[j][0])
+					dele.reverse()
+					for j in range(0, len(dele)):
+						list1.append(dele[j])
 	except:
 		print('')
 	if flag == 0:
 		try:
-			tam_path =path_des + "manual_local_word_group.dat"
+			tam_path =path_des + "/manual_local_word_group.dat"
 			f = open(tam_path)
 			flag == 1
 			tam = list(f)
@@ -436,19 +522,40 @@ def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
 			#TAM updation
 			for i in range(0, len(tam)):
 				if tam[i][3] != '0)':
+					error_flag = 0
+					pos1 = []
+					head = -1
 					split = tam[i][3].split()
-					try:
-						split[1]
-						relation_df.loc[relation_df.PID == int(split[0]), 'WORD'] = tam[i][2]
-						pos = int(split[1][0:-1])
-						list1.append(pos)
-					except:
-						print("")
+					for j in range(0, len(split)):
+						if j == len(split) - 1:
+							pos = int(split[j][0:-1])
+						else:
+							pos = int(split[j])
+						pos1.append(pos)
+					for i in range(0, len(pos1)):
+						id = relation_df.loc[relation_df.PID == pos1[i], 'PIDWITH'].iloc[0]
+						if id not in pos1:
+							if head != -1:
+								error_flag = 1
+								f = open(path+'/E_log.dat', 'a+')
+								f.write(str(filename) +'\tSubtree error around node '+str(head)+'\n')
+								f.close()
+								break
+							else:
+								head = pos1[j]
+					if error_flag != 1:
+						relation_df.loc[relation_df.PID == head, 'WORD'] = tam[i][2]
+						dele = []
+						for j in range(0, len(stack)):
+							if stack[i][0] in pos:
+								dele.append(stack[i][0])
+						dele.reverse()
+						for i in range(0, len(dele)):
+							list1.append(dele[i])
 		except:
 			print('')
 	if flag == 1:
 		#relation deletion and updation
-		print(list1)
 		f = open(path+'/tam_vib_error_log', 'a+')
 		for j in list1:
 			if j not in sub_tree:
@@ -459,31 +566,44 @@ def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
 		return(relation_df)
 	else:
 		f = open(path+'/E_log.dat', 'a+')
-		f.write(filename+'\tRequired files not present-3\n')
+		f.write(filename +'\tBoth revised_manual_local_word_group.dat and manual_local_word_group.dat files not present\n')
 		f.close()
 		return(relation_df)
 
+def find_single_line_tree(node, sub_tree, clause):
+	clause.append(node)
+	if node in sub_tree:
+		for i in sub_tree[node]:
+			find_single_line_tree(i[0], sub_tree, clause)
+	return(clause)
+
 #Function to form Word-ID to Word mappings
-def wordid_word_mapping(path_des, relation_df):
-	f = open(path_des+'/E_wordid-word_mapping.dat','w+')
+def wordid_word_mapping(relation_df):
+	wordid_word = []
 	for i in relation_df.index:
-		f.write("(E_wordid-word\t"+str(relation_df.PID[i])+"\t"+str(relation_df.WORD[i])+")\n")
-	f.close()
+		wordid_word.append([relation_df.PID[i], relation_df.WORD[i]])
+	return(wordid_word)
+
+def wordid_word_dict(wordid_word):
+	wordid_word_dict = {}
+	for pair  in wordid_word:
+		wordid_word_dict[0]='root'
+		wordid_word_dict[pair[0]]=pair[1]
+	return(wordid_word_dict)
 
 #Function to form Parser-ID to Word-ID mappings
-def parserid_wordid_mapping(path_des, relation_df):
-	f = open(path_des+'/E_parserid-wordid_mapping.dat','w+')
+def parserid_wordid_mapping(relation_df):
+	parserid_wordid = []
 	for i in relation_df.index:
-		f.write("(E_parserid-wordid\tP"+str(i)+"\t"+str(relation_df.PID[i])+")\n")
-	f.close()
+		parserid_wordid.append([i, relation_df.PID[i]])
+	return(parserid_wordid)
 
 #Function to creation relation facts
-def relation_facts(path_des, relation_df):
-	f = open(path_des+'/E_relation_final_facts', 'w+')
+def relation_facts(relation_df):
+	relation_facts1 = []
 	for i in relation_df.index:
-		f.write('(E_cid-word-hid-pos-relation\t'+str(relation_df.PID[i])+'\t'+relation_df.WORD[i]+'\t'+str(relation_df.PIDWITH[i])+'\t'+relation_df.POS[i]+'\t'+relation_df.RELATION[i]+')\n')
-	f.close()
-	
+		relation_facts1.append([relation_df.PID[i], relation_df.WORD[i], relation_df.PIDWITH[i], relation_df.POS[i], relation_df.RELATION[i]])
+	return(relation_facts1)
 
 #Function to print tree tree in single line
 def DFS(node, sub_tree, relation_df, clause):
@@ -500,3 +620,57 @@ def DFS(node, sub_tree, relation_df, clause):
 			DFS(i[0], sub_tree, relation_df, clause)
 	clause.append(')')
 	return(clause)
+
+#Function to create groupings
+def write_groupings(path_des, wordid_word, wordid_word_dict, sub_tree):
+	for i in wordid_word:
+		clause = []
+		clause_list = []
+		clause_list = find_single_line_tree(i[0], sub_tree, clause_list)
+		clause_list.sort()
+		clause_list_string = [str(i) for i in clause_list]
+		string = " ".join(clause_list_string)
+		f = open(path_des + '/E_grouping_ids.dat', 'a+')
+		f.write('(E_grp_hid-grp_elem_ids\t'+ str(i[0]) + '\t' + string + ')\n')
+		f.close()
+		clause_list_word = [wordid_word_dict[i] for i in clause_list]
+		string_words = ' '.join(clause_list_word)
+		f = open(path_des + '/E_grouping_words.dat', 'a+')
+		f.write('(E_grp_hword-grp_elem_words\t'+ wordid_word_dict[i[0]] + '\t' + string_words + ')\n')
+		f.close()
+		f = open(path_des + '/E_grouping_template.dat', 'a+')
+		f.write('(E_group (language english) (grp_hid '+ str(i[0]) +') (grp_head_word '+  wordid_word_dict[i[0]] +' ) (grp_element_ids '+ string +') (grp_element_words '+ string_words +'))\n')
+		f.close()
+
+#Function to store the punct details
+def write_punct_info(path_des, punct_info):
+	f = open(path_des+"/E_punct_info.dat", 'w+')
+	for i in range(0, len(punct_info)):
+		if punct_info[i][1] == 'M':
+			f.write("(E_punc-pos-ID\t"+punct_info[i][0]+"\tM\t"+str(punct_info[i][2])+"\t"+str(punct_info[i][3])+")\n")
+		elif punct_info[i][1] == 'L':
+			f.write("(E_punc-pos-ID\t"+punct_info[i][0]+"\tL\t"+str(punct_info[i][2])+")\n")
+		else:
+			f.write("(E_punc-pos-ID\t"+punct_info[i][0]+"\tR\t"+str(punct_info[i][3])+")\n")
+	f.close()
+
+#Function to store the wordid word mappings
+def write_wordid_word(path_des, wordid_word):
+	f = open(path_des+'/E_wordid-word_mapping.dat','w+')
+	for i in range(0, len(wordid_word)):
+		f.write("(E_wordid-word\t"+str(wordid_word[i][0])+"\t"+wordid_word[i][1]+")\n")
+	f.close()
+
+#Function to store the parserid wordid mappings
+def write_parserid_wordid(path_des, parserid_wordid):
+	f = open(path_des+'/E_parserid-wordid_mapping.dat', 'w+')
+	for i in range(0, len(parserid_wordid)):
+		f.write("(E_parserid-wordid\tP"+str(parserid_wordid[i][0])+"\t"+str(parserid_wordid[i][1])+")\n")
+	f.close()
+
+#Function to store the relation details
+def write_relation_facts(path_des, relation_facts):
+	f = open(path_des+'/E_relation_final_facts', 'w+')
+	for i in range(0, len(relation_facts)):
+		f.write('(E_cid-word-hid-pos-relation\t'+str(relation_facts[i][0])+'\t'+relation_facts[i][1]+'\t'+str(relation_facts[i][2])+'\t'+relation_facts[i][3]+'\t'+relation_facts[i][4]+')\n')
+	f.close()
