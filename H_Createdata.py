@@ -5,11 +5,18 @@ import glob,re,H_Modules
 path = input ("Enter path: ")
 path1 = path+'/*/hindi_dep_parser_original.dat'
 files = sorted(glob.glob(path1))
+
+#calling function to clear old log
+H_Modules.clear_logs(path)
+
 for parse in files:
 	print(parse)
 	res = re.split(r'/', parse)
 	filename = res[-2]
 	path_des = path+'/'+filename
+
+	#Calling function to clear old files
+	H_Modules.clear_files(path_des)
 
 	#create dataframe
 	[relation_df, error_flag] = H_Modules.create_dataframe(parse, path, filename)
@@ -44,7 +51,7 @@ for parse in files:
 	relation_df = H_Modules.wx_utf_converter(relation_df)
 
 	#Calling function to create json input string
-	with open(path_des+'/H_clause_single_line_words_initial' , 'w') as f:
+	with open(path_des+'/H_clause_single_line_words_initial' , 'w+') as f:
 		clause = []
 		clause = H_Modules.form_final_json_tree(relation_df, 0, sub_tree, clause)
 		n = len(clause)
@@ -55,8 +62,8 @@ for parse in files:
 		f.write(string)
 
 	#Calling function to draw tree initial tree
-	file = '/H_tree_initial.png'
-	H_Modules.drawtree(string, path_des, path, file)
+	file = '/H_tree_initial'
+	H_Modules.drawtree(string, path_des, path, filename, file)
 
 	#Calling function to correct obl errors
 	[relation_df, sub_tree] = H_Modules.obl_err(relation_df, sub_tree, path, filename)
@@ -66,7 +73,7 @@ for parse in files:
 	[relation_df, stack, sub_tree] = H_Modules.conj_cc_resolution(relation_df, stack, sub_tree, path, filename)
 
 	#Calling function to create json input string
-	with open(path_des+'/H_clause_single_line_words_corrected' , 'w') as f:
+	with open(path_des+'/H_clause_single_line_words_corrected' , 'w+') as f:
 		clause = []
 		clause = H_Modules.form_final_json_tree(relation_df, 0, sub_tree, clause)
 		n = len(clause)
@@ -77,8 +84,8 @@ for parse in files:
 		f.write(string)
 
 	#Calling function to draw tree corrected tree
-	file = '/H_tree_corrected.png'
-	error_flag = H_Modules.drawtree(string, path_des, path, file)
+	file = '/H_tree_corrected'
+	error_flag = H_Modules.drawtree(string, path_des, path, filename, file)
 	if error_flag == 1:
 		continue
 
@@ -109,7 +116,7 @@ for parse in files:
 	print(relation_df)
 
 	#Calling function to create json input string
-	with open(path_des+'/H_clause_single_line_words_final' , 'w') as f:
+	with open(path_des+'/H_clause_single_line_words_final' , 'w+') as f:
 		clause = []
 		clause = H_Modules.form_final_json_tree(relation_df, 0, sub_tree, clause)
 		n = len(clause)
@@ -120,8 +127,8 @@ for parse in files:
 		f.write(string)
 
 	#Calling function to draw tree final tree
-	file = '/H_tree_final.png'
-	error_flag = H_Modules.drawtree(string, path_des, path, file)
+	file = '/H_tree_final'
+	error_flag = H_Modules.drawtree(string, path_des, path, filename, file)
 	if error_flag == 1:
 		continue
 

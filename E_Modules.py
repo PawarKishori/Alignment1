@@ -6,13 +6,29 @@ from anytree.importer import JsonImporter
 from anytree import (RenderTree, ContRoundStyle)
 from anytree.exporter import DotExporter 
 from IPython.display import Image
+from subprocess import check_call
 
+#Function to get list of vibhakti
 def get_vib():
 	path_vib ="/home/kailash/n_tree-master/vibhakti"
 	f1 = open(path_vib)
 	vib = list(f1)
 	f1.close()
 	return(vib)
+
+#Function to delete old log
+def clear_logs(path):
+	f = open(path+'/E_log.dat', 'w+')
+	f = open(path+'/E_obl_log.dat', 'w+')
+	f = open(path+'/E_cc_log.dat', 'w+')
+	f.close()
+
+#Function to clear residue files from previous run
+def clear_files(path_des):
+	f = open(path_des+'/E_grouping_ids.dat', 'w+')
+	f = open(path_des+'/E_grouping_words.dat', 'w+')
+	f = open(path_des+'/E_grouping_template.dat', 'w+')
+	f.close()
 
 #Function to create dataframe
 def create_dataframe(parse, path, filename):
@@ -212,14 +228,16 @@ def add_edge_labels(path_des, filename):
 	f.close()
 
 #Function to draw tree
-def drawtree(string, path_des, path, filename):
+def drawtree(string, path_des, path, filename, file):
 	try:
 		error_flag = 0
 		importer = JsonImporter()
 		root = importer.import_(string)
+		file1 = file+'.dot'
 		print(RenderTree(root, style=ContRoundStyle()))
-		DotExporter(root).to_dotfile(path_des+filename)
-		add_edge_labels(path_des, filename)
+		DotExporter(root).to_dotfile(path_des+file1)
+		add_edge_labels(path_des, file1)
+		check_call(['dot','-Tpng',path_des+file1,'-o',path_des+file+'.png'])
 		return(error_flag)
 	except:
 		error_flag = 1
@@ -235,7 +253,8 @@ def obl_err(relation_df, sub_tree, path, filename):
 		vib[i] = vib[i].rstrip()
 	new_rel = ""
 	no = 0
-	fobl = open(path+'/E_obl_log','a+')
+	f = open(path+'/E_log.dat', 'a+')
+	fobl = open(path+'/E_obl_log.dat','a+')
 	for i in sorted(sub_tree.keys()):
 		for j in range(0, len(sub_tree[i])):
 			if sub_tree[i][j][1] == "obl":
@@ -274,11 +293,12 @@ def obl_err(relation_df, sub_tree, path, filename):
 						relation_df.at[relation_df.loc[relation_df['PID'] == sub_tree[i][j][0]].index[0], 'RELATION'] = new_rel
 						fobl.write(filename+'\t'+str(lol)+'\tobl correction made\n')
 					if ("error" in w and w != []):
-						fobl.write(filename+'\t'+str(lol)+'\tOccuring vibhakti not in list of vibhakti\n')
+						f.write(filename+'\t'+str(lol)+'\tOccuring vibhakti not in list of vibhakti\n')
 					if w == []:
-						fobl.write(filename+'\t'+str(lol)+'\tobl occurs without case or mark as children\n')
+						f.write(filename+'\t'+str(lol)+'\tobl occurs without case or mark as children\n')
 				else:
-					fobl.write(filename+'\t'+str(lol)+'\tobl occurs without case or mark as children\n')
+					f.write(filename+'\t'+str(lol)+'\tobl occurs without case or mark as children\n')
+	f.close()
 	fobl.close()
 	return ([relation_df, sub_tree])
 
@@ -299,16 +319,17 @@ def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
 	conjunctions = ['and']
 	solo_conj = ['but']
 	try:
-		f = open(path+'/E_cc_list', 'r+')
-		list_of_cc = list(f)
-		f.close()
+		fcclist = open(path+'/E_cc_list.dat', 'r+')
+		list_of_cc = list(fcclist)
+		fcclist.close()
 	except:
 		list_of_cc = []
 	for i in range(0, len(list_of_cc)):
 		list_of_cc[i] = list_of_cc[i].rstrip()
 	mod = 0
 	conj = 1
-	f = open(path+'/E_cc_log', 'a+')
+	f = open(path+'/E_log.dat', 'a+')
+	fcc = open(path+'/E_cc_log.dat', 'a+')
 	i = -1
 	while i < len(stack)-1:
 		i = i+1
@@ -395,7 +416,7 @@ def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
 						mod = 0
 						break
 	if mod == 1:
-		f.write(str(filename)+'\tconj-cc correction made\n')
+		fcc.write(str(filename)+'\tconj-cc correction made\n')
 		for i in sub_tree:
 			sub_tree[i].sort()
 			for j in sub_tree[i]:
@@ -405,10 +426,11 @@ def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
 						relation_df.at[k, 'PIDWITH'] = j[2]
 	else:
 		sub_tree = create_dict(relation_df)
-	f.close()
-	f = open(path+'/E_cc_list', 'w+')
+	fcclist = open(path+'/E_cc_list.dat', 'w+')
 	for i in range(0, len(list_of_cc)):
-		f.write(list_of_cc[i]+'\n')
+		fcclist.write(list_of_cc[i]+'\n')
+	fcclist.close()
+	fcc.close()
 	f.close()
 	return([relation_df, stack, sub_tree])
 
@@ -448,7 +470,7 @@ def lwg(path_des, path, filename):
 		f.close()
 	return(error_flag)
 
-#function to update tam and vibakthi details
+#Function to update tam and vibakthi details
 def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename):
 	list1 = []
 	stack = BFS(relation_df, sub_tree)
@@ -566,10 +588,11 @@ def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
 		return(relation_df)
 	else:
 		f = open(path+'/E_log.dat', 'a+')
-		f.write(filename +'\tBoth revised_manual_local_word_group.dat and manual_local_word_group.dat files not present\n')
+		f.write(filename +'\tBoth revised_manual_local_word_group.dat as well as manual_local_word_group.dat are not present\n')
 		f.close()
 		return(relation_df)
 
+#Function to store tree in single line
 def find_single_line_tree(node, sub_tree, clause):
 	clause.append(node)
 	if node in sub_tree:
@@ -584,6 +607,7 @@ def wordid_word_mapping(relation_df):
 		wordid_word.append([relation_df.PID[i], relation_df.WORD[i]])
 	return(wordid_word)
 
+#Function create wordid word dictionary
 def wordid_word_dict(wordid_word):
 	wordid_word_dict = {}
 	for pair  in wordid_word:

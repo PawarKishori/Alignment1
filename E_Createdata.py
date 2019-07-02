@@ -5,11 +5,18 @@ import glob,re,E_Modules
 path = input ("Enter path: ")
 path1 = path+'/*/E_conll_parse'
 files = sorted(glob.glob(path1))
+
+#calling function to clear old log
+E_Modules.clear_logs(path)
+
 for parse in files:
 	print(parse)   
 	res = re.split(r'/', parse)
 	filename = res[-2]
 	path_des = path+'/'+filename
+
+	#Calling function to clear old files
+	E_Modules.clear_files(path_des)
 
 	#create dataframe
 	[relation_df, error_flag] = E_Modules.create_dataframe(parse, path, filename)
@@ -55,8 +62,8 @@ for parse in files:
 		f.write(string)
 
 	#Calling function to draw tree initial tree
-	file = '/E_tree_initial.png'
-	E_Modules.drawtree(string, path_des, path, file)
+	file = '/E_tree_initial'
+	E_Modules.drawtree(string, path_des, path, filename, file)
 
 	# #Calling function to correct obl errors
 	# [relation_df, sub_tree] = E_Modules.obl_err(relation_df, sub_tree, path, filename)
@@ -77,8 +84,8 @@ for parse in files:
 		f.write(string)
 
 	#Calling function to draw tree corrected tree
-	file = '/E_tree_corrected.png'
-	error_flag = E_Modules.drawtree(string, path_des, path, file)
+	file = '/E_tree_corrected'
+	error_flag = E_Modules.drawtree(string, path_des, path, filename, file)
 	if error_flag == 1:
 		continue
 
@@ -120,8 +127,8 @@ for parse in files:
 	# 	f.write(string)
 
 	# #Calling function to draw tree final tree
-	# file = '/E_tree_final.png'
-	# error_flag = E_Modules.drawtree(string, patE_des, path, file)
+	# file = '/E_tree_final'
+	# error_flag = E_Modules.drawtree(string, patE_des, path, filename, file)
 	# if error_flag == 1:
 	# 	continue
 
