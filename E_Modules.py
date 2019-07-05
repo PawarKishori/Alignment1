@@ -739,3 +739,84 @@ def write_relation_facts(path_des, relation_facts):
 	for i in range(0, len(relation_facts)):
 		f.write('(E_cid-word-hid-pos-relation\t'+str(relation_facts[i][0])+'\t'+relation_facts[i][1]+'\t'+str(relation_facts[i][2])+'\t'+relation_facts[i][3]+'\t'+relation_facts[i][4]+')\n')
 	f.close()
+
+def if_then(relation_df, sub_tree):
+    flag_correct = 0
+    for i, value in sub_tree.items():
+        for j in range(0, len(value)):
+            if value[j][3] == "then":
+                then_node = value[j][0]
+                for k in range(0, len(value)):
+                    try:
+                        sub_tree[value[k][0]]
+                        for m in range(0, len(sub_tree[value[k][0]])):
+                            if sub_tree[value[k][m]][m][3] == "if":
+                                if_node = sub_tree[value[k][m]][m][0]
+                                flag_correct = 1
+                                break
+                    except:
+                        print("")
+                if flag_correct == 1:
+                    list1 = []
+                    flag_if = 0
+                    for i in relation_df.index:
+                        if relation_df.word[i] == "then":
+                            then_id = relation_df.PID[i]
+                            print(then_id)
+                            for j in relation_df.index:
+                                if relation_df.word[j] == "if" and relation_df.PID[j] not in list1: 
+                                    flag_if = 1
+                                    if_id = relation_df.PID[j]
+                                    print(if_id)
+                                    break
+                            if flag_if == 1:
+                                parent = relation_df.loc[relation_df.PID == if_id, 'PIDWITH'].iloc[0]
+                                parent_then = relation_df.loc[relation_df.PID == then_id, 'PIDWITH'].iloc[0]
+                                grandparent = relation_df.loc[relation_df.PID == parent_then, 'PIDWITH'].iloc[0]
+                                print(parent)
+                                print(parent_then)
+                                print(grandparent)
+                                relation_df.at[relation_df.loc[relation_df.PID == parent].index[0], 'PIDWITH'] = if_id
+                                relation_df.at[relation_df.loc[relation_df.PID == parent_then].index[0], 'PIDWITH'] = if_id
+                                relation_df.at[relation_df.loc[relation_df.PID == if_id].index[0], 'PIDWITH'] = grandparent
+                                relation_df.at[relation_df.loc[relation_df.PID == if_id].index[0], 'WORD'] = "if_then"
+                                relation_df = relation_df.drop(relation_df[relation_df.PID == then_id].index[0])
+                                list1.append(if_id)
+                            else:
+                                parent = relation_df.PIDWITH[i]
+                                grandparent = relation_df.loc[relation_df.PID == parent, 'PIDWITH'].iloc[0]
+                                print(parent)
+                                print(grandparent)
+                                relation_df.PIDWITH[parent] = relation_df.PID[i]
+                                relation_df.PIDWITH[i] = grandparent
+    return(relation_df)
+
+def either_or(relation_df, sub_tree):
+    flag_correct = 0
+    for i, value in sub_tree.items():
+        for j in range(0, len(value)):
+            if value[j][3] == "either":
+                either_node = value[j][0]
+                for k in range(0, len(value)):
+                    try:
+                        sub_tree[value[k][0]]
+                        for m in range(0, len(sub_tree[value[k][0]])):
+                            if sub_tree[value[k][m]][m][3] == "or":
+                                or_node = sub_tree[value[k][m]][m][0]
+                                flag_correct = 1
+                                break
+                    except:
+                        print("")
+                if flag_correct == 1:
+                    parent = i
+                    grandparent = relation_df.loc[relation_df.PID == parent, 'PIDWITH'].iloc[0]
+                    relation_df.at[relation_df.loc[relation_df.PID == either_node].index[0], 'PIDWITH'] = grandparent
+                    relation_df.at[relation_df.loc[relation_df.PID == either_node].index[0], 'WORD'] = "either_or"
+                    list1 = value
+                    for h in range(0, len(list1)):
+                        if list1[h][0] != either_node:
+                            print(list1[h][0])
+                            relation_df.at[relation_df.loc[relation_df.PID == list1[h][0]].index[0], 'PIDWITH'] = either_node
+                    relation_df.at[relation_df.loc[relation_df.PID == i].index[0], 'PIDWITH'] = either_node
+                    relation_df = relation_df.drop(relation_df[relation_df.PID == or_node].index[0])
+    return(relation_df)

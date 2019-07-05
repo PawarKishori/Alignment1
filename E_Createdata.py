@@ -3,7 +3,7 @@ import glob,re,E_Modules
 
 #file path and name
 path = input ("Enter path: ")
-path1 = path+'/*/E_conll_parse'
+path1 = path+'/2.*/E_conll_parse'
 files = sorted(glob.glob(path1))
 
 #calling function to clear old log
@@ -73,6 +73,9 @@ for parse in files:
 
 	# #Calling function to correct obl errors
 	# [relation_df, sub_tree] = E_Modules.obl_err(relation_df, sub_tree, path, filename)
+
+	relation_df = E_Modules.if_then(relation_df, sub_tree)
+	relation_df = E_Modules.either_or(relation_df, sub_tree)
 
 	#Calling function to correct cc-conj errors
 	stack = E_Modules.BFS(relation_df, sub_tree)
