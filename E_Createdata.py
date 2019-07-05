@@ -34,6 +34,9 @@ for parse in files:
 		f = open(path+'/E_log.dat', 'a+')
 		f.write(filename +'\tIncorrect splitting of words\n')
 		f.close()
+		f = open(path_des+'/E_log.dat', 'a+')
+		f.write('Incorrect splitting of words\n')
+		f.close()
 		continue
 	
 	#Calling function to store punct info
@@ -73,7 +76,7 @@ for parse in files:
 	[relation_df, stack, sub_tree] = E_Modules.conj_cc_resolution(relation_df, stack, sub_tree, path, filename)
 
 	#Calling function to create json input string
-	with open(path_des+'/E_clause_single_line_words_corrected' , 'w') as f:
+	with open(path_des+'/E_clause_single_line_words_corrected' , 'w+') as f:
 		clause = []
 		clause = E_Modules.form_final_json_tree(relation_df, 0, sub_tree, clause)
 		n = len(clause)
@@ -89,11 +92,11 @@ for parse in files:
 	if error_flag == 1:
 		continue
 
-	#Calling function to get mappings in wordid-word and parserid-word
+	#Calling function to get mappings in wordid-word and parserid-wordid
 	wordid_word = E_Modules.wordid_word_mapping(relation_df)
 	parserid_wordid = E_Modules.parserid_wordid_mapping(relation_df)
 	
-	#calling function to get wordid_word as dict
+	#Calling function to get wordid_word as dict
 	wordid_word_dict = E_Modules.wordid_word_dict(wordid_word)
 
 	#Calling function to store wordid word mappings
@@ -113,7 +116,6 @@ for parse in files:
 
 	# #Udpate UTF
 	# relation_df = E_Modules.wx_utf_converter(relation_df.iloc[:, 0:-1])
-	# print(relation_df)
 
 	# #Calling function to create json input string
 	# with open(patE_des+'/E_clause_single_line_words_final' , 'w') as f:

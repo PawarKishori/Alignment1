@@ -21,6 +21,7 @@ def clear_logs(path):
 	f = open(path+'/E_log.dat', 'w+')
 	f = open(path+'/E_obl_log.dat', 'w+')
 	f = open(path+'/E_cc_log.dat', 'w+')
+	f = open(path+'/E_tam_vib_log.dat', 'w+')
 	f.close()
 
 #Function to clear residue files from previous run
@@ -28,6 +29,7 @@ def clear_files(path_des):
 	f = open(path_des+'/E_grouping_ids.dat', 'w+')
 	f = open(path_des+'/E_grouping_words.dat', 'w+')
 	f = open(path_des+'/E_grouping_template.dat', 'w+')
+	f = open(path_des+'/E_log.dat', 'w+')
 	f.close()
 
 #Function to create dataframe
@@ -46,10 +48,16 @@ def create_dataframe(parse, path, filename):
 		f = open(path+'/E_log.dat', 'a+')
 		f.write(filename +'\tTree has non-int PID\n')
 		f.close()
+		f = open(path_des+'/E_log.dat', 'a+')
+		f.write('\tTree has non-int PID\n')
+		f.close()
 	if count != 1:
 		error_flag = 1
 		f = open(path+'/E_log.dat', 'a+')
 		f.write(filename +'\tMore than 1 tree\n')
+		f.close()
+		f = open(path+'/'+filename+'/E_log.dat', 'a+')
+		f.write('\tMore than 1 tree\n')
 		f.close()
 	return ([relation_df, error_flag])
 
@@ -99,11 +107,13 @@ def punct_info(path_des, path, filename):
 				punct_info1.append([space_separate[i][-1], 'R', -1, k])
 		f.close()
 		return([k, punct_info1])
-	except Exception as e:
-		print(e)
+	except:
 		k = 0
 		f = open(path+'/E_log.dat', 'a+')
 		f.write(filename +'\tE_sentence not present\n')
+		f.close()
+		f = open(path_des+'/E_log.dat', 'a+')
+		f.write('\tE_sentence not present\n')
 		f.close()
 		return([k, punct_info1])
 
@@ -130,6 +140,9 @@ def data_PID_PIDWITH_mod(relation_df, dflen, path, filename):
 			error_flag = 1
 			f = open(path+'/E_log.dat', 'a+')
 			f.write(filename +'\tPIDWITH assignment error\n')
+			f.close()
+			f = open(path+'/'+filename+'/E_log.dat', 'a+')
+			f.write('\tPIDWITH assignment error\n')
 			f.close()
 			break
 	return([relation_df, error_flag])
@@ -242,7 +255,10 @@ def drawtree(string, path_des, path, filename, file):
 	except:
 		error_flag = 1
 		f = open(path+'/E_log.dat', 'a+')
-		f.write(filename +'\tInvalid JSON format\n')
+		f.write(filename +'\tInvalid Drawtree input format\n')
+		f.close()
+		f = open(path_des+'/E_log.dat', 'a+')
+		f.write('\tInvalid Drawtree input format\n')
 		f.close()
 		return(error_flag)
 
@@ -254,7 +270,8 @@ def obl_err(relation_df, sub_tree, path, filename):
 	new_rel = ""
 	no = 0
 	f = open(path+'/E_log.dat', 'a+')
-	fobl = open(path+'/E_obl_log.dat','a+')
+	fobl = open(path+'/E_obl_log.dat', 'a+')
+	f1 = open(path+'/'+filename+'/E_log.dat', 'a+')
 	for i in sorted(sub_tree.keys()):
 		for j in range(0, len(sub_tree[i])):
 			if sub_tree[i][j][1] == "obl":
@@ -292,13 +309,18 @@ def obl_err(relation_df, sub_tree, path, filename):
 						sub_tree[i][j][1] = new_rel
 						relation_df.at[relation_df.loc[relation_df['PID'] == sub_tree[i][j][0]].index[0], 'RELATION'] = new_rel
 						fobl.write(filename+'\t'+str(lol)+'\tobl correction made\n')
+						f1.write(str(lol)+'\tobl correction made\n')
 					if ("error" in w and w != []):
 						f.write(filename+'\t'+str(lol)+'\tOccuring vibhakti not in list of vibhakti\n')
+						f1.write(str(lol)+'\tOccuring vibhakti not in list of vibhakti\n')
 					if w == []:
 						f.write(filename+'\t'+str(lol)+'\tobl occurs without case or mark as children\n')
+						f1.write(str(lol)+'\tobl occurs without case or mark as children\n')
 				else:
 					f.write(filename+'\t'+str(lol)+'\tobl occurs without case or mark as children\n')
+					f1.write(str(lol)+'\tobl occurs without case or mark as children\n')
 	f.close()
+	f1.close()
 	fobl.close()
 	return ([relation_df, sub_tree])
 
@@ -329,6 +351,7 @@ def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
 	mod = 0
 	conj = 1
 	f = open(path+'/E_log.dat', 'a+')
+	f1 = open(path+'/'+filename+'/E_log.dat', 'a+')
 	fcc = open(path+'/E_cc_log.dat', 'a+')
 	i = -1
 	while i < len(stack)-1:
@@ -336,40 +359,22 @@ def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
 		if stack[i][1] == 'conj':
 			conj = 1
 			cc = 0
-			if stack[i][0] in sub_tree:
-				for j in sub_tree[stack[i][0]]:
-					if j[1] =='cc':
-						if j[3] not in list_of_cc:
-							list_of_cc.append(j[3])
-						if cc == 0:
-							cc = 1
-							g_child = j[0]
-						else:
-							cc = 2
-							mod = 0
-							f.write(filename+'\tconj exists with more than 1 cc\n')
-							break
-			else:
-				cc = 0
+			for j in sub_tree[stack[i][2]]:
+				if j[1] =='cc':
+					if j[3] not in list_of_cc:
+						list_of_cc.append(j[3])
+					if cc == 0:
+						cc = 1
+						g_child = j[0]
+					else:
+						cc = 2
+						mod = 0
+						f.write(filename+'\tconj exists with more than 1 cc\n')
+						f1.write('conj exists with more than 1 cc\n')
+						break
 			if cc == 0:
 				continue
 			elif cc == 2:
-				break
-			else:
-				for j in sub_tree[stack[i][2]]:
-					if stack[i][0] != j[0] and j[1] == 'conj':
-						if j[0] in sub_tree:
-							for k in sub_tree[j[0]]:
-								if k[1] == 'cc':
-									if k[3] not in list_of_cc:
-										list_of_cc.append(k[3])
-									conj = 0
-									mod = 0
-									f.write(filename+'\tconj in parallel with both having cc\n')
-									break
-					if conj == 0:
-						break
-			if conj == 0:
 				break
 			else:
 				parent = stack[i][2]
@@ -413,10 +418,12 @@ def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
 				for j in stack:
 					if j[0] == i[2] and j[1] != 'conj':
 						f.write(filename+'\t'+i[3]+' cannot ocur without conj\n')
+						f1.write(i[3]+' cannot ocur without conj\n')
 						mod = 0
 						break
 	if mod == 1:
 		fcc.write(str(filename)+'\tconj-cc correction made\n')
+		f1.write('conj-cc correction made\n')
 		for i in sub_tree:
 			sub_tree[i].sort()
 			for j in sub_tree[i]:
@@ -467,6 +474,9 @@ def lwg(path_des, path, filename):
 		error_flag = 1
 		f = open(path+'/E_log.dat', 'a+')
 		f.write(filename +'\tE_sentence not present\n')
+		f.close()
+		f = open(path_des+'/E_log.dat', 'a+')
+		f.write('E_sentence not present\n')
 		f.close()
 	return(error_flag)
 
@@ -562,6 +572,9 @@ def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
 								f = open(path+'/E_log.dat', 'a+')
 								f.write(str(filename) +'\tSubtree error around node '+str(head)+'\n')
 								f.close()
+								f = open(path_des+'/E_log.dat', 'a+')
+								f.write('Subtree error around node '+str(head)+'\n')
+								f.close()
 								break
 							else:
 								head = pos1[j]
@@ -578,17 +591,27 @@ def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
 			print('')
 	if flag == 1:
 		#relation deletion and updation
-		f = open(path+'/tam_vib_error_log', 'a+')
+		f = open(path+'/E_tam_vib_log.dat', 'a+')
+		f1 = open(path+'/E_log.dat', 'a+')
+		f2 = open(path_des+'/E_log.dat', 'a+')
 		for j in list1:
 			if j not in sub_tree:
 				relation_df = relation_df.drop([relation_df.loc[relation_df['PID'] == j].index[0]], axis = 0)
+				f.write(filename+'\t'+str(j)+'\t'+'has been deleted\n')
+				f2.write(str(j)+'\t'+'has been deleted\n')
 			else:
-				f.write(filename+'\t'+str(j)+'\t'+'has children but is trying to be deleted\n')
+				f1.write(filename+'\t'+str(j)+'\t'+'has children but is trying to be deleted\n')
+				f2.write(str(j)+'\t'+'has children but is trying to be deleted\n')
 		f.close()
+		f1.close()
+		f2.close()
 		return(relation_df)
 	else:
 		f = open(path+'/E_log.dat', 'a+')
 		f.write(filename +'\tBoth revised_manual_local_word_group.dat as well as manual_local_word_group.dat are not present\n')
+		f.close()
+		f = open(path_des+'/H_log.dat', 'a+')
+		f.write('Both revised_manual_local_word_group.dat as well as manual_local_word_group.dat are not present\n')
 		f.close()
 		return(relation_df)
 

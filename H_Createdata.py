@@ -34,6 +34,9 @@ for parse in files:
 		f = open(path+'/H_log.dat', 'a+')
 		f.write(filename +'\tIncorrect splitting of words\n')
 		f.close()
+		f = open(path_des+'/H_log.dat', 'a+')
+		f.write('Incorrect splitting of words\n')
+		f.close()
 		continue
 
 	#Calling function to store punct info
@@ -113,7 +116,6 @@ for parse in files:
 
 	#Udpate UTF
 	relation_df = H_Modules.wx_utf_converter(relation_df.iloc[:, 0:-1])
-	print(relation_df)
 
 	#Calling function to create json input string
 	with open(path_des+'/H_clause_single_line_words_final' , 'w+') as f:
