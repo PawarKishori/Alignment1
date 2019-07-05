@@ -262,6 +262,24 @@ def drawtree(string, path_des, path, filename, file):
 		f.close()
 		return(error_flag)
 
+#Function to modify nmod relation
+def nmod_case(relation_df, sub_tree):
+    for i in relation_df.index:
+        if relation_df.RELATION[i] == 'nmod':
+            flag = 0
+            head = relation_df.PID[i]
+            if head in sub_tree:
+                for j in sub_tree[head]:
+                    if j[1] == 'case':
+                        if flag == 1:
+                            print('error')
+                        else:
+                            print(str(relation_df.PID[i])+'\t'+relation_df.RELATION[i])
+                            relation_df.RELATION[i] = relation_df.RELATION[i]+'-'+j[3]
+                            print(str(relation_df.PID[i])+'\t'+relation_df.RELATION[i])
+    sub_tree = create_dict(relation_df)
+    return[relation_df, sub_tree]
+
 #Function to correct obl errors
 def obl_err(relation_df, sub_tree, path, filename):
 	vib = get_vib()

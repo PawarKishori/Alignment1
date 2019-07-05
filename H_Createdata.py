@@ -68,6 +68,9 @@ for parse in files:
 	file = '/H_tree_initial'
 	H_Modules.drawtree(string, path_des, path, filename, file)
 
+	#Calling function to correct nmod relation
+	[relation_df, sub_tree] = H_Modules.nmod_case(relation_df, sub_tree)
+
 	#Calling function to correct obl errors
 	[relation_df, sub_tree] = H_Modules.obl_err(relation_df, sub_tree, path, filename)
 
