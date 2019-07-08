@@ -10,11 +10,18 @@ from subprocess import check_call
 
 #Function to get list of vibhakti
 def get_vib():
-	path_vib ="/home/kailash/n_tree-master/vibhakti"
-	f1 = open(path_vib)
-	vib = list(f1)
-	f1.close()
+	path_vib ="/home/aishwarya/Alignment1/vibhakti"
+	f = open(path_vib)
+	vib = list(f)
+	f.close()
 	return(vib)
+
+def vib_write(vib):
+	path_vib ="/home/aishwarya/Alignment1/vibhakti"
+	f = open(path_vib, 'w+')
+	for i in range(0, len(vib)):
+		f.write(vib[i]+'\n')
+	f.close()
 
 #Function to delete old log 
 def clear_logs(path):
@@ -298,7 +305,6 @@ def obl_err(relation_df, sub_tree, path, filename):
 				new_rel = ""
 				word1 = ""
 				if lol in sub_tree:
-					n = 0
 					for k in range(0, len(sub_tree[lol])):
 						if sub_tree[lol][k][1] == "case" or sub_tree[lol][k][1] == "mark":
 							word0 = sub_tree[lol][k][0]
@@ -310,27 +316,21 @@ def obl_err(relation_df, sub_tree, path, filename):
 								if relation_df.loc[relation_df['PID'] == word0+2, 'RELATION'].iloc[0] == "case" or relation_df.loc[relation_df['PID'] == word0+2, 'RELATION'].iloc[0] == "mark":
 									word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + " " + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]+ " " + relation_df.loc[relation_df['PID'] == word0+2, 'WORD'].iloc[0]
 									no = 3
-							if word1 in vib :
-								if no == 3:
-									word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + "-" + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]+ "-" + relation_df.loc[relation_df['PID'] == word0+2, 'WORD'].iloc[0]
-								elif no == 2:
-									word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + "-" + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]
-								w.append(word1)
-								w.append("-")
-							else:
-								w.append("error")
-								w.append("-")
-						if n!=0:
+							if word1 not in vib:
+								vib.append(word1)
+							if no == 3:
+								word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + "-" + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]+ "-" + relation_df.loc[relation_df['PID'] == word0+2, 'WORD'].iloc[0]
+							elif no == 2:
+								word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + "-" + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]
+							w.append(word1)
+							w.append("-")
 							break
-					if "error" not in w and w != []:
+					if w != []:
 						new_rel = new_rel.join(w)+"sambandhi"
 						sub_tree[i][j][1] = new_rel
 						relation_df.at[relation_df.loc[relation_df['PID'] == sub_tree[i][j][0]].index[0], 'RELATION'] = new_rel
 						fobl.write(filename+'\t'+str(lol)+'\tobl correction made\n')
 						f1.write(str(lol)+'\tobl correction made\n')
-					if ("error" in w and w != []):
-						f.write(filename+'\t'+str(lol)+'\tOccuring vibhakti not in list of vibhakti\n')
-						f1.write(str(lol)+'\tOccuring vibhakti not in list of vibhakti\n')
 					if w == []:
 						f.write(filename+'\t'+str(lol)+'\tobl occurs without case or mark as children\n')
 						f1.write(str(lol)+'\tobl occurs without case or mark as children\n')
@@ -340,6 +340,7 @@ def obl_err(relation_df, sub_tree, path, filename):
 	f.close()
 	f1.close()
 	fobl.close()
+	vib_write(vib)
 	return ([relation_df, sub_tree])
 
 #Function to find BFS of tree

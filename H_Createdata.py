@@ -3,7 +3,7 @@ import glob,re,H_Modules
 
 #file path and name
 path = input ("Enter path: ")
-path1 = path+'/*/hindi_dep_parser_original.dat'
+path1 = path+'/2.10/hindi_dep_parser_original.dat'
 files = sorted(glob.glob(path1))
 
 #calling function to clear old log
@@ -73,6 +73,8 @@ for parse in files:
 
 	#Calling function to correct obl errors
 	[relation_df, sub_tree] = H_Modules.obl_err(relation_df, sub_tree, path, filename)
+
+	print(relation_df)
 
 	#Calling function to correct cc-conj errors
 	stack = H_Modules.BFS(relation_df, sub_tree)
