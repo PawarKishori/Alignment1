@@ -8,7 +8,7 @@ files = sorted(glob.glob(path1))
 
 exception_list = ['2.4']
 
-#Calling function to clear old log
+#calling function to clear old log
 H_Modules.clear_logs(path)
 
 for parse in files:
@@ -140,6 +140,9 @@ for parse in files:
 	error_flag = H_Modules.drawtree(string, path_des, path, filename, file)
 	if error_flag == 1:
 		continue
+
+	#Calling function to add tree level
+	sub_tree = H_Modules.add_lvl(stack, sub_tree)
 
 	#Calling function to get Relation Information 
 	relation_details = H_Modules.relation_facts(relation_df)

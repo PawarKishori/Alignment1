@@ -10,14 +10,14 @@ from subprocess import check_call
 
 #Function to get list of vibhakti
 def get_vib():
-	path_vib ="/home/aishwarya/Alignment1/vibhakti"
+	path_vib ="/home/kailash/Aishu_code/n_tree-master/vibhakti"
 	f = open(path_vib)
 	vib = list(f)
 	f.close()
 	return(vib)
 
 def vib_write(vib):
-	path_vib ="/home/aishwarya/Alignment1/vibhakti"
+	path_vib ="/home/kailash/Aishu_code/n_tree-master/vibhakti"
 	f = open(path_vib, 'w+')
 	for i in range(0, len(vib)):
 		f.write(vib[i]+'\n')
@@ -452,6 +452,7 @@ def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
 						relation_df.at[k, 'PIDWITH'] = j[2]
 	else:
 		sub_tree = create_dict(relation_df)
+		stack = BFS(relation_df, sub_tree)
 	fcclist = open(path+'/H_cc_list.dat', 'w+')
 	for i in range(0, len(list_of_cc)):
 		fcclist.write(list_of_cc[i]+'\n')
@@ -690,6 +691,10 @@ def DFS(node, sub_tree, relation_df, clause):
 #Function to create groupings
 def write_groupings(path_des, wordid_word, wordid_word_dict, sub_tree):
 	for i in wordid_word:
+		for j, values in sub_tree.items():
+			for k in values:
+				if k[0] == i[0]:
+					lvl = k[4]
 		clause = []
 		clause_list = []
 		clause_list = find_single_line_tree(i[0], sub_tree, clause_list)
@@ -697,7 +702,7 @@ def write_groupings(path_des, wordid_word, wordid_word_dict, sub_tree):
 		clause_list_string = [str(i) for i in clause_list]
 		string = " ".join(clause_list_string)
 		f = open(path_des + '/H_grouping_ids.dat', 'a+')
-		f.write('(H_grp_hid-grp_elem_ids\t'+ str(i[0]) + '\t' + string + ')\n')
+		f.write('(H_grp_hid-grp_hid-lvl_elem-ids\t'+ str(i[0]) + '\t' + str(lvl) + '\t' + string + ')\n')
 		f.close()
 		clause_list_word = [wordid_word_dict[i] for i in clause_list]
 		string_words = ' '.join(clause_list_word)
@@ -705,7 +710,7 @@ def write_groupings(path_des, wordid_word, wordid_word_dict, sub_tree):
 		f.write('(H_grp_hword-grp_elem_words\t'+ wordid_word_dict[i[0]] + '\t' + string_words + ')\n')
 		f.close()
 		f = open(path_des + '/H_grouping_template.dat', 'a+')
-		f.write('(H_group (language hindi) (grp_hid '+ str(i[0]) +') (grp_head_word '+  wordid_word_dict[i[0]] +' ) (grp_element_ids '+ string +') (grp_element_words '+ string_words +'))\n')
+		f.write('(H_group (language english) (grp_hid '+ str(i[0]) +') (grp_lvl '+ str(lvl) +') (grp_head_word '+  wordid_word_dict[i[0]] +' ) (grp_element_ids '+ string +') (grp_element_words '+ string_words +'))\n')
 		f.close()
 
 #Function to store the punct details
@@ -740,3 +745,17 @@ def write_relation_facts(path_des, relation_facts):
 	for i in range(0, len(relation_facts)):
 		f.write('(H_cid-word-hid-pos-relation\t'+str(relation_facts[i][0])+'\t'+relation_facts[i][1]+'\t'+str(relation_facts[i][2])+'\t'+relation_facts[i][3]+'\t'+relation_facts[i][4]+')\n')
 	f.close()
+
+def add_lvl(stack, sub_tree):
+	for i in stack:
+		if i[0] in sub_tree:
+			if i[0] == 0:
+				lvl = 1
+			else:
+				for j, values in sub_tree.items():
+					for k in values:
+						if k[0] == i[0]:
+							lvl  = k[4]+1
+			for j in sub_tree[i[0]]:
+				j.append(lvl)
+	return(sub_tree)                
