@@ -15,8 +15,8 @@ for parse in files:
 	print(parse)
 	res = re.split(r'/', parse)
 	filename = res[-2]
-	if filename in exception_list:
-		continue
+	# if filename in exception_list:
+	# 	continue
 	path_des = path+'/'+filename
 
 	#Calling function to clear old files
@@ -120,6 +120,11 @@ for parse in files:
 
 	#Calling function to create a dictionary
 	sub_tree = H_Modules.create_dict(relation_df)
+	stack = H_Modules.BFS(relation_df, sub_tree)
+
+	print(relation_df)
+	print(sub_tree)
+	print(stack)
 
 	#Udpate UTF
 	relation_df = H_Modules.wx_utf_converter(relation_df.iloc[:, 0:-1])
