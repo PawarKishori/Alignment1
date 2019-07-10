@@ -1,6 +1,4 @@
 #!/bin/bash
-## Module 0 =>  manju mam's alignment
-#Will run for 100 parallel sentences 
 
 #sh run_all.sh Geo_chap2_E2 Geo_chap2_H2_wx_preprocessed
 
