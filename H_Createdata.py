@@ -6,7 +6,7 @@ path = input ("Enter path: ")
 path1 = path+'/*/hindi_dep_parser_original.dat'
 files = sorted(glob.glob(path1))
 
-exception_list = ['2.4']
+exception_list = []
 
 #calling function to clear old log
 H_Modules.clear_logs(path)
@@ -15,8 +15,8 @@ for parse in files:
 	print(parse)
 	res = re.split(r'/', parse)
 	filename = res[-2]
-	# if filename in exception_list:
-	# 	continue
+	if filename in exception_list:
+		continue
 	path_des = path+'/'+filename
 
 	#Calling function to clear old files
@@ -72,6 +72,22 @@ for parse in files:
 	file = '/H_tree_initial'
 	H_Modules.drawtree(string, path_des, path, filename, file)
 
+	#Calling function to create BFS
+	stack = H_Modules.BFS(relation_df, sub_tree)
+
+	#Calling function to add tree level
+	sub_tree = H_Modules.add_lvl(stack, sub_tree)
+
+	#Calling function to get mappings of wordid-word and parserid-wordid
+	wordid_word = H_Modules.wordid_word_mapping(relation_df)
+	parserid_wordid = H_Modules.parserid_wordid_mapping(relation_df)
+
+	#Calling function to get wordid_word as dict
+	wordid_word_dict = H_Modules.wordid_word_dict(wordid_word)
+
+	#Calling function to create grouping info
+	H_Modules.write_groupings(path_des, wordid_word, wordid_word_dict, sub_tree)
+
 	#Calling function to correct nmod relation
 	[relation_df, sub_tree] = H_Modules.nmod_case(relation_df, sub_tree)
 
@@ -99,13 +115,6 @@ for parse in files:
 	if error_flag == 1:
 		continue
 
-	#Calling function to get mappings of wordid-word and parserid-wordid
-	wordid_word = H_Modules.wordid_word_mapping(relation_df)
-	parserid_wordid = H_Modules.parserid_wordid_mapping(relation_df)
-
-	#calling function to get wordid_word as dict
-	wordid_word_dict = H_Modules.wordid_word_dict(wordid_word)
-	
 	#Calling function to store wordid word mappings
 	H_Modules.write_wordid_word(path_des, wordid_word)
 
@@ -121,10 +130,6 @@ for parse in files:
 	#Calling function to create a dictionary
 	sub_tree = H_Modules.create_dict(relation_df)
 	stack = H_Modules.BFS(relation_df, sub_tree)
-
-	print(relation_df)
-	print(sub_tree)
-	print(stack)
 
 	#Udpate UTF
 	relation_df = H_Modules.wx_utf_converter(relation_df.iloc[:, 0:-1])
@@ -146,12 +151,9 @@ for parse in files:
 	if error_flag == 1:
 		continue
 
-	#Calling function to add tree level
-	sub_tree = H_Modules.add_lvl(stack, sub_tree)
-
 	#Calling function to get Relation Information 
 	relation_details = H_Modules.relation_facts(relation_df)
-	
+
 	#Calling function to store relation details
 	H_Modules.write_relation_facts(path_des, relation_details)
 
@@ -172,6 +174,3 @@ for parse in files:
 			f = open(path+'/H_log.dat', 'a+')
 			f.write(filename +'\tRequired files not present-2\n')
 			f.close()
-
-	#Calling function to create grouping info
-	H_Modules.write_groupings(path_des, wordid_word, wordid_word_dict, sub_tree)

@@ -10,14 +10,14 @@ from subprocess import check_call
 
 #Function to get list of vibhakti
 def get_vib():
-	path_vib ="/home/aishwarya/Aishu_code/n_tree-master/vibhakti"
+	path_vib ="/home/kailash/Aishu_code/n_tree-master/vibhakti"
 	f = open(path_vib)
 	vib = list(f)
 	f.close()
 	return(vib)
 
 def vib_write(vib):
-	path_vib ="/home/aishwarya/Aishu_code/n_tree-master/vibhakti"
+	path_vib ="/home/kailash/Aishu_code/n_tree-master/vibhakti"
 	f = open(path_vib, 'w+')
 	for i in range(0, len(vib)):
 		f.write(vib[i]+'\n')
@@ -295,8 +295,8 @@ def obl_err(relation_df, sub_tree, path, filename):
 		vib[i] = vib[i].rstrip()
 	new_rel = ""
 	f = open(path+'/H_log.dat', 'a+')
-	fobl = open(path+'/H_obl_log.dat','a+')
-	f1 = open(path+'/'+filename+'H_log.dat', 'a+')
+	fobl = open(path+'/H_obl_log.dat', 'a+')
+	f1 = open(path+'/'+filename+'/H_log.dat', 'a+')  
 	for i in sorted(sub_tree.keys()):
 		for j in range(0, len(sub_tree[i])):
 			if sub_tree[i][j][1] == "obl":
@@ -685,7 +685,11 @@ def parserid_wordid_mapping(relation_df):
 def relation_facts(relation_df):
 	relation_facts1 = []
 	for i in relation_df.index:
-		relation_facts1.append([relation_df.PID[i], relation_df.WORD[i], relation_df.PIDWITH[i], relation_df.POS[i], relation_df.RELATION[i]])
+		if relation_df.PIDWITH[i] == 0:
+			head_word = 'root'
+		else:
+			head_word = relation_df.loc[relation_df.PID == relation_df.PIDWITH[i], 'WORD'].iloc[0]
+		relation_facts1.append([relation_df.PID[i], relation_df.WORD[i], relation_df.POS[i], relation_df.RELATION[i], relation_df.PIDWITH[i], head_word])		
 	return(relation_facts1)
 	
 #Function to print tree tree in single line
@@ -706,7 +710,6 @@ def DFS(node, sub_tree, relation_df, clause):
 
 #Function to create groupings
 def write_groupings(path_des, wordid_word, wordid_word_dict, sub_tree):
-	print(wordid_word)
 	for i in wordid_word:
 		for j, values in sub_tree.items():
 			for k in values:
@@ -727,10 +730,10 @@ def write_groupings(path_des, wordid_word, wordid_word_dict, sub_tree):
 		f.write('(H_grp_hword-grp_elem_words\t'+ wordid_word_dict[i[0]] + '\t' + string_words + ')\n')
 		f.close()
 		f = open(path_des + '/H_grouping_template.dat', 'a+')
-		f.write('(H_group (language english) (grp_hid '+ str(i[0]) +') (grp_lvl '+ str(lvl) +') (grp_head_word '+  wordid_word_dict[i[0]] +' ) (grp_element_ids '+ string +') (grp_element_words '+ string_words +'))\n')
+		f.write('(H_group (language hindi) (grp_hid '+ str(i[0]) +') (grp_lvl '+ str(lvl) +') (grp_head_word '+  wordid_word_dict[i[0]] +' ) (grp_element_ids '+ string +') (grp_element_words '+ string_words +'))\n')
 		f.close()
 
-#Function to store the punct details
+#Function to store the 67punct details
 def write_punct_info(path_des, punct_info):
 	f = open(path_des+"/H_punct_info.dat", 'w+')
 	for i in range(0, len(punct_info)):
@@ -760,7 +763,7 @@ def write_parserid_wordid(path_des, parserid_wordid):
 def write_relation_facts(path_des, relation_facts):
 	f = open(path_des+'/H_relation_final_facts', 'w+')
 	for i in range(0, len(relation_facts)):
-		f.write('(H_cid-word-hid-pos-relation\t'+str(relation_facts[i][0])+'\t'+relation_facts[i][1]+'\t'+str(relation_facts[i][2])+'\t'+relation_facts[i][3]+'\t'+relation_facts[i][4]+')\n')
+		f.write('(H_cid-word-pos-relation-hid-hword\t'+str(relation_facts[i][0])+'\t'+relation_facts[i][1]+'\t'+relation_facts[i][2]+'\t'+relation_facts[i][3]+'\t'+str(relation_facts[i][4])+'\t'+relation_facts[i][5]+'\n')
 	f.close()
 
 def add_lvl(stack, sub_tree):
