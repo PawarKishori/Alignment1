@@ -3,16 +3,20 @@ import glob,re,E_Modules
 
 #file path and name
 path = input ("Enter path: ")
-path1 = path+'/2.*/E_conll_parse'
+path1 = path+'/*/E_conll_parse'
 files = sorted(glob.glob(path1))
 
-#calling function to clear old log
+exception_list = []
+
+#Calling function to clear old log
 E_Modules.clear_logs(path)
 
 for parse in files:
 	print(parse)   
 	res = re.split(r'/', parse)
 	filename = res[-2]
+	if filename in exception_list:
+		continue
 	path_des = path+'/'+filename
 
 	#Calling function to clear old files
@@ -29,7 +33,6 @@ for parse in files:
 
 	#Calling function to get Punctuation Information
 	[len_wid, punct_info] = E_Modules.punct_info(path_des, path, filename)
-	print(punct_info)
 	if len_wid != len(relation_df):
 		f = open(path+'/E_log.dat', 'a+')
 		f.write(filename +'\tIncorrect splitting of words\n')
@@ -54,7 +57,7 @@ for parse in files:
 	# relation_df = H_Modules.wx_utf_converter(relation_df)
 
 	#Calling function to create json input string
-	with open(path_des+'/E_clause_single_line_words_initial' , 'w') as f:
+	with open(path_des+'/E_clause_single_line_words_initial' , 'w+') as f:
 		clause = []
 		clause = E_Modules.form_final_json_tree(relation_df, 0, sub_tree, clause)
 		n = len(clause)
@@ -68,14 +71,30 @@ for parse in files:
 	file = '/E_tree_initial'
 	E_Modules.drawtree(string, path_des, path, filename, file)
 
+	#Calling function to create BFS
+	stack = E_Modules.BFS(relation_df, sub_tree)
+
+	#Calling function to add tree level
+	sub_tree = E_Modules.add_lvl(stack, sub_tree)
+
+	#Calling function to get mappings of wordid-word and parserid-wordid
+	wordid_word = E_Modules.wordid_word_mapping(relation_df)
+	parserid_wordid = E_Modules.parserid_wordid_mapping(relation_df)
+
+	#Calling function to get wordid_word as dict
+	wordid_word_dict = E_Modules.wordid_word_dict(wordid_word)
+
+	#Calling function to create grouping info
+	E_Modules.write_groupings(path_des, wordid_word, wordid_word_dict, sub_tree)
+
 	#Calling function to correct nmod relation
 	[relation_df, sub_tree] = E_Modules.nmod_case(relation_df, sub_tree)
 
 	# #Calling function to correct obl errors
 	# [relation_df, sub_tree] = E_Modules.obl_err(relation_df, sub_tree, path, filename)
 
-	relation_df = E_Modules.if_then(relation_df, sub_tree)
-	relation_df = E_Modules.either_or(relation_df, sub_tree)
+	# relation_df = E_Modules.if_then(relation_df, sub_tree)
+	# relation_df = E_Modules.either_or(relation_df, sub_tree)
 
 	#Calling function to correct cc-conj errors
 	stack = E_Modules.BFS(relation_df, sub_tree)
@@ -97,14 +116,7 @@ for parse in files:
 	error_flag = E_Modules.drawtree(string, path_des, path, filename, file)
 	if error_flag == 1:
 		continue
-
-	#Calling function to get mappings in wordid-word and parserid-wordid
-	wordid_word = E_Modules.wordid_word_mapping(relation_df)
-	parserid_wordid = E_Modules.parserid_wordid_mapping(relation_df)
 	
-	#Calling function to get wordid_word as dict
-	wordid_word_dict = E_Modules.wordid_word_dict(wordid_word)
-
 	#Calling function to store wordid word mappings
 	E_Modules.write_wordid_word(path_des, wordid_word)
 
@@ -119,6 +131,7 @@ for parse in files:
 
 	# #Calling function to create a dictionary
 	# sub_tree = E_Modules.create_dict(relation_df)
+	# stack = E_Modules.BFS(relation_df, sub_tree)
 
 	# #Udpate UTF
 	# relation_df = E_Modules.wx_utf_converter(relation_df.iloc[:, 0:-1])
@@ -163,6 +176,3 @@ for parse in files:
 			f = open(path+'/E_log.dat', 'a+')
 			f.write(filename +'\tRequired files not present-3\n')
 			f.close()
-
-	#Calling function to create grouping info
-	E_Modules.write_groupings(path_des, wordid_word, wordid_word_dict, sub_tree)
