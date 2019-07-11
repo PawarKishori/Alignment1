@@ -33,7 +33,6 @@ for parse in files:
 
 	#Calling function to get Punctuation Information
 	[len_wid, punct_info] = H_Modules.punct_info(path_des, path, filename)
-	print(punct_info)
 	if len_wid != len(relation_df):
 		f = open(path+'/H_log.dat', 'a+')
 		f.write(filename +'\tIncorrect splitting of words\n')
@@ -94,6 +93,9 @@ for parse in files:
 	#Calling function to correct obl errors
 	[relation_df, sub_tree] = H_Modules.obl_err(relation_df, sub_tree, path, filename)
 
+	
+
+
 	#Calling function to correct cc-conj errors
 	stack = H_Modules.BFS(relation_df, sub_tree)
 	[relation_df, stack, sub_tree] = H_Modules.conj_cc_resolution(relation_df, stack, sub_tree, path, filename)
@@ -122,7 +124,7 @@ for parse in files:
 	H_Modules.write_parserid_wordid(path_des, parserid_wordid)
 
 	#Calling function to create lwg
-	error_flag = H_Modules.lwg(path_des, path, filename)
+	error_flag = H_Modules.lwg(path_des, path, filename, relation_df)
 
 	#Calling function to update tam and vibakthi details
 	relation_df = H_Modules.tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
