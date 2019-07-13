@@ -8,6 +8,8 @@
 (deftemplate H_group (slot language (default 0)) (slot grp_hid (default 0)) (slot grp_head_word (default 0)) (multislot grp_element_ids (default 0))(multislot grp_element_words (default 0)))
 
 (deftemplate alignment_info (slot anu_id (default 0)) (multislot anu_meaning (default 0)) (slot man_id (default 0)) (multislot  man_meaning (default 0)) ( multislot man_group_ids (default 0)))
+(deftemplate Allfacts (slot A)(slot K)(multislot L)(multislot M)(multislot N)(multislot O)(multislot P)(multislot P1)(multislot DICT))
+
 
 (defrule stop_wrong_clause_grouping
 	?f0 <- (alignment_info (anu_id ?x) (man_id ?hid) (man_group_ids $?man_grp_ids) )

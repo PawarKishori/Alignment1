@@ -1,0 +1,82 @@
+All the dictioneries that the Anusaaraka accesses are present in the 'Anu_data' folder.
+'Anu_data/canonical_form_dictionery/dictioneries'
+
+-account_multi_dic_in_canonical_form.txt
+	this dictionery contains all the words and word-phrases related to accounts.
+	for ex. office_establishment_section  kAryAlaya_sWApanA_anuBAga#kAryAlaya_sWApanA_anuBAga
+		official_capacity_,_in	      sarakArI_hEsiyawa_se#sarakArI_hEsiyawa_se#noun#4#RM
+		old_record_section	  purAnA_afBaleKa_anuBAga#purAnA_afBaleKa_anuBAga#noun#3#RM
+	The above three word-phrases are stated in the dictionery related to their accounts 		definition. At the end of the definition the dictionery has added a tag '#noun.
+
+-administrative_multi_dic_in_canonical_form.txt
+	This dictionery has all the words related to administrative context.
+	for. ex  admissible_expendit	grAya_vyaya#grAya_vyaya#noun#2#RM
+		 admission_committee	praveSa_samiwi#praveSa_samiwi#noun#2#RM
+		 admission_fee	        praveSa_Sulka#praveSa_Sulka#noun#2#RM
+
+-adv_prep_dic_in_cannonical_form.txt
+	All the adverbs are listed down in this ditcionery.
+	For ex. amateurishly	SOkiyA_wOra_para
+		amazingly	AScaryajanaka_rUpa_se
+		ambiguously	sanxigXawaH/aspaRtawaH/anekArWI_Dafga_se
+		ambitiously	mahawvAkAfkRA_se
+
+-agriculture_dic_in_canonical_form
+	The terms related to the agricultural context are listed down in this dictionery.
+	For. ex chloroplast_noun	hariwa_lavaka/kloroplAsta
+		chlorosis_noun	harimAhInawA
+		chopping_noun	safkarwana/tukade_karanA
+		chromatography_noun	varNaleKana
+
+
+- agriculture_multi_dic_in_canonical_form.txt
+	All the terms in 'agricuture_dic_in_canonical_form.txt' forms compounds. The meaning of 	these compound words are listed in this dictionery.
+	For ex. axial_flower	akRIya_puRpa/akRIya_PUla#akRIya_puRpa/akRIya_PUla#noun#2#RM
+		axillary_bud	kakRasWa_kalikA#kakRasWa_kalikA#noun#2#RM
+
+            
+-Complete_sentence_in_canonical_form.txt
+	The complete sentence meaning is listed down in this dictionery
+	Have a nice time	samaya_acCA_bIwe[>KuSa_raho]
+	How about this	        isake_bAre_meM_kyA_vicAra_hE
+	How do you do	        Apa_kEse_hEM
+
+- computer_dic_in_canonical_form.txt
+	all the computer and technology related terms are named in this dictionery.
+	For ex.  arguement_noun	svawanwra_cara
+		 array_noun	saraNI
+		 ascii_noun	AskI	
+
+
+
+- computer_multi_dic_in_canonical_form.txt
+	The compund words related to computer technology are mentioned in this dictionery.
+	all the words in the compunds are listed down in  'computer_dic_in_canonical_form.txt' each 		with its seperate meaning.
+	For. ex  binary_tree		xvayI_warU#xvayI_warU#noun#2#RM
+		 bipartite_graph	xviBAjya_grAPa#xviBAjya_grAPa#noun#2#RM
+		 bipolar_memory		xviXuvI_smqwi#xviXuvI_smqwi#noun#2#RM
+
+-electrical_dic_in_canonical_form.txt/electronics_dic_in_canonical_form.txt
+	The terms related toelectical industry are noted in this dictionery with the appropriate meaning.
+For ex.   aperture_noun	Cixra
+	  apparatus_noun	upakaraNa
+       	  appliance_noun	upasAXana	
+
+
+- electrical_multi_dic_in_canonical_form.txt/electronics_multi_dic_in_canonical_form.txt
+	The compund words related to electrical are mentioned in this dictionery.
+	all the words in the compunds are listed down in 'electrical_dic_in_canonical_form.txt/electronics_dic_in_canonical_form.txt' each with its seperate meaning.
+For ex.  a.c._network_analyser	e.sI._netavarka_viSleRaka#e.sI._netavarka_viSleRaka#noun#3#RM
+a.c._power_supply	prawyAvarwI_vixyuwa_XArA_ApUrwi/e.sI._vixyuwa_ApUrwi#prawyAvarwI_vixyuwa_XArA_ApUrwi/e.sI._vixyuwa_ApUrwi#noun#3#RM
+a.c._single_phase_outlet	e.sI._siMgala_Peja_Autaleta
+
+
+- preposition_dictionery_in_canonical_form.txt
+	all the prepositions are listed down in this dictionery.
+	For ex.  before	isase_pahale_ki/ke_pahale/ke_sAmane/se_pahale
+behind	kUlhA/ke_pICe/pICe_se/se_pICe
+besides	ke_alAvA/ke_awirikwa
+
+- proper_noun-common_noun_compunds_in_canonical_form.txt
+All the proper nouns are mentioned in this dictionery.
+	
