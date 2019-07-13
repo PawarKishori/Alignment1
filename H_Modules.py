@@ -271,21 +271,19 @@ def drawtree(string, path_des, path, filename, file):
 
 #Function to modify nmod relation
 def nmod_case(relation_df, sub_tree):
-    for i in relation_df.index:
-        if relation_df.RELATION[i] == 'nmod':
-            flag = 0
-            head = relation_df.PID[i]
-            if head in sub_tree:
-                for j in sub_tree[head]:
-                    if j[1] == 'case':
-                        if flag == 1:
-                            print('error')
-                        else:
-                            print(str(relation_df.PID[i])+'\t'+relation_df.RELATION[i])
-                            relation_df.RELATION[i] = relation_df.RELATION[i]+'-'+j[3]
-                            print(str(relation_df.PID[i])+'\t'+relation_df.RELATION[i])
-    sub_tree = create_dict(relation_df)
-    return[relation_df, sub_tree]
+	for i in relation_df.index:
+		if relation_df.RELATION[i] == 'nmod':
+			flag = 0
+			head = relation_df.PID[i]
+			if head in sub_tree:
+				for j in sub_tree[head]:
+					if j[1] == 'case':
+						if flag == 1:
+							print('error')
+						else:
+							relation_df.RELATION[i] = relation_df.RELATION[i]+'-'+j[3]
+	sub_tree = create_dict(relation_df)
+	return[relation_df, sub_tree]
 
 #Function to correct obl errors
 def obl_err(relation_df, sub_tree, path, filename):
@@ -344,7 +342,7 @@ def obl_err(relation_df, sub_tree, path, filename):
 						relation_df.at[relation_df.loc[relation_df['PID'] == sub_tree[i][j][0]].index[0], 'RELATION'] = new_rel
 						fobl.write(filename+'\t'+str(lol)+'\tobl correction made\n')
 						f1.write(str(lol)+'\tobl correction made\n')
-					if ("error" in w and w != []):
+					if "error" in w and w != []:
 						f.write(filename+'\t'+str(lol)+'\tOccuring vibhakti not in list of vibhakti\n')
 						f1.write(str(lol)+'\tOccuring vibhakti not in list of vibhakti\n')
 					if w == []:
@@ -478,7 +476,7 @@ def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
 	return([relation_df, stack, sub_tree])
 
 #Generate lwg file
-def lwg(path_des, path, filename):
+def lwg(path_des, path, filename, relation_df):
 	try:
 		error_flag = 0
 		vib = get_vib()
@@ -505,7 +503,9 @@ def lwg(path_des, path, filename):
 					word2 = vib_list[i]+" "+vib_list[i+1]+" "+vib_list[i+2]
 					if word2 in vib:
 						word = word+ "_" + vib_list[i+2]
-				f_lwg.write("(H_def_lwg-wid-word-postpositions\t"+word+"\t"+str(i)+"\t"+vib_list[i-1]+"\t"+str(i+1)+")\n")
+				var1 = relation_df.loc[relation_df.index == i, 'PID'].iloc[0]
+				var2 = relation_df.loc[relation_df.index == i+1, 'PID'].iloc[0]
+				f_lwg.write("(H_def_lwg-wid-word-postpositions\t"+word+"\t"+str(var1)+"\t"+vib_list[i-1]+"\t"+str(var2)+")\n")
 	except:
 		error_flag = 1
 		f = open(path+'/H_log.dat', 'a+')
@@ -519,6 +519,7 @@ def lwg(path_des, path, filename):
 #Function to update tam and vibakthi details
 def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename):
 	list1 = []
+	list2 = []
 	stack = BFS(relation_df, sub_tree)
 	if error_flag == 0:
 		#Vib file opening
@@ -575,7 +576,7 @@ def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
 							dele.append(stack[j][0])
 					dele.reverse()
 					for j in range(0, len(dele)):
-						list1.append(dele[j])
+						list2.append(dele[j])
 	except:
 		print('')
 	if flag == 0:
@@ -622,16 +623,30 @@ def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
 								dele.append(stack[i][0])
 						dele.reverse()
 						for i in range(0, len(dele)):
-							list1.append(dele[i])
+							list2.append(dele[i])
 		except:
 			print('')
+	f = open(path+'/H_tam_vib_log.dat', 'a+')
+	f1 = open(path+'/H_log.dat', 'a+')
+	f2 = open(path_des+'/H_log.dat', 'a+')
+	for j in list1:
+		if j not in sub_tree:
+			relation_df = relation_df.drop([relation_df.loc[relation_df['PID'] == j].index[0]], axis = 0)
+			f.write(filename+'\t'+str(j)+'\t'+'has been deleted\n')
+			f2.write(str(j)+'\t'+'has been deleted\n')
+		else:
+			f1.write(filename+'\t'+str(j)+'\t'+'has children but is trying to be deleted\n')
+			f2.write(str(j)+'\t'+'has children but is trying to be deleted\n')
+	f.close()
+	f1.close()
+	f2.close()
 	if flag == 1:
 		#relation deletion and updation
 		f = open(path+'/H_tam_vib_log.dat', 'a+')
 		f1 = open(path+'/H_log.dat', 'a+')
 		f2 = open(path_des+'/H_log.dat', 'a+')
-		for j in list1:
-			if j not in sub_tree:
+		for j in list2:
+			if j not in list1 and j not in sub_tree:
 				relation_df = relation_df.drop([relation_df.loc[relation_df['PID'] == j].index[0]], axis = 0)
 				f.write(filename+'\t'+str(j)+'\t'+'has been deleted\n')
 				f2.write(str(j)+'\t'+'has been deleted\n')
@@ -778,4 +793,4 @@ def add_lvl(stack, sub_tree):
 							lvl  = k[4]+1
 			for j in sub_tree[i[0]]:
 				j.append(lvl)
-	return(sub_tree)                
+	return(sub_tree)

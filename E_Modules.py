@@ -5,7 +5,6 @@ import numpy as np
 from anytree.importer import JsonImporter
 from anytree import (RenderTree, ContRoundStyle)
 from anytree.exporter import DotExporter 
-from IPython.display import Image
 from subprocess import check_call
 
 #Function to get list of vibhakti
@@ -55,7 +54,7 @@ def create_dataframe(parse, path, filename):
 		f = open(path+'/E_log.dat', 'a+')
 		f.write(filename +'\tTree has non-int PID\n')
 		f.close()
-		f = open(path_des+'/E_log.dat', 'a+')
+		f = open(path+'/'+filename+'/E_log.dat', 'a+')
 		f.write('\tTree has non-int PID\n')
 		f.close()
 	if count != 1:
@@ -98,14 +97,10 @@ def punct_info(path_des, path, filename):
 				middle = 0
 			if space_separate[i][-1] in punct:
 				right = 1
-				word_r = space_separate[i][0:-1]
 			if space_separate[i][0] in punct:
 				left = 1
-				word_l = space_separate[i][1:]
 			if space_separate[i] in punct:
 				middle = 1
-				word_l = space_separate[i-1]
-				word_r = space_separate[i+1]
 			if middle == 1:
 				punct_info1.append([space_separate[i], 'M', k, k+1])
 			elif left == 1:
@@ -382,7 +377,6 @@ def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
 	for i in range(0, len(list_of_cc)):
 		list_of_cc[i] = list_of_cc[i].rstrip()
 	mod = 0
-	conj = 1
 	f = open(path+'/E_log.dat', 'a+')
 	f1 = open(path+'/'+filename+'/E_log.dat', 'a+')
 	fcc = open(path+'/E_cc_log.dat', 'a+')
@@ -390,7 +384,6 @@ def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
 	while i < len(stack)-1:
 		i = i+1
 		if stack[i][1] == 'conj':
-			conj = 1
 			cc = 0
 			for j in sub_tree[stack[i][2]]:
 				if j[1] =='cc':
@@ -713,7 +706,6 @@ def write_groupings(path_des, wordid_word, wordid_word_dict, sub_tree):
 			for k in values:
 				if k[0] == i[0]:
 					lvl = k[4]
-		clause = []
 		clause_list = []
 		clause_list = find_single_line_tree(i[0], sub_tree, clause_list)
 		clause_list.sort()
@@ -777,3 +769,97 @@ def add_lvl(stack, sub_tree):
 			for j in sub_tree[i[0]]:
 				j.append(lvl)
 	return(sub_tree)
+
+def if_then(relation_df, sub_tree):
+	flag_correct = 0
+	for i, value in sub_tree.items():
+		for j in range(0, len(value)):
+			if value[j][3] == "then":
+				for k in range(0, len(value)):
+					try:
+						sub_tree[value[k][0]]
+						for m in range(0, len(sub_tree[value[k][0]])):
+							if sub_tree[value[k][m]][m][3] == "if":
+								flag_correct = 1
+								break
+					except:
+						print("")
+				if flag_correct == 1:
+					list1 = []
+					flag_if = 0
+					for i in relation_df.index:
+						if relation_df.word[i] == "then":
+							then_id = relation_df.PID[i]
+							print(then_id)
+							for j in relation_df.index:
+								if relation_df.word[j] == "if" and relation_df.PID[j] not in list1: 
+									flag_if = 1
+									if_id = relation_df.PID[j]
+									print(if_id)
+									break
+							if flag_if == 1:
+								parent = relation_df.loc[relation_df.PID == if_id, 'PIDWITH'].iloc[0]
+								parent_then = relation_df.loc[relation_df.PID == then_id, 'PIDWITH'].iloc[0]
+								grandparent = relation_df.loc[relation_df.PID == parent_then, 'PIDWITH'].iloc[0]
+								print(parent)
+								print(parent_then)
+								print(grandparent)
+								relation_df.at[relation_df.loc[relation_df.PID == parent].index[0], 'PIDWITH'] = if_id
+								relation_df.at[relation_df.loc[relation_df.PID == parent_then].index[0], 'PIDWITH'] = if_id
+								relation_df.at[relation_df.loc[relation_df.PID == if_id].index[0], 'PIDWITH'] = grandparent
+								relation_df.at[relation_df.loc[relation_df.PID == if_id].index[0], 'WORD'] = "if_then"
+								relation_df = relation_df.drop(relation_df[relation_df.PID == then_id].index[0])
+								list1.append(if_id)
+							else:
+								parent = relation_df.PIDWITH[i]
+								grandparent = relation_df.loc[relation_df.PID == parent, 'PIDWITH'].iloc[0]
+								print(parent)
+								print(grandparent)
+								relation_df.PIDWITH[parent] = relation_df.PID[i]
+								relation_df.PIDWITH[i] = grandparent
+	return(relation_df)
+
+def either_or(relation_df, sub_tree):
+	flag_correct = 0
+	for i, value in sub_tree.items():
+		for j in range(0, len(value)):
+			if value[j][3] == "either":
+				either_node = value[j][0]
+				for k in range(0, len(value)):
+					try:
+						sub_tree[value[k][0]]
+						for m in range(0, len(sub_tree[value[k][0]])):
+							if sub_tree[value[k][m]][m][3] == "or":
+								or_node = sub_tree[value[k][m]][m][0]
+								flag_correct = 1
+								break
+					except:
+						print("")
+				if flag_correct == 1:
+					parent = i
+					grandparent = relation_df.loc[relation_df.PID == parent, 'PIDWITH'].iloc[0]
+					relation_df.at[relation_df.loc[relation_df.PID == either_node].index[0], 'PIDWITH'] = grandparent
+					relation_df.at[relation_df.loc[relation_df.PID == either_node].index[0], 'WORD'] = "either_or"
+					list1 = value
+					for h in range(0, len(list1)):
+						if list1[h][0] != either_node:
+							print(list1[h][0])
+							relation_df.at[relation_df.loc[relation_df.PID == list1[h][0]].index[0], 'PIDWITH'] = either_node
+					relation_df.at[relation_df.loc[relation_df.PID == i].index[0], 'PIDWITH'] = either_node
+					relation_df = relation_df.drop(relation_df[relation_df.PID == or_node].index[0])
+	return(relation_df)
+
+def while_semantic(relation_df):
+	for i in relation_df.index:
+		if relation_df.WORD[i] == "while":
+			while_id = relation_df.PID[i]
+			parent = relation_df.PIDWITH[i]
+			while_relation_parent = relation_df.RELATION[i]
+			parent_relation_grandparent = relation_df.loc[relation_df.PID == parent, 'RELATION'].iloc[0]
+			grandparent = relation_df.loc[relation_df.PID == parent, 'PIDWITH'].iloc[0]
+			great_grandparent = relation_df.loc[relation_df.PID == grandparent, 'PIDWITH'].iloc[0]
+			if while_relation_parent == "mark" and parent_relation_grandparent == "advcl":
+				relation_df.PIDWITH[i] = great_grandparent
+				relation_df.at[relation_df.loc[relation_df.PID == parent].index[0], 'PIDWITH'] = while_id
+				relation_df.at[relation_df.loc[relation_df.PID == grandparent].index[0], 'PIDWITH'] = while_id
+	return(relation_df)
