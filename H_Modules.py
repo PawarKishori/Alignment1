@@ -5,7 +5,6 @@ import numpy as np
 from anytree.importer import JsonImporter
 from anytree import (RenderTree, ContRoundStyle)
 from anytree.exporter import DotExporter 
-from IPython.display import Image
 from subprocess import check_call
 
 #Function to get list of vibhakti
@@ -29,6 +28,7 @@ def clear_logs(path):
 	f = open(path+'/H_obl_log.dat', 'w+')
 	f = open(path+'/H_cc_log.dat', 'w+')
 	f = open(path+'/H_tam_vib_log.dat', 'w+')
+	f = open(path+'/H_sanity_log.dat', 'w+')
 	f.close()
 
 #Function to clear residue files from previous run
@@ -55,7 +55,7 @@ def create_dataframe(parse, path, filename):
 		f = open(path+'/H_log.dat', 'a+')
 		f.write(filename +'\tTree has non-int PID\n')
 		f.close()
-		f = open(path_des+'/H_log.dat', 'a+')
+		f = open(path+'/'+filename+'/H_log.dat', 'a+')
 		f.write('\tTree has non-int PID\n')
 		f.close()
 	if count != 1:
@@ -104,8 +104,6 @@ def punct_info(path_des, path, filename):
 				word_l = space_separate[i][1:]
 			if space_separate[i] in punct:
 				middle = 1
-				word_l = space_separate[i-1]
-				word_r = space_separate[i+1]
 			if middle == 1:
 				punct_info1.append([space_separate[i], 'M', k, k+1])
 			elif left == 1:
@@ -265,12 +263,12 @@ def drawtree(string, path_des, path, filename, file):
 		f.write(filename +'\tInvalid Drawtree input format\n')
 		f.close()
 		f = open(path_des+'/H_log.dat', 'a+')
-		f.write('\tInvalid Drawtree input format\n')
+		f.write('Invalid Drawtree input format\n')
 		f.close()
 		return(error_flag)
 
 #Function to modify nmod relation
-def nmod_case(relation_df, sub_tree):
+def nmod_case(relation_df, sub_tree, path_des):
 	for i in relation_df.index:
 		if relation_df.RELATION[i] == 'nmod':
 			flag = 0
@@ -282,6 +280,9 @@ def nmod_case(relation_df, sub_tree):
 							print('error')
 						else:
 							relation_df.RELATION[i] = relation_df.RELATION[i]+'-'+j[3]
+							f = open(path_des+'/H_log.dat', 'a+')
+							f.write('nmod correction made\n')
+							f.close()
 	sub_tree = create_dict(relation_df)
 	return[relation_df, sub_tree]
 
@@ -318,22 +319,22 @@ def obl_err(relation_df, sub_tree, path, filename):
 									no = 3
 							if word1 in vib:
 								if no == 3:
-									word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + "_" + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]+ "_" + relation_df.loc[relation_df['PID'] == word0+2, 'WORD'].iloc[0]
+									word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + "-" + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]+ "-" + relation_df.loc[relation_df['PID'] == word0+2, 'WORD'].iloc[0]
 								elif no == 2:
-									word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + "_" + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]
+									word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + "-" + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]
 								w.append(word1)
-								w.append("_")								
+								w.append("-")								
 							elif word2 in list_add_vib:
 								vib.append(word1)
 								if no == 3:
-									word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + "_" + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]+ "_" + relation_df.loc[relation_df['PID'] == word0+2, 'WORD'].iloc[0]
+									word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + "-" + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]+ "-" + relation_df.loc[relation_df['PID'] == word0+2, 'WORD'].iloc[0]
 								elif no == 2:
-									word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + "_" + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]
+									word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + "-" + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]
 								w.append(word1)
-								w.append("_")
+								w.append("-")
 							else:
 								w.append("error")
-								w.append("_")
+								w.append("-")
 						if no!=0:
 							break
 					if "error" not in w and w != []:
@@ -390,7 +391,6 @@ def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
 	while i < len(stack)-1:
 		i = i+1
 		if stack[i][1] == 'conj':
-			conj = 1
 			cc = 0
 			for j in sub_tree[stack[i][2]]:
 				if j[1] =='cc':
@@ -490,22 +490,38 @@ def lwg(path_des, path, filename, relation_df):
 		for i in range(0, len(vib_list)):
 			if vib_list[i][-1] in punct:
 				vib_list[i] = vib_list[i][0:-1]
+			if vib_list[i][0] in punct:
+				vib_list[i] = vib_list[i][1:]
+			if vib_list[i] in punct:
+				del vib_list[i]
 		f_lwg = open(path_des+'/H_def_lwg-wid-word-postpositions_new','w+')
+		lwg_list = []
 		for i in range(0, len(vib_list)):
-			word = ""
-			word1 = ""
-			word2 = ""
-			if vib_list[i] in vib:
-				word = vib_list[i-1]+"_"+vib_list[i]
-				word1 = vib_list[i]+" "+vib_list[i+1]
-				if word1 in vib:
-					word = word+"_"+vib_list[i+1]
-					word2 = vib_list[i]+" "+vib_list[i+1]+" "+vib_list[i+2]
-					if word2 in vib:
-						word = word+ "_" + vib_list[i+2]
-				var1 = relation_df.loc[relation_df.index == i, 'PID'].iloc[0]
-				var2 = relation_df.loc[relation_df.index == i+1, 'PID'].iloc[0]
-				f_lwg.write("(H_def_lwg-wid-word-postpositions\t"+word+"\t"+str(var1)+"\t"+vib_list[i-1]+"\t"+str(var2)+")\n")
+			lwg_flag = 0
+			if i not in lwg_list:
+				if i < len(vib_list)-2:
+					grp = vib_list[i]+" "+vib_list[i+1]+" "+vib_list[i+2]
+					if grp in vib:
+						lwg_flag = 1
+						lwg_list.append(i)
+						lwg_list.append(i+1)
+						lwg_list.append(i+2)
+						lwg = vib_list[i-1]+"_"+vib_list[i]+"_"+vib_list[i+1]+"_"+vib_list[i+2]
+						f_lwg.write("(H_def_lwg-wid-word-postpositions\t"+lwg+"\t"+str(i)+"\t"+vib_list[i-1]+"\t"+str(i+1)+" "+str(i+2)+" "+str(i+3)+")\n")
+				if i < len(vib_list)-1 and lwg_flag == 0:
+					grp = vib_list[i]+" "+vib_list[i+1]
+					if grp in vib:
+						lwg_flag = 1
+						lwg_list.append(i)
+						lwg_list.append(i+1)
+						lwg = vib_list[i-1]+"_"+vib_list[i]+"_"+vib_list[i+1]
+						f_lwg.write("(H_def_lwg-wid-word-postpositions\t"+lwg+"\t"+str(i)+"\t"+vib_list[i-1]+"\t"+str(i+1)+" "+str(i+2)+")\n")
+				if lwg_flag == 0:
+						grp = vib_list[i]
+						if grp in vib:
+							lwg_list.append(i)
+							lwg = vib_list[i-1]+"_"+vib_list[i]
+							f_lwg.write("(H_def_lwg-wid-word-postpositions\t"+lwg+"\t"+str(i)+"\t"+vib_list[i-1]+"\t"+str(i+1)+")\n")
 	except:
 		error_flag = 1
 		f = open(path+'/H_log.dat', 'a+')
@@ -521,19 +537,32 @@ def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
 	list1 = []
 	list2 = []
 	stack = BFS(relation_df, sub_tree)
+	word_final = ""
 	if error_flag == 0:
 		#Vib file opening
 		vib_path = path_des+'/H_def_lwg-wid-word-postpositions_new'
 		f = open(vib_path)
 		vibs = list(f)
+		print(vibs)
 		for i in range(0, len(vibs)):
 			vibs[i] = vibs[i].rstrip()
 			vibs[i] = re.split(r'\t', vibs[i])
 		#Vib updation
 		for i in range(0, len(vibs)):
-			relation_df.loc[relation_df.PID == int(vibs[i][2]), 'WORD'] = vibs[i][1]
-			pos = int(vibs[i][2])+1
-			list1.append(pos)
+			word = re.split(r'_', vibs[i][1])
+			for j in range(len(word)):
+				if j == 0:
+					word_final = word[j]
+				else:
+					word_final = word_final+"-"+word[j]
+			relation_df.loc[relation_df.PID == int(vibs[i][2]), 'WORD'] = word_final
+			pos = re.split(r' ', vibs[i][4])
+			for j in range(len(pos)):
+				if pos[j][-1] == ')':
+					pos[j] = pos[j][0:-1]
+				list1.append(pos[j])
+	print(list1)
+	print(relation_df)
 	#TAM file opening
 	flag = 0
 	try:
@@ -631,7 +660,7 @@ def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
 	f2 = open(path_des+'/H_log.dat', 'a+')
 	for j in list1:
 		if j not in sub_tree:
-			relation_df = relation_df.drop([relation_df.loc[relation_df['PID'] == j].index[0]], axis = 0)
+			relation_df = relation_df.drop(relation_df[relation_df.PID == int(j)].index[0])
 			f.write(filename+'\t'+str(j)+'\t'+'has been deleted\n')
 			f2.write(str(j)+'\t'+'has been deleted\n')
 		else:
@@ -730,7 +759,6 @@ def write_groupings(path_des, wordid_word, wordid_word_dict, sub_tree):
 			for k in values:
 				if k[0] == i[0]:
 					lvl = k[4]
-		clause = []
 		clause_list = []
 		clause_list = find_single_line_tree(i[0], sub_tree, clause_list)
 		clause_list.sort()
@@ -778,7 +806,7 @@ def write_parserid_wordid(path_des, parserid_wordid):
 def write_relation_facts(path_des, relation_facts):
 	f = open(path_des+'/H_relation_final_facts', 'w+')
 	for i in range(0, len(relation_facts)):
-		f.write('(H_cid-word-pos-relation-hid-hword\t'+str(relation_facts[i][0])+'\t'+relation_facts[i][1]+'\t'+relation_facts[i][2]+'\t'+relation_facts[i][3]+'\t'+str(relation_facts[i][4])+'\t'+relation_facts[i][5]+'\n')
+		f.write('(H_cid-word-pos-relation-hid-hword\t'+str(relation_facts[i][0])+'\t'+relation_facts[i][1]+'\t'+relation_facts[i][2]+'\t'+relation_facts[i][3]+'\t'+str(relation_facts[i][4])+'\t'+relation_facts[i][5]+')\n')
 	f.close()
 
 def add_lvl(stack, sub_tree):

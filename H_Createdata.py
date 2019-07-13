@@ -1,12 +1,13 @@
 from __future__ import print_function
-import glob,re,H_Modules
+import glob,re,H_Modules, H_parser_sanity_modules
 
 #file path and name
 path = input ("Enter path: ")
-path1 = path+'/*/hindi_dep_parser_original.dat'
+path1 = path+'/2.29/hindi_dep_parser_original.dat'
 files = sorted(glob.glob(path1))
 
 exception_list = []
+error_flag = 0
 
 #calling function to clear old log
 H_Modules.clear_logs(path)
@@ -27,6 +28,16 @@ for parse in files:
 	if error_flag == 1:
 		continue
 	dflen = len(relation_df) 
+
+	error_flag = H_parser_sanity_modules.multi_root(relation_df, error_flag, path, filename)
+	if error_flag == 1:
+		continue
+
+	error_flag = H_parser_sanity_modules.children_check(relation_df, filename, error_flag, path)
+	if error_flag == 1:
+		continue
+
+	relation_df = H_parser_sanity_modules.cc_conj_transformation(relation_df, path_des)
 
 	#step to remove all records with punctuations
 	relation_df = relation_df[~relation_df.POS.str.contains("PUNCT")]
@@ -88,10 +99,11 @@ for parse in files:
 	H_Modules.write_groupings(path_des, wordid_word, wordid_word_dict, sub_tree)
 
 	#Calling function to correct nmod relation
-	[relation_df, sub_tree] = H_Modules.nmod_case(relation_df, sub_tree)
+	[relation_df, sub_tree] = H_Modules.nmod_case(relation_df, sub_tree, path_des)
 
 	#Calling function to correct obl errors
 	[relation_df, sub_tree] = H_Modules.obl_err(relation_df, sub_tree, path, filename)
+	print(relation_df)
 
 	
 
