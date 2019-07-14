@@ -3,7 +3,7 @@ import glob,re,H_Modules, H_parser_sanity_modules
 
 #file path and name
 path = input ("Enter path: ")
-path1 = path+'/2.29/hindi_dep_parser_original.dat'
+path1 = path+'/*/hindi_dep_parser_original.dat'
 files = sorted(glob.glob(path1))
 
 exception_list = []
@@ -40,7 +40,7 @@ for parse in files:
 	relation_df = H_parser_sanity_modules.cc_conj_transformation(relation_df, path_des)
 
 	#step to remove all records with punctuations
-	relation_df = relation_df[~relation_df.POS.str.contains("PUNCT")]
+	relation_df = H_Modules.remove_punct(relation_df)
 
 	#Calling function to get Punctuation Information
 	[len_wid, punct_info] = H_Modules.punct_info(path_des, path, filename)
@@ -103,8 +103,6 @@ for parse in files:
 
 	#Calling function to correct obl errors
 	[relation_df, sub_tree] = H_Modules.obl_err(relation_df, sub_tree, path, filename)
-	print(relation_df)
-
 	
 
 

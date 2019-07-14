@@ -15,8 +15,15 @@ def get_vib():
 	f.close()
 	return(vib)
 
+def get_vib_check():
+	path_vib ="/home/kailash/Aishu_code/n_tree-master/vib_check.dat"
+	f = open(path_vib)
+	vib = list(f)
+	f.close()
+	return(vib_check)
+
 def vib_write(vib):
-	path_vib ="/home/kailash/Aishu_code/n_tree-master/vibhakti"
+	path_vib ="/home/kailash/Aishu_code/n_tree-master/H_vib_check.dat"
 	f = open(path_vib, 'w+')
 	for i in range(0, len(vib)):
 		f.write(vib[i]+'\n')
@@ -29,6 +36,7 @@ def clear_logs(path):
 	f = open(path+'/H_cc_log.dat', 'w+')
 	f = open(path+'/H_tam_vib_log.dat', 'w+')
 	f = open(path+'/H_sanity_log.dat', 'w+')
+	f = open(path+'/H_vib_check.dat', 'w+')
 	f.close()
 
 #Function to clear residue files from previous run
@@ -67,6 +75,13 @@ def create_dataframe(parse, path, filename):
 		f.write('\tMore than 1 tree\n')
 		f.close()
 	return ([relation_df, error_flag])
+
+def remove_punct(relation_df):
+	punct=['!','"','#','$','%','&',"'",'(',')','*','+',',','-','.','/',':',';','<','=','>','?','@','[','\\',']','^','_','`','{','|','}','~']
+	for i in relation_df.index:
+		if relation_df.WORD[i] in punct:
+			relation_df = relation_df.drop([relation_df.loc[relation_df.index == i].index[0]], axis = 0)
+	return(relation_df)
 
 #Function to save punctuation information
 def punct_info(path_des, path, filename):
@@ -286,77 +301,76 @@ def nmod_case(relation_df, sub_tree, path_des):
 	sub_tree = create_dict(relation_df)
 	return[relation_df, sub_tree]
 
-#Function to correct obl errors
 def obl_err(relation_df, sub_tree, path, filename):
-	vib = get_vib()
-	list_add_vib = ["ke"]
-	for i in range(0, len(vib)):
-		vib[i] = vib[i].rstrip()
-	new_rel = ""
-	f = open(path+'/H_log.dat', 'a+')
-	fobl = open(path+'/H_obl_log.dat', 'a+')
-	f1 = open(path+'/'+filename+'/H_log.dat', 'a+')  
-	for i in sorted(sub_tree.keys()):
-		for j in range(0, len(sub_tree[i])):
-			if sub_tree[i][j][1] == "obl":
-				lol = sub_tree[i][j][0]
-				w = []
-				new_rel = ""
-				word1 = ""
-				if lol in sub_tree:
-					no = 0
-					for k in range(0, len(sub_tree[lol])):
-						if sub_tree[lol][k][1] == "case" or sub_tree[lol][k][1] == "mark":
-							word0 = sub_tree[lol][k][0]
-							word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0]
-							word2 = word1
-							no = 1
-							if relation_df.loc[relation_df['PID'] == word0+1, 'RELATION'].iloc[0] == "case" or relation_df.loc[relation_df['PID'] == word0+1, 'RELATION'].iloc[0] == "mark":
-								word1 = relation_df.WORD[relation_df['PID'] == word0].iloc[0] + " " + relation_df.WORD[relation_df['PID'] == word0+1].iloc[0]
-								no = 2
-								if relation_df.loc[relation_df['PID'] == word0+2, 'RELATION'].iloc[0] == "case" or relation_df.loc[relation_df['PID'] == word0+2, 'RELATION'].iloc[0] == "mark":
-									word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + " " + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]+ " " + relation_df.loc[relation_df['PID'] == word0+2, 'WORD'].iloc[0]
-									no = 3
-							if word1 in vib:
-								if no == 3:
-									word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + "-" + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]+ "-" + relation_df.loc[relation_df['PID'] == word0+2, 'WORD'].iloc[0]
-								elif no == 2:
-									word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + "-" + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]
-								w.append(word1)
-								w.append("-")								
-							elif word2 in list_add_vib:
-								vib.append(word1)
-								if no == 3:
-									word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + "-" + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]+ "-" + relation_df.loc[relation_df['PID'] == word0+2, 'WORD'].iloc[0]
-								elif no == 2:
-									word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + "-" + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]
-								w.append(word1)
-								w.append("-")
-							else:
-								w.append("error")
-								w.append("-")
-						if no!=0:
-							break
-					if "error" not in w and w != []:
-						new_rel = new_rel.join(w)+"sambandhi"
-						sub_tree[i][j][1] = new_rel
-						relation_df.at[relation_df.loc[relation_df['PID'] == sub_tree[i][j][0]].index[0], 'RELATION'] = new_rel
-						fobl.write(filename+'\t'+str(lol)+'\tobl correction made\n')
-						f1.write(str(lol)+'\tobl correction made\n')
-					if "error" in w and w != []:
-						f.write(filename+'\t'+str(lol)+'\tOccuring vibhakti not in list of vibhakti\n')
-						f1.write(str(lol)+'\tOccuring vibhakti not in list of vibhakti\n')
-					if w == []:
-						f.write(filename+'\t'+str(lol)+'\tobl occurs without case or mark as children\n')
-						f1.write(str(lol)+'\tobl occurs without case or mark as children\n')
-				else:
-					f.write(filename+'\t'+str(lol)+'\tobl occurs without case or mark as children\n')
-					f1.write(str(lol)+'\tobl occurs without case or mark as children\n')
-	f.close()
-	f1.close()
-	fobl.close()
-	vib_write(vib)
-	return ([relation_df, sub_tree])
+    vib = get_vib()
+    list_add_vib = ["ke"]
+    for i in range(0, len(vib)):
+        vib[i] = vib[i].rstrip()
+    new_rel = ""
+    f = open(path+'/H_log.dat', 'a+')
+    fobl = open(path+'/H_obl_log.dat', 'a+')
+    f1 = open(path+'/'+filename+'/H_log.dat', 'a+')
+    for i in sorted(sub_tree.keys()):
+        for j in range(0, len(sub_tree[i])):
+            if sub_tree[i][j][1] == "obl":
+                lol = sub_tree[i][j][0]
+                w = []
+                new_rel = ""
+                word1 = ""
+                if lol in sub_tree:
+                    no = 0
+                    for k in range(0, len(sub_tree[lol])):
+                        if sub_tree[lol][k][1] == "case" or sub_tree[lol][k][1] == "mark":
+                            word0 = sub_tree[lol][k][0]
+                            word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0]
+                            word2 = word1
+                            no = 1
+                            if relation_df.loc[relation_df['PID'] == word0+1, 'RELATION'].iloc[0] == "case" or relation_df.loc[relation_df['PID'] == word0+1, 'RELATION'].iloc[0] == "mark":
+                                word1 = relation_df.WORD[relation_df['PID'] == word0].iloc[0] + " " + relation_df.WORD[relation_df['PID'] == word0+1].iloc[0]
+                                no = 2
+                                if relation_df.loc[relation_df['PID'] == word0+2, 'RELATION'].iloc[0] == "case" or relation_df.loc[relation_df['PID'] == word0+2, 'RELATION'].iloc[0] == "mark":
+                                    word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + " " + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]+ " " + relation_df.loc[relation_df['PID'] == word0+2, 'WORD'].iloc[0]
+                                    no = 3
+                            if word1 in vib:
+                                if no == 3:
+                                    word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + "-" + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]+ "-" + relation_df.loc[relation_df['PID'] == word0+2, 'WORD'].iloc[0]
+                                elif no == 2:
+                                    word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + "-" + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]
+                                w.append(word1)
+                                w.append("-")                                
+                            elif word2 in list_add_vib:
+                                vib.append(word1)
+                                if no == 3:
+                                    word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + "-" + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]+ "-" + relation_df.loc[relation_df['PID'] == word0+2, 'WORD'].iloc[0]
+                                elif no == 2:
+                                    word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + "-" + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]
+                                w.append(word1)
+                                w.append("-")
+                            else:
+                                w.append("error")
+                                w.append("-")
+                        if no!=0:
+                            break
+                    if "error" not in w and w != []:
+                        new_rel = new_rel.join(w)+"sambandhi"
+                        sub_tree[i][j][1] = new_rel
+                        relation_df.at[relation_df.loc[relation_df['PID'] == sub_tree[i][j][0]].index[0], 'RELATION'] = new_rel
+                        fobl.write(filename+'\t'+str(lol)+'\tobl correction made\n')
+                        f1.write(str(lol)+'\tobl correction made\n')
+                    if "error" in w and w != []:
+                        f.write(filename+'\t'+str(lol)+'\tOccuring vibhakti not in list of vibhakti\n')
+                        f1.write(str(lol)+'\tOccuring vibhakti not in list of vibhakti\n')
+                    if w == []:
+                        f.write(filename+'\t'+str(lol)+'\tobl occurs without case or mark as children\n')
+                        f1.write(str(lol)+'\tobl occurs without case or mark as children\n')
+                else:
+                    f.write(filename+'\t'+str(lol)+'\tobl occurs without case or mark as children\n')
+                    f1.write(str(lol)+'\tobl occurs without case or mark as children\n')
+    f.close()
+    f1.close()
+    fobl.close()
+    vib_write(vib)
+    return ([relation_df, sub_tree])
 
 #Function to find BFS of tree
 def BFS(relation_df, sub_tree):
@@ -543,7 +557,6 @@ def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
 		vib_path = path_des+'/H_def_lwg-wid-word-postpositions_new'
 		f = open(vib_path)
 		vibs = list(f)
-		print(vibs)
 		for i in range(0, len(vibs)):
 			vibs[i] = vibs[i].rstrip()
 			vibs[i] = re.split(r'\t', vibs[i])
@@ -560,9 +573,7 @@ def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
 			for j in range(len(pos)):
 				if pos[j][-1] == ')':
 					pos[j] = pos[j][0:-1]
-				list1.append(pos[j])
-	print(list1)
-	print(relation_df)
+				list1.append(int(pos[j]))
 	#TAM file opening
 	flag = 0
 	try:
@@ -660,7 +671,7 @@ def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
 	f2 = open(path_des+'/H_log.dat', 'a+')
 	for j in list1:
 		if j not in sub_tree:
-			relation_df = relation_df.drop(relation_df[relation_df.PID == int(j)].index[0])
+			relation_df = relation_df.drop(relation_df[relation_df.PID == j].index[0])
 			f.write(filename+'\t'+str(j)+'\t'+'has been deleted\n')
 			f2.write(str(j)+'\t'+'has been deleted\n')
 		else:
@@ -680,8 +691,12 @@ def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
 				f.write(filename+'\t'+str(j)+'\t'+'has been deleted\n')
 				f2.write(str(j)+'\t'+'has been deleted\n')
 			else:
-				f1.write(filename+'\t'+str(j)+'\t'+'has children but is trying to be deleted\n')
-				f2.write(str(j)+'\t'+'has children but is trying to be deleted\n')
+				if relation_df.loc[relation_df.PID == j, 'WORD'].iloc[0] == 'kI':
+					f1.write(filename+'\t'+str(j)+'\t'+'has children but is trying to be deleted. Here we are depending on parser output over def facts.\n')
+					f2.write(str(j)+'\t'+'has children but is trying to be deleted. Here we are depending on parser output over def facts.\n')
+				else:
+					f1.write(filename+'\t'+str(j)+'\t'+'has children but is trying to be deleted\n')
+					f2.write(str(j)+'\t'+'has children but is trying to be deleted\n')
 		f.close()
 		f1.close()
 		f2.close()
