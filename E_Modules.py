@@ -5,22 +5,17 @@ import numpy as np
 from anytree.importer import JsonImporter
 from anytree import (RenderTree, ContRoundStyle)
 from anytree.exporter import DotExporter 
+from IPython.display import Image
 from subprocess import check_call
+import csv
 
 #Function to get list of vibhakti
 def get_vib():
-	path_vib ="/home/kailash/Aishu_code/n_tree-master/vibhakti"
-	f = open(path_vib)
-	vib = list(f)
-	f.close()
+	path_vib ="/home/kailash/n_tree-master/vibhakti"
+	f1 = open(path_vib)
+	vib = list(f1)
+	f1.close()
 	return(vib)
-
-def vib_write(vib):
-	path_vib ="/home/kailash/Aishu_code/n_tree-master/vibhakti"
-	f = open(path_vib, 'w+')
-	for i in range(0, len(vib)):
-		f.write(vib[i]+'\n')
-	f.close()
 
 #Function to delete old log
 def clear_logs(path):
@@ -28,6 +23,7 @@ def clear_logs(path):
 	f = open(path+'/E_obl_log.dat', 'w+')
 	f = open(path+'/E_cc_log.dat', 'w+')
 	f = open(path+'/E_tam_vib_log.dat', 'w+')
+	f = open(path+'/E_sanity_log.dat', 'w+')
 	f.close()
 
 #Function to clear residue files from previous run
@@ -54,18 +50,19 @@ def create_dataframe(parse, path, filename):
 		f = open(path+'/E_log.dat', 'a+')
 		f.write(filename +'\tTree has non-int PID\n')
 		f.close()
-		f = open(path+'/'+filename+'/E_log.dat', 'a+')
+		f = open(path_des+'/E_log.dat', 'a+')
 		f.write('\tTree has non-int PID\n')
 		f.close()
 	if count != 1:
-		error_flag = 1
-		f = open(path+'/E_log.dat', 'a+')
-		f.write(filename +'\tMore than 1 tree\n')
-		f.close()
-		f = open(path+'/'+filename+'/E_log.dat', 'a+')
-		f.write('\tMore than 1 tree\n')
-		f.close()
+		error_flag = 2
 	return ([relation_df, error_flag])
+
+def remove_punct(relation_df):
+	punct=['!','"','#','$','%','&',"'",'(',')','*','+',',','-','.','/',':',';','<','=','>','?','@','[','\\',']','^','_','`','{','|','}','~']
+	for i in relation_df.index:
+		if relation_df.WORD[i] in punct:
+			relation_df = relation_df.drop([relation_df.loc[relation_df.index == i].index[0]], axis = 0)
+	return(relation_df)
 
 #Function to save punctuation information
 def punct_info(path_des, path, filename):
@@ -97,10 +94,14 @@ def punct_info(path_des, path, filename):
 				middle = 0
 			if space_separate[i][-1] in punct:
 				right = 1
+				word_r = space_separate[i][0:-1]
 			if space_separate[i][0] in punct:
 				left = 1
+				word_l = space_separate[i][1:]
 			if space_separate[i] in punct:
 				middle = 1
+				word_l = space_separate[i-1]
+				word_r = space_separate[i+1]
 			if middle == 1:
 				punct_info1.append([space_separate[i], 'M', k, k+1])
 			elif left == 1:
@@ -227,10 +228,10 @@ def add_edge_labels(path_des, filename):
 				ele = ele+'"'
 				space_separate[i][j+1] = ele
 				space_separate[i].append('[label="'+und_sep[-1][0:-3]+'" fontcolor="Red"]'+und_sep[-1][-2:])
-	f = open(path_des+'/E_sentence_updated')
-	sentence = f.readline()
-	f.close()
-	sentence1 = sentence.rstrip()
+	# f = open(path_des+'/E_sentence_updated')
+	# sentence = f.readline()
+	# f.close()
+	# sentence1 = sentence.rstrip()
 	f = open(path_des+filename, 'w+')
 	for i in range(len(space_separate)):
 		for j in space_separate[i]:
@@ -238,8 +239,8 @@ def add_edge_labels(path_des, filename):
 				f.write(str(j)+' ')
 			else:
 				f.write(str(j)) 
-		if i == 0:
-			f.write('    labelloc="t";\n     label="'+sentence1+'\\n\\n"\n ')
+		# if i == 0:
+		# 	f.write('    labelloc="t";\n     label="'+sentence1+'\\n\\n"\n ')
 	f.close()
 
 #Function to draw tree
@@ -266,27 +267,29 @@ def drawtree(string, path_des, path, filename, file):
 
 #Function to modify nmod relation
 def nmod_case(relation_df, sub_tree):
-	for i in relation_df.index:
-		if relation_df.RELATION[i] == 'nmod':
-			flag = 0
-			head = relation_df.PID[i]
-			if head in sub_tree:
-				for j in sub_tree[head]:
-					if j[1] == 'case':
-						if flag == 1:
-							print('error')
-						else:
-							relation_df.RELATION[i] = relation_df.RELATION[i]+'-'+j[3]
-	sub_tree = create_dict(relation_df)
-	return[relation_df, sub_tree]
+    for i in relation_df.index:
+        if relation_df.RELATION[i] == 'nmod':
+            flag = 0
+            head = relation_df.PID[i]
+            if head in sub_tree:
+                for j in sub_tree[head]:
+                    if j[1] == 'case':
+                        if flag == 1:
+                            print('error')
+                        else:
+                            print(str(relation_df.PID[i])+'\t'+relation_df.RELATION[i])
+                            relation_df.RELATION[i] = relation_df.RELATION[i]+'-'+j[3]
+                            print(str(relation_df.PID[i])+'\t'+relation_df.RELATION[i])
+    sub_tree = create_dict(relation_df)
+    return[relation_df, sub_tree]
 
 #Function to correct obl errors
 def obl_err(relation_df, sub_tree, path, filename):
 	vib = get_vib()
-	list_add_vib = []
 	for i in range(0, len(vib)):
 		vib[i] = vib[i].rstrip()
 	new_rel = ""
+	no = 0
 	f = open(path+'/E_log.dat', 'a+')
 	fobl = open(path+'/E_obl_log.dat', 'a+')
 	f1 = open(path+'/'+filename+'/E_log.dat', 'a+')
@@ -298,12 +301,11 @@ def obl_err(relation_df, sub_tree, path, filename):
 				new_rel = ""
 				word1 = ""
 				if lol in sub_tree:
-					no = 0
+					n = 0
 					for k in range(0, len(sub_tree[lol])):
 						if sub_tree[lol][k][1] == "case" or sub_tree[lol][k][1] == "mark":
 							word0 = sub_tree[lol][k][0]
 							word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0]
-							word2 = word1
 							no = 1
 							if relation_df.loc[relation_df['PID'] == word0+1, 'RELATION'].iloc[0] == "case" or relation_df.loc[relation_df['PID'] == word0+1, 'RELATION'].iloc[0] == "mark":
 								word1 = relation_df.WORD[relation_df['PID'] == word0].iloc[0] + " " + relation_df.WORD[relation_df['PID'] == word0+1].iloc[0]
@@ -313,14 +315,6 @@ def obl_err(relation_df, sub_tree, path, filename):
 									no = 3
 							if word1 in vib :
 								if no == 3:
-									word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + "-" + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]+ "-" + relation_df.loc[relation_df['PID'] == word0+2, 'WORD'].iloc[0]
-								elif no == 2:
-									word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + "-" + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]
-								w.append(word1)
-								w.append("-")
-							elif word2 in list_add_vib:
-								vib.append(word1)
-								if no == 3:
 									word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + "_" + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]+ "_" + relation_df.loc[relation_df['PID'] == word0+2, 'WORD'].iloc[0]
 								elif no == 2:
 									word1 = relation_df.loc[relation_df['PID'] == word0, 'WORD'].iloc[0] + "_" + relation_df.loc[relation_df['PID'] == word0+1, 'WORD'].iloc[0]
@@ -329,7 +323,7 @@ def obl_err(relation_df, sub_tree, path, filename):
 							else:
 								w.append("error")
 								w.append("_")
-						if no!=0:
+						if n!=0:
 							break
 					if "error" not in w and w != []:
 						new_rel = new_rel.join(w)+"sambandhi"
@@ -337,7 +331,7 @@ def obl_err(relation_df, sub_tree, path, filename):
 						relation_df.at[relation_df.loc[relation_df['PID'] == sub_tree[i][j][0]].index[0], 'RELATION'] = new_rel
 						fobl.write(filename+'\t'+str(lol)+'\tobl correction made\n')
 						f1.write(str(lol)+'\tobl correction made\n')
-					if "error" in w and w != []:
+					if ("error" in w and w != []):
 						f.write(filename+'\t'+str(lol)+'\tOccuring vibhakti not in list of vibhakti\n')
 						f1.write(str(lol)+'\tOccuring vibhakti not in list of vibhakti\n')
 					if w == []:
@@ -349,7 +343,6 @@ def obl_err(relation_df, sub_tree, path, filename):
 	f.close()
 	f1.close()
 	fobl.close()
-	vib_write(vib)
 	return ([relation_df, sub_tree])
 
 #Function to find BFS of tree
@@ -368,6 +361,7 @@ def BFS(relation_df, sub_tree):
 def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
 	conjunctions = ['and']
 	solo_conj = ['but']
+	error_flag = 0
 	try:
 		fcclist = open(path+'/E_cc_list.dat', 'r+')
 		list_of_cc = list(fcclist)
@@ -377,6 +371,7 @@ def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
 	for i in range(0, len(list_of_cc)):
 		list_of_cc[i] = list_of_cc[i].rstrip()
 	mod = 0
+	conj = 1
 	f = open(path+'/E_log.dat', 'a+')
 	f1 = open(path+'/'+filename+'/E_log.dat', 'a+')
 	fcc = open(path+'/E_cc_log.dat', 'a+')
@@ -384,6 +379,7 @@ def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
 	while i < len(stack)-1:
 		i = i+1
 		if stack[i][1] == 'conj':
+			conj = 1
 			cc = 0
 			for j in sub_tree[stack[i][2]]:
 				if j[1] =='cc':
@@ -395,6 +391,7 @@ def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
 					else:
 						cc = 2
 						mod = 0
+						error_flag = 1
 						f.write(filename+'\tconj exists with more than 1 cc\n')
 						f1.write('conj exists with more than 1 cc\n')
 						break
@@ -436,17 +433,18 @@ def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
 				sub_tree = sub_tree1
 				i = -1
 				stack = BFS(relation_df, sub_tree)
-	for i in stack:
-		if i[1] == 'cc':
-			if i[3] not in list_of_cc:
-				list_of_cc.append(i[3])
-			if i[3] not in solo_conj:
-				for j in stack:
-					if j[0] == i[2] and j[1] != 'conj':
-						f.write(filename+'\t'+i[3]+' cannot ocur without conj\n')
-						f1.write(i[3]+' cannot ocur without conj\n')
-						mod = 0
-						break
+	if error_flag == 0:
+		for i in stack:
+			if i[1] == 'cc':
+				if i[3] not in list_of_cc:
+					list_of_cc.append(i[3])
+				if i[3] not in solo_conj:
+					for j in stack:
+						if j[0] == i[2] and j[1] != 'conj':
+							f.write(filename+'\t'+i[3]+' cannot ocur without conj\n')
+							f1.write(i[3]+' cannot ocur without conj\n')
+							mod = 0
+							break
 	if mod == 1:
 		fcc.write(str(filename)+'\tconj-cc correction made\n')
 		f1.write('conj-cc correction made\n')
@@ -459,7 +457,6 @@ def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
 						relation_df.at[k, 'PIDWITH'] = j[2]
 	else:
 		sub_tree = create_dict(relation_df)
-		stack = BFS(relation_df, sub_tree)
 	fcclist = open(path+'/E_cc_list.dat', 'w+')
 	for i in range(0, len(list_of_cc)):
 		fcclist.write(list_of_cc[i]+'\n')
@@ -676,11 +673,7 @@ def parserid_wordid_mapping(relation_df):
 def relation_facts(relation_df):
 	relation_facts1 = []
 	for i in relation_df.index:
-		if relation_df.PIDWITH[i] == 0:
-			head_word = 'root'
-		else:
-			head_word = relation_df.loc[relation_df.PID == relation_df.PIDWITH[i], 'WORD'].iloc[0]
-		relation_facts1.append([relation_df.PID[i], relation_df.WORD[i], relation_df.POS[i], relation_df.RELATION[i], relation_df.PIDWITH[i], head_word])
+		relation_facts1.append([relation_df.PID[i], relation_df.WORD[i], relation_df.PIDWITH[i], relation_df.POS[i], relation_df.RELATION[i]])
 	return(relation_facts1)
 
 #Function to print tree tree in single line
@@ -702,17 +695,14 @@ def DFS(node, sub_tree, relation_df, clause):
 #Function to create groupings
 def write_groupings(path_des, wordid_word, wordid_word_dict, sub_tree):
 	for i in wordid_word:
-		for j, values in sub_tree.items():
-			for k in values:
-				if k[0] == i[0]:
-					lvl = k[4]
+		clause = []
 		clause_list = []
 		clause_list = find_single_line_tree(i[0], sub_tree, clause_list)
 		clause_list.sort()
 		clause_list_string = [str(i) for i in clause_list]
 		string = " ".join(clause_list_string)
 		f = open(path_des + '/E_grouping_ids.dat', 'a+')
-		f.write('(E_grp_hid-grp_hid-lvl_elem-ids\t'+ str(i[0]) + '\t' + str(lvl) + '\t' + string + ')\n')
+		f.write('(E_grp_hid-grp_elem_ids\t'+ str(i[0]) + '\t' + string + ')\n')
 		f.close()
 		clause_list_word = [wordid_word_dict[i] for i in clause_list]
 		string_words = ' '.join(clause_list_word)
@@ -720,7 +710,7 @@ def write_groupings(path_des, wordid_word, wordid_word_dict, sub_tree):
 		f.write('(E_grp_hword-grp_elem_words\t'+ wordid_word_dict[i[0]] + '\t' + string_words + ')\n')
 		f.close()
 		f = open(path_des + '/E_grouping_template.dat', 'a+')
-		f.write('(E_group (language english) (grp_hid '+ str(i[0]) +') (grp_lvl '+ str(lvl) +') (grp_head_word '+  wordid_word_dict[i[0]] +' ) (grp_element_ids '+ string +') (grp_element_words '+ string_words +'))\n')
+		f.write('(E_group (language english) (grp_hid '+ str(i[0]) +') (grp_head_word '+  wordid_word_dict[i[0]] +' ) (grp_element_ids '+ string +') (grp_element_words '+ string_words +'))\n')
 		f.close()
 
 #Function to store the punct details
@@ -753,101 +743,90 @@ def write_parserid_wordid(path_des, parserid_wordid):
 def write_relation_facts(path_des, relation_facts):
 	f = open(path_des+'/E_relation_final_facts', 'w+')
 	for i in range(0, len(relation_facts)):
-		f.write('(E_cid-word-pos-relation-hid-hword\t'+str(relation_facts[i][0])+'\t'+relation_facts[i][1]+'\t'+relation_facts[i][2]+'\t'+relation_facts[i][3]+'\t'+str(relation_facts[i][4])+'\t'+relation_facts[i][5]+'\n')
+		f.write('(E_cid-word-hid-pos-relation\t'+str(relation_facts[i][0])+'\t'+relation_facts[i][1]+'\t'+str(relation_facts[i][2])+'\t'+relation_facts[i][3]+'\t'+relation_facts[i][4]+')\n')
 	f.close()
 
-def add_lvl(stack, sub_tree):
-	for i in stack:
-		if i[0] in sub_tree:
-			if i[0] == 0:
-				lvl = 1
-			else:
-				for j, values in sub_tree.items():
-					for k in values:
-						if k[0] == i[0]:
-							lvl  = k[4]+1
-			for j in sub_tree[i[0]]:
-				j.append(lvl)
-	return(sub_tree)
-
 def if_then(relation_df, sub_tree):
-	flag_correct = 0
-	for i, value in sub_tree.items():
-		for j in range(0, len(value)):
-			if value[j][3] == "then":
-				for k in range(0, len(value)):
-					try:
-						sub_tree[value[k][0]]
-						for m in range(0, len(sub_tree[value[k][0]])):
-							if sub_tree[value[k][m]][m][3] == "if":
-								flag_correct = 1
-								break
-					except:
-						print("")
-				if flag_correct == 1:
-					list1 = []
-					flag_if = 0
-					for i in relation_df.index:
-						if relation_df.word[i] == "then":
-							then_id = relation_df.PID[i]
-							print(then_id)
-							for j in relation_df.index:
-								if relation_df.word[j] == "if" and relation_df.PID[j] not in list1: 
-									flag_if = 1
-									if_id = relation_df.PID[j]
-									print(if_id)
-									break
-							if flag_if == 1:
-								parent = relation_df.loc[relation_df.PID == if_id, 'PIDWITH'].iloc[0]
-								parent_then = relation_df.loc[relation_df.PID == then_id, 'PIDWITH'].iloc[0]
-								grandparent = relation_df.loc[relation_df.PID == parent_then, 'PIDWITH'].iloc[0]
-								print(parent)
-								print(parent_then)
-								print(grandparent)
-								relation_df.at[relation_df.loc[relation_df.PID == parent].index[0], 'PIDWITH'] = if_id
-								relation_df.at[relation_df.loc[relation_df.PID == parent_then].index[0], 'PIDWITH'] = if_id
-								relation_df.at[relation_df.loc[relation_df.PID == if_id].index[0], 'PIDWITH'] = grandparent
-								relation_df.at[relation_df.loc[relation_df.PID == if_id].index[0], 'WORD'] = "if_then"
-								relation_df = relation_df.drop(relation_df[relation_df.PID == then_id].index[0])
-								list1.append(if_id)
-							else:
-								parent = relation_df.PIDWITH[i]
-								grandparent = relation_df.loc[relation_df.PID == parent, 'PIDWITH'].iloc[0]
-								print(parent)
-								print(grandparent)
-								relation_df.PIDWITH[parent] = relation_df.PID[i]
-								relation_df.PIDWITH[i] = grandparent
-	return(relation_df)
+    flag_correct = 0
+    for i, value in sub_tree.items():
+        for j in range(0, len(value)):
+            if value[j][3] == "then":
+                then_node = value[j][0]
+                for k in range(0, len(value)):
+                    try:
+                        sub_tree[value[k][0]]
+                        for m in range(0, len(sub_tree[value[k][0]])):
+                            if sub_tree[value[k][m]][m][3] == "if":
+                                if_node = sub_tree[value[k][m]][m][0]
+                                flag_correct = 1
+                                break
+                    except:
+                        print("")
+                if flag_correct == 1:
+                    list1 = []
+                    flag_if = 0
+                    for i in relation_df.index:
+                        if relation_df.word[i] == "then":
+                            then_id = relation_df.PID[i]
+                            print(then_id)
+                            for j in relation_df.index:
+                                if relation_df.word[j] == "if" and relation_df.PID[j] not in list1: 
+                                    flag_if = 1
+                                    if_id = relation_df.PID[j]
+                                    print(if_id)
+                                    break
+                            if flag_if == 1:
+                                parent = relation_df.loc[relation_df.PID == if_id, 'PIDWITH'].iloc[0]
+                                parent_then = relation_df.loc[relation_df.PID == then_id, 'PIDWITH'].iloc[0]
+                                grandparent = relation_df.loc[relation_df.PID == parent_then, 'PIDWITH'].iloc[0]
+                                print(parent)
+                                print(parent_then)
+                                print(grandparent)
+                                relation_df.at[relation_df.loc[relation_df.PID == parent].index[0], 'PIDWITH'] = if_id
+                                relation_df.at[relation_df.loc[relation_df.PID == parent_then].index[0], 'PIDWITH'] = if_id
+                                relation_df.at[relation_df.loc[relation_df.PID == if_id].index[0], 'PIDWITH'] = grandparent
+                                relation_df.at[relation_df.loc[relation_df.PID == if_id].index[0], 'WORD'] = "if_then"
+                                relation_df = relation_df.drop(relation_df[relation_df.PID == then_id].index[0])
+                                list1.append(if_id)
+                            else:
+                                parent = relation_df.PIDWITH[i]
+                                grandparent = relation_df.loc[relation_df.PID == parent, 'PIDWITH'].iloc[0]
+                                print(parent)
+                                print(grandparent)
+                                relation_df.PIDWITH[parent] = relation_df.PID[i]
+                                relation_df.PIDWITH[i] = grandparent
+    return(relation_df)
 
 def either_or(relation_df, sub_tree):
-	flag_correct = 0
-	for i, value in sub_tree.items():
-		for j in range(0, len(value)):
-			if value[j][3] == "either":
-				either_node = value[j][0]
-				for k in range(0, len(value)):
-					try:
-						sub_tree[value[k][0]]
-						for m in range(0, len(sub_tree[value[k][0]])):
-							if sub_tree[value[k][m]][m][3] == "or":
-								or_node = sub_tree[value[k][m]][m][0]
-								flag_correct = 1
-								break
-					except:
-						print("")
-				if flag_correct == 1:
-					parent = i
-					grandparent = relation_df.loc[relation_df.PID == parent, 'PIDWITH'].iloc[0]
-					relation_df.at[relation_df.loc[relation_df.PID == either_node].index[0], 'PIDWITH'] = grandparent
-					relation_df.at[relation_df.loc[relation_df.PID == either_node].index[0], 'WORD'] = "either_or"
-					list1 = value
-					for h in range(0, len(list1)):
-						if list1[h][0] != either_node:
-							print(list1[h][0])
-							relation_df.at[relation_df.loc[relation_df.PID == list1[h][0]].index[0], 'PIDWITH'] = either_node
-					relation_df.at[relation_df.loc[relation_df.PID == i].index[0], 'PIDWITH'] = either_node
-					relation_df = relation_df.drop(relation_df[relation_df.PID == or_node].index[0])
-	return(relation_df)
+    flag_correct = 0
+    for i, value in sub_tree.items():
+        for j in range(0, len(value)):
+            if value[j][3] == "either":
+                either_node = value[j][0]
+                for k in range(0, len(value)):
+                    try:
+                        sub_tree[value[k][0]]
+                        for m in range(0, len(sub_tree[value[k][0]])):
+                            if sub_tree[value[k][m]][m][3] == "or":
+                                or_node = sub_tree[value[k][m]][m][0]
+                                flag_correct = 1
+                                break
+                    except:
+                        print("")
+                if flag_correct == 1:
+                    parent = i
+                    grandparent = relation_df.loc[relation_df.PID == parent, 'PIDWITH'].iloc[0]
+                    relation_df.at[relation_df.loc[relation_df.PID == either_node].index[0], 'PIDWITH'] = grandparent
+                    relation_df.at[relation_df.loc[relation_df.PID == either_node].index[0], 'WORD'] = "either_or"
+                    list1 = value
+                    for h in range(0, len(list1)):
+                        if list1[h][0] != either_node:
+                            print(list1[h][0])
+                            relation_df.at[relation_df.loc[relation_df.PID == list1[h][0]].index[0], 'PIDWITH'] = either_node
+                    relation_df.at[relation_df.loc[relation_df.PID == i].index[0], 'PIDWITH'] = either_node
+                    relation_df = relation_df.drop(relation_df[relation_df.PID == or_node].index[0])
+    return(relation_df)
+
 
 def while_semantic(relation_df):
 	for i in relation_df.index:
@@ -862,4 +841,18 @@ def while_semantic(relation_df):
 				relation_df.PIDWITH[i] = great_grandparent
 				relation_df.at[relation_df.loc[relation_df.PID == parent].index[0], 'PIDWITH'] = while_id
 				relation_df.at[relation_df.loc[relation_df.PID == grandparent].index[0], 'PIDWITH'] = while_id
+	return(relation_df)
+
+
+def apostrophe_parser_tranformation(relation_df, path_des):
+	flag_change = 0
+	for i in relation_df.index:
+			if relation_df.WORD[i][-1] == "s":
+				if relation_df.WORD[i][-2] == "'": 
+					flag_change = 1
+					prev_word = relation_df.WORD[i-1]
+					relation_df = relation_df.drop([relation_df.loc[relation_df['PID'] == i].index[0]], axis = 0)
+					relation_df.WORD[i-1] = prev_word+"'s"
+	if flag_change == 1:
+		relation_df.to_csv(path_des+'/E_conll_parse_modified',sep='\t', quoting=csv.QUOTE_NONE, header = False, index = False)
 	return(relation_df)
