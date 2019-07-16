@@ -228,10 +228,10 @@ def add_edge_labels(path_des, filename):
 				ele = ele+'"'
 				space_separate[i][j+1] = ele
 				space_separate[i].append('[label="'+und_sep[-1][0:-3]+'" fontcolor="Red"]'+und_sep[-1][-2:])
-	# f = open(path_des+'/E_sentence_updated')
-	# sentence = f.readline()
-	# f.close()
-	# sentence1 = sentence.rstrip()
+	f = open(path_des+'/E_sentence_updated')
+	sentence = f.readline()
+	f.close()
+	sentence1 = sentence.rstrip()
 	f = open(path_des+filename, 'w+')
 	for i in range(len(space_separate)):
 		for j in space_separate[i]:
@@ -239,8 +239,8 @@ def add_edge_labels(path_des, filename):
 				f.write(str(j)+' ')
 			else:
 				f.write(str(j)) 
-		# if i == 0:
-		# 	f.write('    labelloc="t";\n     label="'+sentence1+'\\n\\n"\n ')
+		if i == 0:
+			f.write('    labelloc="t";\n     label="'+sentence1+'\\n\\n"\n ')
 	f.close()
 
 #Function to draw tree
