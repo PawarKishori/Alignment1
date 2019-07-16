@@ -23,7 +23,11 @@ for parse in files:
 	#Calling function to clear old files
 	H_Modules.clear_files(path_des)
 
-	#create dataframe
+	error_flag = H_Modules.check_if_sentence_file_present(path, path_des, filename)
+	if error_flag == 1:
+		continue
+	
+	#Create dataframe
 	[relation_df, error_flag] = H_Modules.create_dataframe(parse, path, filename)
 	if error_flag == 1:
 		continue
@@ -34,6 +38,10 @@ for parse in files:
 		continue
 
 	error_flag = H_parser_sanity_modules.children_check(relation_df, filename, error_flag, path)
+	if error_flag == 1:
+		continue
+
+	error_flag = H_parser_sanity_modules.punct_mistag(relation_df, filename, path)
 	if error_flag == 1:
 		continue
 
@@ -137,7 +145,12 @@ for parse in files:
 	error_flag = H_Modules.lwg(path_des, path, filename, relation_df)
 
 	#Calling function to update tam and vibakthi details
-	relation_df = H_Modules.tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
+	[relation_df, unable_to_delete] = H_Modules.tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
+
+	#Calling function to combine compound relations
+	[relation_df, unable_to_delete] = H_Modules.compound_combine(unable_to_delete, relation_df, path, path_des, filename)
+
+	H_Modules.undeletable_nodes(unable_to_delete, relation_df, path, path_des, filename)
 
 	#Calling function to create a dictionary
 	sub_tree = H_Modules.create_dict(relation_df)

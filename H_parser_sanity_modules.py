@@ -4,7 +4,7 @@ import csv
 def multi_root(relation_df, error_flag, path, filename):
 	count = 0
 	for i in range(len(relation_df)):
-		if relation_df.iloc[i]['RELATION'] == 'root':
+		if relation_df.iloc[i]['PID'] == 1:
 			count = count + 1
 	if count == 0:
 		f = open(path+'/H_sanity_log.dat', 'a+')
@@ -60,12 +60,16 @@ def cc_conj_transformation(relation_df, path_des):
 	return(relation_df)
 
 def punct_mistag(relation_df, filename, path):
+    error_flag = 0
     f = open(path+'/H_sanity_log.dat', 'a+')
     punct=['!','"','#','$','%','&',"'",'(',')','*','+',',','-','.','/',':',';','<','=','>','?','@','[','\\',']','^','_','`','{','|','}','~']
     for i in relation_df.index:
         if relation_df.RELATION[i] != "punct" and relation_df.POS[i] != "PUNCT" and relation_df.WORD[i] in punct:
+            error_flag = 1
             f.write(filename+"\t"+relation_df.WORD[i]+"\tPunctuation has been mistagged in sentence")
             break
         if relation_df.RELATION[i] == "punct" and relation_df.WORD[i] not in punct:
+            error_flag = 1
             f.write(filename+"\t"+relation_df.WORD[i]+"\tWord mistagged as punctuation in sentence")
             break
+    return(error_flag)

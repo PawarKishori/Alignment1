@@ -9,7 +9,7 @@ from subprocess import check_call
 
 #Function to get list of vibhakti
 def get_vib():
-	path_vib ="/home/aishwarya/Aishu_code/n_tree-master/vibhakti"
+	path_vib ="/home/kailash/Aishu_code/n_tree-master/vibhakti"
 	f = open(path_vib)
 	vib = list(f)
 	f.close()
@@ -34,6 +34,21 @@ def clear_files(path_des):
 	f = open(path_des+'/H_log.dat', 'w+')
 	f.close()
 
+def check_if_sentence_file_present(path, path_des, filename):
+	try:
+		error_flag = 0
+		f = open(path_des+'/H_sentence')
+		f.close()
+	except:
+		error_flag = 1
+		f = open(path+'/H_log.dat', 'a+')
+		f.write(filename +'\tH_sentence not present\n')
+		f.close()
+		f = open(path_des+'/H_log.dat', 'a+')
+		f.write('\tH_sentence not present\n')
+		f.close()
+	return(error_flag)
+
 #Function to create dataframe
 def create_dataframe(parse, path, filename):
 	count = 0
@@ -43,7 +58,7 @@ def create_dataframe(parse, path, filename):
 	df1 = df[['PID','WORD','POS','RELATION','PIDWITH']]
 	relation_df =  pd.concat([df1.PID, df1.WORD,df1.POS, df1.RELATION, df1.PIDWITH], axis=1)
 	for i in range(len(relation_df)):
-		if relation_df.iloc[i]['RELATION'] == 'root':
+		if relation_df.iloc[i]['PID'] == 1:
 			count = count+1
 	if type(relation_df.PID[1]) != np.int64:
 		error_flag = 1
@@ -117,10 +132,10 @@ def punct_info(path_des, path, filename):
 	except:
 		k = 0
 		f = open(path+'/H_log.dat', 'a+')
-		f.write(filename +'\tH_sentence not present\n')
+		f.write(filename +'\tError while writing punct info\n')
 		f.close()
 		f = open(path_des+'/H_log.dat', 'a+')
-		f.write('\tH_sentence not present\n')
+		f.write('\tError while writing punct info\n')
 		f.close()
 		return([k, punct_info1])
 
@@ -271,20 +286,19 @@ def drawtree(string, path_des, path, filename, file):
 
 #Function to modify nmod relation
 def nmod_case(relation_df, sub_tree, path_des):
+	mod_flag = 0
 	for i in relation_df.index:
 		if relation_df.RELATION[i] == 'nmod':
-			flag = 0
 			head = relation_df.PID[i]
 			if head in sub_tree:
 				for j in sub_tree[head]:
 					if j[1] == 'case':
-						if flag == 1:
-							print('error')
-						else:
-							relation_df.RELATION[i] = relation_df.RELATION[i]+'-'+j[3]
-							f = open(path_des+'/H_log.dat', 'a+')
-							f.write('nmod correction made\n')
-							f.close()
+						mod_flag = 1
+						relation_df.RELATION[i] = relation_df.RELATION[i]+'-'+j[3]
+	if mod_flag == 1:	
+		f = open(path_des+'/H_log.dat', 'a+')
+		f.write('nmod correction made\n')
+		f.close()
 	sub_tree = create_dict(relation_df)
 	return[relation_df, sub_tree]
 
@@ -366,8 +380,9 @@ def BFS(relation_df, sub_tree):
 
 #Function to resolve conj-cc error 
 def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
-	conjunctions = ['Ora']
+	conjunctions = ['Ora', 'waWa']
 	solo_conj = ['jabaki', 'lekina']
+	error_flag = 0
 	try:
 		fcclist = open(path+'/H_cc_list.dat', 'r+')
 		list_of_cc = list(fcclist)
@@ -387,7 +402,7 @@ def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
 		if stack[i][1] == 'conj':
 			cc = 0
 			for j in sub_tree[stack[i][2]]:
-				if j[1] =='cc':
+				if j[1] =='cc' and j[3] not in solo_conj:
 					if j[3] not in list_of_cc:
 						list_of_cc.append(j[3])
 					if cc == 0:
@@ -396,6 +411,7 @@ def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
 					else:
 						cc = 2
 						mod = 0
+						error_flag = 1
 						f.write(filename+'\tconj exists with more than 1 cc\n')
 						f1.write('conj exists with more than 1 cc\n')
 						break
@@ -437,17 +453,18 @@ def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
 				sub_tree = sub_tree1
 				i = -1
 				stack = BFS(relation_df, sub_tree)
-	for i in stack:
-		if i[1] == 'cc':
-			if i[3] not in list_of_cc:
-				list_of_cc.append(i[3])
-			if i[3] not in solo_conj:
-				for j in stack:
-					if j[0] == i[2] and j[1] != 'conj':
-						f.write(filename+'\t'+i[3]+' cannot ocur without conj\n')
-						f1.write(i[3]+' cannot ocur without conj\n')
-						mod = 0
-						break
+	if error_flag == 0:
+		for i in stack:
+			if i[1] == 'cc':
+				if i[3] not in list_of_cc:
+					list_of_cc.append(i[3])
+				if i[3] not in solo_conj:
+					for j in stack:
+						if j[0] == i[2] and j[1] != 'conj':
+							f.write(filename+'\t'+i[3]+' cannot ocur without conj\n')
+							f1.write(i[3]+' cannot ocur without conj\n')
+							mod = 0
+							break
 	if mod == 1:
 		fcc.write(str(filename)+'\tconj-cc correction made\n')
 		f1.write('conj-cc correction made\n')
@@ -481,13 +498,19 @@ def lwg(path_des, path, filename, relation_df):
 			for line in f:
 				vib_list.extend(line.split())
 		punct = ['!','"','#','$','%','&',"'",'(',')','*','+',',','-','.','/',':',';','<','=','>','?','@','[','\\',']','^','_','`','{','|','}','~']
-		for i in range(0, len(vib_list)):
-			if vib_list[i][-1] in punct:
-				vib_list[i] = vib_list[i][0:-1]
-			if vib_list[i][0] in punct:
-				vib_list[i] = vib_list[i][1:]
-			if vib_list[i] in punct:
-				del vib_list[i]
+		len1 = len(vib_list)
+		n_del = 0
+		i = 0
+		while i < len1:
+			if vib_list[i-n_del] in punct:
+				del vib_list[i-n_del]
+				n_del = n_del + 1
+			else:
+				if vib_list[i-n_del][-1] in punct:
+					vib_list[i-n_del] = vib_list[i-n_del][0:-1]
+				if vib_list[i-n_del][0] in punct:
+					vib_list[i-n_del] = vib_list[i-n_del][1:]
+			i = i + 1
 		f_lwg = open(path_des+'/H_def_lwg-wid-word-postpositions_new','w+')
 		lwg_list = []
 		for i in range(0, len(vib_list)):
@@ -519,10 +542,10 @@ def lwg(path_des, path, filename, relation_df):
 	except:
 		error_flag = 1
 		f = open(path+'/H_log.dat', 'a+')
-		f.write(filename +'\tH_sentence not present\n')
+		f.write(filename +'\tError in lwg module\n')
 		f.close()
 		f = open(path_des+'/H_log.dat', 'a+')
-		f.write('H_sentence not present\n')
+		f.write('Error in lwg module\n')
 		f.close()
 	return(error_flag)
 
@@ -530,6 +553,7 @@ def lwg(path_des, path, filename, relation_df):
 def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename):
 	list1 = []
 	list2 = []
+	unable_to_delete = []
 	stack = BFS(relation_df, sub_tree)
 	word_final = ""
 	if error_flag == 0:
@@ -554,6 +578,7 @@ def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
 				if pos[j][-1] == ')':
 					pos[j] = pos[j][0:-1]
 				list1.append(int(pos[j]))
+		list1.reverse()
 	#TAM file opening
 	flag = 0
 	try:
@@ -564,6 +589,14 @@ def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
 		for i in range(0, len(tam)):
 			tam[i] = tam[i].rstrip()
 			tam[i] = re.split(r'\t', tam[i])
+		for i in range(0, len(tam)):
+			word = re.split(r'_', tam[i][4])
+			for j in range(len(word)):
+				if j == 0:
+					word_final = word[j]
+				else:
+					word_final = word_final+"-"+word[j]
+			tam[i][4] = word_final
 		#TAM updation
 		for i in range(0, len(tam)):
 			if tam[i][5] != '0)':
@@ -590,13 +623,10 @@ def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
 							head = pos1[j]
 				if error_flag != 1:
 					relation_df.loc[relation_df.PID == head, 'WORD'] = tam[i][4]
-					dele = []
 					for j in range(0, len(stack)):
 						if stack[j][0] in pos1 and stack[j][0] != head:
-							dele.append(stack[j][0])
-					dele.reverse()
-					for j in range(0, len(dele)):
-						list2.append(dele[j])
+							list2.append(stack[j][0])
+		list2.reverse()			
 	except:
 		print('')
 	if flag == 0:
@@ -637,13 +667,10 @@ def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
 								head = pos1[j]
 					if error_flag != 1:
 						relation_df.loc[relation_df.PID == head, 'WORD'] = tam[i][2]
-						dele = []
 						for j in range(0, len(stack)):
 							if stack[i][0] in pos:
-								dele.append(stack[i][0])
-						dele.reverse()
-						for i in range(0, len(dele)):
-							list2.append(dele[i])
+								list2.append(stack[i][0])
+			list2.reverse()
 		except:
 			print('')
 	f = open(path+'/H_tam_vib_log.dat', 'a+')
@@ -652,14 +679,14 @@ def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
 	for j in list1:
 		if j not in sub_tree:
 			relation_df = relation_df.drop(relation_df[relation_df.PID == j].index[0])
+			sub_tree = create_dict(relation_df)
 			f.write(filename+'\t'+str(j)+'\t'+'has been deleted\n')
 			f2.write(str(j)+'\t'+'has been deleted\n')
 		else:
-			f1.write(filename+'\t'+str(j)+'\t'+'has children but is trying to be deleted\n')
-			f2.write(str(j)+'\t'+'has children but is trying to be deleted\n')
+			unable_to_delete.append(j)
 	f.close()
 	f1.close()
-	f2.close()
+	f2.close()	
 	if flag == 1:
 		#relation deletion and updation
 		f = open(path+'/H_tam_vib_log.dat', 'a+')
@@ -668,19 +695,15 @@ def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
 		for j in list2:
 			if j not in list1 and j not in sub_tree:
 				relation_df = relation_df.drop([relation_df.loc[relation_df['PID'] == j].index[0]], axis = 0)
+				sub_tree = create_dict(relation_df)
 				f.write(filename+'\t'+str(j)+'\t'+'has been deleted\n')
 				f2.write(str(j)+'\t'+'has been deleted\n')
 			else:
-				if relation_df.loc[relation_df.PID == j, 'WORD'].iloc[0] == 'kI':
-					f1.write(filename+'\t'+str(j)+'\t'+'has children but is trying to be deleted. Here we are depending on parser output over def facts.\n')
-					f2.write(str(j)+'\t'+'has children but is trying to be deleted. Here we are depending on parser output over def facts.\n')
-				else:
-					f1.write(filename+'\t'+str(j)+'\t'+'has children but is trying to be deleted\n')
-					f2.write(str(j)+'\t'+'has children but is trying to be deleted\n')
+				unable_to_delete.append(j)
 		f.close()
 		f1.close()
 		f2.close()
-		return(relation_df)
+		return[relation_df, unable_to_delete]
 	else:
 		f = open(path+'/H_log.dat', 'a+')
 		f.write(filename +'\tBoth revised_manual_local_word_group.dat as well as manual_local_word_group.dat are not present\n')
@@ -688,7 +711,64 @@ def tam_and_vib_lwg(error_flag, sub_tree, relation_df, path, path_des, filename)
 		f = open(path_des+'/H_log.dat', 'a+')
 		f.write('Both revised_manual_local_word_group.dat as well as manual_local_word_group.dat are not present\n')
 		f.close()
-		return(relation_df)
+		return(relation_df, unable_to_delete)
+
+#Function to combine compound relations
+def compound_combine(unable_to_delete, relation_df, path, path_des, filename):
+	mod_flag = 0
+	f = open(path_des+'/H_parser-lwg-wid-word-postpositions.dat', 'w+')
+	for i in relation_df.index:
+		if relation_df.RELATION[i] == 'compound':
+			mod_flag = 1
+			child = relation_df.PID[i]
+			head = relation_df.PIDWITH[i]
+			if child in unable_to_delete:
+				unable_to_delete.remove(relation_df.PID[i])
+			else:
+				if head > child:
+					if relation_df.loc[relation_df.PID == head, 'WORD'].iloc[0] == 'kI':
+						combine = relation_df.loc[relation_df.PID == child, 'WORD'].iloc[0]
+					else:
+						combine = relation_df.loc[relation_df.PID == child, 'WORD'].iloc[0]+'-'+relation_df.loc[relation_df.PID == head, 'WORD'].iloc[0]
+				else:
+					combine = relation_df.loc[relation_df.PID == head, 'WORD'].iloc[0]+'-'+relation_df.loc[relation_df.PID == child, 'WORD'].iloc[0]
+				combine1 = re.split(r'-', combine)
+				head1 = re.split(r'-', relation_df.loc[relation_df.PID == head, 'WORD'].iloc[0])
+				for j in range(len(combine1)):
+					if j == 0:
+						lwg = combine1[j]
+					else:
+						lwg = lwg+'_'+combine1[j]
+				for j in range(len(head1)):
+					if j == 0:
+						word = head1[j]
+					else:
+						word = word+'_'+head1[j]
+				f.write('(H_parser-lwg-wid-word-postpositions\t'+lwg+'\t'+str(head)+'\t'+word+'\t'+str(child)+')\n')
+				relation_df.loc[relation_df.PID == head, 'WORD'] = combine
+			for j in relation_df.index:
+				if relation_df.PIDWITH[j] == child:
+					relation_df.PIDWITH[j] = head
+			relation_df = relation_df.drop([relation_df.loc[relation_df['PID'] == child].index[0]], axis = 0)
+	f.close()
+	if mod_flag == 1:	
+		f = open(path_des+'/H_log.dat', 'a+')
+		f.write('compound combine made\n')
+		f.close()
+	return[relation_df, unable_to_delete]
+
+def undeletable_nodes(unable_to_delete, relation_df, path, path_des, filename):
+	f1 = open(path+'/H_log.dat', 'a+')
+	f2 = open(path_des+'/H_log.dat', 'a+')
+	for i in range(len(unable_to_delete)):
+		if relation_df.loc[relation_df.PID == unable_to_delete[i], 'POS'].iloc[0] == 'VERB':
+			f1.write(filename+'\t'+str(unable_to_delete[i])+'\t'+'has children but is trying to be deleted. Here we are depending on parser output over def facts.\n')
+			f2.write(str(unable_to_delete[i])+'\t'+'has children but is trying to be deleted. Here we are depending on parser output over def facts.\n')
+		else:
+			f1.write(filename+'\t'+str(unable_to_delete[i])+'\t'+'has children but is trying to be deleted\n')
+			f2.write(str(unable_to_delete[i])+'\t'+'has children but is trying to be deleted\n')
+	f1.close()
+	f2.close()
 
 #Function to store tree in single line
 def find_single_line_tree(node, sub_tree, clause):
