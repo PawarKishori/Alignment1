@@ -1,4 +1,4 @@
-import csv
+import csv, E_Modules
 
 #Check for no or multi-root errors
 def multi_root(relation_df, error_flag, path, filename):
@@ -72,17 +72,10 @@ def combine_sentences(relation_df, path_des):
 				new_len = total_length - temp
 				m = i
 				for k in range(1, new_len+1):
-					if relation_df.PIDWITH[m] == 0:
-						print("")
-					else:
+					if relation_df.PIDWITH[m] != 0:
 						relation_df.PIDWITH[m] = relation_df.PIDWITH[m] + modified_pid
 					relation_df.PID[m] = m
 					m = m+1
 	relation_df.to_csv(path_des+'/E_conll_parse_combined_sentences',sep='\t', quoting=csv.QUOTE_NONE, header = False, index = False)
+	E_Modules.write_modified_file(path_des, '/E_conll_parse_combined_sentences')
 	return(relation_df)
-
-			# for k in (new_sent, total_length):
-			# 	print(k)
-
-
-

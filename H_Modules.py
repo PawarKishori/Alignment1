@@ -897,3 +897,29 @@ def add_lvl(stack, sub_tree):
 			for j in sub_tree[i[0]]:
 				j.append(lvl)
 	return(sub_tree)
+
+def write_modified_file(path_des, file):
+	f = open(path_des+file)
+	relation = list(f)
+	f.close()
+	set1 = [0, 1, ]
+	for i in range(len(relation)):
+		relation[i] = re.split(r'\t',relation[i])
+	relation_df = []
+	for i in relation:
+		relation1 = []
+		relation1.append(i[0])
+		relation1.append(i[1])
+		relation1.append('_')
+		relation1.append(i[2])
+		relation1.append('_\t_')
+		relation1.append(i[4].rstrip())
+		relation1.append(i[3])
+		relation1.append('_\t_')
+		relation_df.append(relation1)
+	f = open(path_des+file, 'w+')
+	for i in relation_df:
+		for j in i:
+			f.write(j+'\t')
+		f.write('\n')
+	f.close()

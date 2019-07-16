@@ -3,7 +3,7 @@ import glob,re,E_Modules,csv,E_parser_sanity_modules
 
 #file path and name
 path = input ("Enter path: ")
-path1 = path+'/2.*/E_conll_parse'
+path1 = path+'/*/E_conll_parse'
 files = sorted(glob.glob(path1))
 
 E_Modules.clear_logs(path)
@@ -18,13 +18,11 @@ for parse in files:
 
 	#create dataframe
 	[relation_df, error_flag] = E_Modules.create_dataframe(parse, path, filename)
-	print(error_flag)
 	if error_flag == 1:
 		continue
 	elif error_flag == 2:
 		relation_df = E_parser_sanity_modules.combine_sentences(relation_df, path_des)	
 	dflen = len(relation_df) 
-	print(relation_df)
 
 	relation_df = E_Modules.apostrophe_parser_tranformation(relation_df, path_des)
 
@@ -46,7 +44,6 @@ for parse in files:
 
 	#Calling function to get Punctuation Information
 	[len_wid, punct_info] = E_Modules.punct_info(path_des, path, filename)
-	print(punct_info)
 	if len_wid != len(relation_df):
 		f = open(path+'/E_log.dat', 'a+')
 		f.write(filename +'\tIncorrect splitting of words\n')
@@ -103,7 +100,6 @@ for parse in files:
 		string = "".join(clause)
 		f.write(string)
 
-	print(relation_df)
 	#Calling function to draw tree initial tree
 	file = '/E_tree_initial2'
 
@@ -160,7 +156,6 @@ for parse in files:
 
 	# #Udpate UTF
 	# relation_df = E_Modules.wx_utf_converter(relation_df.iloc[:, 0:-1])
-	# print(relation_df)
 
 	# #Calling function to create json input string
 	# with open(patE_des+'/E_clause_single_line_words_final' , 'w') as f:
