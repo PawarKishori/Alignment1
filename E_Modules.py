@@ -463,7 +463,7 @@ def conj_cc_resolution(relation_df, stack, sub_tree, path, filename):
 	fcclist.close()
 	fcc.close()
 	f.close()
-	return([relation_df, stack, sub_tree])
+	return([relation_df, stack, sub_tree, list_of_cc])
 
 #Generate lwg file
 def lwg(path_des, path, filename):
@@ -871,3 +871,41 @@ def write_modified_file(path_des, file):
 			f.write(j+'\t')
 		f.write('\n')
 	f.close()
+
+def cop_transformation(relation_df,sub_tree, cc_list):
+	for k in relation_df.index:
+		if relation_df.RELATION[k] == "cop":
+			parent = relation_df.PIDWITH[k]
+			cop_word = relation_df.WORD[k]
+			if cop_word == "is" or cop_word == "are":
+				cop_equate = "=ᵖʳᵉˢᵉⁿᵗ"
+			elif cop_word == "was" or cop_word == "were":
+				cop_equate = "=ᵖᵃˢᵗ"
+			else:
+				cop_equate = cop_word
+			cop_id = relation_df.PID[k]
+			par = relation_df.PIDWITH[k]
+			par_word = relation_df.loc[relation_df.PID == par, 'WORD'].iloc[0]
+			try:
+				sub_tree[k]
+				print("error")
+			except:
+				for i in sub_tree[par]:
+					if i[1] == "nsubj" and i[3] not in cc_list:
+						subject = i[0]
+						word = i[3]+"_"+cop_equate+"_"+par_word
+						print(word)
+						relation_df.at[relation_df.loc[relation_df.PID == par].index[0], 'WORD'] = word
+						try:
+							sub_tree[subject]
+							for j in sub_tree[subject]:
+								relation_df.at[relation_df.loc[relation_df.PID == j[0]].index[0], 'PIDWITH'] = par
+							relation_df = relation_df.drop(relation_df[relation_df.PID == subject].index[0])
+							relation_df = relation_df.drop(relation_df[relation_df.PID == cop_id].index[0])
+						except:
+							relation_df = relation_df.drop(relation_df[relation_df.PID == subject].index[0])
+							relation_df = relation_df.drop(relation_df[relation_df.PID == cop_id].index[0])
+	return(relation_df)
+
+
+

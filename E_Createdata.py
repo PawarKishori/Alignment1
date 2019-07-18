@@ -3,7 +3,7 @@ import glob,re,E_Modules,csv,E_parser_sanity_modules
 
 #file path and name
 path = input ("Enter path: ")
-path1 = path+'/2.4/E_conll_parse'
+path1 = path+'/2.*/E_conll_parse'
 files = sorted(glob.glob(path1))
 
 E_Modules.clear_logs(path)
@@ -105,7 +105,7 @@ for parse in files:
 
 	#Calling function to correct cc-conj errors
 	stack = E_Modules.BFS(relation_df, sub_tree)
-	[relation_df, stack, sub_tree] = E_Modules.conj_cc_resolution(relation_df, stack, sub_tree, path, filename)
+	[relation_df, stack, sub_tree, cc_list] = E_Modules.conj_cc_resolution(relation_df, stack, sub_tree, path, filename)
 
 	#Calling function to create json input string
 	with open(path_des+'/E_clause_single_line_words_corrected' , 'w') as f:
@@ -123,6 +123,27 @@ for parse in files:
 	error_flag = E_Modules.drawtree(string, path_des, path, filename, file)
 	if error_flag == 1:
 		continue
+
+	relation_df = E_Modules.cop_transformation(relation_df,sub_tree, cc_list)
+	sub_tree = E_Modules.create_dict(relation_df)
+
+
+	with open(path_des+'/E_clause_single_line_words_final' , 'w') as f:
+		clause = []
+		clause = E_Modules.form_final_json_tree(relation_df, 0, sub_tree, clause)
+		n = len(clause)
+		for i in range(n-1):
+			if clause[i][2] == '}' and clause[i+1][0] == '{':
+				clause[i]=']\n},'
+		string = "".join(clause)
+		f.write(string)
+
+	#Calling function to draw tree corrected tree
+	file = '/E_tree_final'
+	error_flag = E_Modules.drawtree(string, path_des, path, filename, file)
+	if error_flag == 1:
+		continue
+
 
 	#Calling function to get mappings in wordid-word and parserid-word
 	wordid_word = E_Modules.wordid_word_mapping(relation_df)
