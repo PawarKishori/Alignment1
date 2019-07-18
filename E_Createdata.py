@@ -1,5 +1,5 @@
 from __future__ import print_function
-import glob,re,E_Modules,csv,E_parser_sanity_modules
+import glob,re,E_Modules,csv,E_parser_sanity_modules, os
 
 #file path and name
 tmp_path=os.getenv('HOME_anu_tmp')+'/tmp/'
