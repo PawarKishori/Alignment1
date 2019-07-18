@@ -746,6 +746,7 @@ def write_relation_facts(path_des, relation_facts):
 		f.write('(E_cid-word-hid-pos-relation\t'+str(relation_facts[i][0])+'\t'+relation_facts[i][1]+'\t'+str(relation_facts[i][2])+'\t'+relation_facts[i][3]+'\t'+relation_facts[i][4]+')\n')
 	f.close()
 
+#Function to transform tree according to if-then construct
 def if_then(relation_df, sub_tree):
 	flag_correct = 0
 	for i, value in sub_tree.items():
@@ -789,6 +790,7 @@ def if_then(relation_df, sub_tree):
 								relation_df.PIDWITH[i] = grandparent
 	return(relation_df)
 
+#Function to transform tree according to either-or construct
 def either_or(relation_df, sub_tree):
 	flag_correct = 0
 	for i, value in sub_tree.items():
@@ -818,6 +820,7 @@ def either_or(relation_df, sub_tree):
 					relation_df = relation_df.drop(relation_df[relation_df.PID == or_node].index[0])
 	return(relation_df)
 
+#Function to tranform tree according to while construct
 def while_semantic(relation_df):
 	for i in relation_df.index:
 		if relation_df.WORD[i] == "while":
@@ -833,6 +836,7 @@ def while_semantic(relation_df):
 				relation_df.at[relation_df.loc[relation_df.PID == grandparent].index[0], 'PIDWITH'] = while_id
 	return(relation_df)
 
+#Function to change dataframe to combine apostrophe words and write into separate file
 def apostrophe_parser_tranformation(relation_df, path_des):
 	flag_change = 0
 	for i in relation_df.index:
@@ -844,8 +848,10 @@ def apostrophe_parser_tranformation(relation_df, path_des):
 					relation_df.WORD[i-1] = prev_word+"'s"
 	if flag_change == 1:
 		relation_df.to_csv(path_des+'/E_conll_parse_modified',sep='\t', quoting=csv.QUOTE_NONE, header = False, index = False)
+		write_modified_file(path_des, '/E_conll_parse_modified')
 	return(relation_df)
 
+#Function to write file in standard conll format (tab separated)
 def write_modified_file(path_des, file):
 	f = open(path_des+file)
 	relation = list(f)
@@ -872,6 +878,7 @@ def write_modified_file(path_des, file):
 		f.write('\n')
 	f.close()
 
+#Function to tranform tree based on occurrence of cop_words
 def cop_transformation(relation_df,sub_tree, cc_list):
 	for k in relation_df.index:
 		if relation_df.RELATION[k] == "cop":

@@ -60,6 +60,7 @@ def punct_mistag(relation_df, filename, path):
 			break	
 	return(error_flag)
 
+#Combine sentences if two/more are present in E_sentence
 def combine_sentences(relation_df, path_des):
 	list1 = []
 	total_length = len(relation_df)

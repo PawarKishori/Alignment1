@@ -2,7 +2,9 @@ from __future__ import print_function
 import glob,re,H_Modules, H_parser_sanity_modules
 
 #file path and name
-path = input ("Enter path: ")
+tmp_path=os.getenv('HOME_anu_tmp')+'/tmp/'
+
+path = tmp_path  +sys.argv[1] + '_tmp'
 path1 = path+'/*/hindi_dep_parser_original.dat'
 files = sorted(glob.glob(path1))
 
@@ -33,18 +35,22 @@ for parse in files:
 		continue
 	dflen = len(relation_df) 
 
+	#Parser sanity check for multiple roots
 	error_flag = H_parser_sanity_modules.multi_root(relation_df, error_flag, path, filename)
 	if error_flag == 1:
 		continue
 
+	#Parser sanity check for punct/ase/mark with children
 	error_flag = H_parser_sanity_modules.children_check(relation_df, filename, error_flag, path)
 	if error_flag == 1:
 		continue
 
+	#Parser sanity check for punctuation mistag
 	error_flag = H_parser_sanity_modules.punct_mistag(relation_df, filename, path)
 	if error_flag == 1:
 		continue
 
+	#Calling function to correct cc-conj errors
 	relation_df = H_parser_sanity_modules.cc_conj_transformation(relation_df, path_des)
 
 	#step to remove all records with punctuations

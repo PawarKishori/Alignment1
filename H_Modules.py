@@ -9,7 +9,7 @@ from subprocess import check_call
 
 #Function to get list of vibhakti
 def get_vib():
-	path_vib ="/home/kailash/Aishu_code/n_tree-master/vibhakti"
+	path_vib ="/home/aishwarya/Aishu_code/n_tree-master/vibhakti"
 	f = open(path_vib)
 	vib = list(f)
 	f.close()
@@ -884,6 +884,7 @@ def write_relation_facts(path_des, relation_facts):
 		f.write('(H_cid-word-pos-relation-hid-hword\t'+str(relation_facts[i][0])+'\t'+relation_facts[i][1]+'\t'+relation_facts[i][2]+'\t'+relation_facts[i][3]+'\t'+str(relation_facts[i][4])+'\t'+relation_facts[i][5]+')\n')
 	f.close()
 
+#Funcction to add levels in subree
 def add_lvl(stack, sub_tree):
 	for i in stack:
 		if i[0] in sub_tree:
@@ -898,6 +899,8 @@ def add_lvl(stack, sub_tree):
 				j.append(lvl)
 	return(sub_tree)
 
+
+#Function to write modified file in standard conll format(tab separated)
 def write_modified_file(path_des, file):
 	f = open(path_des+file)
 	relation = list(f)
