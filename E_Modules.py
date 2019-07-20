@@ -7,11 +7,14 @@ from anytree import (RenderTree, ContRoundStyle)
 from anytree.exporter import DotExporter 
 from IPython.display import Image
 from subprocess import check_call
-import csv
+import csv, sys, os
 
 #Function to get list of vibhakti
 def get_vib():
-	path_vib ="/home/kailash/n_tree-master/vibhakti"
+	#HOME_alignment=< absolute path of Alignment1>
+	alignment_path=os.getenv('HOME_alignment')
+	path_vib = alignment_path + '/vibhakti' #"/home/aishwarya/Aishu_code/n_tree-master/vibhakti"
+	#path_vib ="/home/kailash/n_tree-master/vibhakti"
 	f1 = open(path_vib)
 	vib = list(f1)
 	f1.close()

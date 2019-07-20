@@ -1,11 +1,11 @@
 from __future__ import print_function
-import glob,re,E_Modules,csv,E_parser_sanity_modules, os
+import glob,re,E_Modules,csv,E_parser_sanity_modules, os, sys
 
 #file path and name
 tmp_path=os.getenv('HOME_anu_tmp')+'/tmp/'
 
 path = tmp_path  +sys.argv[1] + '_tmp'
-path1 = path+'/*/hindi_dep_parser_original.dat'
+path1 = path+'/*/E_conll_parse'
 files = sorted(glob.glob(path1))
 
 E_Modules.clear_logs(path)

@@ -1,4 +1,4 @@
-import re
+import re, os
 from wxconv import WXC
 import pandas as pd
 import numpy as np
@@ -9,7 +9,9 @@ from subprocess import check_call
 
 #Function to get list of vibhakti
 def get_vib():
-	path_vib ="/home/aishwarya/Aishu_code/n_tree-master/vibhakti"
+	#HOME_alignment=<path of Alignment1>
+	alignment_path=os.getenv('HOME_alignment')
+	path_vib = alignment_path + '/vibhakti' #"/home/aishwarya/Aishu_code/n_tree-master/vibhakti"
 	f = open(path_vib)
 	vib = list(f)
 	f.close()
