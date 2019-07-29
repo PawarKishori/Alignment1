@@ -1,0 +1,26 @@
+
+M	Anu_data/canonical_form_dictionary/list-left
+M	Anu_data/canonical_form_dictionary/list_SMT
+M	Anu_data/default-iit-bombay-shabdanjali-dic.txt
+M	bin/Anusaaraka_alignment.sh
+M	bin/run_alignment.sh
+M	miscellaneous/SMT/MINION/alignment/dic_compile.sh
+M	miscellaneous/SMT/MINION/browser/create_eng_align_html_phrasal.clp
+M	miscellaneous/SMT/MINION/browser/phrasal_alignment.css
+M	miscellaneous/SMT/MINION/browser/phrasal_alignment.js
+M	miscellaneous/SMT/phrasal_alignment/align_debug/alignment_debug.sh
+M	miscellaneous/SMT/phrasal_alignment/get_manual_id_and_group.clp
+M	multifast-v1.4.2/src/phrasal_mwe/extract_hindi_key.c
+M	multifast-v1.4.2/src/phrasal_mwe/extract_key-hi-en.c
+M	multifast-v1.4.2/src/phrasal_mwe/extract_key.c
+Your branch is up-to-date with 'origin/master'.
+
+
+
+
+
+get_manual_id_and_group.clp
+
+
+
+
