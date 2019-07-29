@@ -29,7 +29,7 @@ def create_dummy_list(length,col_length):
 
 def write_layer_to_file(list_wx,field):
 	for i in list_wx:
-		f1.write("#"+i[field])  #to print string without '@'
+		f1.write("#"+i[field])  
 		
 def check_if_list1_is_sublist_of_list2(lst1,lst2):
 	return set(lst1) <= set(lst2)
@@ -45,9 +45,10 @@ def check_file_to_be_read(filename):
 
 def create_lists_with_hindi_word_ids(X_sorted_list, hindi_words_list, layer_name, max_len, H_pid_wid_word):
 	#print(layer_name+": hindi_words_list",hindi_words_list)
+	#print("X_sorted_list:",X_sorted_list)
 	X_layer_indices = phrase_occuring_indices_count(X_sorted_list,hindi_words_list)	
 	phrase_id_mapping, phrase_having_occurence_count_zero, phrases_having_unresolved_multiple_occurences = extracting_x_layer_ids(X_layer_indices, X_sorted_list)
-	# print("phrase_having_occurence_count_zero", phrase_having_occurence_count_zero)
+	#print("phrase_having_occurence_count_zero", phrase_having_occurence_count_zero)
 	#print("phrases_having_unresolved_multiple_occurences", phrases_having_unresolved_multiple_occurences)
 	X_sorted_for_hids = [(r[0],r[1],str(r[2])) for r in X_sorted_list]
 	X_sorted_for_hids = sorted(X_sorted_for_hids, key=lambda x: x[1])
@@ -79,7 +80,7 @@ def create_lists_with_hindi_word_ids(X_sorted_list, hindi_words_list, layer_name
 					if H_parserid_dict[each_tup[2]] == l1[0]:
 						X_sorted_for_hids[each_index]=(each_tup[0],each_tup[1],'K'+str(H_parserid_dict[each_tup[2]]))
 						#print(H_parserid_dict[each_tup[2]],l1[0])
-	# print(layer_name+": phrase_id_mapping", phrase_id_mapping)
+	#print(layer_name+": phrase_id_mapping", phrase_id_mapping)
 	X_sorted_for_hids_filled = create_dummy_list(max_len ,3)
 	X_sorted_for_hids = sorted(X_sorted_for_hids, key=lambda x: x[0])
 	for ind,l in enumerate(X_sorted_for_hids_filled):
@@ -144,44 +145,29 @@ def Nth_Oth_P1th_layers(layer_name,filename, fact_to_be_matched, max_id, hwords1
 		f2 = open(filename,'r')
 		if layer_name=='O':
 			Oth = create_dummy_list(max_id,4)
-		# for line in f2:
-		# 	m=re.match(fact_to_be_matched,line)
-		# 	print("m",m)
-		# 	anu_id, anu_meaning, man_id, man_meaning = [m.group(i) for i in range(1,5)] 
-		# 	anu_meaning = [str(conv_to_canonical(w)) for w in anu_meaning.strip().split()]
-		# 	man_id = [int(i) for i in man_id.strip().split()]
-		# 	man_meaning = [str(conv_to_canonical(w)) for w in man_meaning.strip().split()]
-		# 	# man_group_ids = [int(i) for i in man_group_ids.strip().split()]
 		for line in f2:
-			l=line.strip().split('(')
-			anu_id=l[2].split(')')[0].split(' ',1)[1]
+		 	m=re.match(fact_to_be_matched,line)
 			if layer_name == 'N' or layer_name == 'O':
-				anu_mng = l[4].split(')')[0].split(' ',1)
-				man_id = l[3].split(')')[0].split(' ',1)[1]
-			else:
-				man_id = l[4].split(')')[0].split(' ',1)[1]
-				anu_mng = l[3].split(')')[0].split(' ',1)
-			man_mng=l[5].split(')')[0].split(' ',1)
-			# To handle when there is absence of any anu_mng
-			'''['anu_meaning']
-			['anu_meaning', 'panKA karawA hE']
-			['anu_meaning', 'CIlA huA']'''
-			if len(anu_mng)>1:
-				anu_mng=anu_mng[1]
-			else: 
-				anu_mng=' '
-			if len(man_mng)>1:
-				man_mng=man_mng[1]
-			else:
-				man_mng=' '
+		 		anu_id, man_id, anu_mng, man_mng = [m.group(i) for i in range(1,5)] 
+		 	else:
+		 		anu_id, anu_mng, man_id, man_mng = [m.group(i) for i in range(1,5)] 
+			anu_mng = " ".join([str(conv_to_canonical(w)) for w in anu_mng.strip().split()])
+		 	man_id = [int(i) for i in man_id.strip().split()][0]
+		 	man_mng = " ".join([str(conv_to_canonical(w)) for w in man_mng.strip().split()])
+			# man_group_ids = [int(i) for i in man_group_ids.strip().split()]
+			#if len(anu_mng)<1:
+				#anu_mng=' '
+			#if len(man_mng)<1:
+				#man_mng=' '
 			# print ("THISSSSSSSSSSS:"+layer_name+":",anu_id, anu_mng, man_id, man_mng)
 			unsorted.append((int(anu_id),anu_mng,man_mng,int(man_id)))
 			if (layer_name=='O'):
 				temp_Oth.append((int(anu_id),man_mng,anu_mng,int(man_id)))
 		temp_Oth.sort()
-		Anu=sorted(unsorted) 
-		Anu_columns_swapped=[(c[0],c[2],c[3],c[1]) for c in Anu]
-		# print (layer_name+": Anu:",Anu_columns_swapped)
+		Anu=sorted(unsorted)
+		#print(layer_name+": Anu before: ",Anu)
+		Anu_columns_swapped=[(c[0],str(conv_to_canonical(c[2])),c[3],c[1]) for c in Anu]
+		#print (layer_name+": Anu:",Anu_columns_swapped)
 		create_lists_with_hindi_word_ids(Anu_columns_swapped, hwords1_list, layer_name, max_id, H_parserid_wordid)
 		Anu_padded=create_dummy_list(max_id,3)
 		# Replacing required tuples in the padded list # 
@@ -444,10 +430,11 @@ def main():
  		hwords1 = [d.strip().split()[2].strip(')') for d in hwords1 if not d.strip().split()[2].startswith('@PUNCT')]	 
 	#print("hwords1",hwords1)
 	hwords1=[h.strip("".join(sym)) for h in hwords1]
-	hwords1=[str(conv_to_canonical(i)) for i in hwords1]
-	fact_to_match3 = r"\(alignment \(anu_id (.*)\) \(man_id (.*)\) \(anu_meaning (.*)\) \(man_meaning (.*)\)\)"	
+	hwords1=[str(conv_to_canonical(i)) for i in hwords1 if not len(i)==0]
+	fact_to_match3 = r"\(parser_align \(anu_id (.*)\) \(man_id (.*)\) \(anu_meaning(.*)\) \(man_meaning(.*)\)\)"	
+	fact_to_match4 = r"\(alignment \(anu_id (.*)\) \(man_id (.*)\) \(anu_meaning(.*)\) \(man_meaning(.*)\)\)"	
 	Nth_Oth_P1th_layers('N', "parser_alignment.dat", fact_to_match3, max_len, hwords1, H_parserid_wordid)
-	Nth_Oth_P1th_layers('O', "word_alignment_tmp.dat",fact_to_match3, max_len, hwords1, H_parserid_wordid)
+	Nth_Oth_P1th_layers('O', "word_alignment_tmp.dat",fact_to_match4, max_len, hwords1, H_parserid_wordid)
 
  # Writing Pth layer to csv file #
 	P_sorted=[]
@@ -459,16 +446,16 @@ def main():
 		l=line.strip().split(' - ')
 		anu_id = re.findall("\d+", l[0])[0]
 		manual_word = l[1].split(re.findall("\d+", l[1])[0])[1].strip().split(")")[0]
-		manual_word_with_brackets = manual_word.replace("@PUNCT-OpenParen","(").replace("@PUNCT-ClosedParen",")")
+		manual_word_with_brackets = manual_word.replace("@PUNCT-OpenParen","(").replace("@PUNCT-ClosedParen",")").replace("@PUNCT-Exclamation","!")
 		man_id = re.findall("\d+", l[1])[0]
 		# print (manual_word,manual_word_with_brackets)
 		P_sorted_with_brackets.append((int(anu_id),manual_word_with_brackets,int(man_id)))
 		if manual_word.startswith("@PUNCT"):
 			x=manual_word.split()
 			x=[i for i in x if "@" not in i]
-			P_sorted.append((int(anu_id)," ".join(x).strip(),int(man_id)))
+			P_sorted.append((int(anu_id),str(conv_to_canonical(" ".join(x).strip())),int(man_id)))
 		else:
-			P_sorted.append((int(anu_id),manual_word.split("@")[0].strip(), int(man_id)))
+			P_sorted.append((int(anu_id),str(conv_to_canonical(manual_word.split("@")[0].strip())), int(man_id)))
 	P_sorted.sort()
 	P_sorted_filled=create_dummy_list(max_len,3)
 	create_lists_with_hindi_word_ids(P_sorted, hwords1, 'P', max_len, H_parserid_wordid)
@@ -479,8 +466,8 @@ def main():
 	write_layer_to_file(P_sorted_filled,1)
 
 	#writing P1th layer 
-	fact_to_match4 = r"\(alignment_info \(anu_id (.*)\) \(anu_meaning (.*)\) \(man_id (.*)\) \(man_meaning (.*)\) \(man_group_ids (.*)\)\)"
-	Nth_Oth_P1th_layers('P1', "corrected_pth.dat", fact_to_match4, max_len, hwords1, H_parserid_wordid)
+	fact_to_match5 = r"\(alignment_info \(anu_id (.*)\) \(anu_meaning(.*)\) \(man_id (.*)\) \(man_meaning(.*)\) \(man_group_ids (.*)\)\)"
+	Nth_Oth_P1th_layers('P1', "corrected_pth.dat", fact_to_match5, max_len, hwords1, H_parserid_wordid)
 
  # Making list of clauses for each sentence: clause boundary
 	list_of_clauses=[]
