@@ -1,0 +1,72 @@
+
+#header{
+            position: fixed;
+            top: 0;
+            left: 0px;
+            right: 0px;
+            background: #3f4257;
+            height: 68px;
+}
+#body{
+            margin-top: 70px;
+}
+#dvCSV{
+        padding-left: 0px;
+	padding-top: 25px;
+        text-align: left;
+	display: -webkit-flex; /* safari */
+	-webkit-flex-wrap: wrap;
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 140px;
+}
+#sent {
+	padding-top:25px;
+	margin-top: 20px;
+	position: fixed;
+	height: 68px;
+	background: #ADD8E6;
+	width: 100%;
+}
+.mystyle p {
+	font-weight: bold;
+	font-family: sans-serif;
+}
+.mystyle {
+	font-size: 11px;
+	font-family: Arial;
+	border-collapse: collapse;
+	border: 1px solid silver;
+}
+
+.mystyle table {
+	overflow-x: auto;
+	display: inline-block;
+	margin-left: 0px;
+	table-layout: fixed;
+	width: 1366px;
+	font-size: 8px
+        overflow: hidden;
+}
+
+.mystyle td, th {
+	padding: 5px;
+}
+
+.mystyle td:nth-child(odd) {
+	background-color: rgba(33, 150, 243, 0.6);
+}
+        
+.mystyle td:nth-child(even) {
+	background-color: rgba(244, 67, 74, 0.6);
+}
+
+.mystyle tr {
+	width: 100%;	
+	margin-right: 0px;
+	margin-left: 0px;
+}
+.mystyle tr:hover {
+	background: silver;
+	cursor: pointer;
+}
