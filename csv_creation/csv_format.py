@@ -9,6 +9,8 @@ flag7=0
 flag8=0
 flag9=0
 flagg=0
+flag10=0
+flag11=0
 try:
     f=open("word.dat",'r').readlines()
     n=len(f)-1
@@ -53,6 +55,17 @@ try:
 except:
     flagg=1
     log.write("manual_lwg.dat not found\n")
+try:
+    f10=open("H_wordid-word_mapping.dat","r").readlines()
+except:
+    flag10=1
+    log.write("H_wordid-word_mapping.dat not found\n")
+try:
+    f11=open("id_Apertium_output.dat", "r").readlines()
+except:
+    flag11=1
+    log.write("id_Apertium_output.dat not found\n")
+    
 
 list_A=['A']
 list_K=['K']
@@ -86,12 +99,64 @@ if(flag==0):
         word=re.split(r'\s+',f[i-1].rstrip())
         list_A[i]=word[1] #A_Layer
 
-    for i in range(1,n+1):
 
-        word=re.split(r'\s+',f[i-1].rstrip())
-        list_K[i]=word[1] #K_Layer
+########Displaying K layer  . Added by Roja
+m_dic = {}
+k_dic = {}
+
+def add_data_in_dic(dic, key, val):
+    if key not in dic:
+        dic[key] = val
+    else:
+        dic[key] = dic[key] + '/' + val
 
 
+if(flag10==0):
+    for i in f10:
+        hword=re.split(r'\s+',i[:-2])
+        add_data_in_dic(m_dic, hword[2], hword[1])
+
+
+if(flag11==0):
+    for i in f11:
+        ap_out=re.split(r'\s+', i[:-2].strip())
+        mngs = []
+        try:
+            if(len(ap_out) > 2):
+                for each in ap_out[2:]:
+                    k_mng = re.sub(r'_', ' ', each)
+                    mngs.append(k_mng)
+#                   print('value is::', val)   
+                for wrd in mngs:
+                    wrd_id = int(ap_out[1]) #to get eng_wrd_id in id_Apertium_output
+                    if wrd_id not in k_dic.keys() and wrd in m_dic.keys():
+                        k_dic[wrd_id] = str(m_dic[wrd])
+                    elif wrd_id in k_dic.keys() and wrd in m_dic.keys():
+                        if ' ' not in k_dic[wrd_id] and '/' not in str(m_dic[wrd]):
+                            k_dic[wrd_id] = k_dic[wrd_id] + ' ' + str(m_dic[wrd])
+                        elif '/' not in str(m_dic[wrd]):
+                            k_dic[wrd_id] = k_dic[wrd_id] + ' ' + str(m_dic[wrd])
+                        else:
+                            a = k_dic[wrd_id].split()
+                            if str(int(a[-1])+1) in  m_dic[wrd].split('/'):
+                                k_dic[wrd_id] = k_dic[wrd_id] + ' ' + str(int(a[-1])+1)
+        except:
+#        else:
+                log.write('Check this mng::,')
+                log.write(str(ap_out[2:]))
+                print('1111', ap_out[2:])
+
+#Store data in list_K
+for i in range(1, n):
+    if i in k_dic.keys():
+        list_K[i] = k_dic[i]
+    else:
+        list_K[i] = '-'
+
+print('Kth Layer info::\n', list_K)
+m_dic = {}
+k_dic = {}
+############# Added by Roja Ended     
 
 if(flag4==0):
     n4=len(f4)
