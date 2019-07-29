@@ -7,6 +7,8 @@
 tmp_dir_name=$1'_tmp'
 tmp_path=$HOME_anu_tmp/tmp/$tmp_dir_name
 END=`wc -l $1 | awk '{print $1}'`
+END=`expr $END + 1`
+
 for i in $(seq 1 $END)
 do
 	sent_dir_name='2.'$i

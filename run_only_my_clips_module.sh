@@ -1,6 +1,6 @@
 file_dir=$1'_tmp'
 END=`wc -l $1 | awk '{print $1}'`
-
+END=`expr $END + 1`
 for i in $(seq 1 $END)
 do
         sentence_dir='2.'$i

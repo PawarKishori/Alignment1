@@ -26,4 +26,4 @@
 (load-facts "anchor.dat")
 ;(run)
 ;(save-facts "A_parser.dat"  local eid-hid)
-;(exit)
+(exit)

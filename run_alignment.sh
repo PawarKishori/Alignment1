@@ -7,6 +7,8 @@ python split_into_tmp.py $2 H_sentence $1
 
 file_dir=$1'_tmp'
 END=`wc -l $1 | awk '{print $1}'`
+END=`expr $END + 1`
+
 echo "No. of eng sentences: " $END
 
 for i in $(seq 1 $END)
