@@ -61,7 +61,7 @@ def create_dataframe(parse, path, filename):
 	return ([relation_df, error_flag])
 
 def remove_punct(relation_df):
-	punct=['!','"','#','$','%','&',"'",'(',')','*','+',',','-','.','/',':',';','<','=','>','?','@','[','\\',']','^','_','`','{','|','}','~']
+	punct=['”','“','!','"','#','$','%','&',"'",'(',')','*','+',',','-','.','/',':',';','<','=','>','?','@','[','\\',']','^','_','`','{','|','}','~']
 	for i in relation_df.index:
 		if relation_df.WORD[i] in punct:
 			relation_df = relation_df.drop([relation_df.loc[relation_df.index == i].index[0]], axis = 0)

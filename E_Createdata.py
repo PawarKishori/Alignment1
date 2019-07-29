@@ -131,8 +131,8 @@ for parse in files:
 		continue
 
 	#Calling function to perform cop word transformation
-	relation_df = E_Modules.cop_transformation(relation_df,sub_tree, cc_list)
-	sub_tree = E_Modules.create_dict(relation_df)
+	#relation_df = E_Modules.cop_transformation(relation_df,sub_tree, cc_list)
+	#sub_tree = E_Modules.create_dict(relation_df)
 
 
 	with open(path_des+'/E_clause_single_line_words_final' , 'w') as f:
