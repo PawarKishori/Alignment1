@@ -67,10 +67,10 @@ def punct_mistag(relation_df, filename, path):
 	for i in relation_df.index:
 		if relation_df.RELATION[i] != "punct" and relation_df.POS[i] != "PUNCT" and relation_df.WORD[i] in punct:
 			error_flag = 1
-			f.write(filename+"\t"+relation_df.WORD[i]+"\tPunctuation has been mistagged in sentence")
+			f.write(filename+"\t"+relation_df.WORD[i]+"\tPunctuation has been mistagged in sentence\n")
 			break
 		if relation_df.RELATION[i] == "punct" and relation_df.WORD[i] not in punct:
 			error_flag = 1
-			f.write(filename+"\t"+relation_df.WORD[i]+"\tWord mistagged as punctuation in sentence")
+			f.write(filename+"\t"+relation_df.WORD[i]+"\tWord mistagged as punctuation in sentence\n")
 			break
 	return(error_flag)
