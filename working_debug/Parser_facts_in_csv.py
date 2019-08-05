@@ -129,7 +129,8 @@ for k,v in e2w.items():
 eng = [show_eng[i] for i in sorted(show_eng.keys())]
 hin = [show_hindi[i] for i in sorted(show_hindi.keys())]
 
-title=["0"]+show_eng.values()#.insert(0,'0')
+show_eng[0]='0'
+title=show_eng.values()  #.insert(0,'0')
 
 
 eng, hin
