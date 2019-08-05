@@ -22,12 +22,11 @@ def extract_only_words_from_sent(sent_file):
 
 def chk_trans_from_files():
 	e_words = extract_only_words_from_sent(sys.argv[2])
+	e_words = e_words[1:]
 	upper_words = [word for word in e_words if word[0].isupper()]
 	#print(upper_words)
-	
 	h_words = extract_only_words_from_sent(sys.argv[3])
 	#print(h_words)
-	
 	for e in upper_words:
 		for h in h_words:
 			#ct.check(e,w)
@@ -38,7 +37,5 @@ def chk_trans_from_files():
 				print(e,h)
 				with open(tmp_path+"/Roja_chk_transliterated_words.dat", "a") as f:
 					f.write("(E_word-H_word\t"+ e + "\t"+ h + ")\n")
-
-
 if sys.argv[1]=="-f":		
 	chk_trans_from_files()
