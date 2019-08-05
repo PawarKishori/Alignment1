@@ -14,6 +14,7 @@ error_flag = 0
 H_Modules.clear_logs(path)
 
 for parse in files:
+	print(path1)
 	print(parse)
 	res = re.split(r'/', parse)
 	filename = res[-2]

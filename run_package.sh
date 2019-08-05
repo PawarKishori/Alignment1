@@ -41,15 +41,15 @@ sh $HOME_alignment/run_all.sh $1 $2 &> tam_lwg_errors.txt
 #sh cc_resolve.sh $1 $2 
 conda deactivate
 #=========================================================================
-#Align_debug Module
-sh $HOME_alignment/working_debug/test.sh $1
-#==========================================================================
 sh $HOME_alignment/run_only_my_clips_module.sh $1
 
 #==========================================================================
 sh $HOME_alignment/run_only_csv_generate.sh $1
 #==========================================================================
 sh $HOME_alignment/csv_creation/create_html_csv.sh $1
+#==========================================================================
+#Align_debug Module
+sh $HOME_alignment/working_debug/test.sh $1
 #==========================================================================
 source activate py3.6
 python $HOME_alignment/csvtohtml/csvtohtml.py $1
