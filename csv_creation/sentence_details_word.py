@@ -1,5 +1,5 @@
 import re
-log=open('file_missing_log','w')
+log=open('file_missing_log','a')
 flagf1=0
 flagf2=0
 flagf3=0
