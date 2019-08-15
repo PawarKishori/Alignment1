@@ -1,6 +1,6 @@
 import re
 import csv
-log=open('file_missing_log','w')
+log=open('file_missing_log','a')
 flagfile=0
 try:
     filename="H_alignment_parserid.csv"
