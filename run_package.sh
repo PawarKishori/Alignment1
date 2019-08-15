@@ -1,6 +1,5 @@
 #!/bin/bash
-#sh run_all.sh Geo_chap2_E2 Geo_chap2_H2_wx_preprocessed
-
+#sh run_package.sh Eng Hnd_wx
 #==========================================================================
 echo "Input files:" $1 $2
 cd $HOME_alignment_manju
@@ -54,7 +53,7 @@ cp $HOME_alignment/working_debug/alignment_debug_org.sh $HOME_anu_test/miscellan
 sh $HOME_alignment/working_debug/test.sh $1
 cp -r styles $HOME_anu_tmp/$1_tmp/
 #==========================================================================
-source activate py3.6
-python $HOME_alignment/csvtohtml/csvtohtml.py $1
-conda deactivate
+#source activate py3.6
+#python $HOME_alignment/csvtohtml/csvtohtml.py $1
+#conda deactivate
 #==========================================================================
