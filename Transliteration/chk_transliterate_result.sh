@@ -2,6 +2,7 @@
 echo > /home/kishori/a/tmp_anu_dir/tmp/$1_tmp/transliterate_log.dat
 i=1
 n=`wc -l $HOME_alignment/$1 | awk '{print $1}'`
+#n=86
 current=`pwd`
 
 while [ $i -le $n ]
