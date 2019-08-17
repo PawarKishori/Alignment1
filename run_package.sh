@@ -51,7 +51,7 @@ sh $HOME_alignment/csv_creation/create_html_csv.sh $1
 #Align_debug Module
 cp $HOME_alignment/working_debug/alignment_debug_org.sh $HOME_anu_test/miscellaneous/SMT/phrasal_alignment/align_debug
 sh $HOME_alignment/working_debug/test.sh $1
-cp -r styles $HOME_anu_tmp/$1_tmp/
+cp -r $HOME_alignment/styles $HOME_anu_tmp/tmp/$1_tmp/
 #==========================================================================
 #source activate py3.6
 #python $HOME_alignment/csvtohtml/csvtohtml.py $1
