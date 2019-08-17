@@ -5,7 +5,7 @@ echo "Input files:" $1 $2
 cd $HOME_alignment_manju
 source activate python2.7               #irshad's parser needs 2.7
 echo "Time taken by alignment_manju module:"
-#time sh run_alignment.sh $1 $2 general nsdp
+time sh run_alignment.sh $1 $2 general nsdp
 echo "End of manju mam's module: "$1 $2
 conda deactivate
 
