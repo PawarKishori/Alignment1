@@ -2,7 +2,7 @@ import glob
 import os, sys, subprocess
 """
 Created by  -   Saumya Navneet & Prashant Raj
-Date        -   19/August/2019
+Date        -   17/August/2019
 Purpose     -   To generate local groups based on POS information to help in word alignment.
 Input       -   Enter the path to 'tmp' folder to iterate on all the translated sentences to generate word grouping.
 Output      -   Inside the folder for every translation, a file 'E_Word_Group.txt' will be created containing details of word group.
@@ -14,9 +14,10 @@ For any queries you may drop a message at - saumyanavneet26@gmail.com or prashan
 def english_group():
 
     #Taking the path of the BUgol tmp folder
-    path = sys.argv[1]
-    all_sentences = '/home/prashant/tmp_anu_dir/' + path + "_tmp/E_Word_Group_All_Sentences.txt"
-    path = '/home/prashant/tmp_anu_dir/' + path + '_tmp/2.*'
+    tmp_path=os.getenv('HOME_anu_tmp')+'/tmp/'
+    path = tmp_path + sys.argv[1] + '_tmp'
+    all_sentences = path + "/E_Word_Group_All_Sentences.txt"
+    path = path + '/2.*'
     sentences = sorted(glob.glob(path))
     output_path = open(all_sentences,"w")
     output_path.flush()
