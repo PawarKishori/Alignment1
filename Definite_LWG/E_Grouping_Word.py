@@ -1,8 +1,8 @@
 import glob
-
+import os, sys, subprocess
 """
 Created by  -   Saumya Navneet & Prashant Raj
-Date        -   10/August/2019
+Date        -   19/August/2019
 Purpose     -   To generate local groups based on POS information to help in word alignment.
 Input       -   Enter the path to 'tmp' folder to iterate on all the translated sentences to generate word grouping.
 Output      -   Inside the folder for every translation, a file 'E_Word_Group.txt' will be created containing details of word group.
@@ -14,7 +14,8 @@ For any queries you may drop a message at - saumyanavneet26@gmail.com or prashan
 def english_group():
 
     #Taking the path of the BUgol tmp folder
-    path = input("Enter absolute path with format => '_tmp': ")
+    tmp_path=os.getenv('HOME_anu_tmp')+'/tmp/'
+    path = tmp_path + sys.argv[1] + '_tmp'
     all_sentences = path + "/E_Word_Group_All_Sentences.txt"
     path = path + '/2.*'
     sentences = sorted(glob.glob(path))
@@ -29,8 +30,11 @@ def english_group():
         #Reading the original words of individual sentences
         word_path = str(sentence)+'/original_word.dat'
         outpath = str(sentence)+'/E_Word_Group.txt'
+        outpathHTML = str(sentence)+'/E_group_HTML.txt'
 
         output_file = open(outpath, "w")
+        outHTML = open(outpathHTML,'w')
+        outHTML.flush()
         output_file.flush()
 
         # Reading the files as an input
@@ -57,7 +61,7 @@ def english_group():
                 value = value[1:]
                 value[0] = int(value[0])
                 word_file.append(value[:])
-        
+
         out_list = []  # To store the local word groups
         temp_list = []  # Used to generate local word groups
 
@@ -168,17 +172,27 @@ def english_group():
 
         final_out_list = []
         temp_list = []
+        y = ""
         for i,k in zip(final_list,out_list):
             counter = 0
+            if len(y)!=0:
+                y = y[:-1] + "_"
             for j in i:
-                tup = (j,k[counter])
-                temp_list.append(tup)
+                x = str(j) + '_' + k[counter]
+                y = y + k[counter] + " "
+                temp_list.append(x)
                 counter += 1
             final_out_list.append(temp_list)
             temp_list = []
 
+        output_path.write('\n' + y + '\n\n')
+        outHTML.write(y+'\n')
         for i in final_out_list:
-            output_path.write(str(i) + "  |  ")
+            x = str(i)
+            x = x.replace("'","")
+            x = x.replace(',',' ')
+            output_path.write(x)
+            outHTML.write(x)
         output_path.write("\n\n\n")
         
 #Calling the function to group words in English

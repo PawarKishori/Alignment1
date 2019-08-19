@@ -1,8 +1,8 @@
 import glob
-
+import os, sys
 """
 Created by	-	Prashant Raj & Saumya Navneet
-Date		-	10/August/2019
+Date		-	19/August/2019
 Purpose		-	To generate local groups based on POS information to help in word alignment.
 Input 		-	Enter the path to 'tmp' folder to iterate on all the translated sentences to generate word grouping.
 Output 		- 	Inside the folder for every translation, a file 'H_Word_Group.txt' will be created containing details of word group.
@@ -14,7 +14,8 @@ For any queries you may drop a message at - prashantraj012@gmail.com or saumyana
 def hindi_group():
 	
 	#Taking the path of the BUgol tmp folder
-	path = input("Enter absolute path with format => '*_tmp': ")
+	tmp_path=os.getenv('HOME_anu_tmp')+'/tmp/'
+	path = tmp_path + sys.argv[1] + '_tmp'
 	all_sentences = path + "/H_Word_Group_All_Sentences.txt"
 	path = path + '/2.*'
 	sentences = sorted(glob.glob(path))
@@ -30,6 +31,9 @@ def hindi_group():
 		#Reading the file as an input
 		hindifile = open(conll_path).readlines()
 		outpath = str(sentence)+'/H_Word_Group.txt'
+		outpathHTML = str(sentence) + '/H_group_HTML.txt'
+		outHTML = open(outpathHTML,'w')
+		outHTML.flush()
 		output_file = open(outpath,"w")
 		output_file.flush()
 		hin = list()				#Temporary list to extract infromation
@@ -172,18 +176,26 @@ def hindi_group():
 
 		final_out_list = []
 		temp_list = []
+		y = ""
 		for i,k in zip(final_list,output):
 			counter = 0
+			if len(y)!=0:
+				y = y[:-1] + "_"
 			for j in i:
-				#print(k)
-				tup = (j,k[counter])
-				temp_list.append(tup)
+				x = str(j) + '_' + k[counter]
+				y = y + k[counter] + " "
+				temp_list.append(x)
 				counter += 1
 			final_out_list.append(temp_list)
 			temp_list = []
-
+		output_path.write('\n' + y + '\n\n')
+		outHTML.write(y + '\n')
 		for i in final_out_list:
-			output_path.write(str(i) + "  |  ")
+			x = str(i)
+			x = x.replace("'","")
+			x = x.replace(',',' ')
+			output_path.write(x)
+			outHTML.write(x)
 		output_path.write("\n\n\n")
 
 
