@@ -1,9 +1,19 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[35]:
+# In[1]:
 
-# In[36]:
+
+# %%HTML
+# <style type="text/css">
+# table.dataframe td, table.dataframe th {
+#     border: 1px  black solid !important;
+#   color: black !important;
+# }
+# </style>
+
+
+# In[2]:
 
 
 #$$$ 1 Input file names and imports
@@ -18,11 +28,11 @@ import H_Modules
 
 #Specify path of sentence:
 tmp_path=os.getenv('HOME_anu_tmp')+'/tmp/'
-#tmp_path='/home/kishori/a/tmp_anu_dir/tmp/BUgol_13_aug/'
+# tmp_path='/home/kishori/a/tmp_anu_dir/tmp/BUgol_13_aug/'
 # eng_file_name = 'cc_conjE'
 
-#eng_file_name = 'BUgol2.1E'
-#sent_no = '2.89' #2.29, 2.21, 2.61, 2.14, 2.64
+# eng_file_name = 'BUgol2.1E'
+# sent_no = '2.65' #2.29, 2.21, 2.61, 2.14, 2.64
 
 eng_file_name = sys.argv[1]
 sent_no = sys.argv[2]
@@ -41,6 +51,10 @@ roja_transliterate_file = path_tmp +  '/Roja_chk_transliterated_words.dat'
 html_file = path_tmp +'/'+ eng_file_name +'_table1.html'
 log_file = path_tmp + '/log_htmltocsv'
 
+e_group_html = path_tmp + '/E_group_HTML.txt'
+h_group_html = path_tmp + '/H_group_HTML.txt'
+
+
 
 es=open(path_tmp+ '/E_sentence').read()
 hs=open(path_tmp + '/H_sentence').read()
@@ -52,13 +66,21 @@ print(hs)
 himg = path_tmp+'/H_tree_final.png'
 eimg = path_tmp+'/E_tree_final.png'
 
+himg1 = path_tmp+'/H_tree_initial.png'
+eimg1 = path_tmp+'/E_tree_initial.png'
+
+himg2 = path_tmp+'/H_tree_corrected.png'
+eimg2 = path_tmp+'/E_tree_corrected.png'
+
 if os.path.exists(log_file):
     os.remove(log_file)
 log = open(log_file,'a')
+
+
 #------------------------------------------------------------------------------------
 
 
-# In[37]:
+# In[3]:
 
 
 #$$$ 2 func is to replace manju mam id's to word ids of hindi assigned words below every eng wordid
@@ -121,7 +143,7 @@ def func(x):
 
 
 
-# In[38]:
+# In[4]:
 
 
 #$$$ 3
@@ -159,31 +181,9 @@ def return_key_from_value(dictionary, value):
     key =[ k for k,v in dictionary.items() if v == value]
     return (key[0])
 
-#created for extracting eid-hid pair corresponding to eword-hword pair of roja_chk_transliteration_out
-def get_E_H_dict_Ids(filename):
-    tmp={}
-    with open(filename,'r') as f:
-        
-#         print(f.read().strip("\n").split("\n"))
-        entries=f.read().strip("\n").split("\n")
-#         print("=>",entries)
-        entries = [item.rstrip(")") for item in entries]
-#         print(h2w)
-        for entry in entries:
-#             print(entry)
-            eword = entry.split("\t")[1]
-            hword = entry.split("\t")[2]
-#             print(eword, hword)
-            eid = return_key_from_value(e2w, eword)
-            hid = return_key_from_value(h2w, hword)
-#             print(eid, hid)
-            tmp[str(eid)] = str(hid)
-    return(tmp)    
-
-#------------------------------------------------------------------------------------
 
 
-# In[39]:
+# In[5]:
 
 
 #$$$ 4
@@ -283,7 +283,7 @@ def replace_id_by_id_word_pair_for_visualization(unique):
 
 
 
-# In[40]:
+# In[6]:
 
 
 #$$$ 5
@@ -407,7 +407,7 @@ try:
     #     print(show_eng)
     eng = [show_eng[i] for i in sorted(show_eng.keys())]
 #     print(show_eng.values(), type(show_eng.values()))
-    title=["0"]+list(show_eng.values())#.insert(0,'0')
+    title=["Resources"]+list(show_eng.values())#.insert(0,'0')
 
         
 except:
@@ -422,11 +422,39 @@ except:
     while "" in x2:
         x2.remove("")
     print(x2, len(x2), type(x2))
-    title=["0"] + list(x2[:-1])
+    title=["Resources"] + list(x2[:-1])
     print(type(title))
     print(title, len(title), no_of_eng_words)
     print(dfs.shape)
 #     print("===>",x,"\n", str(x))    
+
+#created for extracting eid-hid pair corresponding to eword-hword pair of roja_chk_transliteration_out
+def get_E_H_dict_Ids(filename):
+    tmp={}
+    with open(filename,'r') as f:
+#         print(f.read())
+#         print("====")
+#         print(f.read().strip("\n").split("\n"))
+        entries=f.read().strip("\n").split("\n")
+        entries = [item.rstrip(")") for item in entries]
+#         print("=>",entries)
+
+#         print(h2w)
+        for entry in entries:
+#             print(entry)
+            eword = entry.split("\t")[1]
+            hword = entry.split("\t")[2]
+#             print(eword, hword)
+            eid = return_key_from_value(e2w, eword)
+            hid = return_key_from_value(h2w, hword)
+#             print(eid, hid)
+            tmp[str(eid)] = str(hid)
+        print(tmp)
+    return(tmp)    
+
+#------------------------------------------------------------------------------------
+
+
 
 try:
     tranliterate_dict={}
@@ -436,25 +464,35 @@ except:
     log.write("FILE MISSING: " + roja_transliterate_file + "\n")
 
 # display(dfs)
-dictionary_wordnet = list(dfs.iloc[5])
+
+# dictionary_wordnet = list(dfs.iloc[5])
 hindi_wordnet = list(dfs.iloc[8])
 partial_match = list(dfs.iloc[12])
-print(dictionary_wordnet)
-print(hindi_wordnet)
-print(partial_match)
+
+# dfs.drop(6, inplace=True)
 dfs.drop(9, inplace=True)
-dfs.drop(6, inplace=True)
 dfs.drop(13, inplace=True)
+
 # print(hindi_wordnet)
 # print(partial_match)
+
+# print(dictionary_wordnet)
+print(hindi_wordnet)
+print(partial_match)
+
+org_col = list(dfs.columns)
+new_col = org_col
+new_col[0]="Resources"
+dfs.columns=new_col
 dfs
 
 
 
-# In[41]:
+# In[7]:
 
 
 #Code to create Debug files for various layers:
+
 def id_to_IDSTR_on_string(i):
     if(i!= '0' and i!=0):  #code for those cell values which are neither '0' nor 0.
         i=str(i)           #changed all int to string
@@ -492,17 +530,17 @@ def create_debug_file_for_layer(x, filename):
         for i in range(0, no_of_eng_words):
             if i!=0:
                 if x[i]!='0' and x[i]!=0:
-                    print( title[i], "==>", id_to_IDSTR_on_string(x[i]))
+#                     print( title[i], "==>", id_to_IDSTR_on_string(x[i]))
                     f.write(" ".join([title[i], "==>", id_to_IDSTR_on_string(x[i]),"\n"]))
         f.write("===============\n")
-        print("======")
+#         print("======")
 
-create_debug_file_for_layer(dictionary_wordnet,"dictionary_match_debug.txt")
+# create_debug_file_for_layer(dictionary_wordnet,"dictionary_match_debug.txt")
 create_debug_file_for_layer(hindi_wordnet,"hindi_wordnet_debug.txt")
 create_debug_file_for_layer(partial_match,"partial_match_debug.txt")
 
 
-# In[42]:
+# In[8]:
 
 
 #$$$ 6
@@ -534,8 +572,11 @@ k_layer_partial_ids= load_row_from_csv(k_layer_ids_file, 2)
 k_layer_partial_ids = cleaning_list(k_layer_partial_ids)
 print(k_layer_partial_ids)
 
-dfs.loc[24] = k_layer_ids
-dfs.loc[25] = k_layer_partial_ids
+# dfs.loc[24] = k_layer_ids
+dfs.loc[dfs.index[-1]+1] = k_layer_ids
+# dfs.loc[25] = k_layer_partial_ids
+dfs.loc[dfs.index[-1]+1] =k_layer_partial_ids
+
 
 
 
@@ -568,7 +609,7 @@ dfs.loc[25] = k_layer_partial_ids
 dfs
 
 
-# In[43]:
+# In[9]:
 
 
 # #remove=========================
@@ -605,11 +646,11 @@ dfs
 # #remove=========================
 
 
-# In[44]:
+# In[10]:
 
 
 #$$$ 7
-
+#
 # Calling function for Union of columns and removing duplicates:
 print("====finalrow_in_csv")
 final_row_in_csv = union_of_columns_verically(dfs)
@@ -632,12 +673,15 @@ print("====anchor3")
 anchor3_str_list = remove_single_hindi_id_in_more_than_one_column(anchor2_str_list)
 anchor3_str_list[0]="Starting anchor v1"
 print(anchor3_str_list)
-dfs.loc[26] = anchor1_str_list
-dfs.loc[27] = anchor3_str_list
+
+# dfs.loc[26] = anchor1_str_list
+dfs.loc[dfs.index[-1]+1]=anchor1_str_list
+# dfs.loc[27] = anchor3_str_list
+dfs.loc[dfs.index[-1]+1]=anchor3_str_list
 dfs
 
 
-# In[45]:
+# In[11]:
 
 
 #$$$ 8
@@ -654,7 +698,8 @@ try:
             roja_transliterate_list.append('0')
     roja_transliterate_list[0] = 'Roja Transliterate'
     # print(roja_transliterate_list)   
-    dfs.loc[28] = roja_transliterate_list
+#     dfs.loc[28] = roja_transliterate_list
+    dfs.loc[dfs.index[-1]+1] = roja_transliterate_list
 except:
     print("FILE MISSING: " + roja_transliterate_file )
     log.write("FILE MISSING: " + roja_transliterate_file  + "\n")
@@ -686,18 +731,26 @@ try:
     #             print("Multiword entry in nandani dictionary")
     # print(nandani_mapping)
     nandani_mapping_list[0] = 'Nandani dict'
-    dfs.loc[29] = nandani_mapping_list
+#     dfs.loc[29] = nandani_mapping_list
+    dfs.loc[dfs.index[-1]+1]=nandani_mapping_list
 except:
     print("FILE MISSING: " + nandani_file ) 
     log.write("FILE MISSING: " + nandani_file  + "\n")
-
+log.close()
 dfs
 
 
-# In[46]:
+# In[12]:
 
 
 #$$$ 9
+
+#Creation of anchor version 2 from anchor version1 + Roja n Nandani dictionary module
+# This contains:
+#     union_of_columns_verically(dataframe)
+#     remove_duplicates_from_union(final_row_in_dataframe)
+#     remove_multi_entry_in_a_cell(changed_final_row_in_dataframe)
+
 final_row_in_csv = union_of_columns_verically(dfs)
 final_row_in_csv[0]="Verical Union v2"
 print(final_row_in_csv)
@@ -710,101 +763,32 @@ print(anchor2_str_list)
 anchor3_str_list = remove_single_hindi_id_in_more_than_one_column(anchor2_str_list)
 anchor3_str_list[0]="Starting anchor v2"
 print(anchor3_str_list)
-dfs.loc[30] = anchor1_str_list
-dfs.loc[31] = anchor3_str_list
+# print(dfs.index[-1]+1)
 
+# dfs.loc[30] = anchor1_str_list
+dfs.loc[dfs.index[-1]+1] = anchor1_str_list
+# dfs.loc[31] = anchor3_str_list
+dfs.loc[dfs.index[-1]+1] =anchor3_str_list
 
-dfs.loc[32] = dictionary_wordnet
-dfs.loc[33] = hindi_wordnet  
-dfs.loc[34] = partial_match
+# dfs.loc[32] = dictionary_wordnet
+# dfs.loc[dfs.index[-1]+1] =dictionary_wordnet
+
+# dfs.loc[33] = hindi_wordnet  
+dfs.loc[dfs.index[-1]+1] = hindi_wordnet
+# dfs.loc[34] = partial_match
+dfs.loc[dfs.index[-1]+1] = partial_match
 
 dfs.to_csv(path_tmp +'/'+ eng_file_name + "_"+sent_no + "_2.csv", index=False)
 dfs.to_html(path_tmp +'/'+ eng_file_name + "_"+sent_no + "_2.html", index=False)
+
+
 dfs
 
 
-# In[47]:
+# In[13]:
 
 
-#$$$ 10
-
-pd.options.display.max_columns = None
-pd.set_option('display.max_colwidth',-1)
-potentialv1 = dfs.loc[26].to_list()
-new_dfs = pd.DataFrame([potentialv1])
-
-# try:
-#     startingv1 = dfs.loc[27].to_list()
-# #     print(startingv1)
-#     startingv1_words = replace_id_by_id_word_pair_for_visualization(startingv1)
-# #     print(unique_words)
-#     new_dfs = new_dfs.append(pd.Series(startingv1_words, index=new_dfs.columns ), ignore_index=True)
-
-# except:
-#     print("Starting anchor v2 has no results")
-#     log.write("Starting anchor v2 has no results to write in short"  + "\n")
-
-
-# try:
-#     roja = dfs.loc[28].to_list()
-# #     print(roja)
-#     roja_words = replace_id_by_id_word_pair_for_visualization(roja)
-# #     print(roja_words)
-#     new_dfs = new_dfs.append(pd.Series(roja_words, index=new_dfs.columns ), ignore_index=True)
-
-# except:
-#     print("Roja transliterate has no results")
-#     log.write("Roja transliterate has no results to write in short"  + "\n")
-
-# try:
-#     nandani = dfs.loc[29].to_list()
-# #     print(nandani)
-#     nandani_words = replace_id_by_id_word_pair_for_visualization(nandani)
-# #     print(nandani_words)
-#     new_dfs = new_dfs.append(pd.Series(nandani_words, index=new_dfs.columns ), ignore_index=True)
-
-# except:
-#     print("Nandani transliterate has no results")
-#     log.write("Roja transliterate has no results to write in short"  + "\n")
-    
-# potentialv2 = dfs.loc[30].to_list()
-# new_dfs = new_dfs.append(pd.Series(potentialv2, index=new_dfs.columns ), ignore_index=True)
-
-
-# try:
-#     startingv2 = dfs.loc[31].to_list()
-# #     print(startingv2)
-#     startingv2_words = replace_id_by_id_word_pair_for_visualization(startingv2)
-# #     print(startingv2_words)
-#     new_dfs = new_dfs.append(pd.Series(startingv2_words, index=new_dfs.columns ), ignore_index=True)
-
-# except:
-#     print("Starting anchor v2 has no results")
-#     log.write("Roja transliterate has no results to write in short" + "\n")
-# print(title)
-# new_dfs.columns =title
-# hindi_row = "  ,  ".join(hindi_word) #+ ['.'] * (new_dfs.shape[1]-1)
-
-
-# # new_dfs = new_dfs.append(pd.Series(hindi_row, index=new_dfs.columns ), ignore_index=True)
-
-# new_dfs.to_csv(path_tmp +"/short.csv", index=False)
-# new_dfs.to_html(path_tmp + '/short.html')
-
-# new_dfs
-
-
-
-# In[48]:
-
-
-log.close()
-
-
-# In[49]:
-
-
-
+#Changes every cell value[hindi ids] from id to is_word pair
 def id_to_word(x):
     show_hindi[0]='0'
 #     print(show_hindi)
@@ -853,16 +837,31 @@ def id_to_word(x):
 # print(dfs)
 
 new = dfs.apply(id_to_word)
-new.columns =title
+print(title)
+new.columns = title
 new.index = np.arange(1,len(dfs)+1)
-new = new.set_index('0')
-new
+new=new.set_index('Resources')
+# new.index.name="R"
+new.index.name = None
+# display(new)
+# display(dfs)
 
 
-# In[62]:
+# In[14]:
 
 
+#Converts the dataframe into html
+hindi_row_tooltip = "".join(load_row_from_csv(h_group_html, 0))
+# print(hindi_row_tooltip)
+hindi_row = "".join(load_row_from_csv(h_group_html, 1))
 
+eng_row_tooltip = "".join(load_row_from_csv(e_group_html, 0))
+eng_row = "".join(load_row_from_csv(e_group_html, 1))
+
+
+# hindi_row="[1_This 2_range]    [3_consists]    [4_of 5_the 6_famous 7_valley]    [8_of 9_Kashmir]    [10_the 11_Kangra]    [12_and]    [13_Kullu 14_Valley]    [15_in 16_Himachal 17_Pradesh]    "
+
+# hindi_row_tooltip="This range _ consists _ of the famous valley _ of Kashmir _ the Kangra _ and _ Kullu Valley _ in Himachal Pradesh"
 
 def write_to_html_file(df, filename=''):
     '''
@@ -876,6 +875,90 @@ def write_to_html_file(df, filename=''):
 h3{
 text-align: center;
 }
+h4{
+text-align: center;
+}
+
+
+
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+/* Style the tab content */
+.hcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+
+/* -------- Tooltip ---------- */
+
+.tooltip {
+  position: relative;
+  border-bottom: 1px dotted black;
+  
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 1000px;
+  background-color: black;
+  color: #fff;
+  
+  border-radius: 6px;
+  padding: 5px 0;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -500px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+/* -------- /Tooltip ---------- */
+
 </style>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
@@ -884,22 +967,162 @@ text-align: center;
 		<link rel="stylesheet" type="text/css" href="../styles/css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="../styles/css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="../styles/css/component.css" />
-        
-        		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
-		<script src="../styles/js/jquery.stickyheader.js"></script>
+		<script src="../styles/js/jquery.stickyheader.js">
+</script>
+        
+<script>
+var sUsrAg = navigator.userAgent,
+  usingChrome = sUsrAg.indexOf("Chrome") > -1;
+
+if (!usingChrome) {
+  alert("Please use Google chrome to access this page. Some features do not work in browsers other than Chrome.");
+}
+</script>       
 
 </head>
 <body>
     '''
     result += '<h3> Sentence Number: %s </h3>\n<hr>' % sent_no
     result += '<h3> %s </h3>\n<hr>' % es
+#     result += '<h4 class="tooltip"> {0} <span class="tooltiptext"> {1} </span></h4>\n' .format(eng_row,eng_row_tooltip)
+
     result += '<h3> %s </h3>\n' % hs
-    result += '<h3> %s </h3>\n' % hindi_row
+#     result += '<h4 class="tooltip"> {0} <span class="tooltiptext"> {1} </span></h4>\n' .format(hindi_row,hindi_row_tooltip)
+#     result += '<span class="tooltiptext"> %s </span>\n' % hindi_row_tooltip
     result += df.to_html(classes='wide', escape=False)
-    result += '<center> <img src="{0}"> <hr> <img src="{1}"> <hr> </center>' .format(eimg,himg)
+    #result += '<center> <img src="{0}"> <hr> <img src="{1}"> <hr> </center>' .format(eimg,himg)
 #     result += '<center><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfoXq6rT-vfEl1eUU0-dVBbe5fajs5THxaatO2sxGg1YUx-vA/viewform?embedded=true" width="640" height="879" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe></center>'
+
+    result += '<h4 class="tooltip"> English Grouping: {0} <span class="tooltiptext"> {1} </span></h4>\n <hr>' .format(eng_row,eng_row_tooltip)
+
+    result += '<h4 class="tooltip"> Hindi Grouping: {0} <span class="tooltiptext"> {1} </span></h4>\n' .format(hindi_row,hindi_row_tooltip)
+
     result += '''
+    
+ <center><h2>English Dependency Parse Trees</h2></center>
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'E1')">English Final</button>
+  <button class="tablinks" onclick="openCity(event, 'E2')">English Corrected</button>
+  <button class="tablinks" onclick="openCity(event, 'E3')">English Initial</button>
+</div>
+
+<div id="E1" class="tabcontent">
+  <h3>Transfored  Tree version2</h3>
+  <p>Tree after local word grouping of intrachunk relations.</p>
+  '''
+    result += '<center> <img src="{}"></center>' .format(eimg)
+   
+    result += '''
+    
+    
+</div>
+
+<div id="E2" class="tabcontent">
+  <h3>Transfored  Tree version1</h3>
+  <p>Changed obl tags and transformed cc-conj structure.</p> 
+  '''
+    result += '<center> <img src="{}"></center>' .format(eimg2)
+    
+    result += '''
+    
+</div>
+
+<div id="E3" class="tabcontent">
+  <h3>Original parse by parser</h3>
+  <p> Stanford's 3.9 Dependency parse. </p>
+  '''
+    result += '<center> <img src="{}"></center>' .format(eimg1)
+    
+    result += '''
+</div>
+
+
+
+
+ <center><h2>Hindi Dependency Parse Trees</h2></center>
+
+<div class="tab">
+  <button class="hlinks" onclick="hCity(event, 'H1')">Hindi Final</button>
+  <button class="hlinks" onclick="hCity(event, 'H2')">Hindi Corrected</button>
+  <button class="hlinks" onclick="hCity(event, 'H3')">Hindi Initial</button>
+</div>
+
+<div id="H1" class="hcontent">
+  <h3>Transfored  Tree version2</h3>
+  <p>Tree after local word grouping of intrachunk relations.</p>
+  '''
+    result += '<center> <img src="{}"></center>' .format(himg)
+   
+    result += '''
+    
+    
+</div>
+
+<div id="H2" class="hcontent">
+  <h3>Transfored  Tree version1</h3>
+  <p> Changed obl tags and transformed cc-conj structure. </p> 
+  '''
+    result += '<center> <img src="{}"></center>' .format(himg2)
+    
+    result += '''
+    
+</div>
+
+<div id="H3" class="hcontent">
+  <h3>Orginal Parse</h3>
+  <p style=text-aligh:center;>Irshad's Hindi Neural parse trained on UD annotated hindi treebank [IIIT]. </p>
+  '''
+    result += '<center> <img src="{}"></center>' .format(himg1)
+    
+    result += '''
+</div>
+
+
+
+    '''
+    
+    result += '<center style="padding-top:25px"><h4> Sentence Number: %s </h4></center>\n' % sent_no
+    result += '<center><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfoXq6rT-vfEl1eUU0-dVBbe5fajs5THxaatO2sxGg1YUx-vA/viewform?embedded=true" width="800" height="700" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe></center>'
+
+    result += '''
+
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+
+<script>
+
+function hCity(hevt, hName) {
+  var j, hcontent, hlinks;
+  hcontent = document.getElementsByClassName("hcontent");
+  for (j = 0; j < hcontent.length; j++) {
+    hcontent[j].style.display = "none";
+  }
+  hlinks = document.getElementsByClassName("hlinks");
+  for (j = 0; j < hlinks.length; j++) {
+    hlinks[j].className = hlinks[j].className.replace(" active", "");
+  }
+  document.getElementById(hName).style.display = "block";
+  hevt.currentTarget.className += " active";
+}
+</script>
+    
 
 </body>
 </html>
@@ -910,16 +1133,5 @@ text-align: center;
 write_to_html_file(new, path_tmp+'/final.html')
 new.to_csv(path_tmp +'/final.csv')
 # new.to_html(path_tmp +'/final.html')
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
 
 
