@@ -180,10 +180,10 @@ def hindi_group():
 		for i,k in zip(final_list,output):
 			counter = 0
 			if len(y)!=0:
-				y = y[:-1] + "_"
+				y = y[:-1] + " "
 			for j in i:
-				x = str(j) + '_' + k[counter]
-				y = y + k[counter] + " "
+				x = str(j) + ' ' + k[counter]
+				y = y + k[counter] + "_"
 				temp_list.append(x)
 				counter += 1
 			final_out_list.append(temp_list)
