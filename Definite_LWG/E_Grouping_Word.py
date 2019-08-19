@@ -2,7 +2,7 @@ import glob
 import os, sys, subprocess
 """
 Created by  -   Saumya Navneet & Prashant Raj
-Date        -   17/August/2019
+Date        -   19/August/2019
 Purpose     -   To generate local groups based on POS information to help in word alignment.
 Input       -   Enter the path to 'tmp' folder to iterate on all the translated sentences to generate word grouping.
 Output      -   Inside the folder for every translation, a file 'E_Word_Group.txt' will be created containing details of word group.
