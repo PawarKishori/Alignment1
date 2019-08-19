@@ -32,8 +32,11 @@ source activate py3.6
 #python $HOME_alignment/Createdata.py $1
 python $HOME_alignment/H_Createdata.py $1
 python $HOME_alignment/E_Createdata.py $1
+#=========================================================================
+python $HOME_alignment/Definite_LWG/E_Grouping_Word.py $1
+python $HOME_alignment/Definite_LWG/H_Grouping_Word.py $1
+ 
 conda deactivate 
-
 #==========================================================================
 # Ayushi's Module
 source activate python2.7
