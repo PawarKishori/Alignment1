@@ -14,7 +14,7 @@ For any queries you may drop a message at - prashantraj012@gmail.com or saumyana
 def hindi_group():
 	
 	#Taking the path of the BUgol tmp folder
-	tmp_path=os.getenv('HOME_anu_output')+'/tmp/'
+	tmp_path=os.getenv('HOME_anu_tmp')+'/tmp/'
 	path = tmp_path + sys.argv[1] + '_tmp'
 	all_sentences = path + "/H_Word_Group_All_Sentences.txt"
 	path = path + '/2.*'
