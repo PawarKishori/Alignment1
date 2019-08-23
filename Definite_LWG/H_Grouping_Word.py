@@ -2,7 +2,7 @@ import glob
 import os, sys
 """
 Created by	-	Prashant Raj & Saumya Navneet
-Date		-	21/August/2019
+Date		-	23/August/2019
 Purpose		-	To generate local groups based on POS information to help in word alignment.
 Input 		-	Enter the path to 'tmp' folder to iterate on all the translated sentences to generate word grouping.
 Output 		- 	Inside the folder for every translation, a file 'H_Word_Group.txt' will be created containing details of word group.
@@ -14,7 +14,7 @@ For any queries you may drop a message at - prashantraj012@gmail.com or saumyana
 def hindi_group():
 	
 	#Taking the path of the BUgol tmp folder
-	tmp_path=os.getenv('HOME_anu_output')+'/'
+	tmp_path=os.getenv('HOME_anu_output')+'/tmp/'
 	path = tmp_path + sys.argv[1] + '_tmp'
 	all_sentences = path + "/H_Word_Group_All_Sentences.txt"
 	path = path + '/2.*'
