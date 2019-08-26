@@ -2,7 +2,7 @@ import glob
 import os, sys
 """
 Created by	-	Prashant Raj & Saumya Navneet
-Date		-	19/August/2019
+Date		-	23/August/2019
 Purpose		-	To generate local groups based on POS information to help in word alignment.
 Input 		-	Enter the path to 'tmp' folder to iterate on all the translated sentences to generate word grouping.
 Output 		- 	Inside the folder for every translation, a file 'H_Word_Group.txt' will be created containing details of word group.
@@ -51,18 +51,28 @@ def hindi_group():
 				counter += 1		#Stores element ID
 				l.append(x[3])		#Stores POS information of the element
 				l.append(x[1])		#Stores the actual word element
+				l.append(x[7])
 				hin.append(l[:])	#Storing the value in a list to further operate on
 				l.clear()			#Clearing the list for further processing
-		
+
 		out_list=list()				#To store the local word groups
 		temp_list=list()			#Used to generate local word groups
 		
-		
-		for i in range(0,len(hin)):
+		i=0
+		while i < len(hin):
 			current_pos = hin[i][1]
+			current_word = hin[i][2]
 			prev_pos = ""
+			next_word = ""
+			counter = i
+			
+			if i < len(hin)-1:
+				next_word = hin[i+1][2]
+				
 			if i != 0:
 				prev_pos = hin[i-1][1]
+				prev_rel = hin[i-1][3]
+				
 			if current_pos in ["DET"]:
 				if prev_pos in ["PART","ADJ","NUM","NOUN","PROPN","PUNCT","PRON","AUX","VERB","ADP","ADV","CCONJ","SCONJ"]:
 					out_list.append(temp_list[:])
@@ -70,6 +80,7 @@ def hindi_group():
 					temp_list.append(hin[i][0])
 				else:
 					temp_list.append(hin[i][0])
+					
 			elif current_pos in ["ADJ","NUM"]:
 				if prev_pos in ["PART","NOUN","PROPN","PUNCT","PRON","AUX","VERB","ADP","ADV","CCONJ","SCONJ"]:
 					out_list.append(temp_list[:])
@@ -77,29 +88,32 @@ def hindi_group():
 					temp_list.append(hin[i][0])
 				else:
 					temp_list.append(hin[i][0])
-			elif current_pos in ["NOUN"]:
-				if prev_pos in ["PART","ADP","PRON","AUX","VERB","ADP","ADV","CCONJ","SCONJ"]:
+					
+			elif current_pos in ["NOUN","PROPN"]:
+				if prev_pos in ["NOUN","PROPN"] and prev_rel in ["compound"]:
+					temp_list.append(hin[i][0])
+				elif prev_pos in ["DET","ADJ","NUM"]:
+					temp_list.append(hin[i][0])
+				else:
 					out_list.append(temp_list[:])
 					temp_list.clear()
 					temp_list.append(hin[i][0])
-				else:
-					temp_list.append(hin[i][0])
-			elif current_pos in ["PROPN"]:
-				if prev_pos in ["PART","NOUN","ADP","PRON","AUX","VERB","ADP","ADV","CCONJ","SCONJ"]:
-					out_list.append(temp_list[:])
-					temp_list.clear()
-					temp_list.append(hin[i][0])
-				else:
-					temp_list.append(hin[i][0])
+					
 			elif current_pos in "PUNCT":
 				continue
+				
 			elif current_pos in ["ADP"]:
-				if prev_pos in ["NOUN","PROPN","PUNCT"]:
+				if current_word in ["kA","kI","ke","ko","meM","ne","par","se","vAlI"]:
 					temp_list.append(hin[i][0])
+					if next_word in ["liye","lie","se","xvArA","bIca","xOrAna"]:
+						counter += 1 
+						temp_list.append(hin[counter][0])
+					i = counter
 				else:
 					out_list.append(temp_list[:])
 					temp_list.clear()
 					temp_list.append(hin[i][0])
+
 			elif current_pos in ["VERB","AUX","PART"]:
 				if prev_pos in ["VERB","AUX","PART"]:
 					temp_list.append(hin[i][0])
@@ -107,24 +121,28 @@ def hindi_group():
 					out_list.append(temp_list[:])
 					temp_list.clear()
 					temp_list.append(hin[i][0])
+					
 			elif current_pos in ["CCONJ","SCONJ"]:
 				out_list.append(temp_list[:])
 				temp_list.clear()
 				temp_list.append(hin[i][0])
 				out_list.append(temp_list[:])
 				temp_list.clear()
+				
 			elif current_pos in ["PRON"]:
 				out_list.append(temp_list[:])
 				temp_list.clear()
 				temp_list.append(hin[i][0])
 				out_list.append(temp_list[:])
 				temp_list.clear()
+				
 			elif current_pos in ["ADV"]:
 				out_list.append(temp_list[:])
 				temp_list.clear()
 				temp_list.append(hin[i][0])
 				out_list.append(temp_list[:])
 				temp_list.clear()
+				
 			else:
 				if i == 0:
 					temp_list.append(hin[i][0])
@@ -138,7 +156,8 @@ def hindi_group():
 					temp_list.append(999)		#For elements not resolved through POS
 					out_list.append(temp_list[:])
 					temp_list.clear()
-					
+			i = i+1
+			
 		out_list.append(temp_list[:])		#Last local group for the sentence appended
 		temp_list.clear()					#List cleared for further processing
 		
@@ -171,7 +190,7 @@ def hindi_group():
 			s = x + y + z
 			output_file.write(s + '\n')
 			#output_path.write(s + '\n')
-		#output_path.write('\n\n')
+		output_path.write('\n\n')
 
 
 		final_out_list = []
@@ -188,8 +207,10 @@ def hindi_group():
 				counter += 1
 			final_out_list.append(temp_list)
 			temp_list = []
+			
 		output_path.write('\n' + y + '\n\n')
 		outHTML.write(y + '\n')
+		
 		for i in final_out_list:
 			x = str(i)
 			x = x.replace("'","")
@@ -197,10 +218,6 @@ def hindi_group():
 			output_path.write(x)
 			outHTML.write(x)
 		output_path.write("\n\n\n")
-
-
-
-
-
+		
 #Calling the function to group words in Hindi
 hindi_group()
