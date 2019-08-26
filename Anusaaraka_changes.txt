@@ -23,4 +23,4 @@ get_manual_id_and_group.clp
 
 
 
-
+COmmented wsd_dic.gdbm lookup from MINION/alignment/get_dbasemeaning.clp

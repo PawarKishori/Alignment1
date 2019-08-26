@@ -4,14 +4,15 @@ while [ $a -lt $1 ]
 do
     echo "+++++++++++++++++++++++++++++++++++++++++"
     echo 2.$a
-    cp $HOME_alignment/csv_creation/invert_csv.py $HOME_anu_tmp/tmp/BUgol2.1E_tmp/2.$a
-    cp $HOME_alignment/csv_creation/allfacts_csv.py $HOME_anu_tmp/tmp/BUgol2.1E_tmp/2.$a
+echo $HOME_anu_tmp/tmp/$2_tmp/2.$a
+    cp $HOME_alignment/csv_creation/invert_csv.py $HOME_anu_tmp/tmp/$2_tmp/2.$a
+    cp $HOME_alignment/csv_creation/allfacts_csv.py $HOME_anu_tmp/tmp/$2_tmp/2.$a
     #cp invert_stage1.py $HOME_anu_tmp/tmp/BUgol2.1E_tmp/2.$a
     #cp conversion.py $HOME_anu_tmp/tmp/BUgol2.1E_tmp/2.$a
     #cp invert_stage2.py $HOME_anu_tmp/tmp/BUgol2.1E_tmp/2.$a
     #cp alldebugfacts.py $HOME_anu_tmp/tmp/BUgol2.1E_tmp/2.$a
 
-    cd $HOME_anu_tmp/tmp/BUgol2.1E_tmp/2.$a
+    cd $HOME_anu_tmp/tmp/$2_tmp/2.$a
 
     python3 invert_csv.py
     python3 allfacts_csv.py

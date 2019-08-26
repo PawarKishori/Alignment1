@@ -1,5 +1,5 @@
 import re
-log=open('file_missing_log','w')
+log=open('file_missing_log','a')
 flagf=0
 try:
     f = open("E_conll_parse","r").readlines()

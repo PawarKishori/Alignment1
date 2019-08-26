@@ -2,6 +2,7 @@
 echo > /home/kishori/a/tmp_anu_dir/tmp/$1_tmp/transliterate_log.dat
 i=1
 n=`wc -l $HOME_alignment/$1 | awk '{print $1}'`
+#n=86
 current=`pwd`
 
 while [ $i -le $n ]
@@ -9,6 +10,7 @@ do
 	sentence_dir='2.'$i
 	echo $sentence_dir
 	tmp_path=$HOME_anu_tmp/tmp/$1_tmp/$sentence_dir
+	rm $tmp_path/Roja_chk_transliterated_words.dat
 	python $HOME_alignment/Transliteration/Check_Transliterate_generalised.py -f $tmp_path/E_sentence $tmp_path/H_sentence
 	#python $current/run3.py 
 	i=`expr $i + 1`

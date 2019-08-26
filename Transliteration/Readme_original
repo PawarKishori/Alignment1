@@ -1,0 +1,10 @@
+#Programme to check whether given words are transliterate words are not.
+
+#RUN:: 
+	
+python check_transliteration.py  Eng-word Hindi-word Sound-dictionary
+	Ex::  python check_transliteration.py  control kaNtrola Sound-dic.txt
+To get debug info, 
+RUN::
+	python check_transliteration.py  -d control kaNtrola Sound-dic.txt
+	(Note: if -d is given then debug info is printed )
