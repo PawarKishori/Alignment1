@@ -2,7 +2,7 @@ import glob
 import os, sys
 """
 Created by	-	Prashant Raj & Saumya Navneet
-Date		-	23/August/2019
+Date		-	30/August/2019
 Purpose		-	To generate local groups based on POS information to help in word alignment.
 Input 		-	Enter the path to 'tmp' folder to iterate on all the translated sentences to generate word grouping.
 Output 		- 	Inside the folder for every translation, a file 'E_Word_Group.txt' will be created containing details of word group.
@@ -66,6 +66,7 @@ def english_group():
 			current_word = eng[i][2]
 			prev_pos = ""
 			next_word = ""
+			prev_word = ""
 			prev_rel = ""
 			counter = i
 			
@@ -74,10 +75,14 @@ def english_group():
 				
 			if i != 0:
 				prev_pos = eng[i-1][1]
+				prev_word = eng[i-1][2]
 				prev_rel = eng[i-1][3]
 				
 			if current_pos in ["ADP"]:
-				if prev_pos in ["DET","ADJ","NUM","NOUN","PROPN","PUNCT","AUX","VERB","PART","CCONJ","SCONJ","PRON","ADV"]:
+				if current_word in ["to"]:
+					if prev_word in ["Due","due","According","according"]:
+						temp_list.append(eng[i][0])
+				elif prev_pos in ["DET","ADJ","NUM","NOUN","PROPN","PUNCT","AUX","VERB","PART","CCONJ","SCONJ","CONJ","PRON","ADV"]:
 					out_list.append(temp_list[:])
 					temp_list.clear()
 					temp_list.append(eng[i][0])
@@ -92,7 +97,7 @@ def english_group():
 				            current_pos = eng[counter][1]
 				            temp_list.append(eng[counter][0])
 				        i = counter      
-				elif prev_pos in ["ADJ","NUM","NOUN","PROPN","PUNCT","AUX","VERB","PART","CCONJ","SCONJ","PRON","ADV"]:
+				elif prev_pos in ["ADJ","NUM","NOUN","PROPN","PUNCT","AUX","VERB","PART","CCONJ","SCONJ","CONJ","PRON","ADV"]:
 					out_list.append(temp_list[:])
 					temp_list.clear()
 					temp_list.append(eng[i][0])
@@ -100,7 +105,7 @@ def english_group():
 					temp_list.append(eng[i][0])
 					
 			elif current_pos in ["ADJ","NUM"]:
-				if prev_pos in ["NOUN","PROPN","PUNCT","PRON","AUX","VERB","PART","ADV","CCONJ","SCONJ"]:
+				if prev_pos in ["NOUN","PROPN","PUNCT","PRON","AUX","VERB","PART","ADV","CCONJ","SCONJ","CONJ"]:
 					out_list.append(temp_list[:])
 					temp_list.clear()
 					temp_list.append(eng[i][0])
@@ -119,6 +124,9 @@ def english_group():
 					
 			elif current_pos in "PUNCT":
 				continue
+		
+			elif current_pos in "SYM":
+				temp_list.append(eng[i][0])
 
 			elif current_pos in ["VERB","AUX","PART"]:
 				if prev_pos in ["VERB","AUX","PART"]:
@@ -128,27 +136,13 @@ def english_group():
 					temp_list.clear()
 					temp_list.append(eng[i][0])
 					
-			elif current_pos in ["CONJ","CCONJ","SCONJ"]:
+			elif current_pos in ["CONJ","CCONJ","SCONJ","PRON","ADV"]:
 				out_list.append(temp_list[:])
 				temp_list.clear()
 				temp_list.append(eng[i][0])
 				out_list.append(temp_list[:])
 				temp_list.clear()
-				
-			elif current_pos in ["PRON"]:
-				out_list.append(temp_list[:])
-				temp_list.clear()
-				temp_list.append(eng[i][0])
-				out_list.append(temp_list[:])
-				temp_list.clear()
-				
-			elif current_pos in ["ADV"]:
-				out_list.append(temp_list[:])
-				temp_list.clear()
-				temp_list.append(eng[i][0])
-				out_list.append(temp_list[:])
-				temp_list.clear()
-				
+
 			else:
 				if i == 0:
 					temp_list.append(eng[i][0])
