@@ -2,7 +2,7 @@ import glob
 import os, sys
 """
 Created by	-	Prashant Raj & Saumya Navneet
-Date		-	23/August/2019
+Date		-	21/August/2019
 Purpose		-	To generate local groups based on POS information to help in word alignment.
 Input 		-	Enter the path to 'tmp' folder to iterate on all the translated sentences to generate word grouping.
 Output 		- 	Inside the folder for every translation, a file 'H_Word_Group.txt' will be created containing details of word group.
@@ -92,7 +92,7 @@ def hindi_group():
 			elif current_pos in ["NOUN","PROPN"]:
 				if prev_pos in ["NOUN","PROPN"] and prev_rel in ["compound"]:
 					temp_list.append(hin[i][0])
-				elif prev_pos in ["DET","ADJ","NUM"]:
+				elif prev_pos in ["DET","ADJ","NUM","PUNCT"]:
 					temp_list.append(hin[i][0])
 				else:
 					out_list.append(temp_list[:])
@@ -122,21 +122,7 @@ def hindi_group():
 					temp_list.clear()
 					temp_list.append(hin[i][0])
 					
-			elif current_pos in ["CCONJ","SCONJ"]:
-				out_list.append(temp_list[:])
-				temp_list.clear()
-				temp_list.append(hin[i][0])
-				out_list.append(temp_list[:])
-				temp_list.clear()
-				
-			elif current_pos in ["PRON"]:
-				out_list.append(temp_list[:])
-				temp_list.clear()
-				temp_list.append(hin[i][0])
-				out_list.append(temp_list[:])
-				temp_list.clear()
-				
-			elif current_pos in ["ADV"]:
+			elif current_pos in ["CCONJ","SCONJ","PRON","ADV"]:
 				out_list.append(temp_list[:])
 				temp_list.clear()
 				temp_list.append(hin[i][0])
