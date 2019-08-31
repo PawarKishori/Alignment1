@@ -2,7 +2,7 @@ import glob
 import os, sys
 """
 Created by	-	Prashant Raj & Saumya Navneet
-Date		-	30/August/2019
+Date		-	31/August/2019
 Purpose		-	To generate local groups based on POS information to help in word alignment.
 Input 		-	Enter the path to 'tmp' folder to iterate on all the translated sentences to generate word grouping.
 Output 		- 	Inside the folder for every translation, a file 'E_Word_Group.txt' will be created containing details of word group.
@@ -81,6 +81,8 @@ def english_group():
 			if current_pos in ["ADP"]:
 				if current_word in ["to"]:
 					if prev_word in ["Due","due","According","according"]:
+						out_list.append(temp_list[:])
+						temp_list.clear()
 						temp_list.append(eng[i][0])
 				elif prev_pos in ["DET","ADJ","NUM","NOUN","PROPN","PUNCT","AUX","VERB","PART","CCONJ","SCONJ","CONJ","PRON","ADV"]:
 					out_list.append(temp_list[:])
