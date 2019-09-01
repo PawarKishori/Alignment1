@@ -1,7 +1,6 @@
 (load "new_alignment.clp")
-(bind ?*hpath* (str-cat ?*hpath* "bc.clp"))
+(bind ?*hpath* (str-cat ?*hpath* "/bc.clp"))
 (load ?*hpath*)
-(load "/home/hackhard/prgrams/bc.clp")
 (load-facts "deffact_anchors.dat")
 (load-facts "E_clip_deffact.dat")
 (load-facts "H_clip_deffact.dat")
