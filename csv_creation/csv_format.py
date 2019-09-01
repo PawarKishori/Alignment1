@@ -1,6 +1,6 @@
 import csv
 import re
-log=open('file_missing','a')
+log=open('file_missing_log','a')
 flag=0
 flag4=0
 flag5=0
@@ -13,6 +13,8 @@ flag10=0
 flag11=0
 flag12=0
 flag13=0
+flag14=0
+flag15=0
 
 try:
     f=open("word.dat",'r').readlines()
@@ -77,8 +79,17 @@ try:
     f13=open("GNP_agmt_info.dat", "r").readlines()
 except:
     flag13=1
-    f13=open("GNP_agmt_info.dat not found")
-    
+    log.write("GNP_agmt_info.dat not found")
+try:
+    f14=open("anu_root.dat", "r").readlines()
+except:
+    flag14=1
+    log.write("anu_root.dat not found")
+try:
+    f15=open("H_headid-root_info.dat", "r")
+except:
+    flag15=1
+    log.write("H_headid-root_info.dat not found")  
 
 list_A=['A']
 list_K=['K']
@@ -91,6 +102,7 @@ list_P1=['P1']
 list_DICT=['DICT']
 list_R=['R']
 list_K_partial=['K_par']
+list_K_Root=['K_Root']
 
 
 for i in range(n):
@@ -105,6 +117,7 @@ for i in range(n):
     list_DICT.append("_")
     list_R.append("_")
     list_K_partial.append("_")    
+    list_K_Root.append("_")    
 
 if(flag==0):
     for i in range(1,n+1):
@@ -117,6 +130,8 @@ if(flag==0):
 m_dic = {}
 k_dic = {}
 k_par_dic = {}
+a_root_dic = {}
+m_root_dic = {}
 ##===================
 def add_data_in_dic(dic, key, val):
     if key not in dic:
@@ -124,12 +139,25 @@ def add_data_in_dic(dic, key, val):
     else:
         dic[key] = dic[key] + '/' + val
 
-
 ##===================
 if(flag10==0):
     for i in f10:
         hword=re.split(r'\s+',i[:-2])
         add_data_in_dic(m_dic, hword[2], hword[1])
+##===================
+if(flag14==0):
+    for i in f14:
+        root=re.split(r'\s+',i[:-2])
+        add_data_in_dic(a_root_dic, int(root[1]), root[2])
+##===================
+if(flag15==0):
+    for i in f15:
+        root=re.split(r'\s+',i[:-2])
+        add_data_in_dic(m_root_dic, int(root[1]), root[2])
+
+##===================
+#for key in sorted(m_root_dic):
+#	print key + '\t' + m_root_dic[key]
 
 ##===================
 def check_for_consecutive_ids(ids, id2):
@@ -173,33 +201,39 @@ if(flag11==0):
                     for item in l:
                         mngs.append(item)
                 for wrd in mngs:
+#                    print wrd, mngs
                     wrd_id = int(ap_out[1]) #to get eng_wrd_id in id_Apertium_output
+                    #print wrd, wrd_id, k_dic.keys()
                     if wrd_id not in k_dic.keys() and wrd in m_dic.keys():
                         k_dic[wrd_id] = str(m_dic[wrd])
+#                        print '$$$', wrd, wrd_id, k_dic[wrd_id], m_dic[wrd]
                     elif wrd_id in k_dic.keys() and wrd in m_dic.keys():
                         if ' ' not in k_dic[wrd_id] and '/' not in str(m_dic[wrd]):
-        #                    print '**', k_dic[wrd_id], m_dic[wrd]
+#                            print '&&',  k_dic[wrd_id], m_dic[wrd], wrd, m_dic.keys(), m_dic.values()
                             o = check_for_consecutive_ids(k_dic[wrd_id], m_dic[wrd])
                             store_data_in_k_dic(wrd_id, o, k_dic[wrd_id], str(m_dic[wrd]))
                         elif '/' not in str(m_dic[wrd]):
-        #                    print '^^', k_dic[wrd_id], m_dic[wrd]
+#                            print '^^', k_dic[wrd_id], m_dic[wrd], wrd, m_dic.keys(), m_dic.values()
                             o = check_for_consecutive_ids(k_dic[wrd_id], m_dic[wrd])
                             store_data_in_k_dic(wrd_id, o, k_dic[wrd_id], str(m_dic[wrd]))
                         else:
-        #                    print k_dic[wrd_id], m_dic[wrd]
+                   #         print k_dic[wrd_id], m_dic[wrd], wrd
                             if '/' not in k_dic[wrd_id]:
                                 a = k_dic[wrd_id].split()
                                 if str(int(a[-1])+1) in  m_dic[wrd].split('/'):
                                     o = check_for_consecutive_ids(k_dic[wrd_id], int(a[-1])+1)
                                     store_data_in_k_dic(wrd_id, o, k_dic[wrd_id], str(int(a[-1])+1))
                             a = k_dic[wrd_id].split('/') #Ex: 2.9, sWAna se 
+#                            print '##', a
                             for each in a:
+                                if ' ' in each :
+                                    each = each[-1]
                                 if str(int(each)+1) in  m_dic[wrd].split('/'):
                                         o = check_for_consecutive_ids(each, int(each)+1)
                                         store_data_in_k_dic(wrd_id, o, each, str(int(each)+1))
 
         except:
-#        else:
+#            else:
                 log.write('Check this mng::,')
                 log.write(str(ap_out[2:]))
                 print('1111', ap_out[2:])
@@ -231,6 +265,12 @@ def return_mng(ids, dic):
 def check_for_vib(a_mng, m_mng, vib):
     if m_mng not in vib:
         return True
+##===================
+def check_for_root(a_root, m_root):
+	if a_root == m_root :
+		return True
+	elif m_root in a_root.split():
+		return True
 
 ##===================
 #To handle hE/hEM etc. using tam info. If this is part of tam then restricting them to display in partial layer.
@@ -245,9 +285,12 @@ if(flag13==0):
             if tam_info in restricted_wrds:
                 tam_dic[int(key)] = 'yes'
 
+#print tam_dic.keys()
 ##===================
 new_k_dic = {}
+k_rt = {}
 for i in f11:
+    
     ap_out=re.split(r'\s+', i[:-2].strip())
     if(len(ap_out) > 2):
         if int(ap_out[1]) in k_dic.keys():
@@ -265,14 +308,22 @@ for i in f11:
             else:
                 out = check_for_vib(anu_mng, man_mng, f12)
                 if out == True:
-                    if man_mng != 'hE':
+                    if man_mng not in restricted_wrds:
                         print('partial', anu_mng, man_mng, ' '.join(ids), int(ap_out[1]))
                         k_par_dic[int(ap_out[1])] = ' '.join(ids)
-                    elif man_mng == 'hE' and int(ap_out[1]) not in tam_dic.keys():
+                    elif man_mng in restricted_wrds and int(ap_out[1]) not in tam_dic.keys():
+                        print(man_mng, int(ap_out[1]))
                         print('partial', anu_mng, man_mng, ' '.join(ids), int(ap_out[1]))
                         k_par_dic[int(ap_out[1])] = ' '.join(ids)
-                else:
-                    k_par_dic[int(ap_out[1])] = '-'
+                    else:
+                        k_par_dic[int(ap_out[1])] = '-'
+        if int(ap_out[1]) in a_root_dic.keys():
+            a_root = a_root_dic[int(ap_out[1])]
+            for key in sorted(m_root_dic):
+                if m_root_dic[key] == a_root:
+                    k_rt[int(ap_out[1])] = key
+                elif m_root_dic[key] in a_root.split():
+                    k_rt[int(ap_out[1])] = key 
 
 ##====================
 #Store data in list_K
@@ -288,10 +339,18 @@ for i in range(1, n+1):
         list_K_partial[i] = k_par_dic[i]
     else:
         list_K_partial[i] = '-'
+##===================
+#Store data in list_K_Root:
+for i in range(1, n+1):
+    if i in k_rt.keys():
+        list_K_Root[i] = k_rt[i]
+    else:
+        list_K_Root[i] = '-'
 
 ##===================
 print('Kth Layer info::\n', list_K)
 print('Partial K layer info::\n', list_K_partial)
+print('Dictionary K layer info::\n', list_K_Root)
 
 m_dic = {}
 k_dic = {}
@@ -538,6 +597,7 @@ with open("H_alignment_parserid.csv", 'w') as csvfile:
     csvwriter.writerow(list_A)
     csvwriter.writerow(list_K)
     csvwriter.writerow(list_K_partial)
+    csvwriter.writerow(list_K_Root)
     csvwriter.writerow(list_L)
     csvwriter.writerow(list_M)
     csvwriter.writerow(list_N)
