@@ -1,15 +1,17 @@
-tmp_path=$HOME_anu_tmp/tmp/
-python split_into_tmp.py $1 E_sentence $1
-python split_into_tmp.py $2 H_sentence $1
-
 #sh $HOME_alignment/generate_basic_facts.sh $1
 
-
+tmp=$HOME_anu_tmp/tmp
 file_dir=$1'_tmp'
 END=`wc -l $1 | awk '{print $1}'`
 END=`expr $END + 1`
 
 echo "No. of eng sentences: " $END
+
+python split_into_tmp.py $1 E_sentence $1  #$1 i.e. BUgol2.1E is without test. sentence
+python split_into_tmp.py $2 H_sentence_org $1  #$2 i.e. BUgol2.1H is without parIkshan. sentence
+python split_into_tmp_1_test.py $tmp/$file_dir/hindi_canonical H_sentence $1    #hindi_canonical is with parIkshan. sentence, H_sentence is canonical
+python split_into_tmp_1_test.py $tmp/$file_dir/org_hindi_without_nukta H_sentence_without_nukta $1    #hindi_canonical is with parIkshan. sentence, H_sentence is canonical
+
 
 for i in $(seq 1 $END)
 do
