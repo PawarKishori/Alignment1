@@ -20,8 +20,8 @@ filename = sys.argv[1] + '.html'
 out_path=os.getenv('HOME')+'/anu_output/'
 
 #path = r'path1'                  # use your path
-all_files = sorted(glob.glob(os.path.join(path1, "clips_to_csv_utf_words.csv")))
-print(all_files)
+all_files = sorted(glob.glob(os.path.join(path1, "clips_to_csv_words.csv")))
+#print(all_files)
 
 root = Tk()
 
@@ -40,13 +40,13 @@ html_string = '''
     <body>
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <div id="header">
-    <input type="text" name="ser" id="ser" placeholder="Search..." />
+    <input type="text" name="ser" placeholder="Search..." id="ser"/>
     <div id="sent">
     </div>
     </div>  
     <script type="text/javascript", src = "myhtml.js"></script>
     <div id="dvCSV">
-        <div id="mytable">
+        <div id="myTable">
         	{table}
         </div>
     </div>
@@ -58,22 +58,20 @@ measurer = np.vectorize(len)
 
 for filename in all_files:
     if filename.endswith('.csv'):
-        table_list.append(filename.split("/")[-1].split('.')[0]+'.'+filename.split("/")[-1].split('.')[1])        
+        table_list.append(filename.split("/")[-2])
+        #table_list.append(filename.split(".")[0]+"."+filename.split(".")[1])
+#print(table_list)
 lines = []
-k=0  
 df = []
-print(table_list)
-
-
+k=0
 for f in all_files:
     pd.set_option("display.expand_frame_repr", True)
-    df_from_each_file = pd.read_csv(f, sep="#", skiprows=3)
-    
-    
+    df_from_each_file = pd.read_csv(f, sep="#")#skiprows=3)
     pd.set_option("display.expand_frame_repr", True)
     line = pd.read_csv(f, sep="\n", nrows=2)
     df_from_each_file = df_from_each_file.replace(np.nan, '', regex=True)
-    df_from_each_file.insert(0,'',table_list[k])
+    print(table_list[k])
+    df_from_each_file.insert(0,"",table_list[k])
     k=k+1
     df_from_each_file.style.set_table_attributes('style="border-collapse:collapse"').set_table_styles([
         # Rest of styles
@@ -94,10 +92,10 @@ r = dfs.shape[0]
 c = len(dfs.columns)
 
 i=0
-y=23
+y=20
 while (i < c):
     df1 = dfs.iloc[0:r, i:y]
     with open(out_path+sys.argv[1]+'.html', 'a') as f:
         f.write(html_string.format(table=df1.to_html(classes='mystyle')))
     i=y
-    y=i+23
+    y=i+20

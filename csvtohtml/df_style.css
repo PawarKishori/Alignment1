@@ -20,6 +20,13 @@
 	flex-wrap: wrap;
 	margin-top: 140px;
 }
+#mytable{
+	
+}
+.table{
+	margin-top: 140px;
+	margin-bottom: 0px;
+}
 #sent {
 	padding-top:25px;
 	margin-top: 20px;
@@ -47,6 +54,8 @@
 	width: 1366px;
 	font-size: 8px
         overflow: hidden;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
 .mystyle td, th {
