@@ -28,11 +28,11 @@ import H_Modules
 
 #Specify path of sentence:
 tmp_path=os.getenv('HOME_anu_tmp')+'/tmp/'
-# tmp_path='/home/kishori/a/tmp_anu_dir/tmp/BUgol_13_aug/'
+# tmp_path='/home/kishori/a/tmp_anu_dir/tmp/BUgol_27_aug/'
 # eng_file_name = 'cc_conjE'
 
 # eng_file_name = 'BUgol2.1E'
-# sent_no = '2.65' #2.29, 2.21, 2.61, 2.14, 2.64
+# sent_no = '2.2' #2.29, 2.21, 2.61, 2.14, 2.64
 
 eng_file_name = sys.argv[1]
 sent_no = sys.argv[2]
@@ -62,15 +62,19 @@ hs = H_Modules.wx_utf_converter_sentence(hs)
 
 print(hs)
 
+print(path_tmp)
+# himg = path_tmp+'/H_tree_final.png'
+himg = 'H_tree_final.png'
+eimg = 'E_tree_final.png'
 
-himg = path_tmp+'/H_tree_final.png'
-eimg = path_tmp+'/E_tree_final.png'
+himg1 = 'H_tree_initial.png'
+eimg1 = 'E_tree_initial.png'
 
-himg1 = path_tmp+'/H_tree_initial.png'
-eimg1 = path_tmp+'/E_tree_initial.png'
+himg2 = 'H_tree_corrected.png'
+eimg2 = 'E_tree_corrected.png'
 
-himg2 = path_tmp+'/H_tree_corrected.png'
-eimg2 = path_tmp+'/E_tree_corrected.png'
+
+
 
 if os.path.exists(log_file):
     os.remove(log_file)
@@ -280,9 +284,6 @@ def replace_id_by_id_word_pair_for_visualization(unique):
     return(unique_words) 
 
 
-
-
-
 # In[6]:
 
 
@@ -332,9 +333,7 @@ except:
     print("FILE MISSING: " + html_file)
     log.write("FILE MISSING: " + html_file+ "\n")
     
-    
-    
-
+#     
 try:
     new = final.apply(func)
 #     print(new)
@@ -536,8 +535,8 @@ def create_debug_file_for_layer(x, filename):
 #         print("======")
 
 # create_debug_file_for_layer(dictionary_wordnet,"dictionary_match_debug.txt")
-create_debug_file_for_layer(hindi_wordnet,"hindi_wordnet_debug.txt")
-create_debug_file_for_layer(partial_match,"partial_match_debug.txt")
+# create_debug_file_for_layer(hindi_wordnet,"hindi_wordnet_debug.txt")
+# create_debug_file_for_layer(partial_match,"partial_match_debug.txt")
 
 
 # In[8]:
@@ -565,17 +564,27 @@ def load_row_from_csv(filename, row_number):
 
 
 k_layer_ids_file= path_tmp + '/H_alignment_parserid.csv'
+
 k_layer_ids= load_row_from_csv(k_layer_ids_file, 1)
 k_layer_ids = cleaning_list(k_layer_ids)
+k_layer_ids[0]= "K_exact_match(Roja)"
 print(k_layer_ids)
+
 k_layer_partial_ids= load_row_from_csv(k_layer_ids_file, 2)
 k_layer_partial_ids = cleaning_list(k_layer_partial_ids)
+k_layer_partial_ids[0]="K_partial_Content_word(Roja)"
 print(k_layer_partial_ids)
+
+k_layer_root_ids= load_row_from_csv(k_layer_ids_file, 3)
+k_layer_root_ids = cleaning_list(k_layer_root_ids)
+k_layer_root_ids[0]="K_root_info(Roja)"
+print(k_layer_root_ids)
 
 # dfs.loc[24] = k_layer_ids
 dfs.loc[dfs.index[-1]+1] = k_layer_ids
 # dfs.loc[25] = k_layer_partial_ids
 dfs.loc[dfs.index[-1]+1] =k_layer_partial_ids
+dfs.loc[dfs.index[-1]+1] =k_layer_root_ids
 
 
 
@@ -614,36 +623,49 @@ dfs
 
 # #remove=========================
 # #10 11 12 => [10, 11, 12]
-# def create_list_from_space_seperated_string(string):
-#     if " " not in string:
-#         return([string])
-#     return(string.split(" "))
+def create_list_from_space_seperated_string(string):
+    if " " not in string:
+        return([string])
+    return(string.split(" "))
 
+# # returns a non-empty list when there is some intersection between 2 elements 
 # #[[10,11,12], [12]] => [12]
-# def intersection_of_two_list(lst1, lst2): 
-#     lst3 = [value for value in lst1 if value in lst2] 
-#     return lst3 
+def intersection_of_two_list(lst1, lst2): 
+    common_element = [value for value in lst1 if value in lst2] 
+    return common_element 
 
 # #[[1,2],[11,12],[1],[2]] => [[1],[2],[1,2],[11,12]]
-# def sort_list_of_list_by_length(listlist):
+def sort_list_of_list_by_length(listlist):
+    tuple_list=[]
+    for item in listlist:
+        tuple_list.append((len(item),item))
+    x = sorted(tuple_list, key=lambda x: x[0])
+    final = [i[1] for i in x ]
+    return(final)
     
-    
-
+# print(intersection_of_two_list([10,11,12], [12]))
+# print(create_list_from_space_seperated_string('10 11 12'))
 # #10 11 12#12 => 10 11 12
-# def merge_overlapping_entries(anchor1):
-#     print("***")
-#     print(len(anchor1))
-#     for i in range(0, len(anchor1)):
-#         if len(anchor1[i])>1:
+def merge_overlapping_entries(anchor1):
+    print("***")
+    print(len(anchor1))
+#     print(anchor1)
+    for i in range(1, len(anchor1)): #excluding 0th index of anchor1 which is label of row [row index]
+        if len(anchor1[i])>1:
 #             print(anchor1[i])
-#             all_list_in_cell=[]
-#             for item in anchor1[i]:
-#                 all_list_in_cell.append(create_list_from_space_seperated_string(item))
-#             print(all_list_in_cell)
+            all_list_in_cell=[]
+            for item in anchor1[i]:
+                all_list_in_cell.append(create_list_from_space_seperated_string(item))
+            ordered_listOflist = sort_list_of_list_by_length(all_list_in_cell)
+            print("=>", ordered_listOflist)
+    
+    
+            
 #     return(anchor1)
     
 # print(show_hindi)
-# #remove=========================
+# # #remove=========================
+# merge_overlapping_entries(anchor1)
 
 
 # In[10]:
@@ -664,6 +686,8 @@ print(anchor1_str_list)
 
 anchor1[0] = 'Potential anchors v1' 
 anchor1_str_list[0] = 'Potential anchors v1' 
+
+# anchor1_1 = merge_overlapping_entries(anchor1)
 
 print("====anchor2")
 anchor2, anchor2_str_list = remove_multi_entry_in_a_cell(anchor1)
@@ -770,6 +794,29 @@ dfs.loc[dfs.index[-1]+1] = anchor1_str_list
 # dfs.loc[31] = anchor3_str_list
 dfs.loc[dfs.index[-1]+1] =anchor3_str_list
 
+
+
+# In[14]:
+
+
+#Prashant's and Apratim's module
+prashant_csv = path_tmp + '/new_N1.csv'
+# print(open(prashant_csv,'r').read())
+N1_layer= load_row_from_csv(prashant_csv, 1)
+print(N1_layer)
+N1_layer.insert(0,"N1_layer")
+# print(N1_layer)
+print(N1_layer)
+dfs.loc[dfs.index[-1]+1] = N1_layer
+dfs
+
+
+
+# In[15]:
+
+
+#Extra layers which are not considered in csv now, but might be considered in future
+
 # dfs.loc[32] = dictionary_wordnet
 # dfs.loc[dfs.index[-1]+1] =dictionary_wordnet
 
@@ -785,7 +832,7 @@ dfs.to_html(path_tmp +'/'+ eng_file_name + "_"+sent_no + "_2.html", index=False)
 dfs
 
 
-# In[13]:
+# In[16]:
 
 
 #Changes every cell value[hindi ids] from id to is_word pair
@@ -843,11 +890,16 @@ new.index = np.arange(1,len(dfs)+1)
 new=new.set_index('Resources')
 # new.index.name="R"
 new.index.name = None
+
+with open(sent_dir+ '/Potential_debug.txt','a') as f:
+    multi = [x for x in list(new.iloc[23]) if '#' in x]
+    print( sent_no + " => " + " ".join(multi)+ "\n" )
+    f.write(sent_no + " => " + " ".join(multi)+ "\n")
 # display(new)
 # display(dfs)
 
 
-# In[14]:
+# In[17]:
 
 
 #Converts the dataframe into html
@@ -959,6 +1011,243 @@ text-align: center;
 
 /* -------- /Tooltip ---------- */
 
+
+
+
+.corner {
+  width: 0;
+  height: 0;
+  border-top: 90px solid #ffcc00;
+  border-bottom: 10px solid transparent;
+  border-left: 90px solid transparent;
+  position:fixed;
+  right:0;
+  margin:0px;
+  z-index: 2;
+}
+
+.corner span {
+  position:absolute;
+  top: -80px;
+  width: 100px;
+  left: -106px;
+  text-align: right;
+  font-size: 20px;
+  font-family: arial;
+  font-weight: bold;
+  display:block;
+}
+
+
+
+
+#gotoTop {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #a5a5a5;
+  color: white;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+#gotoTop:hover {
+  background-color: #555;
+}
+
+
+
+
+nav.float-action-button {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 90px 10px;
+}
+
+a.buttons {
+  box-shadow: 0 5px 11px -2px rgba(0, 0, 0, 0.18), 0 4px 12px -7px rgba(0, 0, 0, 0.15);
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  color: #000;
+  font-size: 18px;
+  padding: 15px 0 0 0;
+  text-align: center;
+  display: block;
+  margin: 20px auto 0;
+  position: relative;
+  -webkit-transition: all .1s ease-out;
+  transition: all .1s ease-out;
+}
+
+a.buttons:active,
+a.buttons:focus,
+a.buttons:hover {
+  box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28);
+  text-decoration: none;
+}
+
+a.buttons:not(:last-child) {
+  width: 56px;
+  height: 56px;
+  margin: 20px auto 0;
+  opacity: 0;
+  font-size: 18px;
+  padding-top: 15px;
+  -webkit-transform: translateY(50px);
+  -ms-transform: translateY(50px);
+  transform: translateY(50px);
+}
+
+nav.float-action-button:hover a.buttons:not(:last-child) {
+  opacity: 1;
+  -webkit-transform: none;
+  -ms-transform: none;
+  transform: none;
+  margin: 20px auto 0;
+}
+
+a.buttons:nth-last-child(1) {
+  -webkit-transition-delay: 25ms;
+  transition-delay: 25ms;
+  background-color: #ffcc00;
+  /* Button color */
+}
+
+a.buttons:nth-last-child(1) i.fa {
+  transform: rotate3d(0, 0, 1, 0);
+  transition: content 0.4s, transform 0.4s, opacity 0.4s;
+}
+
+a.buttons:nth-last-child(1):hover i.fa {
+  transform: rotate3d(0, 0, 1, -180deg);
+}
+
+a.buttons:nth-last-child(1) i.fa:nth-last-child(1) {
+  position: absolute;
+  margin: 10px 0 0 -32px;
+}
+
+a.buttons:nth-last-child(1) i.fa:nth-last-child(2) {
+  opacity: 0;
+}
+
+a.buttons:nth-last-child(1):hover i.fa:nth-last-child(1) {
+  opacity: 0;
+}
+
+a.buttons:nth-last-child(1):hover i.fa:nth-last-child(2) {
+  opacity: 1;
+}
+
+a.buttons:not(:last-child):nth-last-child(2) {
+  -webkit-transition-delay: 50ms;
+  transition-delay: 20ms;
+  background-color: #ffcc00;
+  /* Facebook color */
+}
+
+a.buttons:not(:last-child):nth-last-child(3) {
+  -webkit-transition-delay: 75ms;
+  transition-delay: 40ms;
+  background-color: #ffcc00;
+  /* Twitter color */
+}
+
+a.buttons:not(:last-child):nth-last-child(4) {
+  -webkit-transition-delay: 100ms;
+  transition-delay: 60ms;
+  background-color: #ffcc00;
+  /* Google plus color */
+}
+
+.tooltip.left {
+  margin-left: -10px;
+}
+
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+	padding:15px;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+.modal-body {padding: 10px 16px;}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+
+
+
 </style>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
@@ -970,6 +1259,7 @@ text-align: center;
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
 		<script src="../styles/js/jquery.stickyheader.js">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </script>
         
 <script>
@@ -984,14 +1274,19 @@ if (!usingChrome) {
 </head>
 <body>
     '''
-    result += '<h3> Sentence Number: %s </h3>\n<hr>' % sent_no
+    result += '<button onclick="topFunction()" id="gotoTop" title="Go to top">&#8679;</button>'
+    result += '<h3> <a href="https://docs.google.com/document/d/1YAXKVYBlt_MGWgoyHbULq4YsWHLwrmkr0EGPTit5zfs/edit?usp=sharing" target="_blank">Alignment Guidelines</a> </h3>\n<hr>' 
+#      result += '<p class="corner"><span>%s</span></p>' % sent_no
+    
+    result += '<h3> Sentence Number: %s &nbsp &nbsp &nbsp|&nbsp &nbsp &nbsp Reference English Text: <a href="../iess102.pdf" target="_blank">English Chapter 2</a> &nbsp &nbsp &nbsp|&nbsp &nbsp &nbsp  Reference Hindi Text: <a href="../ihss102.pdf" target="_blank">Hindi Chapter 2</a></h3><hr>' % sent_no
     result += '<h3> %s </h3>\n<hr>' % es
+#     result += '<h3> %s </h3><button onclick="myFunction()">i</button>\n<hr>' % es
 #     result += '<h4 class="tooltip"> {0} <span class="tooltiptext"> {1} </span></h4>\n' .format(eng_row,eng_row_tooltip)
 
     result += '<h3> %s </h3>\n' % hs
 #     result += '<h4 class="tooltip"> {0} <span class="tooltiptext"> {1} </span></h4>\n' .format(hindi_row,hindi_row_tooltip)
 #     result += '<span class="tooltiptext"> %s </span>\n' % hindi_row_tooltip
-    result += df.to_html(classes='wide', escape=False)
+    result += df.to_html(classes='wide overflow-y', escape=False)
     #result += '<center> <img src="{0}"> <hr> <img src="{1}"> <hr> </center>' .format(eimg,himg)
 #     result += '<center><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfoXq6rT-vfEl1eUU0-dVBbe5fajs5THxaatO2sxGg1YUx-vA/viewform?embedded=true" width="640" height="879" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe></center>'
 
@@ -1000,6 +1295,8 @@ if (!usingChrome) {
     result += '<h4 class="tooltip"> Hindi Grouping: {0} <span class="tooltiptext"> {1} </span></h4>\n' .format(hindi_row,hindi_row_tooltip)
 
     result += '''
+    
+   
     
  <center><h2>English Dependency Parse Trees</h2></center>
 
@@ -1010,8 +1307,7 @@ if (!usingChrome) {
 </div>
 
 <div id="E1" class="tabcontent">
-  <h3>Transfored  Tree version2</h3>
-  <p>Tree after local word grouping of intrachunk relations.</p>
+  <h3>Transfored  Tree version2<br><br>Tree after local word grouping of intrachunk relations.</h3>
   '''
     result += '<center> <img src="{}"></center>' .format(eimg)
    
@@ -1021,8 +1317,7 @@ if (!usingChrome) {
 </div>
 
 <div id="E2" class="tabcontent">
-  <h3>Transfored  Tree version1</h3>
-  <p>Changed obl tags and transformed cc-conj structure.</p> 
+  <h3>Transfored  Tree version1<br><br>Changed obl tags and transformed cc-conj structure.</h3>
   '''
     result += '<center> <img src="{}"></center>' .format(eimg2)
     
@@ -1031,8 +1326,7 @@ if (!usingChrome) {
 </div>
 
 <div id="E3" class="tabcontent">
-  <h3>Original parse by parser</h3>
-  <p> Stanford's 3.9 Dependency parse. </p>
+  <h3>Original parse by parser<br><br>Stanford's 3.9 Dependency parse.</h3>
   '''
     result += '<center> <img src="{}"></center>' .format(eimg1)
     
@@ -1051,8 +1345,7 @@ if (!usingChrome) {
 </div>
 
 <div id="H1" class="hcontent">
-  <h3>Transfored  Tree version2</h3>
-  <p>Tree after local word grouping of intrachunk relations.</p>
+  <h3>Transfored  Tree version2<br>Tree after local word grouping of intrachunk relations.</h3>
   '''
     result += '<center> <img src="{}"></center>' .format(himg)
    
@@ -1062,8 +1355,8 @@ if (!usingChrome) {
 </div>
 
 <div id="H2" class="hcontent">
-  <h3>Transfored  Tree version1</h3>
-  <p> Changed obl tags and transformed cc-conj structure. </p> 
+  <h3>Transfored  Tree version1<br><br>Changed obl tags and transformed cc-conj structure.</h3>
+
   '''
     result += '<center> <img src="{}"></center>' .format(himg2)
     
@@ -1072,8 +1365,8 @@ if (!usingChrome) {
 </div>
 
 <div id="H3" class="hcontent">
-  <h3>Orginal Parse</h3>
-  <p style=text-aligh:center;>Irshad's Hindi Neural parse trained on UD annotated hindi treebank [IIIT]. </p>
+  <h3>Orginal Parse<br><br>Irshad's Hindi Neural parse trained on UD annotated hindi treebank [IIIT].</h3>
+  
   '''
     result += '<center> <img src="{}"></center>' .format(himg1)
     
@@ -1084,11 +1377,117 @@ if (!usingChrome) {
 
     '''
     
-    result += '<center style="padding-top:25px"><h4> Sentence Number: %s </h4></center>\n' % sent_no
-    result += '<center><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfoXq6rT-vfEl1eUU0-dVBbe5fajs5THxaatO2sxGg1YUx-vA/viewform?embedded=true" width="800" height="700" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe></center>'
+#     result += '<center style="padding-top:25px"><h4> Sentence Number: %s </h4></center>\n' % sent_no
+#     result += '<center><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfoXq6rT-vfEl1eUU0-dVBbe5fajs5THxaatO2sxGg1YUx-vA/viewform?embedded=true" width="800" height="700" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe></center>'
 
     result += '''
+    <br>
+<!-- dictionary links -->
+<nav class="float-action-button"> 
+        <a href="https://www.collinsdictionary.com/dictionary/english-hindi" target="_blank" class="buttons" title="Collins Dictionary" data-toggle="tooltip" data-placement="left">
+          <i>Collin</i>
+        </a>
+       <a href="https://www.oxfordlearnersdictionaries.com/" target="_blank" class="buttons" title="Oxford Dictionary" data-toggle="tooltip" data-placement="left">
+          <i>Oxford</i>
+        </a>
+        <a href="http://www.cfilt.iitb.ac.in/wordnet/webhwn/wn.php" target="_blank" class="buttons" title="Hindi Wordnet" data-toggle="tooltip" data-placement="left">
+          <i>Wordnet</i>
+        </a>
+        
+        <!--
+		<a href="#" id="myBtn2" class="buttons" title="Sentence Observations" data-toggle="tooltip" data-placement="left"> 
+          <i>Form</i>
+        </a>
+        -->
+        <a href="#" class="buttons" title="Links" data-toggle="tooltip" data-placement="left">
+          <i>Links</i>
+   
+        </a>
+</nav>
 
+
+<!-- The Modal -->
+<div id="myModal2" class="modal">
+<!-- Modal content -->
+  <div class="modal-content">
+      <span class="close second">&times;</span>
+    <div class="modal-header">
+      <h2>Form</h2>
+    </div>
+    <div class="modal-body">
+      <p><center><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfoXq6rT-vfEl1eUU0-dVBbe5fajs5THxaatO2sxGg1YUx-vA/viewform?embedded=true" width="640" height="879" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe></center> </p>
+
+    </div>
+    <div class="modal-footer">
+      <h3>Modal Footer</h3>
+    </div>
+  </div>
+  </div>
+</div>
+
+<script>
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("gotoTop").style.display = "block";
+    } else {
+        document.getElementById("gotoTop").style.display = "none";
+    }
+   
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+ 
+     $('html, body').animate({scrollTop:0}, 'slow');
+}
+
+</script>
+
+<script>
+// Get the modal
+var modal1 = document.getElementById("myModal1");
+var modal2 = document.getElementById("myModal2");
+
+// Get the button that opens the modal
+var btn1 = document.getElementById("myBtn1");
+var btn2 = document.getElementById("myBtn2");
+
+
+// Get the <span> element that closes the modal
+var span1 = document.getElementsByClassName("close")[0];
+var span2 = document.getElementsByClassName("close second")[0];
+
+
+// When the user clicks the button, open the modal
+btn1.onclick = function() {
+    modal1.style.display = "block";
+}
+btn2.onclick = function() {
+    modal2.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span1.onclick = function() {
+    modal1.style.display = "none";
+}
+
+span2.onclick = function() {
+    modal2.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == modal1) {
+        modal1.style.display = "none";
+    }
+    if (event.target == modal2) {
+        modal2.style.display = "none";
+    }
+}
+</script>
 
 <script>
 function openCity(evt, cityName) {
@@ -1122,8 +1521,17 @@ function hCity(hevt, hName) {
   hevt.currentTarget.className += " active";
 }
 </script>
-    
 
+<script>
+function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
 </body>
 </html>
 '''
@@ -1133,5 +1541,6 @@ function hCity(hevt, hName) {
 write_to_html_file(new, path_tmp+'/final.html')
 new.to_csv(path_tmp +'/final.csv')
 # new.to_html(path_tmp +'/final.html')
+
 
 

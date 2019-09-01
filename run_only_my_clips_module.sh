@@ -12,10 +12,4 @@ do
 
         myclips -f  $HOME_alignment/tmp_run_Qth.bat  >  $tmp_path/clips_error_kishori
         myclips -f  $HOME_alignment/final_Pth.bat  >>  $tmp_path/clips_error_kishori
-
-
-
 done
-
-
-

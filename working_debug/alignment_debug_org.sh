@@ -4,14 +4,15 @@ MYPATH=$HOME_anu_tmp/tmp/$1_tmp
 #------------- For Parser tree purpose -----------------------
 $HOME_anu_test/Anu_src/comp.sh combine_apos
 $HOME_anu_test/Anu_src/comp.sh get_wordid
-sed '1d' $MYPATH/one_sentence_per_line.txt.std.penn > $MYPATH/one_sentence_per_line.txt.std.penn.tmp1
-./combine_apos.out  < $MYPATH/one_sentence_per_line.txt.std.penn.tmp1 > $MYPATH/one_sentence_per_line.txt.std.penn.tmp2
+#sed '1d' $MYPATH/one_sentence_per_line.txt.std.penn > $MYPATH/one_sentence_per_line.txt.std.penn.tmp1
+#./combine_apos.out  < $MYPATH/one_sentence_per_line.txt.std.penn > $MYPATH/one_sentence_per_line.txt.std.penn.debug
+./combine_apos.out  < $MYPATH/one_sentence_per_line.txt.std.penn > $MYPATH/one_sentence_per_line.txt.std.penn.tmp
 #./get_wordid.out < $MYPATH/one_sentence_per_line.txt.std.penn.tmp2  > $MYPATH/one_sentence_per_line.txt.std.penn.tmp3
 
 cd $MYPATH
 
 #$HOME_anu_test/Anu_src/split_file.out one_sentence_per_line.txt.std.penn.tmp3  dir_names.txt  std.penn.tmp
-$HOME_anu_test/Anu_src/split_file.out one_sentence_per_line.txt.std.penn.tmp2  dir_names.txt  std.penn.tmp
+$HOME_anu_test/Anu_src/split_file.out one_sentence_per_line.txt.std.penn.tmp  dir_names.txt  std.penn.tmp
 while read line
 do
  cd $line
@@ -48,7 +49,7 @@ sed 's/^/ Anu : /g'  hindi_sentence_wx.dat >> slot_debug_input.txt
 sed 's/^/ Manual sen : /g' man_sent_wx >>  slot_debug_input.txt 
 
 python $HOME_anu_test/miscellaneous/SMT/phrasal_alignment/align_debug/print_matrix.py slot_debug_input.txt  English_sentence.dat  manual_word.dat > $1_table
-perl $HOME_anu_test/miscellaneous/SMT/phrasal_alignment/align_debug/create-html-table.pl < $1_table > $1_table1.html
+perl $HOME_anu_test/miscellaneous/SMT/phrasal_alignment/align_debug/create-html-table.pl < $1_table >$1_table1.html
 echo "************************************************************"
 #python $PRES_PATH/change.py $1 $2
 #perl $HOME_anu_test/miscellaneous/SMT/phrasal_alignment/align_debug/create-html-table.pl < $1_table1 > $1_table2.html
