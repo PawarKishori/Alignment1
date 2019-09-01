@@ -91,8 +91,8 @@ if __name__== "__main__":
     for l in range(1, 103):
         try:
             input_file = os.getenv(
-                "HOME")+"/Downloads/BUgol_27_aug/"+temp+"/2."+str(l)+"/final.csv"
-            path = os.getenv("HOME")+"/Downloads/BUgol_27_aug/"+temp+"/2."+str(l)
+                "HOME_anu_tmp")+"/tmp/"+temp+"_tmp/2."+str(l)+"/final.csv"
+            path = os.getenv("HOME_anu_tmp")+"/tmp/"+temp+"_tmp/2."+str(l)
             new_f = open(path+"/deffact_anchors.dat", 'w+')
             print()
             print("--------------------")
