@@ -22,9 +22,9 @@ for i in range(len(xxxx)):
      ss1=kk1
      ab1.append(int(kk1[2]))
      bc1.append((",".join(ss1[3:]))[:-2])
-     print(kk1[2]," ",(",".join(ss1[3:]))[:-2])
+     #print(kk1[2]," ",(",".join(ss1[3:]))[:-2])
 
-print()
+#print()
 #new_f = open('new_csv.csv','w')
 #open_file2=open(path2,'r')
 lis = open_file.readlines()
@@ -33,7 +33,7 @@ lis = open_file.readlines()
 #print(lis2)
 #print(len(lis)+len(lis2))
 #print(len(lis))
-print()
+#print()
 ab=[]
 bc=[]
 for i in range(len(lis)):
@@ -41,11 +41,11 @@ for i in range(len(lis)):
      ss=kk
      ab.append(int(kk[2]))
      bc.append((",".join(ss[3:]))[:-2])
-     print(kk[2]," ",(",".join(ss[3:]))[:-2])
+     #print(kk[2]," ",(",".join(ss[3:]))[:-2])
      #print(kk[2:])
-print()
-print(ab+ab1)
-print(bc+bc1)
+#print()
+#print(ab+ab1)
+#print(bc+bc1)
 ab=ab+ab1
 bc=bc+bc1
 #print(ab1)
@@ -71,7 +71,7 @@ for i, j in zip(ab,bc):
 for key in sorted(d.keys()):
      (key,d[key])
      #pd.DataFrame(d)
-print(d)
+#print(d)
 sorted_x = sorted(d.items(), key=operator.itemgetter(0))
 sorted_dict = collections.OrderedDict(sorted_x)
 #print(sorted_x[0])
