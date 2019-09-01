@@ -4,7 +4,6 @@
 (load-facts "deffact_anchors.dat")
 (load-facts "E_clip_deffact.dat")
 (load-facts "H_clip_deffact.dat")
-(load "bc.clp")
 (run)
 (facts)
 (save-facts "save_facts1" local final_english_id-final_hindi_id)
