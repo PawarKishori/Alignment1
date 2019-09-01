@@ -10,8 +10,7 @@ do
 	sentence_dir='2.'$i
 	echo $sentence_dir
 	tmp_path=$HOME_anu_tmp/tmp/$1_tmp/$sentence_dir
-	rm $tmp_path/Roja_chk_transliterated_words.dat
-	python $HOME_alignment/Transliteration/Check_Transliterate_generalised.py -f $tmp_path/E_sentence $tmp_path/H_sentence
+	python $HOME_alignment/Transliteration/Check_Transliterate_generalised.py -f $tmp_path/E_sentence $tmp_path/H_sentence_without_nukta
 	#python $current/run3.py 
 	i=`expr $i + 1`
 done
