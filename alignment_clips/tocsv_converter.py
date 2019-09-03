@@ -21,7 +21,7 @@ for i in range(len(xxxx)):
      kk1=(xxxx[i].split(' '))
      ss1=kk1
      ab1.append(int(kk1[2]))
-     bc1.append((",".join(ss1[3:]))[:-2])
+     bc1.append((" ".join(ss1[3:]))[:-2])
      #print(kk1[2]," ",(",".join(ss1[3:]))[:-2])
 
 #print()
@@ -40,7 +40,7 @@ for i in range(len(lis)):
      kk=(lis[i].split(' '))
      ss=kk
      ab.append(int(kk[2]))
-     bc.append((",".join(ss[3:]))[:-2])
+     bc.append((" ".join(ss[3:]))[:-2])
      #print(kk[2]," ",(",".join(ss[3:]))[:-2])
      #print(kk[2:])
 #print()

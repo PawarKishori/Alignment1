@@ -3,6 +3,7 @@ filename=$1
 i=1
 echo $i
 END=`wc -l $1 | awk '{print $1}'`
+#END=67
 END=`expr $END + 1`
 #for i in $(seq 1 $END)
 while [ "$i" -lt $END ]

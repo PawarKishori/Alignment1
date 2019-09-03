@@ -897,7 +897,7 @@ with open(sent_dir+ '/Potential_debug.txt','a') as f:
     f.write(sent_no + " => " + " ".join(multi)+ "\n")
 # display(new)
 # display(dfs)
-
+dfs.to_csv(path_tmp +'/final_id.csv')
 
 # In[17]:
 
