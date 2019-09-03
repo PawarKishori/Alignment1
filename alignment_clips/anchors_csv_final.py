@@ -189,10 +189,10 @@ for l in range(1,103):
         print(len(row))
         length = len(csv_row)
         potential_anchor_cleaner = csv_row[:len(csv_row)-2]
-        potential_anchor_cleaner = potential_anchor_cleaner[length-4:][0]  # potential anchor------>potential_anchor_cleaner/potential_anchor
+        potential_anchor_cleaner = potential_anchor_cleaner[length-5:][0]  # potential anchor------>potential_anchor_cleaner/potential_anchor
         potential_anchor = potential_anchor_cleaner[1:]
         csv_row = csv_row[:len(csv_row)]
-        csv_row = csv_row[length-3:][0]  # starting anchor-------->csv_row/starting_anchor
+        csv_row = csv_row[length-4:][0]  # starting anchor-------->csv_row/starting_anchor
         starting_anchor = csv_row[1:]
         #print(potential_anchor)
         #starting_anchor,potential_anchor=potential_anchor,starting_anchor
