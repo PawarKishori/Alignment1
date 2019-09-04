@@ -61,7 +61,16 @@ def fact_generation() :
     temp_dic_form("eng_words.log")
     log=open("eng_words.log","r")
     word=log.read()
+    logs=word.strip().split("\n")
+    eng_word = []
+    sent_no = []
     final = []
+    final_sent = []
+    for i in logs :
+        list_log=i.split('\t')
+        eng_word+=list_log[::2]
+        sent_no+=list_log[1::2]
+    
     hin_corpus=open(h_corpus,"r")
     corpus=hin_corpus.read()
     corpus=corpus.strip().split('\n') #list of all the Hindi sentences
@@ -74,28 +83,31 @@ def fact_generation() :
         str1=i.split(' <> ')
         ewords+=str1[::2]  #list slicing
         hwords+=str1[1::2] #list slicing
-    for k in range(len(hwords)) :
-        
-            hwords[k] = re.sub(r" ?\([^)]+\)", "", hwords[k])
-            list1 = re.split('; |, |[0-9]. ',hwords[k])
-            while("" in list1) : 
-                list1.remove("")
-            #print(ewords[k],list1)
-            pattern = re.compile(r'\b(?:' + '|'.join(re.escape(w) for w in list1) + r')\b')
-            for c in range(len(corpus)) :
-                j = pattern.findall(corpus[c])
-                for s in j :
-                    if s != '' :
-                        str1 = ewords[k]+" <> "+s
-			#print(str1)
-                        if str1 not in final :
-                            final.append(str1)
+    for i in range(len(corpus)) :
+        for j in range(len(sent_no)) :
+            if str(i) == sent_no[j] :
+                for k in range(len(dic_data)) :
+                    if ewords[k] == eng_word[j] :
+                        hwords[k] = re.sub(r" ?\([^)]+\)", "", hwords[k])
+                        list1 = re.split('; |, |[0-9]. ',hwords[k])
+                        while("" in list1) : 
+                            list1.remove("")
+                        #rint(eng_word[j],sent_no[j],list1)
+                        pattern = re.compile(r'\b(?:' + '|'.join(re.escape(w) for w in list1) + r')\b')
+                        match = pattern.findall(corpus[i])
+                        for s in match :
+                            if s != '' :
+                                final_sent.append([eng_word[j],s,int(sent_no[j])+1])
+                                str1 = ewords[k]+" <> "+s
+                                if str1 not in final :
+                                    final.append(str1)
+                        
     path=os.getenv("HOME_anu_tmp")
     #/home/nupur/tmp_anu_dir/tmp/BUgol2.1E_tmp
     final_file=path+"/tmp/"+e_corpus+"_tmp/multiword_facts.dat" #name to be confirmed from ma'am
     fact=open(final_file,"w")
     for i in final :
         fact.write(i+"\n")
-        #print(i)
-fact_generation()
+    return final_sent
+final=fact_generation()
 
