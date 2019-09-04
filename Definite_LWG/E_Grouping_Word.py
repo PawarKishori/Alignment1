@@ -1,5 +1,7 @@
 import glob
-import os, sys
+import os
+import sys
+
 """
 Created by	-	Prashant Raj & Saumya Navneet
 Date		-	31/August/2019
@@ -22,7 +24,6 @@ def english_group():
 	output_path = open(all_sentences,"w")
 	output_path.flush()
 	
-
 	for sentence in sentences: 	#Change according to the number of sentences
 		
 		#Reading the conll parser information of individual sentences
@@ -81,6 +82,8 @@ def english_group():
 			if current_pos in ["ADP"]:
 				if current_word in ["to"]:
 					if prev_word in ["Due","due","According","according"]:
+						temp_list.append(eng[i][0])
+					else:
 						out_list.append(temp_list[:])
 						temp_list.clear()
 						temp_list.append(eng[i][0])
@@ -93,7 +96,12 @@ def english_group():
 					
 			elif current_pos in ["DET"]:
 				if current_word in ['A', 'An', 'The', 'a', 'an', 'the']:
-				        temp_list.append(eng[i][0])
+				        if prev_pos in ["ADP"]:
+				        	temp_list.append(eng[i][0])
+				        else: 	
+				        	out_list.append(temp_list[:])
+				        	temp_list.clear()
+				        	temp_list.append(eng[i][0])
 				        while current_pos not in ['NOUN', 'PROPN'] and (counter < (len(eng)-1)):
 				            counter += 1
 				            current_pos = eng[counter][1]
@@ -160,14 +168,12 @@ def english_group():
 					temp_list.clear()
 			i = i+1
 			
-		out_list.append(temp_list[:])		#Last local group for the sentence appended
-		temp_list.clear()					#List cleared for further processing
-		
+		out_list.append(temp_list[:])				#Last local group for the sentence appended
+		temp_list.clear()					#List cleared for further processing	
 		
 		final_list = [ current_pos for current_pos in out_list if current_pos ]		#For removing the empty word groups generated
-		output = list()						#List for storing values with actual words
-		
-		
+		output = list()									#List for storing values with actual words
+			
 		for i in final_list:
 			for j in i:
 				if j == 999:
@@ -192,8 +198,6 @@ def english_group():
 			z = z[:-1] + '))'
 			s = x + y + z
 			output_file.write(s + '\n')
-		output_path.write('\n\n')
-
 
 		final_out_list = []
 		temp_list = []
@@ -210,7 +214,7 @@ def english_group():
 			final_out_list.append(temp_list)
 			temp_list = []
 			
-		output_path.write('\n' + y + '\n\n')
+		output_path.write('\n' + y + '\n\nNo of groups = ' + str(len(final_out_list)) + '\n\n')
 		outHTML.write(y + '\n')
 		
 		for i in final_out_list:
@@ -219,7 +223,9 @@ def english_group():
 			x = x.replace(',',' ')
 			output_path.write(x)
 			outHTML.write(x)
-		output_path.write("\n\n\n")
+		output_path.write("\n\n")
+		output_path.write("---------------------------------------------------------------------------------------------------------------------------------")
+		output_path.write("\n\n")
 		
 #Calling the function to group words in English
 english_group()
