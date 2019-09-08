@@ -167,7 +167,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defrule check_unique_potential
-	(declare (salience -1500))
+	(declare (salience -500))
 	?e1 <- (anchor_type-english_id-hindi_id potential ?a $?y1)
 	?e2 <- (anchor_type-english_id-hindi_id potential ?a $?)
 	?e3 <- (anchor_type-english_id-hindi_id potential ? $?y1)
@@ -185,3 +185,25 @@
 	;(assert (new_proposed_anchor_ids (replace$ $?r (member$ ?a $?n) (member$ ?a $?n) $?y1))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+(defrule check_unique_potential_multiple_hindi_groups
+	(declare (salience -500))
+	?e1 <- (anchor_type-english_id-hindi_id potential ?a $?y1 $?y2)
+	?e2 <- (anchor_type-english_id-hindi_id potential ?a $? $?)
+	?e3 <- (anchor_type-english_id-hindi_id potential ? $?y1 $?y2)
+	;?E <- (english_group_ids_mfs $?n)
+	?EG <- (Egroup_id-group_elements ?egid $?gpe)
+	?HG1 <- (Hgroup_id-group_elements ?hgid1 $?gph1)
+	?HG2 <- (Hgroup_id-group_elements ?hgid2 $?gph2)
+	;?P <- (proposed_anchor_ids $?r) 
+	(test (and (eq ?e1 ?e2 ?e3) (member$ ?a $?gpe) (member$ $?y2 $?gph2) (member$ $?y1 $?gph1)))
+	=>
+	(retract ?e1)
+	(assert (remove ?a $?y1))
+	(assert (remove ?a $?y2))
+	(printout t "Rule check_unique_potential fired for " ?a " " $?y1 crlf)
+	(assert (proposed_groups ?egid ?hgid1))
+	(assert (proposed_groups ?egid ?hgid2))
+	(assert (final_set-eid-hid ?a $?y1 $?y2)))
+	;(assert (new_proposed_anchor_ids (replace$ $?r (member$ ?a $?n) (member$ ?a $?n) $?y1))))
