@@ -29,6 +29,7 @@ def potential_function():
             else:
                     unknown_checker.append(i)
                     print("(anchor_type-english_id-hindi_id potential "+str(i+1)+ " "+potential_anchor_string+ ")")
+                    new_f.write("(anchor_type-english_id-hindi_id potential "+str(i+1)+ " "+potential_anchor_string+ ")")
 
 
 
