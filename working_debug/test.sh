@@ -11,12 +11,12 @@ while [ "$i" -lt $END ]
 	do
 		
 		
-		#cd $HOME_anu_test/miscellaneous/SMT/phrasal_alignment/align_debug	
-		#sh alignment_debug_org.sh $filename "2."$i
-		#source activate py3.6
+		cd $HOME_anu_test/miscellaneous/SMT/phrasal_alignment/align_debug	
+		#sh $HOME_alignment/working_debug/alignment_debug_org.sh $filename "2."$i
+		source activate py3.6
 		#python $HOME_anu_test/miscellaneous/SMT/phrasal_alignment/align_debug/csv_generate.py $filename "2."$i
 		python3 $HOME_alignment/working_debug/Parser_facts_in_csv.py $filename "2."$i
-		#conda deactivate
+		conda deactivate
 
 		#python $HOME_anu_test/miscellaneous/SMT/phrasal_alignment/align_debug/html_to_csv.py  $filename "2."$i
 		#python $HOME_alignment/working_debug/check_prerequisite.py $filename "2."$i
