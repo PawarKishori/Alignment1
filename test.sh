@@ -2,6 +2,10 @@
 ##sh run_package.sh Eng Hnd_wx
 #==========================================================================
 echo "Input files:" $1 $2
+cp $1 $HOME_alignment_manju/$1
+cp $2 $HOME_alignment_manju/$2
+
+
 cd $HOME_alignment_manju
 source activate python2.7               #irshad's parser needs 2.7
 echo "Time taken by alignment_manju module:"
@@ -9,10 +13,7 @@ time sh run_alignment.sh $1 $2 general nsdp
 echo "End of manju mam's module: "$1 $2
 conda deactivate
 ##==========================================================================
-
-cp $HOME_alignment_manju/$1 $HOME_alignment/$1
-cp $HOME_alignment_manju/$2  $HOME_alignment/$2
-cp $HOME_alignment_manju/$2  $HOME_anu_tmp/tmp/$1_tmp/org_hindi
+cp $HOME_alignment/$2  $HOME_anu_tmp/tmp/$1_tmp/org_hindi
 echo "copied $1 and $2 from alignment_manju to $HOME_alignment"
 #==========================================================================
 ##Adding 1.1 hindi text in hindi file
@@ -30,6 +31,12 @@ sh $HOME_alignment/morph/generate_morph_facts.sh $1
 ##Remove nukta from org_hindi
 sh $HOME_alignment/canonical/remove_nukta.sh $1
 ##==========================================================================
+##Integration of technical dictionary
+
+
+##==========================================================================
+
+
 #cd $HOME_alignment
 sh $HOME_alignment/run_alignment.sh $1 $2 
 ##==========================================================================
