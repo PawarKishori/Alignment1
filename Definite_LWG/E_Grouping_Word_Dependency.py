@@ -3,14 +3,14 @@ import os
 import sys
 
 """
-Created by	-	Prashant Raj & Saumya Navneet
-Date		-	31/August/2019
+Created by	-	Saumya Navneet & Prashant Raj 
+Date		-	09/September/2019
 Purpose		-	To generate local groups based on POS information to help in word alignment.
-Input 		-	Enter the path to 'tmp' folder to iterate on all the translated sentences to generate word grouping.
-Output 		- 	Inside the folder for every translation, a file 'E_Word_Group.txt' will be created containing details of word group.
+Input 		-	Enter the name of the 'tmp' folder to iterate on all the translated sentences to generate word grouping.
+Output 		- 	Inside the folder for every translation, files E_group_HTML.txt and 'E_Word_Group.txt' will be created containing details of word group and a single file 'E_Word_Group_All_Sentences.txt' containing details of groupig of all sentences is formed in the tmp folder.
 Files used 	-	E_conll_parse
 
-For any queries you may drop a message at - prashantraj012@gmail.com or saumyanavneet26@gmail.com
+For any queries you may drop a message at - saumyanavneet26@gmail.com or prashantraj012@gmail.com
 """
 
 def english_group():
@@ -87,6 +87,19 @@ def english_group():
 						out_list.append(temp_list[:])
 						temp_list.clear()
 						temp_list.append(eng[i][0])
+				elif current_word in ["between"]:
+					out_list.append(temp_list[:])
+					temp_list.clear()
+					temp_list.append(eng[i][0])
+					while current_word not in ['and'] and (counter < (len(eng)-1)):
+						counter += 1
+						current_word = eng[counter][2]
+						temp_list.append(eng[counter][0])
+					while current_pos not in ['NOUN','PROPN'] and (counter < (len(eng)-1)):
+						counter += 1
+						current_pos = eng[counter][1]
+						temp_list.append(eng[counter][0])
+					i = counter
 				elif prev_pos in ["DET","ADJ","NUM","NOUN","PROPN","PUNCT","AUX","VERB","PART","CCONJ","SCONJ","CONJ","PRON","ADV"]:
 					out_list.append(temp_list[:])
 					temp_list.clear()
@@ -131,10 +144,7 @@ def english_group():
 					out_list.append(temp_list[:])
 					temp_list.clear()
 					temp_list.append(eng[i][0])
-					
-			elif current_pos in "PUNCT":
-				continue
-		
+
 			elif current_pos in "SYM":
 				temp_list.append(eng[i][0])
 
@@ -224,7 +234,7 @@ def english_group():
 			output_path.write(x)
 			outHTML.write(x)
 		output_path.write("\n\n")
-		output_path.write("---------------------------------------------------------------------------------------------------------------------------------")
+		output_path.write("----------------------------------------------------------------------------------------------------------------------------------")
 		output_path.write("\n\n")
 		
 #Calling the function to group words in English

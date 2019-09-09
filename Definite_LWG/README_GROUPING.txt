@@ -1,4 +1,4 @@
-1. To RUN E_Grouping_Word:
+1. To RUN E_Grouping_Word_Dependency:
 	a. Run python E_Grouping_Word.py BUgol2.1E
 	b. The output files in facts format is generated inside the folder of each and every sentence by the name of "E_Word_Group.txt".
 	c. The output files for HTML format is generated inside the folder of each and every sentence by the name of "E_group_HTML.txt".
