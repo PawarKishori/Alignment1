@@ -479,7 +479,7 @@ def lwg(path_des, path, filename):
 		with open(path_des + "/E_sentence_updated", "r") as f:
 			for line in f:
 				vib_list.extend(line.split())
-		punct = ['!','"','#','$','%','&',"'",'(',')','*','+',',','-','.','/',':',';','<','=','>','?','@','[','\\',']','^','_','`','{','|','}','~']
+		punct = ['``','--','`','!','"','#','$','%','&',"'",'(',')','*','+',',','-','.','/',':',';','<','=','>','?','@','[','\\',']','^','_','`','{','|','}','~']
 		for i in range(0, len(vib_list)):
 			if vib_list[i][-1] in punct:
 				vib_list[i] = vib_list[i][0:-1]
