@@ -17,6 +17,7 @@
 	(assert (final_set-eid-hid ?a $?y)))
 	;(assert (new_proposed_anchor_ids (replace$ $?r (member$ ?a $?n) (member$ ?a $?n) $?y))))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;; Rule to check if one english anchor matches to IDs in multiple hindi groups ;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -55,11 +56,29 @@
 	(assert (final_set-eid-hid ?x $?y)))
 	;(assert (new_proposed_anchor_ids (replace$ $?r (member$ ?x $?pgroup) (member$ ?x $?pgroup) $?y))))
 
+
+(defrule check_potential_multiple_hindi_groups
+	?p1 <- (anchor_type-english_id-hindi_id potential ?x $?y1 $?y2)
+	?g1 <- (proposed_groups ?p ?q)
+	?g2 <- (Egroup_id-group_elements ?p $?pgroup)
+	?g3 <- (Hgroup_id-group_elements ?q $?qgroup)
+	?g4 <- (Hgroup_id-group_elements ?q1 $?qgroup1)
+	(test (and (member$ ?x $?pgroup) (member$ $?y1 $?qgroup) (member$ $?y2 $?qgroup1)))
+	=>
+	(retract ?p1)
+	(printout t "Rule check_potential_multiple_hindi_groups fired for " ?x " " $?y1 " " $?y2 crlf)
+	(assert (remove ?x $?y1))
+	(assert (remove ?x $?y2))
+	(assert (final_set-eid-hid ?x $?y1 $?y2))
+	(assert (proposed_groups ?p ?q1)))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;; Rule to remove the other potential facts for '?x' once '?x' is processed for some hindi ID '?y' ;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defrule remove_eng_part
+	(declare (salience 300))
 	?r <- (remove ?x $?y)
 	?pot <- (anchor_type-english_id-hindi_id potential ?x $?)
 	=>
@@ -71,6 +90,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defrule remove_hin_part
+	(declare (salience 300))
 	?r <- (remove ?x $?y)
 	?pot <- (anchor_type-english_id-hindi_id potential ? $?y)
 	=>
@@ -78,11 +98,11 @@
 	(retract ?pot))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;;;;;;;;;;;; Rule to retract the 'remove' fact once its work of removing resolved IDs from potential is over ;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defrule remove_remove-fact
+	(declare (salience 300))
 	?r <- (remove ?x $?y)
 	(not (or (exists (anchor_type-english_id-hindi_id potential ?x $?)) (exists (anchor_type-english_id-hindi_id potential ? $?y))))
 	=>
@@ -146,6 +166,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
 ;;;;;;;;;;;;;;;;;;; Rule to check if there is some intersection in the entries of an English ID '?a' ;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;					and select largest instersecting group.							 ;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defrule check_intersecting_potential
 	(declare (salience 300))
@@ -167,7 +188,6 @@
 
 (defrule check_unique_potential
 	(declare (salience -500))
-
 	?e1 <- (anchor_type-english_id-hindi_id potential ?a $?y1)
 	?e2 <- (anchor_type-english_id-hindi_id potential ?a $?)
 	?e3 <- (anchor_type-english_id-hindi_id potential ? $?y1)

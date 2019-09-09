@@ -14,9 +14,9 @@ do
         tmp_path=$HOME_anu_tmp/tmp/$1_tmp/$sentence_dir
 
         cd $tmp_path
-echo "(defglobal ?*hpath* = $HOME_alignment)" > $tmp_path/new_alignment.clp
+		echo "(defglobal ?*hpath* = $HOME_alignment)" > $tmp_path/new_alignment.clp
 
-     myclips -f  $HOME_alignment/alignment_clips/anchor_clp_run.bat >  $tmp_path/clips_error_alignment
+     	myclips -f  $HOME_alignment/alignment_clips/anchor_clp_run.bat >  $tmp_path/clips_error_alignment
         python3 $HOME_alignment/alignment_clips/tocsv_converter.py  $tmp_path
 
 done
