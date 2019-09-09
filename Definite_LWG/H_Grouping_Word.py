@@ -1,11 +1,13 @@
 import glob
-import os, sys
+import os
+import sys
+
 """
 Created by	-	Prashant Raj & Saumya Navneet
-Date		-	31/August/2019
+Date		-	09/September/2019
 Purpose		-	To generate local groups based on POS information to help in word alignment.
-Input 		-	Enter the path to 'tmp' folder to iterate on all the translated sentences to generate word grouping.
-Output 		- 	Inside the folder for every translation, a file 'H_Word_Group.txt' will be created containing details of word group.
+Input 		-	Enter the name of 'tmp' folder to iterate on all the translated sentences to generate word grouping.
+Output 		- 	Inside the folder for every translation, a file 'H_Word_Group.txt' will be created containing details of word group and a single file 'H_Word_Group_All_Sentences.txt' containing details of groupig of all sentences is formed in the tmp folder.
 Files used 	-	hindi_dep_parser_original.dat
 
 For any queries you may drop a message at - prashantraj012@gmail.com or saumyanavneet26@gmail.com
@@ -126,8 +128,6 @@ def hindi_group():
 				out_list.append(temp_list[:])
 				temp_list.clear()
 				temp_list.append(hin[i][0])
-				out_list.append(temp_list[:])
-				temp_list.clear()
 				
 			else:
 				if i == 0:
@@ -163,6 +163,7 @@ def hindi_group():
 			temp_list.clear()				#Clearing the temp list for further computation
 		
 		output_path.write(sentence + '\n')
+
 		x = "(H_group (language hindi) "
 		for i,k in zip(final_list,output):
 			y = "(grp_elements_ids "
@@ -175,9 +176,6 @@ def hindi_group():
 			z = z[:-1] + '))'
 			s = x + y + z
 			output_file.write(s + '\n')
-			#output_path.write(s + '\n')
-		output_path.write('\n\n')
-
 
 		final_out_list = []
 		temp_list = []
@@ -203,7 +201,9 @@ def hindi_group():
 			x = x.replace(',',' ')
 			output_path.write(x)
 			outHTML.write(x)
-		output_path.write("\n\n\n")
+		output_path.write("\n\n")
+		output_path.write("----------------------------------------------------------------------------------------------------------------------------------")
+		output_path.write("\n\n")
 		
 #Calling the function to group words in Hindi
 hindi_group()
