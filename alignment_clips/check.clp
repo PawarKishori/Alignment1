@@ -12,6 +12,7 @@
 	(test (and (member$ ?a $?gpe) (member$ $?y $?gph)))
 	=>
 	(retract ?e)
+	(assert (remove ?a $?y))
 	(printout t "Rule check_anchor fired for " ?a " " $?y crlf)
 	(assert (proposed_groups ?egid ?hgid))
 	(assert (final_set-eid-hid ?a $?y)))
@@ -32,6 +33,8 @@
 	(test (and (member$ ?a $?gpe) (member$ $?y1 $?gph1) (member$ $?y2 $?gph2)))
 	=>
 	(retract ?e)
+	(assert (remove ?a $?y1))
+	(assert (remove ?a $?y2))
 	(printout t "Rule check_anchor_multiple_hindi_group_match " ?a " " $?y1 " " $?y2 crlf)
 	(assert (proposed_groups ?egid ?hgid1))
 	(assert (proposed_groups ?egid ?hgid2))
@@ -92,11 +95,25 @@
 (defrule remove_hin_part
 	(declare (salience 300))
 	?r <- (remove ?x $?y)
-	?pot <- (anchor_type-english_id-hindi_id potential ? $?y)
+	?pot <- (anchor_type-english_id-hindi_id potential ?a $?y1)
+	(test (and (or (member$ $?y1 $?y) (member$ $?y $?y1) (eq $?y $?y1)) (neq (length$ $?y) 0)))
 	=>
 	(printout t "Rule remove_hin_part fired for " $?y crlf)
+	(assert (removed ?a))
 	(retract ?pot))
 
+(defrule check_removed_english
+	?r <- (removed ?a)
+	(not (exists (anchor_type-english_id-hindi_id ? ?a $?)))
+	=>
+	(assert (anchor_type-english_id-hindi_id unknown ?a 0)))
+
+(defrule check_removed_english_helper
+	?r <- (removed ?a)
+	(exists (anchor_type-english_id-hindi_id ? ?a $?))
+	=>
+	(retract ?r))
+	
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;; Rule to retract the 'remove' fact once its work of removing resolved IDs from potential is over ;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -195,7 +212,7 @@
 	?EG <- (Egroup_id-group_elements ?egid $?gpe)
 	?HG <- (Hgroup_id-group_elements ?hgid $?gph)
 	;?P <- (proposed_anchor_ids $?r) 
-	(test (and (eq ?e1 ?e2 ?e3) (member$ ?a $?gpe) (member$ $?y1 $?gph)))
+	(test (and (eq ?e1 ?e2 ?e3) (member$ ?a $?gpe) (member$ $?y1 $?gph) (neq (length$ $?y1) 0)))
 	=>
 	(retract ?e1)
 	(assert (remove ?a $?y1))
@@ -217,7 +234,7 @@
 	?HG1 <- (Hgroup_id-group_elements ?hgid1 $?gph1)
 	?HG2 <- (Hgroup_id-group_elements ?hgid2 $?gph2)
 	;?P <- (proposed_anchor_ids $?r) 
-	(test (and (eq ?e1 ?e2 ?e3) (member$ ?a $?gpe) (member$ $?y2 $?gph2) (member$ $?y1 $?gph1)))
+	(test (and (eq ?e1 ?e2 ?e3) (member$ ?a $?gpe) (member$ $?y2 $?gph2) (member$ $?y1 $?gph1) (neq (length$ $?y1) 0) (neq (length$ $?y2) 0)))
 	=>
 	(retract ?e1)
 	(assert (remove ?a $?y1))
