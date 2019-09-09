@@ -1,0 +1,5 @@
+Command to run morph analysis:
+apertium-destxt test | lt-proc -ac /home/kishori/a/anusaaraka/bin/hi.morf.bin | apertium-retxt
+
+More commands:
+http://wiki.apertium.org/wiki/Lttoolbox
