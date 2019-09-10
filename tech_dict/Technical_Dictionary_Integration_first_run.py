@@ -65,7 +65,6 @@ def fact_generation() :
     eng_word = []
     sent_no = []
     final = []
-    final1= [] #2#
     final_sent = []
     for i in logs :
         list_log=i.split('\t')
@@ -99,51 +98,17 @@ def fact_generation() :
                         for s in match :
                             if s != '' :
                                 final_sent.append([eng_word[j],s,int(sent_no[j])+1])
-				str1 = ewords[k]+" <> "+s
+                                str1 = ewords[k]+" <> "+s
                                 if str1 not in final :
                                     final.append(str1)
-
-                                second_iter_lookup =" <> ".join([eng_word[j],s,str(int(sent_no[j])+1)]) #2#
-                                if second_iter_lookup not in final1 :
-				    final1.append(second_iter_lookup)					#2#
                         
     path=os.getenv("HOME_anu_tmp")
-    #1#final_file="Lookup_of_tech_dictionary_Bhratavani.txt" #name to be confirmed from ma'am
-    #1#fact=open(final_file,"w")
-    #1#for i in final :
-       #1# fact.write(i+"\n")
-    #1#return final_sent
-
-    final_file=path+"/tmp/"+e_corpus+"_tmp/tech_dict_lookup.txt" #2#
-    with open(final_file, "w") as f:        			#2#
-        for i in final1:		#2#
-            f.write(i+"\n")		#2#
-   
-
-    with open(final_file, "r") as f:
-	allentries = f.read().split("\n") 
-        while "" in allentries:
-	    allentries.remove("")
-	all_sent_number=[]
-
-	for item in allentries:
-	    sent_number = item.split("<>")[-1].lstrip().rstrip()
-            all_sent_number.append(sent_number)
-	print(all_sent_number)
-	#print(len(all_sent_number))
-
-	for i,item in enumerate(all_sent_number,0):
-	    ffff = path+"/tmp/"+e_corpus+"_tmp"+"/2."+all_sent_number[i]+"/Tech_dict_lookup.dat"
-	    if os.path.exists(ffff):
-    		os.remove(ffff)
-
-	
-	for i,item in enumerate(all_sent_number,0):
-            print(path+"/tmp/"+e_corpus+"_tmp"+"/2."+all_sent_number[i]) 
-            with open(path+"/tmp/"+e_corpus+"_tmp"+"/2."+all_sent_number[i] + "/Tech_dict_lookup.dat", "a") as f1:
-	        f1.write("(E_word-mfs-H_word\t"+allentries[i].split("<>")[0].strip()+"\tmfs\t"+allentries[i].split("<>")[1].strip()+")\n")
-		print(all_sent_number[i],allentries[i] ) 
-	    #print(i, all_sent_number[i])
-
+    #/home/nupur/tmp_anu_dir/tmp/BUgol2.1E_tmp
+    #final_file=path+"/tmp/"+e_corpus+"_tmp/multiword_facts.dat" #name to be confirmed from ma'am
+    final_file="Lookup_of_tech_dictionary_Bhratavani.txt" #name to be confirmed from ma'am
+    fact=open(final_file,"w")
+    for i in final :
+        fact.write(i+"\n")
+    return final_sent
 final=fact_generation()
 

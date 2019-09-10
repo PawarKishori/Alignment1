@@ -1,5 +1,6 @@
 (load "new_alignment.clp")
 (bind ?*hpath* (str-cat ?*hpath* "/alignment_clips/check.clp"))
+(load ?*hpath*)
 (load-facts "E_clip_deffact.dat")
 (load-facts "H_clip_deffact.dat")
 (load-facts "deffact_anchors.dat")
