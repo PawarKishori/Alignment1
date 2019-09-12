@@ -106,7 +106,8 @@
 	?r <- (removed ?a)
 	(not (exists (anchor_type-english_id-hindi_id ? ?a $?)))
 	=>
-	(assert (anchor_type-english_id-hindi_id unknown ?a 0)))
+	(assert (anchor_type-english_id-hindi_id unknown ?a 0))
+	(retract ?r))
 
 (defrule check_removed_english_helper
 	?r <- (removed ?a)
