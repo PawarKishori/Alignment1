@@ -23,7 +23,7 @@ for i in range(0,len(lis)):
 
 import os,sys
 temp = sys.argv[1]     #BUgol2.1E
-for k in range(1,103):
+for k in range(1,116):
     print()
     print("2."+str(k))
     print("----------")
