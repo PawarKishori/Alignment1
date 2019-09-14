@@ -7,8 +7,19 @@ END=`expr $END + 1`
 
 echo "No. of eng sentences: " $END
 
+
+#source activate python2.7
+#Running hindi parser on hindi_canonical(1.parIkSaNa + 100 canonical sentences) 
+#sh $hindi_parser/run_hindi_parser.sh $tmp/$file_dir/hindi_canonical $tmp/$file_dir/hindi_dep_parser_out_canonical.txt
+#sed 's/^$/;~~~~~~~~~~/g' $tmp/$file_dir/hindi_dep_parser_out_canonical.txt > $tmp/$file_dir/hindi_dep_parser_original_canonical.txt
+#$HOME_anu_test/Anu_src/split_file.out hindi_dep_parser_original_canonical.txt dir_names.txt hindi_dep_parser_original_canonical.dat
+#conda deactivate
+
+
 python split_into_tmp.py $1 E_sentence $1  #$1 i.e. BUgol2.1E is without test. sentence
 python split_into_tmp.py $2 H_sentence_org $1  #$2 i.e. BUgol2.1H is without parIkshan. sentence
+
+#The following 2 lines and python code is patch up work, most correct way to do this task is to generate <p> </p> tags hindi files, then calling split_file.out to split all these files in 2.1, 2.2 etc.
 python split_into_tmp_1_test.py $tmp/$file_dir/hindi_canonical H_sentence $1    #hindi_canonical is with parIkshan. sentence, H_sentence is canonical
 python split_into_tmp_1_test.py $tmp/$file_dir/org_hindi_without_nukta H_sentence_without_nukta $1    #hindi_canonical is with parIkshan. sentence, H_sentence is canonical
 
