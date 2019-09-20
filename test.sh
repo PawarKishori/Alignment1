@@ -92,9 +92,7 @@ sh $HOME_alignment/working_debug/test.sh $1
 sh alignment_clips/test_bash_to_run_script.sh $1
 
 sh $HOME_alignment/working_debug/test1.sh $1
-
-
-
+#========================================================================
 #Ayushi csv geberate module and pratishtha csv to html module.
 sh $HOME_alignment/run_only_csv_generate.sh $1
 #source activate py3.6
