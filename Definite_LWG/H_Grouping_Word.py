@@ -28,7 +28,8 @@ def hindi_group():
 	for sentence in sentences: 	#Change according to the number of sentences
 		
 		#Reading the conll parser information of individual sentences
-		conll_path = str(sentence) + '/hindi_dep_parser_original.dat'
+		#conll_path = str(sentence) + '/hindi_dep_parser_original.dat'
+		conll_path = str(sentence) + '/hindi_parser_canonial.dat'
 		
 		#Reading the file as an input
 		hindifile = open(conll_path).readlines()

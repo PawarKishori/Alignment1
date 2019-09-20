@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[11]:
+# In[1]:
 
 
 # %%HTML
@@ -13,7 +13,7 @@
 # </style>
 
 
-# In[18]:
+# In[2]:
 
 
 import os, sys
@@ -61,11 +61,9 @@ try:
     h2w = a.create_dict(hfilename, '(H_wordid-word')
     hdf=pd.DataFrame(list(h2w.values()), index=h2w.keys())
 
-#     print(h2w)
     show_hindi ={}    
     for k,v in h2w.items():
         show_hindi[k] = str(k)+"_"+v
-#     print(show_hindi)
     hin = [show_hindi[i] for i in sorted(show_hindi.keys())]
     hindi_word = list(show_hindi.values())
     hindi_row = "  ,  ".join(hindi_word)
@@ -81,6 +79,13 @@ except:
 try:
     e2w = a.create_dict(efilename, '(E_wordid-word')
     edf=pd.DataFrame(list(e2w.values()), index=e2w.keys())
+    show_eng ={}    
+    for k,v in e2w.items():
+        show_eng[k] = str(k)+"_"+v
+    eng = [show_eng[i] for i in sorted(show_eng.keys())]
+    title=["Resources"]+list(show_eng.values())
+    print(title)
+    
 except:
     print("FILE MISSING: " + efilename )
     log.write("FILE MISSING: " + efilename+ "\n")
@@ -118,7 +123,7 @@ except:
     log.write("FILE MISSING: " + prashant_csv  + "\n")
 
 
-# In[19]:
+# In[3]:
 
 
 import re
@@ -242,7 +247,42 @@ def id_to_word(x):
     return(new_x)
 
 
-# In[27]:
+# In[4]:
+
+
+# def id_to_IDSTR_on_string(i):
+#     if (i=='Resources'):
+#         return('Resources')
+#     if(i!= '0' and i!=0):  #code for those cell values which are neither '0' nor 0.
+#         i=str(i)           #changed all int to string
+#         change = i.lstrip().rstrip()
+# #                 print("===>", change) 
+#         pchange1 = change.replace('#', ' # ')
+    
+#         pchange = pchange1.replace('/', ' / ')
+# #                 print(pchange)
+#         pchange_list = pchange.split()
+# #                 print(pchange_list)
+#         change1=[]
+#         for item in pchange_list:
+#             if item=='#' :  #dont replace # and / with any word.
+#                 change1.append('#')
+#             elif item =='/':
+#                 change1.append('/')
+#             else:
+#                 if int(item) in show_hindi.keys():  # dict keys are int so typecasting item to int
+#                     change1.append(show_hindi[int(item)])  #here too typecasting needed
+                         
+# #                 print(change1)
+#         final_cell_value=" ".join(change1)
+# #         new_col.append(final_cell_value)
+                
+#     else:
+#         final_cell_value = '0'           #converted all int 0 to '0'
+# #         new_col.append(final_cell_value)
+#     return(final_cell_value)
+
+# title = [id_to_IDSTR_on_string(i) for i in title]
 
 
 import numpy as np
@@ -270,7 +310,10 @@ himg2 = 'H_tree_corrected.png'
 eimg2 = 'E_tree_corrected.png'
 
 
-# In[28]:
+
+
+
+# In[5]:
 
 
 

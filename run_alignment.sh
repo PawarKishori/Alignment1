@@ -24,6 +24,32 @@ python split_into_tmp_1_test.py $tmp/$file_dir/hindi_canonical H_sentence $1    
 python split_into_tmp_1_test.py $tmp/$file_dir/org_hindi_without_nukta H_sentence_without_nukta $1    #hindi_canonical is with parIkshan. sentence, H_sentence is canonical
 
 
+#################################
+
+#Creation Canonical version of hindi parse output.
+
+cut -f1 $tmp/$file_dir/hindi_dep_parser_original.txt > $tmp/$file_dir/temp_id_column
+cut -f2 $tmp/$file_dir/hindi_dep_parser_original.txt > $tmp/$file_dir/temp_word_column
+cut -f3-10 $tmp/$file_dir/hindi_dep_parser_original.txt > $tmp/$file_dir/temp_remaining_column
+
+$HOME_anu_test/Anu_data/canonical_form_dictionary/canonical_form.out   < $tmp/$file_dir/temp_word_column  >  $tmp/$file_dir/tmp1_canonical_tmp
+$HOME_anu_test/Anu_data/canonical_form_dictionary/canonical_form_correction.out  < $tmp/$file_dir/tmp1_canonical_tmp  > $tmp/$file_dir/tmp1_canonical_tmp1
+$HOME_anu_test/Anu_data/canonical_form_dictionary/canonical_to_conventional.out  < $tmp/$file_dir/tmp1_canonical_tmp1  > $tmp/$file_dir/temp_word_canonical_column
+
+
+paste $tmp/$file_dir/temp_id_column $tmp/$file_dir/temp_word_canonical_column  $tmp/$file_dir/temp_remaining_column >  $tmp/$file_dir/tmp1_canonical_tmp2
+
+sed 's/;~~~~~~~~~~\t;~~~~~~~~~~\t;~~~~~~~~~~/;~~~~~~~~~~/g' $tmp/$file_dir/tmp1_canonical_tmp2 > $tmp/$file_dir/hindi_parser_out_canonical.txt
+
+rm $tmp/$file_dir/tmp1_canonical_tmp $tmp/$file_dir/tmp1_canonical_tmp1 $tmp/$file_dir/tmp1_canonical_tmp2 
+
+cd $tmp/$file_dir
+
+$HOME_anu_test/Anu_src/split_file.out hindi_parser_out_canonical.txt dir_names.txt hindi_parser_canonial.dat
+
+cd $HOME_alignment
+
+##################################
 for i in $(seq 1 $END)
 do
         sentence_dir='2.'$i
@@ -43,7 +69,7 @@ do
 
         #++++++++++++++++++++++++++++++++++++++++ ENGLISH PARSER OUTPUT GENERATION MODULE ++++++++++++++++++++++++++++++++++++++++++
         #Run Stanford parser for english sentence parse 
- sh $HOME_alignment/run_new_stanford-parser.sh $tmp_path/E_sentence $tmp_path 
+# sh $HOME_alignment/run_new_stanford-parser.sh $tmp_path/E_sentence $tmp_path 
         #Generating English parser facts from E_conll_parse and E_sentence
 	
 

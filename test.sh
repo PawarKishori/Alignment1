@@ -41,8 +41,6 @@ sh $HOME_alignment/canonical/remove_nukta.sh $1
 #---
 sh $HOME_alignment/tech_dict/run_tech-dict.sh $1 $2 Lookup_dict
 ##==========================================================================
-
-
 #cd $HOME_alignment
 sh $HOME_alignment/run_alignment.sh $1 $2 
 ##==========================================================================
