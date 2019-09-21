@@ -1,4 +1,4 @@
-1. To Run_Grouping_Files:
+I To Run_Grouping_Files:
 	a. Run: sh Run_Grouping_Files.sh BUgol2.1E
 
 	b. Python Grouping Codes in  this shell files are:
