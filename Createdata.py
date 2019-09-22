@@ -7,7 +7,8 @@ import glob,re,Modules, sys, os
 tmp_path=os.getenv('HOME_anu_tmp')+'/tmp/'
 
 path = tmp_path  +sys.argv[1] + '_tmp'
-path1 = path+'/*/hindi_dep_parser_original.dat'
+#path1 = path+'/*/hindi_dep_parser_original.dat'
+path1 = path+'/*/hindi_parser_canonial.dat'
 files = sorted(glob.glob(path1))
 for parse in files:   
 	res = re.split(r'/', parse)

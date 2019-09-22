@@ -5,11 +5,13 @@ import glob,re,H_Modules, H_parser_sanity_modules, os, sys
 tmp_path=os.getenv('HOME_anu_tmp')+'/tmp/'
 
 path = tmp_path  +sys.argv[1] + '_tmp'
-path1 = path+'/*/hindi_dep_parser_original.dat'
+path1 = path+'/*/hindi_parser_canonial.dat'
+#path1 = path+'/*/hindi_dep_parser_original.dat'
 files = sorted(glob.glob(path1))
 exception_list = []
 error_flag = 0
 
+print(files)
 #calling function to clear old log
 H_Modules.clear_logs(path)
 

@@ -16,7 +16,9 @@ M	multifast-v1.4.2/src/phrasal_mwe/extract_key.c
 Your branch is up-to-date with 'origin/master'.
 
 
-get_manual_id_and_group.clp
+1. get_manual_id_and_group.clp => back to original state now
+
+2. COmmented wsd_dic.gdbm lookup from MINION/alignment/get_dbasemeaning.clp
 
 
-COmmented wsd_dic.gdbm lookup from MINION/alignment/get_dbasemeaning.clp
+
