@@ -1,0 +1,10 @@
+1. Run utf8_to_wx.sh on hindi file.
+Eg. sh utf8_to_wx.sh BUgol2.1H_utf BUgol2.1H
+This will convert all hindi devnagari characters into wx script
+This will aslo convert all nonascii characters lik EMdash Endash, hindi double quotes into PUNCT...labels and label_remove.lex (which ia called inside utf8_to_wx.sh will remap all these PUNCT.. big labels into machine readable characters like '," (I am keeping EMDASH and ENDASH as it is (label_remove.lex) in final result as noth english and  hindi parser is able to process these characters.))
+
+2. Run utf8_to_wx.sh on english file to for nonascii characters like EMDASH etc.
+Eg. sh utf8_to_wx.sh BUgol2.1E_nonscii BUgol2.1E
+
+====
+Keeping space on both sides of EMDAHSH and ENDASH and hyphen (Not compound hyphen) 

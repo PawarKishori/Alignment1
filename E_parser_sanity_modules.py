@@ -48,7 +48,8 @@ def children_check(relation_df, filename, error_flag, path):
 def punct_mistag(relation_df, filename, path):
 	error_flag = 0
 	f = open(path+'/E_sanity_log.dat', 'a+')
-	punct=['!','"','#','$','%','&',"'",'(',')','*','+',',','-','.','/',':',';','<','=','>','?','@','[','\\',']','^','_','`','{','|','}','~']
+	punct = ['`',"'","'","''",'``','--','`','!','"','#','$','%','&',"'",'(',')','*','+',',','-','.','/',':',';','<','=','>','?','@','[','\\',']'    ,'^','_','`','{','|','}','~']
+	#punct=['!','"','#','$','%','&',"'",'(',')','*','+',',','-','.','/',':',';','<','=','>','?','@','[','\\',']','^','_','`','{','|','}','~']
 	for i in relation_df.index:
 		if relation_df.RELATION[i] != "punct" and relation_df.POS[i] != "PUNCT" and relation_df.WORD[i] in punct:
 			error_flag = 1
