@@ -156,8 +156,8 @@ if(flag15==0):
         add_data_in_dic(m_root_dic, int(root[1]), root[2])
 
 ##===================
-#for key in sorted(m_root_dic):
-#	print key + '\t' + m_root_dic[key]
+for key in sorted(m_root_dic):
+	print str(key) + '\t' + m_root_dic[key]
 
 ##===================
 def check_for_consecutive_ids(ids, id2):
@@ -262,7 +262,7 @@ def return_mng(ids, dic):
     return ' '.join(mng)
 
 ##===================
-def check_for_vib(a_mng, m_mng, vib):
+def check_for_vib(m_mng, vib):
     if m_mng not in vib:
         return True
 ##===================
@@ -306,7 +306,7 @@ for i in f11:
                 new_k_dic[int(ap_out[1])] = ' '.join(ids)
                 print('Exact', anu_mng)
             else:
-                out = check_for_vib(anu_mng, man_mng, f12)
+                out = check_for_vib(man_mng, f12)
                 if out == True:
                     if man_mng not in restricted_wrds:
                         print('partial', anu_mng, man_mng, ' '.join(ids), int(ap_out[1]))
@@ -321,9 +321,15 @@ for i in f11:
             a_root = a_root_dic[int(ap_out[1])]
             for key in sorted(m_root_dic):
                 if m_root_dic[key] == a_root:
-                    k_rt[int(ap_out[1])] = key
-                elif m_root_dic[key] in a_root.split():
-                    k_rt[int(ap_out[1])] = key 
+			out = check_for_vib(a_root, f12)
+			#print a_root, out, key
+			if out == True:
+				k_rt[int(ap_out[1])] = key
+		elif m_root_dic[key] in a_root.split():
+			out = check_for_vib(m_root_dic[key], f12)
+			#print m_root_dic[key], out, key
+			if out == True:
+				k_rt[int(ap_out[1])] = key 
 
 ##====================
 #Store data in list_K
@@ -350,7 +356,7 @@ for i in range(1, n+1):
 ##===================
 print('Kth Layer info::\n', list_K)
 print('Partial K layer info::\n', list_K_partial)
-print('Dictionary K layer info::\n', list_K_Root)
+print('Root K layer info::\n', list_K_Root)
 
 m_dic = {}
 k_dic = {}
