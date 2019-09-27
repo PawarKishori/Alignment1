@@ -4,10 +4,10 @@ import sys
 
 """
 Created by	-	Saumya Navneet
-Date		-	20/September/2019
+Date		-	27/September/2019
 Purpose		-	To generate word groups based on POS information to help in word alignment.
 Input 		-	Enter the path to 'tmp' folder to iterate on all the translated sentences to generate word grouping.
-Output 		- 	Inside the folder for every translation, a file 'E_Word_Group_Sanity.dat' will be created containing details of word group, E_Word_Group_All_Sentences_Sanity.txt for groups of all sentences.
+Output 		- 	Inside the folder for every translation, a file 'E_Word_Group_Sanity.dat', 'E_Word_Group_Sanity_HTML.dat', 'E_Word_Group_Sanity_MFS.dat' will be created containing details of word group, E_Word_Group_All_Sentences_Sanity.txt for groups of all sentences.
 Files used 	-	E_Sanity_Check.dat
 
 For any queries you may drop a message at - saumyanavneet26@gmail.com
@@ -41,9 +41,13 @@ def english_grouping():
 		output_file = open(outpath,"w")
 		output_file.flush()
 
-		outpathHTML = str(sentence) + '/E_group_Sanity_HTML.dat'
+		outpathHTML = str(sentence) + '/E_Group_Sanity_HTML.dat'
 		outHTML = open(outpathHTML,'w')
 		outHTML.flush()
+
+		mfs_outpath = str(sentence)+'/E_Word_Group_MFS.dat'
+		mfs_output_file = open(mfs_outpath,"w")
+		mfs_output_file.flush()
 
 		eng = list()				#Temporary list to extract infromation
 		l = list()					#Helper list
@@ -194,7 +198,15 @@ def english_grouping():
 		
 		final_list = [ current_pos for current_pos in out_list if current_pos ]		#For removing the empty word groups generated
 		output = list()									#List for storing values with actual words
-			
+		
+		string = '"0" '
+		for i in range(0,len(final_list)):
+			for j in range(0,len(final_list[i])):
+				string = string + str(final_list[i][j]) +" "
+			string = string + '"' + str(final_list[i][j]) + '" '
+
+		mfs_output_file.write(string)
+
 		for i in final_list:
 			for j in i:
 				if j == 999:
@@ -219,6 +231,7 @@ def english_grouping():
 			z = z[:-1] + '))'
 			s = x + y + z
 			output_file.write(s + '\n')
+
 
 		final_out_list = []
 		temp_list = []
