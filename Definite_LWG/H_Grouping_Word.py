@@ -7,7 +7,7 @@ Created by	-	Prashant Raj & Saumya Navneet
 Date		-	27/September/2019
 Purpose		-	To generate local groups based on POS information to help in word alignment.
 Input 		-	Enter the name of 'tmp' folder to iterate on all the translated sentences to generate word grouping.
-Output 		- 	Inside the folder for every translation, a file 'H_Word_Group.txt', 'H_Word_Group_MFS.txt', 'H_group_HTML.txt'' will be created containing details of word group and a single file 'H_Word_Group_All_Sentences.txt' containing details of groupig of all sentences is formed in the tmp folder.
+Output 		- 	Inside the folder for every translation, a file 'H_Word_Group.txt', 'H_Word_Group_MFS.txt', 'H_group_HTML.txt'' will be created containing details of word group (with different formats) and a single file 'H_Word_Group_All_Sentences.txt' containing details of groupig of all sentences is formed in the tmp folder.
 Files used 	-	hindi_dep_parser_original.dat
 
 For any queries you may drop a message at - prashantraj012@gmail.com or saumyanavneet26@gmail.com

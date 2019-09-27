@@ -7,7 +7,7 @@ Created by	-	Saumya Navneet
 Date		-	27/September/2019
 Purpose		-	To generate word groups based on POS information to help in word alignment.
 Input 		-	Enter the path to 'tmp' folder to iterate on all the translated sentences to generate word grouping.
-Output 		- 	Inside the folder for every translation, a file 'E_Word_Group_Sanity.dat', 'E_Word_Group_Sanity_HTML.dat', 'E_Word_Group_Sanity_MFS.dat' will be created containing details of word group, E_Word_Group_All_Sentences_Sanity.txt for groups of all sentences.
+Output 		- 	Inside the folder for every translation, a file 'E_Word_Group_Sanity.dat', 'E_Word_Group_Sanity_HTML.dat', 'E_Word_Group_Sanity_MFS.dat' will be created containing details of word group (in different formats), E_Word_Group_All_Sentences_Sanity.txt for groups of all sentences.
 Files used 	-	E_Sanity_Check.dat
 
 For any queries you may drop a message at - saumyanavneet26@gmail.com
