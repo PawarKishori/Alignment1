@@ -153,7 +153,8 @@ if(flag14==0):
 if(flag15==0):
     for i in f15:
         root=re.split(r'\s+',i[:-2])
-        add_data_in_dic(m_root_dic, int(root[1]), root[2])
+        #add_data_in_dic(m_root_dic, int(root[1]), root[2])
+        add_data_in_dic(m_root_dic, root[2], root[1])
 
 ##===================
 for key in sorted(m_root_dic):
@@ -197,11 +198,11 @@ if(flag11==0):
             if(len(ap_out) > 2):
                 for each in ap_out[2:]:
                     k_mng = re.sub(r'[_-]', ' ', each) #parvawa_pafkwi
+                    k_mng = re.sub(r'@', '' , k_mng) #@1000                        
                     l = k_mng.split()
                     for item in l:
                         mngs.append(item)
                 for wrd in mngs:
-#                    print wrd, mngs
                     wrd_id = int(ap_out[1]) #to get eng_wrd_id in id_Apertium_output
                     #print wrd, wrd_id, k_dic.keys()
                     if wrd_id not in k_dic.keys() and wrd in m_dic.keys():
@@ -298,6 +299,7 @@ for i in f11:
             mngs = []
             for each in ap_out[2:]:
                 k_mng = re.sub(r'_', ' ', each)
+                k_mng = re.sub(r'@', '', k_mng)  #@1000
                 mngs.append(k_mng)
             anu_mng = ' '.join(mngs)
             man_mng = return_mng(ids, m_dic)
@@ -320,16 +322,16 @@ for i in f11:
         if int(ap_out[1]) in a_root_dic.keys():
             a_root = a_root_dic[int(ap_out[1])]
             for key in sorted(m_root_dic):
-                if m_root_dic[key] == a_root:
+                if key == a_root:
 			out = check_for_vib(a_root, f12)
 			#print a_root, out, key
 			if out == True:
-				k_rt[int(ap_out[1])] = key
-		elif m_root_dic[key] in a_root.split():
-			out = check_for_vib(m_root_dic[key], f12)
+				k_rt[int(ap_out[1])] = m_root_dic[key] 
+		elif key in a_root.split():
+			out = check_for_vib(key, f12)
 			#print m_root_dic[key], out, key
 			if out == True:
-				k_rt[int(ap_out[1])] = key 
+				k_rt[int(ap_out[1])] = m_root_dic[key]
 
 ##====================
 #Store data in list_K
