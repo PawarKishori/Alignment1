@@ -4,10 +4,10 @@ import sys
 
 """
 Created by	-	Prashant Raj & Saumya Navneet
-Date		-	20/September/2019
+Date		-	27/September/2019
 Purpose		-	To generate local groups based on POS information to help in word alignment.
 Input 		-	Enter the name of 'tmp' folder to iterate on all the translated sentences to generate word grouping.
-Output 		- 	Inside the folder for every translation, a file 'H_Word_Group.txt' will be created containing details of word group and a single file 'H_Word_Group_All_Sentences.txt' containing details of groupig of all sentences is formed in the tmp folder.
+Output 		- 	Inside the folder for every translation, a file 'H_Word_Group.txt', 'H_Word_Group_MFS.txt', 'H_group_HTML.txt'' will be created containing details of word group and a single file 'H_Word_Group_All_Sentences.txt' containing details of groupig of all sentences is formed in the tmp folder.
 Files used 	-	hindi_dep_parser_original.dat
 
 For any queries you may drop a message at - prashantraj012@gmail.com or saumyanavneet26@gmail.com
@@ -28,16 +28,23 @@ def hindi_group():
 	for sentence in sentences: 	#Change according to the number of sentences
 		
 		#Reading the conll parser information of individual sentences
-		conll_path = str(sentence) + '/hindi_parser_canonical.dat'
+		conll_path = str(sentence) + '/hindi_parser_canonial.dat'
 		
 		#Reading the file as an input
 		hindifile = open(conll_path).readlines()
-		outpath = str(sentence)+'/H_Word_Group.dat'
-		outpathHTML = str(sentence) + '/H_Group_HTML.dat'
-		outHTML = open(outpathHTML,'w')
-		outHTML.flush()
+
+		outpath = str(sentence)+'/H_Word_Group.txt'
 		output_file = open(outpath,"w")
 		output_file.flush()
+
+		outpathHTML = str(sentence) + '/H_group_HTML.txt'
+		outHTML = open(outpathHTML,'w')
+		outHTML.flush()
+
+		mfs_outpath = str(sentence)+'/H_Word_Group_MFS.dat'
+		mfs_output_file = open(mfs_outpath,"w")
+		mfs_output_file.flush()
+
 		hin = list()				#Temporary list to extract infromation
 		l = list()					#Helper list
 		counter = 1
@@ -151,6 +158,13 @@ def hindi_group():
 		final_list = [ current_pos for current_pos in out_list if current_pos ]		#For removing the empty word groups generated
 		output = list()						#List for storing values with actual words
 		
+		string = '"0" '
+		for i in range(0,len(final_list)):
+			for j in range(0,len(final_list[i])):
+				string = string + str(final_list[i][j]) +" "
+			string = string + '"' + str(final_list[i][j]) + '" '
+
+		mfs_output_file.write(string)
 		
 		for i in final_list:
 			for j in i:
