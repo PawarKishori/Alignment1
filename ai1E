@@ -1,0 +1,115 @@
+What is AI?
+Artificial Intelligence is concerned with the design of intelligence in an artificial device.
+The term was coined by McCarthy in 1956.
+What is intelligence?
+Is it that which characterize humans?
+Or is there an absolute standard of judgement?
+A system with intelligence is expected to behave as intelligently as a human.
+A system with intelligence is expected to behave in the best possible manner.
+What type of behavior are we talking about?
+Are we looking at the thought process or reasoning ability of the system?
+Or are we only interested in the final manifestations of the system in terms of its actions?
+Given this scenario different interpretations have been used by different researchers as defining the scope and view of Artificial Intelligence.
+One view is that artificial intelligence is about designing systems that are as intelligent as humans.
+This view involves trying to understand human thought and an effort to build machines that emulate the human thought process.
+This view is the cognitive science approach to AI.
+The second approach is best embodied by the concept of the Turing Test.
+Turing held that in future computers can be programmed to acquire abilities rivaling human intelligence.
+As part of his argument Turing put forward the idea of an 'imitation game', in which a human being and a computer would be interrogated under conditions where the interrogator would not know which was which, the communication being entirely by textual messages.
+Turing argued that if the interrogator could not distinguish them by questioning, then it would be unreasonable not to call the computer intelligent.
+Turing's 'imitation game' is now usually called 'the Turing test' for intelligence.
+Consider the following setting.
+There are two rooms, A and B.
+One of the rooms contains a computer.
+The other contains a human.
+The interrogator is outside and does not know which one is a computer.
+He can ask questions through a teletype and receives answers from both A and B.
+The interrogator needs to identify whether A or B are humans.
+To pass the Turing test, the machine has to fool the interrogator into believing that it is human.
+Logic and laws of thought deals with studies of ideal or rational thought process and inference.
+The emphasis in this case is on the inferencing mechanism, and its properties.
+That is how the system arrives at a conclusion, or the reasoning behind its selection of actions is very important in this point of view.
+The soundness and completeness of the inference mechanisms are important here.
+The fourth view of AI is that it is the study of rational agents.
+This view deals with building machines that act rationally.
+The focus is on how the system acts and performs, and not so much on the reasoning process.
+A rational agent is one that acts rationally, that is, is in the best possible manner.
+While studying the typical range of tasks that we might expect an "intelligent entity" to perform, we need to consider both "common-place" tasks as well as expert tasks.
+These tasks cannot be done by all people, and can only be performed by skilled specialists.
+Clearly tasks of the first type are easy for humans to perform, and almost all are able to master them.
+The second range of tasks requires skill development and/or intelligence and only some specialists can perform them well.
+However, when we look at what computer systems have been able to achieve to date, we see that their achievements include performing sophisticated tasks like medical diagnosis, performing symbolic integration, proving theorems and playing chess.
+On the other hand it has proved to be very hard to make computer systems perform many routine tasks that all humans and a lot of animals can do.
+Examples of such tasks include navigating our way without running into things, catching prey and avoiding predators.
+Humans and animals are also capable of interpreting complex sensory information.
+We are able to recognize objects and people from the visual image that we receive.
+We are also able to perform complex social functions.
+This discussion brings us back to the question of what constitutes intelligent behaviour.
+AI systems are in everyday use for identifying credit card fraud, for advising doctors, for recognizing speech and in helping complex planning tasks.
+Then there are intelligent tutoring systems that provide students with personalized attention.
+Thus AI has increased understanding of the nature of intelligence and found many applications.
+It has helped in the understanding of human reasoning, and of the nature of intelligence.
+It has also helped us understand the complexity of modeling human reasoning.
+Strong AI aims to build machines that can truly reason and solve problems.
+These machines should be self aware and their overall intellectual ability needs to be indistinguishable from that of a human being.
+Excessive optimism in the 1950s and 1960s concerning strong AI has given way to an appreciation of the extreme difficulty of the problem.
+Strong AI maintains that suitably programmed machines are capable of cognitive mental states.
+Weak AI deals with the creation of some form of computer-based artificial intelligence that cannot truly reason and solve problems, but can act as if it were intelligent.
+Weak AI holds that suitably programmed machines can simulate human cognition.
+Applied AI aims to produce commercially viable "smart" systems such as, for example, a security system that is able to recognise the faces of people who are permitted to enter a particular building.
+Applied AI has already enjoyed considerable success.
+Cognitive AI computers are used to test theories about how the human mind works for example, theories about how we recognise faces and other objects, or about how we solve abstract problems.
+Today's successful AI systems operate in well-defined domains and employ narrow, specialized knowledge.
+Common sense knowledge is needed to function in complex, open-ended worlds.
+Such a system also needs to understand unconstrained natural language.
+However these capabilities are not yet fully present in today's intelligent systems.
+Today's AI systems have been able to achieve limited success in some of these tasks.
+In Computer vision, the systems are capable of face recognition.
+In Robotics, we have been able to make vehicles that are mostly autonomous.
+In Natural language processing, we have systems that are capable of simple machine translation.
+Today's Expert systems can carry out medical diagnosis in a narrow domain.
+Speech understanding systems are capable of recognizing several thousand words continuous speech.
+Planning and scheduling systems had been employed in scheduling experiments with the Hubble Telescope.
+The Learning systems are capable of doing text categorization into about 1000 topics.
+What can AI systems not do yet?
+Understand natural language robustly (e.g., read and understand articles in a newspaper).
+Surf the web.
+Interpret an arbitrary visual scene.
+Learn a natural language.
+Construct plans in dynamic real-time domains.
+Exhibit true autonomy and intelligence.
+Intellectual roots of AI date back to the early studies of the nature of knowledge and reasoning.
+The dream of making a computer imitate humans also has a very early history.
+The concept of intelligent machines is found in Greek mythology.
+There is a story in the 8th century about Pygmalion Olio, the legendary king of Cyprus.
+He fell in love with an ivory statue he made to represent his ideal woman.
+The king prayed to the goddess Aphrodite, the goddess miraculously brought the statue to life.
+Other myths involve human-like artifacts.
+As a present from Zeus to Europa, Hephaestus created Talos, a huge robot.
+Talos was made of bronze and his duty was to patrol the beaches of Crete.
+Aristotle developed an informal system of syllogistic logic, which is the basis of the first formal deductive reasoning system.
+Early in the 17th century, Descartes proposed that bodies of animals are nothing more than complex machines.
+Pascal in 1642 made the first mechanical digital calculating machine.
+In the 19th century, George Boole developed binary algebra representing (some) "laws of thought."
+Charles Babbage and Ada Byron worked on programmable mechanical calculating machines.
+In the late 19th century and early 20th century, mathematical philosophers like Gottlob Frege, Bertram Russell, Alfred North Whitehead, and Kurt Gödel built on Boole's initial logic concepts to develop mathematical representations of logic problems.
+The advent of electronic computers provided a revolutionary advance in the ability to study intelligence.
+In 1943 McCulloch & Pitts developed a Boolean circuit model of brain.
+In 1950 Turing wrote an article on "Computing Machinery and Intelligence" which articulated a complete vision of AI.
+Turing's paper talked of many things, of solving problems by searching through the space of possible solutions, guided by heuristics.
+He illustrated his ideas on machine intelligence by reference to chess.
+He even propounded the possibility of letting the machine alter its own instructions so that machines can learn from experience.
+In 1956 a famous conference took place in Dartmouth.
+The conference brought together the founding fathers of artificial intelligence for the first time.
+In this meeting the term "Artificial Intelligence" was adopted.
+The years from 1969 to 1979 marked the early development of knowledge-based systems.
+Logic based languages like Prolog and Planner were developed.
+Around 1985, neural networks return to popularity.
+In 1988, there was a resurgence of probabilistic and decision-theoretic methods.
+The early AI systems used general systems, little knowledge.
+AI researchers realized that specialized knowledge is required for rich tasks to focus reasoning.
+A system capable of translations between people speaking different languages will be a remarkable achievement of enormous economic and cultural benefits.
+Machine translation is one of the important fields of endeavour in AI.
+While some translation systems have been developed, there is a lot of scope for improvement in translation quality.
+In space exploration, robotic space probes autonomously monitor their surroundings, make decisions and act to achieve their goals.
+The explosive growth of the internet has also led to growing interest in internet agents to monitor users' tasks, seek needed information, and to learn which information is most useful.
