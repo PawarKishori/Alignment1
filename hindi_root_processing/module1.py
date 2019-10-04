@@ -1,9 +1,11 @@
 def create_hindi_dataframe(parse):
-    df= pd.read_csv(parse, sep='\t',names=['PID','WORD','1-','POS','2-','3-','PIDWITH','RELATION','4-','5-'])
+    df= pd.read_csv(parse, sep='\t',names=['PID','WORD','1-','POS','2-','3-','PIDWITH','RELATION','4-','5-'],quotechar="~")
     df.index = np.arange(1,len(df)+1)
     df1= df[['PID','WORD','POS','RELATION','PIDWITH']]
     pid = df1.PID.apply(lambda x : 'P'+str(x))
     pidwith = df1.PIDWITH.apply(lambda x : 'P'+str(x))
+    #print(df1)
+    #print(df1.WORD)
     relation_df =  pd.concat([pid, df1.WORD,df1.POS, df1.RELATION, pidwith], axis=1)
     return relation_df
 
@@ -41,10 +43,19 @@ def check_vaaa(pos):
     return start_index
 
 def check_v(pos):
-    # Note: iterate with length-2, so can use i+1 and i+2 in the loop
+    # Note: iterate with length-2, so can use i+1
     start_index=[]
-    for i in range(len(pos)-2):
-        if pos[i]=='VERB' and pos[i+1]!='ADP'and pos[i+1]!='AUX' and pos[i+2]!='AUX':
+    for i in range(len(pos)-1):
+        if pos[i]=='VERB' and pos[i+1]!='ADP'and pos[i+1]!='AUX':
+            start_index.append(i)
+    return start_index
+
+def check_a(pos):
+    # Note: iterate with length-1, so can use i+1 
+    start_index=[]
+    for i in range(len(pos)-1):
+        #print("**",pos[i],pos[i-1],pos[i+1])
+        if pos[i]=='AUX' and pos[i-1]!='VERB' and pos[i+1]!='AUX':
             start_index.append(i)
     return start_index
 
@@ -55,10 +66,10 @@ def check_v(pos):
     return False'''
 
 
-def check(final):
+def check(final,num):
     xxx=[];yyy=[]
     for entry in final:
-        x=list(range(entry, entry+2))
+        x=list(range(entry, entry+num))
         xx=[];yy=[]
         for i in x:
             xx.append(i)
@@ -66,14 +77,12 @@ def check(final):
             #print("=>",i)
         xxx.append(xx)
         yyy.append(yy)
-    print(xxx)
-    print(yyy)
-
-
-
+    #print(xxx)
+    #print(yyy)
+    return(" ".join(yy))
 
 def lwg(df):
-    wid=list(df.iloc[:,0])
+    '''wid=list(df.iloc[:,0])
     word=list(df.iloc[:,1])
     pword=list(df.iloc[:,1])
     pos=list(df.iloc[:,2])
@@ -81,107 +90,56 @@ def lwg(df):
     widwith =list(df.iloc[:,4])
     #print(pos)
 
-    '''for i in range(0,len(pos)):
-        print(i,word[i],pos[i])'''
     all_dict =OrderedDict()
+
     for i in range(0,len(pos)):
-        all_dict[wid[i]]=[word[i],pos[i]]    
-    #print(all_dict)
-    vaaa = ['VERB', 'AUX', 'AUX', 'AUX']    
-    vaa = ['VERB', 'AUX', 'AUX'] 
-    va = ['VERB', 'AUX'] 
-    v = ['VERB']
-    a= ['AUX']
-   
+        all_dict[wid[i]]=[word[i],pos[i]]    '''
+    
+    vaaa = ['VERB', 'AUX', 'AUX', 'AUX']; vaa = ['VERB', 'AUX', 'AUX']; va = ['VERB', 'AUX'] ; v = ['VERB']; a= ['AUX']
  
     if len(check_vaaa(pos)) > 0:
-        print("vaaa")
-        print(check_vaaa(pos))
-        for entry in check_vaa(pos):
-            print(range(entry, entry+3))
+        #print("vaaa=>")
+        #print(check_vaaa(pos))
+        final = check_vaaa(pos)
+        expr_vaaa = check(final, 4)
+        print(expr_vaaa)
 
     if len(check_vaa(pos)) > 0:
-        print("vaa")
-        print(check_vaa(pos))
-        for entry in check_vaa(pos):
-            print(range(entry, entry+2))
-
+        #print("vaa=>")
+        #print(check_vaa(pos))
+        final = check_vaa(pos)
+        #print(final)
+        #print(all_dict)
+        expr_vaa=check(final, 3)
+        print(expr_vaa)
+       
     
     if len(check_va(pos)) > 0:
-        print("va")
+        #print("va=>")
         final = check_va(pos)
-        check(final)
-        '''xxx=[];yyy=[]
-        for entry in check_va(pos):
-            x=list(range(entry, entry+2))
-            xx=[];yy=[]
-            for i in x:
-                xx.append(i)
-                yy.append(all_dict['P'+str(i+1)][0])
-                #print("=>",i)
-            xxx.append(xx)
-            yyy.append(yy)
-        print(xxx)
-        print(yyy)'''
-
-         
+        expr_va= check(final, 2)
+        print(expr_va)
 
     if len(check_v(pos))>0:
-        print("v")
-        print(check_v(pos))
-
+        #print("v=>")
+        final = check_v(pos)
+        expr_v = check(final,1)
+        print(expr_v)
+    if len(check_a(pos))>0:
+        #print("a=>")
+        final = check_a(pos)
+        expr_a = check(final,1)
+        print(expr_a)
     #print(list123(a,pos))
-    
-    '''for i in range(0,len(pos)):
-        try:
-            vextra=[];nextra=[]
-            if pos[i]=='VERB' and pos[i+1]=='AUX' and pos[i+2]=='AUX' and pos[i+3]=='AUX':
-                #print("****VAAA****")
-                v.extra.append(word[i])
-                vextra.append(word[i+1])
-                vextra.append(word[i+2])
-                vextra.append(word[i+3])
-                print("VAAA=>"," ".join(vextra))
-
-
-            elif pos[i]=='VERB' and pos[i+1]=='AUX' and pos[i+2]=='AUX':
-                #print("****VAA****")
-                vextra.append(word[i])
-                vextra.append(word[i+1])
-                vextra.append(word[i+2])
-                print("VAA=>"," ".join(vextra))
-                #del vextra[:]
-
-
-            elif pos[i]=='VERB' and pos[i+1]=='AUX' :
-                #print("****VA****")
-                vextra.append(word[i])
-                vextra.append(word[i+1])
-                #if wid[i]==widwith[i+1]:
-                #    df=df[df.PID != wid[i+1]]
-                print("VA=>"," ".join(vextra))
-                #del vextra[:]
-            
-            elif pos[i]=='VERB' and pos[i+1]!='ADP':
-                #print("****V****")
-                vextra.append(word[i])
-                print("V =>"," ".join(vextra))
-            
-            elif pos[i]=='AUX':
-                #print("****A****")
-                vextra.append(word[i])
-                print("A=>"," ".join(vextra))
-
-        except:
-            print("Case not handled")'''
-
 
 import sys
 import pandas as pd
 import numpy as np
 from collections import OrderedDict 
+import csv
 
 parse_filepath = sys.argv[1] + '/hindi_parser_canonial.dat'
+#parse_filepath = sys.argv[1] + '/hindi_dep_parser_original.dat'
 relation_df = create_hindi_dataframe(parse_filepath)
 #print(relation_df)
 wid=list(relation_df.iloc[:,0])
@@ -194,8 +152,11 @@ widwith =list(relation_df.iloc[:,4])
 
 '''for i in range(0,len(pos)):
     print(i,word[i],pos[i])'''
-all_dict =OrderedDict()
+#all_dict =OrderedDict()
+all_dict={}
 for i in range(0,len(pos)):
+   #print(wid[i])
+   #print(word[i])
    all_dict[wid[i]]=[word[i],pos[i]]   
 
 
