@@ -92,13 +92,13 @@ def Select_Root(filename,depname):
     with open(path_tmp+"/H_headid-root_info_from_morph_and_parser.dat","w") as out:
         for i in head_root:
             print(i)
-            #out.write(i+"\n")
-    '''with open(path_tmp+"/morph_and_parser_root_info_log","w") as err:
+            out.write(i+"\n")
+    with open(path_tmp+"/morph_and_parser_root_info_log","w") as err:
         for j in log:
             err.write(j+"\n")
     
         for i in exception :
-            err.write(i+"\n")'''
+            err.write(i+"\n")
     #writeFile = "H_headid-root_info.dat"
 
 
@@ -135,18 +135,22 @@ POS_Dict={"PRON":"p","VERB":"v","ADP":("sh","prsg"),"NOUN":"n","ADJ":"adj","AUX"
 
 no_root=['kA','ke','kI','ko','se','ne','meM','Ora','yA', 'kyA', 'waraha', 'ki','kevala','lekina','jabaki','waWA','xVArA','nahIM','Pira','hI','BI']
 
-#hfilename = path_tmp +  '/H_wordid-word_mapping.dat'
-hparserid_to_wid = path_tmp + '/H_parserid-wordid_mapping.dat'
+
+try:
+    #hfilename = path_tmp +  '/H_wordid-word_mapping.dat'
+    hparserid_to_wid = path_tmp + '/H_parserid-wordid_mapping.dat'
 #try:   
 #h2w = create_dict(hfilename, '(H_wordid-word')
-p2w = create_dict(hparserid_to_wid, '(H_parserid-wordid')
-#except:
-#    print("FILE MISSING: " + hfilename )
+    p2w = create_dict(hparserid_to_wid, '(H_parserid-wordid')
+    print(p2w)
+ 
+except:
+    print("FILE MISSING: " + hparserid_to_wid )
 #    log.write("FILE MISSING: " + hfilename + "\n")
-
-print(p2w)
-
 
 
 Select_Root(morphfile,depfile)
+
+
+#Write a function which will give correct root of VP in hindi using Yukti's output
 

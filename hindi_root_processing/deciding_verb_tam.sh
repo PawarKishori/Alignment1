@@ -9,12 +9,11 @@ do
         sentence_dir='2.'$i
         echo $sentence_dir
         tmp_path=$HOME_anu_tmp/tmp/$1_tmp/$sentence_dir
+
         python3 $HOME_alignment/hindi_root_processing/module1.py $tmp_path > $tmp_path/VP_expr_by_hindi_parser
         python3 $HOME_alignment/hindi_root_processing/verb_3_16.py  $tmp_path >  $tmp_path/verb_root_tam_info
-        
-        #Nupur's code for hindi root
-        #python $HOME_alignment/hindi_root_processing/generate_root.py $tmp_path/hindi.morph.dat $tmp_path/hindi_parser_canonial.dat #c    hange the path acc. to the location of generate_root.py 
-#        python $HOME_alignment/hindi_root_processing/ 
+        python3 $HOME_alignment/hindi_root_processing/generate_root.py $tmp_path/hindi.morph.dat $tmp_path/hindi_parser_canonial.dat #c    hange the path acc. to the location of generate_root.py 
+        python $HOME_alignment/hindi_root_processing/module4.py $tmp_path
         #english root: revised root.dat
 done
 

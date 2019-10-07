@@ -266,14 +266,6 @@ for sentence in contents:
                 print("tam: "+tam1)
 
 
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
 
 
 
