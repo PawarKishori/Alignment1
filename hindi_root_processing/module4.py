@@ -188,7 +188,7 @@ import pandas as pd
 import numpy as np
 from collections import OrderedDict 
 import csv
-def exact_match():
+def exact_match(sys.argv[1]):
 
 	try:
 	    root_tam_file = sys.argv[1] +'/verb_root_tam_info'
@@ -243,4 +243,4 @@ def exact_match():
 	print("=========================================")
 
 	return(b)
-exact_match()
+exact_match(sys.argv[1])
