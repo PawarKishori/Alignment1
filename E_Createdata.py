@@ -31,19 +31,19 @@ for parse in files:
 	relation_df = E_Modules.apostrophe_parser_tranformation(relation_df, path_des)
 
 	#Parser sanity check for multiple roots
-	error_flag = E_parser_sanity_modules.multi_root(relation_df, error_flag, path, filename)
-	if error_flag == 1:
-		continue
+	#error_flag = E_parser_sanity_modules.multi_root(relation_df, error_flag, path, filename)
+	#if error_flag == 1:
+	#	continue
 
 	#Parser sanity check for punct/ase/mark with children
-	error_flag = E_parser_sanity_modules.children_check(relation_df, filename, error_flag, path)
-	if error_flag == 1:
-		continue
+	#error_flag = E_parser_sanity_modules.children_check(relation_df, filename, error_flag, path)
+	#if error_flag == 1:
+	#	continue
 
 	#Parser sanity check for punctuation mistag
-	error_flag = E_parser_sanity_modules.punct_mistag(relation_df, filename, path)
-	if error_flag == 1:
-		continue
+	#error_flag = E_parser_sanity_modules.punct_mistag(relation_df, filename, path)
+	#if error_flag == 1:
+	#	continue
 
 	#step to remove all records with punctuations
 	relation_df = E_Modules.remove_punct(relation_df)

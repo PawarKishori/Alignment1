@@ -252,6 +252,7 @@ def add(fact_items,string,filename):
             #print(fact)
             f.write(fact)
 
+#Send list of list of columns 
 def addLists(factlist,factname,filename):
     #print("Inside writeFactLists Function")
     if os.path.isfile(filename):

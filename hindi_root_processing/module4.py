@@ -109,48 +109,6 @@ def extract_dictionary_ordered_fact_database_mng(filename):
     return(dict1)
 
 
-import sys, re
-import pandas as pd
-import numpy as np
-from collections import OrderedDict 
-import csv
-
-try:
-    root_tam_file = sys.argv[1] +'/verb_root_tam_info'
-    h_root_info_file = sys.argv[1] + '/H_headid-root_info_from_morph_and_parser.dat'
-    #bring hindi root for all nouns directly from H_headid-root_info_from_morph_and_parser.dat
-    #merge hindi root for verbs, from H_headid-root_info_from_morph_and_parser.dat and verb_root_tam_info
-    h_root_dict = extract_dictionary_ordered_fact_H_root(h_root_info_file)
-except:
-    print("File Missing: " + root_tam_file +'/' + h_root_info_file )
-
-try:
-    e_root_file = sys.argv[1] + '/revised_root.dat'   #get english root for N and verbs too
-    root_tam_grouping = sys.argv[1] + '/tam_id.dat' # to get english tam part of verb  (equivalent to root:.. of yukti)
-    root_tam_grouping_final = sys.argv[1] + '/E_lwg.dat' # to get english grouping of verb  (similar to VP_expr_by_hindi_parser[this is a group of hindi words], tam_id.dat is group of proper ids)
-    e_root_dict = extract_dictionary_ordered_fact(e_root_file)
-except:
-    print("Issue with files: " + e_root_file +'/'+root_tam_grouping +'/'+root_tam_grouping_final)
-
-try:
-    db = sys.argv[1] + '/database_mng.dat'
-    db_dict = extract_dictionary_ordered_fact_database_mng(db)
-except: 
-    print("Issue with files: " + db)
-   
-try:
-    h_word_file = sys.argv[1] + '/H_wordid-word_mapping.dat'
-    h2w = create_dict(h_word_file, '(H_wordid-word')
-    #print("\n",h2w)
-except:
-   print("File Missing: " + h_word_file )
-
-try:
-   e_word_file = sys.argv[1] + '/E_wordid-word_mapping.dat'
-   e2w = create_dict(e_word_file, '(E_wordid-word')
-   #print("\n",e2w)
-except:
-   print("File Missing: " + e_word_file )
 
 def check_word_and_root_same(e2w, e_root_dict):
    id_word=[]
@@ -225,15 +183,64 @@ def add(fact_items,string,filename):
             f.write(fact)
 
 
-try:
-   #extract all words having E_word and E_root as same.
-   e_word_root_same = check_word_and_root_same(e2w, e_root_dict) 
-   h_word_root_same = check_word_and_root_same(h2w, h_root_dict) 
-   a = exact_match_WSD_modulo(e_word_root_same, h_word_root_same, db_dict)
-   b=remove_duplicate_lists_from_list_of_lists(a)
-   print("\n",b)
-   add(b, "exact_match_WSD_modulo" , sys.argv[1] + "/A_exact_match_WSD_modulo.dat" )
-except:
-    print("FIle missing in module4 ")    
+import sys, re
+import pandas as pd
+import numpy as np
+from collections import OrderedDict 
+import csv
+def exact_match():
 
-print("=========================================")
+	try:
+	    root_tam_file = sys.argv[1] +'/verb_root_tam_info'
+	    h_root_info_file = sys.argv[1] + '/H_headid-root_info_from_morph_and_parser.dat'
+	    #bring hindi root for all nouns directly from H_headid-root_info_from_morph_and_parser.dat
+	    #merge hindi root for verbs, from H_headid-root_info_from_morph_and_parser.dat and verb_root_tam_info
+	    h_root_dict = extract_dictionary_ordered_fact_H_root(h_root_info_file)
+	except:
+	    print("File Missing: " + root_tam_file +'/' + h_root_info_file )
+
+	try:
+	    e_root_file = sys.argv[1] + '/revised_root.dat'   #get english root for N and verbs too
+	    root_tam_grouping = sys.argv[1] + '/tam_id.dat' # to get english tam part of verb  (equivalent to root:.. of yukti)
+	    root_tam_grouping_final = sys.argv[1] + '/E_lwg.dat' # to get english grouping of verb  (similar to VP_expr_by_hindi_parser[this is a group of hindi words], tam_id.dat is group of proper ids)
+	    e_root_dict = extract_dictionary_ordered_fact(e_root_file)
+	except:
+	    print("Issue with files: " + e_root_file +'/'+root_tam_grouping +'/'+root_tam_grouping_final)
+
+	try:
+	    db = sys.argv[1] + '/database_mng.dat'
+	    db_dict = extract_dictionary_ordered_fact_database_mng(db)
+	except: 
+	    print("Issue with files: " + db)
+	   
+	try:
+	    h_word_file = sys.argv[1] + '/H_wordid-word_mapping.dat'
+	    h2w = create_dict(h_word_file, '(H_wordid-word')
+	    #print("\n",h2w)
+	except:
+	   print("File Missing: " + h_word_file )
+
+	try:
+	   e_word_file = sys.argv[1] + '/E_wordid-word_mapping.dat'
+	   e2w = create_dict(e_word_file, '(E_wordid-word')
+	   #print("\n",e2w)
+	except:
+	   print("File Missing: " + e_word_file )
+
+
+
+	try:
+	   #extract all words having E_word and E_root as same.
+	   e_word_root_same = check_word_and_root_same(e2w, e_root_dict) 
+	   h_word_root_same = check_word_and_root_same(h2w, h_root_dict) 
+	   a = exact_match_WSD_modulo(e_word_root_same, h_word_root_same, db_dict)
+	   b=remove_duplicate_lists_from_list_of_lists(a)
+	   print("\n",b)
+	   add(b, "exact_match_WSD_modulo" , sys.argv[1] + "/A_exact_match_WSD_modulo.dat" )
+	except:
+	    print("FIle missing in module4 ")    
+
+	print("=========================================")
+
+	return(b)
+exact_match()

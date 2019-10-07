@@ -69,7 +69,7 @@ do
 
         #++++++++++++++++++++++++++++++++++++++++ ENGLISH PARSER OUTPUT GENERATION MODULE ++++++++++++++++++++++++++++++++++++++++++
         #Run Stanford parser for english sentence parse 
-# sh $HOME_alignment/run_new_stanford-parser.sh $tmp_path/E_sentence $tmp_path 
+ sh $HOME_alignment/run_new_stanford-parser.sh $tmp_path/E_sentence $tmp_path 
         #Generating English parser facts from E_conll_parse and E_sentence
 	
 

@@ -146,11 +146,15 @@ import re
 
 #Prashant's and Saumya's grouping information
 try:
-    egroup_file = path_tmp + '/E_Word_Group.txt'
-    hgroup_file = path_tmp + '/H_Word_Group.txt'
+    egroup_file = path_tmp + '/E_Word_Group_Sanity.dat'
+    hgroup_file = path_tmp + '/H_Word_Group.dat'
 
     egroups = a.extract_from_grouping_ordered_facts(egroup_file)
     hgroups = a.extract_from_grouping_ordered_facts(hgroup_file)
+    
+    print(")))))))))))))))))))")
+    print(egroups)
+    print(hgroups)
 
     ecolor = ["MEDIUMBLUE","SKYBLUE","DARKGREEN","HOTPINK","SIENNA","SPRINGGREEN","REBECCAPURPLE","MOCCASIN","TEAL", "ORANGE","GREENYELLOW","KHAKI","AQUA","DARKGRAY","NAVY","ROSYBROWN","DARKSALMON","PAPAYAWHIP" ,"TAN", "THISTLE", "PALEVIOLETRED","LIGHTSALMON","LIGHTSTEELBLUE", "SANDYBROWN","ORCHID","CRIMSON", "OLIVE", "BLACK", "MEDIUMSPRINGGREEN","SALMON","PINK","SILVER", "CADETBLUE", "DARKKHAKI", "ROYALBLUE", "PERU" ,"TOMATO", "LAVENDER", "SEAGREEN","NAVAJOWHITE","PALEVIOLETRED","CORAL","CORNFLOWERBLUE","MAROON","SLATEGRAY","DODGERBLUE","PLUM","MEDIUMVIOLETRED","DARKSLATEGRAY", "MISTYROSE"]
     hcolor =["CRIMSON", "OLIVE", "BLACK", "MEDIUMSPRINGGREEN","SALMON","PINK","SILVER", "CADETBLUE", "DARKKHAKI", "ROYALBLUE", "PERU" ,"TOMATO", "LAVENDER", "SEAGREEN","NAVAJOWHITE","PALEVIOLETRED","CORAL","CORNFLOWERBLUE","MAROON","SLATEGRAY","DODGERBLUE","PLUM","MEDIUMVIOLETRED","DARKSLATEGRAY", "MISTYROSE","DARKMAGENTA","PURPLE","INDIGO","SLATEBLUE","LAWNGREEN","LIME","LIMEGREEN","PALEGREEN","LIGHTGREEN","MEDIUMSPRINGGREEN","FORESTGREEN","GREEN","OLIVEDRAB","DARKOLIVEGREEN","MEDIUMAQUAMARINE","DARKCYAN","CYAN","LIGHTCYAN","PALETURQUOISE","AQUAMARINE","DIMGRAY","LINEN","SNOW","HONEYDEW","SADDLEBROWN"]
@@ -416,9 +420,6 @@ text-align: center;
 
 /* -------- /Tooltip ---------- */
 
-
-
-
 .corner {
   width: 0;
   height: 0;
@@ -442,9 +443,6 @@ text-align: center;
   font-weight: bold;
   display:block;
 }
-
-
-
 
 #gotoTop {
   display: none;
@@ -949,16 +947,3 @@ function myFunction() {
 write_to_html_file(new, path_tmp+'/final.html')
 new.to_csv(path_tmp +'/final.csv')
 # new.to_html(path_tmp +'/final.html')
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-

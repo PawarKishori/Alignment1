@@ -4,7 +4,8 @@ for k in range(1,116):
     print()
     print("2."+str(k))
     print("----------")
-    path = os.getenv("HOME_anu_tmp")+"/tmp/"+temp +"_tmp"+"/2."+str(k)+"/E_Word_Group.txt"
+    #path = os.getenv("HOME_anu_tmp")+"/tmp/"+temp +"_tmp"+"/2."+str(k)+"/E_Word_Group.txt"
+    path = os.getenv("HOME_anu_tmp")+"/tmp/"+temp +"_tmp"+"/2."+str(k)+"/E_Word_Group_Sanity.dat"
     n_file =os.getenv("HOME_anu_tmp")+"/tmp/"+temp + "_tmp"+ "/2."+str(k)+"/E_clip_deffact.dat"
     open_file = open(path,'r')
     new_f=open(n_file,'w')

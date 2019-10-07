@@ -8,7 +8,19 @@ java -mx1g -cp "*" edu.stanford.nlp.parser.lexparser.LexicalizedParser  edu/stan
 #touch $2/E_constituency_one_line_parse
 java -mx1g -cp "*" edu.stanford.nlp.parser.lexparser.LexicalizedParser  -outputFormat oneline   edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz $1  > $2/E_constituency_one_line_parse
 #touch $2/E_typed_dependency_parse
-java -mx1g -cp "*" edu.stanford.nlp.parser.lexparser.LexicalizedParser  -outputFormat "typedDependencies"  edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz $1  > $2/E_typed_dependency_parse
+java -mx1g -cp "*" edu.stanford.nlp.parser.lexparser.LexicalizedParser  -outputFormat "typedDependencies"  edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz $1  > $2/E_typed_constituencyTodependency_parse
 #java -mx1g  -cp "*" edu.stanford.nlp.trees.EnglishGrammaticalStructure  -treeFile $2/E_constituency_parse  -conllx > $2/E_conll_parse
 #touch $2/E_conll_parse
 java -mx1g  -cp "*" edu.stanford.nlp.trees.ud.UniversalDependenciesConverter  -treeFile $2/E_constituency_parse  -conllx > $2/E_conll_parse
+java -mx1g  -cp "*" edu.stanford.nlp.trees.ud.UniversalDependenciesConverter  -treeFile $2/E_constituency_parse  -conllx > $2/E_conll_parse_enhanced++ -outputRepresentation enhanced++
+
+java -cp "*" -mx1g edu.stanford.nlp.trees.ud.UniversalDependenciesConverter -treeFile $2/E_constituency_parse > $2/E_conll_parse_enhanced -outputRepresentation enhanced
+
+java -cp "*" -mx1g edu.stanford.nlp.trees.ud.UniversalDependenciesConverter -treeFile $2/E_constituency_parse  > $2/E_conll_parse_basic -outputRepresentation basic
+
+
+java -mx1g  -cp "*" edu.stanford.nlp.trees.ud.UniversalDependenciesConverter  -treeFile $2/E_constituency_parse  -conllx > $2/E_conll_parse_enhanced++ -outputRepresentation enhanced++
+
+
+java -Xmx2g -cp "*" edu.stanford.nlp.parser.nndep.DependencyParser  -model edu/stanford/nlp/models/parser/nndep/english_UD.gz  -textFile $1 > $2/E_direct_dependency_parse
+

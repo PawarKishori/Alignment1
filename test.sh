@@ -14,7 +14,7 @@ cp $2 $HOME_alignment_manju/$2
 cd $HOME_alignment_manju
 source activate python2.7               #irshad's parser needs 2.7
 echo "Time taken by alignment_manju module:"
-time sh run_alignment.sh $1 $2 general nsdp
+#time sh run_alignment.sh $1 $2 general nsdp
 echo "End of manju mam's module: "$1 $2
 conda deactivate
 ##==========================================================================
@@ -42,7 +42,7 @@ sh $HOME_alignment/canonical/remove_nukta.sh $1
 sh $HOME_alignment/tech_dict/run_tech-dict.sh $1 $2 Lookup_dict
 ##==========================================================================
 #cd $HOME_alignment
-sh $HOME_alignment/run_alignment.sh $1 $2 
+#sh $HOME_alignment/run_alignment.sh $1 $2 
 ##==========================================================================
 ##Roja Transliteration Module
 source activate python2.7               #irshad's parser needs 2.7
@@ -52,13 +52,15 @@ conda deactivate
 ##==========================================================================
 ##Parser's Module
 source activate py3.6
-python $HOME_alignment/H_Createdata.py $1
-python $HOME_alignment/E_Createdata.py $1
+#python $HOME_alignment/H_Createdata.py $1
+#python $HOME_alignment/E_Createdata.py $1
 
 #sh $HOME_alignment/hindi_wordid_sanity.sh $1
 ##=========================================================================
-python $HOME_alignment/Definite_LWG/E_Grouping_Word_Dependency.py $1
-python $HOME_alignment/Definite_LWG/H_Grouping_Word.py $1
+#python $HOME_alignment/Definite_LWG/E_Grouping_Word_Dependency.py $1
+#python $HOME_alignment/Definite_LWG/H_Grouping_Word.py $1
+sh $HOME_alignment/Definite_LWG/Run_Grouping_Files.sh $1
+
 conda deactivate 
 ##==========================================================================
 ##Need to be replaced by new dictionary lookup using python dictionary
