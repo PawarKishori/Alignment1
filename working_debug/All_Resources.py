@@ -1,16 +1,16 @@
 
 # coding: utf-8
 
-# In[300]:
+# In[345]:
 
 
 import os, re, sys, csv, string
 import anchor
 tmp_path=os.getenv('HOME_anu_tmp')+'/tmp/'
-eng_file_name = 'ai1E'
-sent_no = '2.28' #2.29, 2.21, 2.61, 2.14, 2.64
-# eng_file_name = sys.argv[1]
-# sent_no = sys.argv[2]
+#eng_file_name = 'ai1E'
+#sent_no = '2.30' #2.29, 2.21, 2.61, 2.14, 2.64
+eng_file_name = sys.argv[1]
+sent_no = sys.argv[2]
 path_tmp= tmp_path + eng_file_name + "_tmp"
 sent_dir =  tmp_path + eng_file_name + "_tmp/" + sent_no
 #------------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ if os.path.exists(log_file):
 log = open(log_file,'a')
 
 
-# In[301]:
+# In[346]:
 
 
 def lower_e_sentence() :
@@ -47,7 +47,7 @@ def lower_e_sentence() :
         return(edata)
 
 
-# In[302]:
+# In[347]:
 
 
 def h_sentence() :
@@ -57,7 +57,7 @@ def h_sentence() :
         return hdata
 
 
-# In[303]:
+# In[348]:
 
 
 ########################################convert_words_to_ids_in_list###############################################
@@ -79,7 +79,7 @@ def convert_words_to_ids_in_list(listofwords,id_word_dict) :
     return listofwords
 
 
-# In[304]:
+# In[349]:
 
 
 ##############################FUNCTION FOR RETURNING MULTIPLE KEYS FOR VALUES######################################
@@ -95,7 +95,7 @@ def return_key_from_value(dictionary, value):
     return ids_to_return
 
 
-# In[305]:
+# In[350]:
 
 
 #######################################ID-WORD PAIR DICTIONARY#####################################################
@@ -111,7 +111,7 @@ def create_dict(filename,string):
     return(p2w)
 
 
-# In[306]:
+# In[351]:
 
 
 def creating_h2w_dict():
@@ -131,7 +131,7 @@ def creating_h2w_dict():
 h2w,show_hindi=creating_h2w_dict()
 
 
-# In[307]:
+# In[352]:
 
 
 def creating_e2w_dict():
@@ -152,7 +152,7 @@ def creating_e2w_dict():
 e2w,show_eng=creating_e2w_dict()
 
 
-# In[308]:
+# In[353]:
 
 
 #Extract nandani_mapping dictionary[eids to hids] from corpus_specific_dic_facts_for_one_sent.dat
@@ -172,7 +172,7 @@ def extract_dictionary_from_deftemplate(filename):
     return(nandini_dict)
 
 
-# In[309]:
+# In[354]:
 
 
 def get_E_H_Ids_mfs(filename):
@@ -233,7 +233,7 @@ def get_E_H_Ids_mfs(filename):
     return(tmp) 
 
 
-# In[310]:
+# In[355]:
 
 
 #created for extracting eid-hid pair corresponding to eword-hword pair of roja_chk_transliteration_out
@@ -261,7 +261,7 @@ def get_E_H_dict_Ids(filename):
     return(tmp) 
 
 
-# In[311]:
+# In[356]:
 
 
 ##############################################ROW 1################################################################
@@ -273,7 +273,7 @@ def K_exact_match_Roja():
     return k_layer_ids
 
 
-# In[312]:
+# In[357]:
 
 
 ##############################################ROW 2################################################################
@@ -285,7 +285,7 @@ def K_exact_without_vib_Roja():
     return k_exact_wo_vib_ids
 
 
-# In[313]:
+# In[358]:
 
 
 ##############################################ROW 3################################################################
@@ -297,7 +297,7 @@ def K_partial_Roja():
     return k_layer_partial_ids
 
 
-# In[314]:
+# In[359]:
 
 
 ##############################################ROW 4################################################################
@@ -309,7 +309,7 @@ def K_root_Roja():
     return(k_root_ids)
 
 
-# In[315]:
+# In[360]:
 
 
 ##############################################ROW 5################################################################
@@ -321,7 +321,7 @@ def K_dict_Roja():
     return(k_dict_ids)
 
 
-# In[316]:
+# In[361]:
 
 
 ############################################NANDINI's DICT ROW#####################################################
@@ -365,7 +365,7 @@ def Nandani_Dict():
     return nandani_mapping_list
 
 
-# In[317]:
+# In[362]:
 
 
 def Bharatvani_Dict():
@@ -390,7 +390,7 @@ def Bharatvani_Dict():
     return tech_dict_list
 
 
-# In[318]:
+# In[363]:
 
 
 ########################################TRANSLITERATION DICT ROW###################################################
@@ -419,7 +419,7 @@ def Transliteration_Dict():
     return roja_transliterate_list
 
 
-# In[319]:
+# In[364]:
 
 
 ############################################KISHORI's DICT ROW#####################################################
@@ -442,7 +442,7 @@ def Kishori_exact_match_WSD_modulo():
     return dict_new
 
 
-# In[321]:
+# In[365]:
 
 
 ##########################################INTEGRATION##############################################################

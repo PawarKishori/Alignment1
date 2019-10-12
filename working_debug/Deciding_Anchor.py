@@ -1,15 +1,15 @@
 
 # coding: utf-8
 
-# In[81]:
+# In[107]:
 
 
 import csv,sys, os
 tmp_path=os.getenv('HOME_anu_tmp')+'/tmp/'
-eng_file_name = 'ai1E'
-sent_no='2.28'
-#eng_file_name = sys.argv[1]
-#sent_no = sys.argv[2]
+#eng_file_name = 'ai1E'
+#sent_no='2.54'
+eng_file_name = sys.argv[1]
+sent_no = sys.argv[2]
 sent_dir = tmp_path + eng_file_name + "_tmp/" + sent_no
 def reading_all_resources():
     all_data=[]
@@ -34,6 +34,19 @@ def resources_for_deciding_potential_anchor():
 anu_exact_wo_vib,nandani_dict,tech_dict,roja_transliterate,kishori_WSD_modulo=resources_for_deciding_potential_anchor()
 print(anu_exact_wo_vib,nandani_dict,tech_dict,roja_transliterate,kishori_WSD_modulo)
 
+
+#def resources_for_deciding_probable_potential_anchor():
+#    K_exact = []
+#    K_partial = []
+#    K_root = []
+#    K_dict = []
+#    K_exact = all_resources[0]
+#    K_partial = all_resources[2]
+#    K_root = all_resources[3]
+#    K_dict = all_resources[4]
+#    return K_exact,K_partial,K_root, K_dict
+#K_exact,K_partial,K_root, K_dict=resources_for_deciding_probable_potential_anchor()
+
 ###########################################POTENTIAL_ANCHOR########################################################
 
 def setting_potential_anchor():
@@ -41,23 +54,28 @@ def setting_potential_anchor():
     potential_anchor[0]="Potential Anchor:"
     for i in range(len(anu_exact_wo_vib)):
         if i!=0 :
-            if str(anu_exact_wo_vib[i]) != "0" and "(" not in anu_exact_wo_vib[i] and ")" not in anu_exact_wo_vib[i]:
+            
+            if str(anu_exact_wo_vib[i]) != "0" and "(" not in anu_exact_wo_vib[i] and ")" not in anu_exact_wo_vib[i] :
                 if str(potential_anchor[i]) != "0" :
                     temp=potential_anchor[i]
                     potential_anchor[i]=temp+"/"+anu_exact_wo_vib[i]
-                elif "(" in anu_exact_wo_vib[i] or ")" in anu_exact_wo_vib[i] :
+                else :
                     potential_anchor[i]=anu_exact_wo_vib[i]
-            else: 
+
+            elif "(" in anu_exact_wo_vib[i] or ")" in anu_exact_wo_vib[i] :
                 potential_anchor[i]=anu_exact_wo_vib[i]
+                
+                
             if str(nandani_dict[i]) !=  "0" and "(" not in nandani_dict[i] and ")" not in nandani_dict[i] :
                 if str(potential_anchor[i]) != "0" :
-                    if anu_exact_match[i] not in potential_anchor[i].split("/"):
+                    if nandani_dict[i] not in potential_anchor[i].split("/"):
                         temp=potential_anchor[i]
                         potential_anchor[i]=temp+"/"+nandani_dict[i]
                 else :
                     potential_anchor[i]=nandani_dict[i]
             elif "(" in nandani_dict[i] or ")" in nandani_dict[i]:
                 potential_anchor[i]=nandani_dict[i]
+                
             if str(tech_dict[i]) !=  "0" and "(" not in tech_dict[i] and ")" not in tech_dict[i] :
                 if str(potential_anchor[i]) != "0" :
                     temp=potential_anchor[i]
@@ -84,11 +102,13 @@ def setting_potential_anchor():
                     potential_anchor[i]=kishori_WSD_modulo[i]
             elif "(" in kishori_WSD_modulo[i] or ")" in kishori_WSD_modulo[i] :
                 potential_anchor[i]=kishori_WSD_modulo[i]
+                
+                
     return potential_anchor
 potential_anchor = setting_potential_anchor()
 print(potential_anchor)
 
-
+#######################################STARTING_ANCHOR#############################################################
 def setting_starting_anchor():
     starting_anchor = ['0'] * len(anu_exact_wo_vib)
     starting_anchor[0] = "Starting Anchor:"
@@ -97,10 +117,14 @@ def setting_starting_anchor():
         if index != 0 :
             if "/" not in wordid :
                 flag=0
-                for temp in potential_anchor[index+1:] :
-                     if "/" in temp:
+                for temp in (potential_anchor[:index] + potential_anchor[index+1:]) :
+                    if "/" in temp:
                         temp=temp.split("/")
                         if wordid in temp :
+                            flag = 1
+                            break
+                    else :
+                        if wordid == temp :
                             flag = 1
                             break
                 if flag == 0 :
@@ -111,15 +135,14 @@ def setting_starting_anchor():
     return starting_anchor  
 starting_anchor = setting_starting_anchor()
 print(starting_anchor)
+
+################################PROBABLE_POTENTIAL_ANCHOR##########################################################
+#def probable_potential_anchor():
+    
+###################################################################################################################
 with open(sent_dir+'/All_Resources.csv','a')as f1:
         dwrite = csv.writer(f1)   
         dwrite.writerow(potential_anchor)
         dwrite.writerow(starting_anchor)
         
-
-
-# In[73]:
-
-
-
 
