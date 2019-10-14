@@ -7,8 +7,8 @@
 import os, re, sys, csv, string
 import anchor
 tmp_path=os.getenv('HOME_anu_tmp')+'/tmp/'
-#eng_file_name = 'ai1E'
-#sent_no = '2.30' #2.29, 2.21, 2.61, 2.14, 2.64
+# eng_file_name = 'ai1E'
+# sent_no = '2.2' #2.29, 2.21, 2.61, 2.14, 2.64
 eng_file_name = sys.argv[1]
 sent_no = sys.argv[2]
 path_tmp= tmp_path + eng_file_name + "_tmp"
@@ -466,7 +466,7 @@ def integrating_all_rows():
         row9=Kishori_exact_match_WSD_modulo()
         print(h2w)
         print(e2w)
-        print("0 :",row0)#De
+        print("0 :",row0)
         print("1 :",row1)#De
         print("2 :",row2)
         print("3 :",row3)

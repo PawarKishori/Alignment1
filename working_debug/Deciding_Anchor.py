@@ -7,7 +7,7 @@
 import csv,sys, os
 tmp_path=os.getenv('HOME_anu_tmp')+'/tmp/'
 #eng_file_name = 'ai1E'
-#sent_no='2.54'
+#sent_no='2.2'
 eng_file_name = sys.argv[1]
 sent_no = sys.argv[2]
 sent_dir = tmp_path + eng_file_name + "_tmp/" + sent_no
@@ -24,29 +24,32 @@ def resources_for_deciding_potential_anchor():
     tech_dict=[]
     roja_transliterate=[]
     kishori_WSD_modulo=[]
-    anu_exact_wo_vib=all_resources[1]
-    nandani_dict=all_resources[5]
-    tech_dict=all_resources[6]
-    roja_transliterate=all_resources[7]
-    kishori_WSD_modulo=all_resources[8]
+    anu_exact_wo_vib=all_resources[2]
+    nandani_dict=all_resources[6]
+    tech_dict=all_resources[7]
+    roja_transliterate=all_resources[8]
+    kishori_WSD_modulo=all_resources[9]
     return anu_exact_wo_vib,nandani_dict,tech_dict,roja_transliterate,kishori_WSD_modulo
 
 anu_exact_wo_vib,nandani_dict,tech_dict,roja_transliterate,kishori_WSD_modulo=resources_for_deciding_potential_anchor()
 print(anu_exact_wo_vib,nandani_dict,tech_dict,roja_transliterate,kishori_WSD_modulo)
 
 
-#def resources_for_deciding_probable_potential_anchor():
-#    K_exact = []
-#    K_partial = []
-#    K_root = []
-#    K_dict = []
-#    K_exact = all_resources[0]
-#    K_partial = all_resources[2]
-#    K_root = all_resources[3]
-#    K_dict = all_resources[4]
-#    return K_exact,K_partial,K_root, K_dict
-#K_exact,K_partial,K_root, K_dict=resources_for_deciding_probable_potential_anchor()
-
+def resources_for_deciding_probable_potential_anchor():
+    K_exact = []
+    K_partial = []
+    K_root = []
+    K_dict = []
+    K_exact = all_resources[1]
+    K_partial = all_resources[3]
+    K_root = all_resources[4]
+    K_dict = all_resources[5]
+    return K_exact,K_partial,K_root, K_dict
+K_exact,K_partial,K_root, K_dict=resources_for_deciding_probable_potential_anchor()
+print(K_exact)
+print(K_partial)
+print(K_root)
+print(K_dict)
 ###########################################POTENTIAL_ANCHOR########################################################
 
 def setting_potential_anchor():
@@ -54,18 +57,17 @@ def setting_potential_anchor():
     potential_anchor[0]="Potential Anchor:"
     for i in range(len(anu_exact_wo_vib)):
         if i!=0 :
-            
+##########################################ANU_EXACT_WO_VIB#########################################################
             if str(anu_exact_wo_vib[i]) != "0" and "(" not in anu_exact_wo_vib[i] and ")" not in anu_exact_wo_vib[i] :
                 if str(potential_anchor[i]) != "0" :
-                    temp=potential_anchor[i]
-                    potential_anchor[i]=temp+"/"+anu_exact_wo_vib[i]
+                    if anu_exact_wo_vib[i] not in potential_anchor[i].split("/"):
+                        temp=potential_anchor[i]
+                        potential_anchor[i]=temp+"/"+anu_exact_wo_vib[i]
                 else :
                     potential_anchor[i]=anu_exact_wo_vib[i]
-
             elif "(" in anu_exact_wo_vib[i] or ")" in anu_exact_wo_vib[i] :
                 potential_anchor[i]=anu_exact_wo_vib[i]
-                
-                
+#######################################NANDANI_DICT################################################################
             if str(nandani_dict[i]) !=  "0" and "(" not in nandani_dict[i] and ")" not in nandani_dict[i] :
                 if str(potential_anchor[i]) != "0" :
                     if nandani_dict[i] not in potential_anchor[i].split("/"):
@@ -75,15 +77,17 @@ def setting_potential_anchor():
                     potential_anchor[i]=nandani_dict[i]
             elif "(" in nandani_dict[i] or ")" in nandani_dict[i]:
                 potential_anchor[i]=nandani_dict[i]
-                
+#####################################################TECH_DICT#####################################################  
             if str(tech_dict[i]) !=  "0" and "(" not in tech_dict[i] and ")" not in tech_dict[i] :
                 if str(potential_anchor[i]) != "0" :
-                    temp=potential_anchor[i]
-                    potential_anchor[i]=temp+"/"+tech_dict[i]
+                    if tech_dict[i] not in potential_anchor[i].split("/"):
+                        temp=potential_anchor[i]
+                        potential_anchor[i]=temp+"/"+tech_dict[i]
                 else :
                     potential_anchor[i]=tech_dict[i]
             elif "(" in tech_dict[i] or ")" in tech_dict[i] :
                 potential_anchor[i]=tech_dict[i]
+###############################################ROJA TRANSLITERATION################################################
             if str(roja_transliterate[i]) !=  "0"  and "(" not in roja_transliterate[i] and ")" not in roja_transliterate[i]:
                 if str(potential_anchor[i]) != "0" :
                     if roja_transliterate[i] not in potential_anchor[i].split("/"):
@@ -93,6 +97,7 @@ def setting_potential_anchor():
                     potential_anchor[i]=roja_transliterate[i]
             elif "(" in roja_transliterate[i] or ")" in roja_transliterate[i] :
                 potential_anchor[i]=roja_transliterate[i]
+###########################################KISHORI_WSD_MODULO######################################################
             if str(kishori_WSD_modulo[i]) !=  "0" and "(" not in kishori_WSD_modulo[i] and ")" not in kishori_WSD_modulo[i]:
                 if str(potential_anchor[i]) != "0" :
                     if kishori_WSD_modulo[i] not in potential_anchor[i].split("/"):
@@ -102,11 +107,12 @@ def setting_potential_anchor():
                     potential_anchor[i]=kishori_WSD_modulo[i]
             elif "(" in kishori_WSD_modulo[i] or ")" in kishori_WSD_modulo[i] :
                 potential_anchor[i]=kishori_WSD_modulo[i]
-                
-                
+          
     return potential_anchor
+################################################################################################################
+
 potential_anchor = setting_potential_anchor()
-print(potential_anchor)
+# print(potential_anchor)
 
 #######################################STARTING_ANCHOR#############################################################
 def setting_starting_anchor():
@@ -137,12 +143,78 @@ starting_anchor = setting_starting_anchor()
 print(starting_anchor)
 
 ################################PROBABLE_POTENTIAL_ANCHOR##########################################################
-#def probable_potential_anchor():
-    
+def probable_potential_anchor():
+    prob_potential_anchor = ['0'] * len(K_exact)
+    prob_potential_anchor[0]="Probable Potential Anchor:"
+    for i in range(len(K_exact)):
+        if i!=0 :
+#############################################K_EXACT##############################################################
+            if str(K_exact[i]) != "0" and "(" not in K_exact[i] and ")" not in K_exact[i] :
+                if str(prob_potential_anchor[i]) != "0" :
+                    if K_exact[i] not in prob_potential_anchor[i].split("/"):
+                        temp=prob_potential_anchor[i]
+                        prob_potential_anchor[i]=temp+"/"+K_Exact[i]
+                else :
+                    prob_potential_anchor[i]=K_exact[i]
+            elif "(" in K_exact[i] or ")" in K_exact[i] :
+                prob_potential_anchor[i]=K_exact[i]
+##############################################K_PARTIAL###########################################################
+            if str(K_partial[i]) != "0" and "(" not in K_partial[i] and ")" not in K_partial[i] :
+                if str(prob_potential_anchor[i]) != "0" :
+                    if K_partial[i] not in prob_potential_anchor[i].split("/"):
+                        temp=prob_potential_anchor[i]
+                        prob_potential_anchor[i]=temp+"/"+K_partial[i]
+                else :
+                    prob_potential_anchor[i]=K_partial[i]
+
+            elif "(" in K_partial[i] or ")" in K_partial[i] :
+                prob_potential_anchor[i]=K_partial[i]
+##############################################K_ROOT##############################################################                
+            if str(K_root[i]) != "0" and "(" not in K_root[i] and ")" not in K_root[i] :
+                if str(prob_potential_anchor[i]) != "0" :
+                    if K_root[i] not in prob_potential_anchor[i].split("/"):
+                        temp=prob_potential_anchor[i]
+                        prob_potential_anchor[i]=temp+"/"+K_root[i]
+                else :
+                    prob_potential_anchor[i]=K_root[i]
+
+            elif "(" in K_root[i] or ")" in K_root[i] :
+                prob_potential_anchor[i]=K_root[i]
+######################################################K_DICT######################################################               
+            if str(K_dict[i]) != "0" and "(" not in K_dict[i] and ")" not in K_dict[i] :
+                if str(prob_potential_anchor[i]) != "0" :
+                    if K_dict[i] not in prob_potential_anchor[i].split("/"):
+                        temp=prob_potential_anchor[i]
+                        prob_potential_anchor[i]=temp+"/"+K_dict[i]
+                else :
+                    prob_potential_anchor[i]=K_dict[i]
+
+            elif "(" in K_dict[i] or ")" in K_dict[i] :
+                prob_potential_anchor[i]=K_dict[i]
+        
+    return prob_potential_anchor
+###################################################################################################################
+
+prob_potential_anchor = probable_potential_anchor()
+# print(prob_potential_anchor)
+
+################################REMOVING POTENTIAL ANCHORS WHICH ARE NOW SET IN STARTING###########################
+
+for i in range(1,len(potential_anchor)) :
+    if potential_anchor[i] in starting_anchor :
+        potential_anchor[i]='0' 
+print(potential_anchor)
+
+############################REMOVING PROBABALE ANCHORS WHICH ARE EITHER POTENTIAL OR STARTING#####################
+for i in range(1,len(prob_potential_anchor)) :
+    if prob_potential_anchor[i] in starting_anchor or prob_potential_anchor[i] in potential_anchor :
+        prob_potential_anchor[i]='0'
+print(prob_potential_anchor)
+
 ###################################################################################################################
 with open(sent_dir+'/All_Resources.csv','a')as f1:
         dwrite = csv.writer(f1)   
         dwrite.writerow(potential_anchor)
         dwrite.writerow(starting_anchor)
-        
+        dwrite.writerow(prob_potential_anchor)
 
