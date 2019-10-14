@@ -265,6 +265,12 @@ def get_E_H_dict_Ids(filename):
 
 
 ##############################################ROW 1################################################################
+def A_layer():
+    a_layer_ids = anchor.load_row_from_csv(k_layer_ids_file,0)
+    a_layer_ids = anchor.cleaning_list(a_layer_ids)  #Not needed but still added
+    a_layer_ids[0] = "English_word_ids"
+    return a_layer_ids
+##############################################ROW 1################################################################
 def K_exact_match_Roja():
     
     k_layer_ids= anchor.load_row_from_csv(k_layer_ids_file, 1)
@@ -448,6 +454,7 @@ def Kishori_exact_match_WSD_modulo():
 ##########################################INTEGRATION##############################################################
 
 def integrating_all_rows():
+        row0=A_layer()
         row1=K_exact_match_Roja()
         row2=K_exact_without_vib_Roja()
         row3=K_partial_Roja()
@@ -459,6 +466,7 @@ def integrating_all_rows():
         row9=Kishori_exact_match_WSD_modulo()
         print(h2w)
         print(e2w)
+        print("0 :",row0)#De
         print("1 :",row1)#De
         print("2 :",row2)
         print("3 :",row3)
@@ -470,6 +478,7 @@ def integrating_all_rows():
         print("9 :",row9)#
         with open(sent_dir+'/All_Resources.csv', 'w') as csvfile :
             csvwriter = csv.writer(csvfile)
+            csvwriter.writerow(row0)
             csvwriter.writerow(row1)
             csvwriter.writerow(row2)
             csvwriter.writerow(row3)
