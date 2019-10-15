@@ -96,7 +96,7 @@ def extract_dictionary_ordered_fact_database_mng(filename):
             #y = re.findall("(.* \w+)",entry)
             dict_source = entry.split(" ")[4]
             hindi_equivalent = " ".join(entry.split(" ")[5:]).strip(")")
-            print(hindi_equivalent)
+            #print(hindi_equivalent)
             if len(x)>0:
                 key = x[0].split(" ")[3]
                 val = hindi_equivalent
@@ -106,11 +106,10 @@ def extract_dictionary_ordered_fact_database_mng(filename):
                 else:
                     dict1[key]=[val]
   
-        print("\n",dict1)
+        #print("\n",dict1)
     return(dict1)
 
-
-
+#extract all words having E_word and E_root as same.(function works for hindi word and root too.)
 def check_word_and_root_same(e2w, e_root_dict):
    id_word=[]
    for kw,vw in e2w.items():
@@ -124,11 +123,13 @@ def check_word_and_root_same(e2w, e_root_dict):
    #print("\n",id_word)
    return(id_word)
 
+
+#Function which checks exact match of Eng root == Eng word and Hindi root == Hindi word
 def exact_match_WSD_modulo(einfo, hinfo, db):
    #print("=========================================")
-   #print(e)
-   #print(h)
-   #print(db)
+   print(einfo)
+   print(hinfo)
+   print(db)
    e=[x[1] for x in einfo]
    h=[x[1] for x in hinfo]
    #print(list(db.keys()))
@@ -142,7 +143,7 @@ def exact_match_WSD_modulo(einfo, hinfo, db):
                    if(mng1 == hentry):
                        pair=[eentry, hentry]
                        exact_match.append(pair)
-   #print(exact_match)
+   print(exact_match)
    return(exact_match)     
 
 no_root=['kA','ke','kI','ko','se','ne','meM','Ora','yA', 'kyA', 'waraha', 'ki','kevala','lekina','jabaki','waWA','xVArA','nahIM','Pira','hI    ','BI']
@@ -256,16 +257,16 @@ def exact_match(tmp_dir):
 	   print("File Missing: " + e_word_file )
 
 	try:
-	   #extract all words having E_word and E_root as same.
-		e_word_root_same = check_word_and_root_same(e2w, e_root_dict) 
+		e_word_root_same = check_word_and_root_same(e2w, e_root_dict)
+		#print(e_word_root_same) 
 		h_word_root_same = check_word_and_root_same(h2w, h_root_dict) 
 		a = exact_match_WSD_modulo(e_word_root_same, h_word_root_same, db_dict)
-		b=remove_duplicate_lists_from_list_of_lists(a)
+		b = remove_duplicate_lists_from_list_of_lists(a)
 		#print("\n",b)
 		add(b, "exact_match_WSD_modulo" , tmp_dir + "/A_exact_match_WSD_modulo.dat" )
 		return(b)
 	except:
-	    print("FIle missing in module4 ")    
+		print("FIle missing in module4 ")    
 
 	print("=========================================")
 
