@@ -96,9 +96,7 @@ def extract_dictionary_ordered_fact_database_mng(filename):
             #y = re.findall("(.* \w+)",entry)
             dict_source = entry.split(" ")[4]
             hindi_equivalent = " ".join(entry.split(" ")[5:]).strip(")")
-            #print(hindi_equivalent)
-            y = entry.split(" ")[-1].strip(")")
-            #print(y)
+            print(hindi_equivalent)
             if len(x)>0:
                 key = x[0].split(" ")[3]
                 val = hindi_equivalent
@@ -108,7 +106,7 @@ def extract_dictionary_ordered_fact_database_mng(filename):
                 else:
                     dict1[key]=[val]
   
-        #print("\n",dict1)
+        print("\n",dict1)
     return(dict1)
 
 
@@ -186,12 +184,36 @@ def add(fact_items,string,filename):
             f.write(fact)
             #print("File created")
 
+#This function reads manju mam's database_meaning.dat and create database_mng_preprocessed.dat which add _ in hindi meanings having >1 words
+def preprocess_database_mng(db,db1):
+    with open(db) as f:
+        all_entries = f.read().split("\n")
+        with open(db1, 'w') as f1:
+            for x in all_entries:
+                if len(x.split(" "))>3:    #handled entries having more than 3 columns 
+                    if x.split(" ")[4]=='default-iit-bombay-shabdanjali-dic_smt.gdbm':  #working on entries from only this dict
+                        hind_meaning=x.split(" ")[5:]
+                
+                        if len(hind_meaning)>1:
+                            hindi="_".join(hind_meaning)
+                        else:
+                            hindi=hind_meaning[0]
+                        #print(" ".join(x.split(" ")[0:5])+" "+hindi)
+                        f1.write(" ".join(x.split(" ")[0:5])+" "+hindi+"\n")
+            
+       
 
 import sys, re
 import pandas as pd
 import numpy as np
 from collections import OrderedDict 
 import csv
+
+
+
+
+
+
 def exact_match(tmp_dir):
 
 	try:
@@ -213,7 +235,9 @@ def exact_match(tmp_dir):
 
 	try:
 	    db = tmp_dir + '/database_mng.dat'
-	    db_dict = extract_dictionary_ordered_fact_database_mng(db)
+	    db1 = tmp_dir + '/database_mng_preprocessed.dat'
+	    preprocess_database_mng(db,db1)
+	    db_dict = extract_dictionary_ordered_fact_database_mng(db1)
 	except: 
 	    print("Issue with files: " + db)
 	   
@@ -231,8 +255,6 @@ def exact_match(tmp_dir):
 	except:
 	   print("File Missing: " + e_word_file )
 
-
-
 	try:
 	   #extract all words having E_word and E_root as same.
 		e_word_root_same = check_word_and_root_same(e2w, e_root_dict) 
@@ -247,5 +269,9 @@ def exact_match(tmp_dir):
 
 	print("=========================================")
 
-	
-exact_match(sys.argv[1])
+tmp_dir = sys.argv[1]
+#db = tmp_dir + '/database_mng.dat'
+#db1 = tmp_dir + '/database_mng_preprocessed.dat'
+#preprocess_database_mng(db,db1)
+
+exact_match(tmp_dir)
