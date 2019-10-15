@@ -1,11 +1,6 @@
-
-# coding: utf-8
-
-# In[107]:
-
-
 import csv,sys, os
 tmp_path=os.getenv('HOME_anu_tmp')+'/tmp/'
+
 #eng_file_name = 'ai1E'
 #sent_no='2.2'
 eng_file_name = sys.argv[1]
@@ -107,7 +102,7 @@ def setting_potential_anchor():
                     potential_anchor[i]=kishori_WSD_modulo[i]
             elif "(" in kishori_WSD_modulo[i] or ")" in kishori_WSD_modulo[i] :
                 potential_anchor[i]=kishori_WSD_modulo[i]
-          
+         
     return potential_anchor
 ################################################################################################################
 
@@ -137,7 +132,7 @@ def setting_starting_anchor():
                     starting_anchor[index] = potential_anchor[index]
             else :
                 starting_anchor[index]='0'
-                    
+                   
     return starting_anchor  
 starting_anchor = setting_starting_anchor()
 print(starting_anchor)
@@ -149,7 +144,7 @@ def probable_potential_anchor():
     for i in range(len(K_exact)):
         if i!=0 :
 #############################################K_EXACT##############################################################
-            if str(K_exact[i]) != "0" and "(" not in K_exact[i] and ")" not in K_exact[i] :
+            if str(K_exact[i]) != "0" and "(" not in K_exact[i] and ")" not in K_exact[i] and "/" not in K_exact[i] :
                 if str(prob_potential_anchor[i]) != "0" :
                     if K_exact[i] not in prob_potential_anchor[i].split("/"):
                         temp=prob_potential_anchor[i]
@@ -158,8 +153,17 @@ def probable_potential_anchor():
                     prob_potential_anchor[i]=K_exact[i]
             elif "(" in K_exact[i] or ")" in K_exact[i] :
                 prob_potential_anchor[i]=K_exact[i]
+            elif "/" in K_exact[i] :
+                K_exact[i]=K_exact[i].split("/")
+                for k in K_exact[i] :
+                    if k not in prob_potential_anchor[i].split("/"):
+                        temp=prob_potential_anchor[i]
+                        if temp == '0':
+                            prob_potential_anchor[i]=k
+                        else:
+                            prob_potential_anchor[i]=temp+"/"+k
 ##############################################K_PARTIAL###########################################################
-            if str(K_partial[i]) != "0" and "(" not in K_partial[i] and ")" not in K_partial[i] :
+            if str(K_partial[i]) != "0" and "(" not in K_partial[i] and ")" not in K_partial[i] and "/" not in K_partial[i] :
                 if str(prob_potential_anchor[i]) != "0" :
                     if K_partial[i] not in prob_potential_anchor[i].split("/"):
                         temp=prob_potential_anchor[i]
@@ -169,8 +173,17 @@ def probable_potential_anchor():
 
             elif "(" in K_partial[i] or ")" in K_partial[i] :
                 prob_potential_anchor[i]=K_partial[i]
+            elif "/" in K_partial[i] :
+                K_partial[i]=K_partial[i].split("/")
+                for k in K_partial[i] :
+                    if k not in prob_potential_anchor[i].split("/"):
+                        temp=prob_potential_anchor[i]
+                        if temp == '0':
+                            prob_potential_anchor[i]=k
+                        else:
+                            prob_potential_anchor[i]=temp+"/"+k
 ##############################################K_ROOT##############################################################                
-            if str(K_root[i]) != "0" and "(" not in K_root[i] and ")" not in K_root[i] :
+            if str(K_root[i]) != "0" and "(" not in K_root[i] and ")" not in K_root[i] and "/" not in K_root[i] :
                 if str(prob_potential_anchor[i]) != "0" :
                     if K_root[i] not in prob_potential_anchor[i].split("/"):
                         temp=prob_potential_anchor[i]
@@ -180,10 +193,19 @@ def probable_potential_anchor():
 
             elif "(" in K_root[i] or ")" in K_root[i] :
                 prob_potential_anchor[i]=K_root[i]
-######################################################K_DICT######################################################               
-            if str(K_dict[i]) != "0" and "(" not in K_dict[i] and ")" not in K_dict[i] :
+            elif "/" in K_root[i] :
+                K_root[i]=K_root[i].split("/")
+                for k in K_root[i] :
+                    if k not in prob_potential_anchor[i].split("/"):
+                        temp=prob_potential_anchor[i]
+                        if temp == '0':
+                            prob_potential_anchor[i]=k
+                        else:
+                            prob_potential_anchor[i]=temp+"/"+k
+######################################################K_DICT######################################################              
+            if str(K_dict[i]) != "0" and "(" not in K_dict[i] and ")" not in K_dict[i] and "/" not in K_dict[i]:
                 if str(prob_potential_anchor[i]) != "0" :
-                    if K_dict[i] not in prob_potential_anchor[i].split("/"):
+                    if str(K_dict[i]) not in prob_potential_anchor[i].split("/"):
                         temp=prob_potential_anchor[i]
                         prob_potential_anchor[i]=temp+"/"+K_dict[i]
                 else :
@@ -191,7 +213,15 @@ def probable_potential_anchor():
 
             elif "(" in K_dict[i] or ")" in K_dict[i] :
                 prob_potential_anchor[i]=K_dict[i]
-        
+            elif "/" in K_dict[i] :
+                K_dict[i]=K_dict[i].split("/")
+                for k in K_dict[i] :
+                    if k not in prob_potential_anchor[i].split("/"):
+                        temp=prob_potential_anchor[i]
+                        if temp == '0':
+                            prob_potential_anchor[i]=k
+                        else:
+                            prob_potential_anchor[i]=temp+"/"+k
     return prob_potential_anchor
 ###################################################################################################################
 
@@ -202,7 +232,7 @@ prob_potential_anchor = probable_potential_anchor()
 
 for i in range(1,len(potential_anchor)) :
     if potential_anchor[i] in starting_anchor :
-        potential_anchor[i]='0' 
+        potential_anchor[i]='0'
 print(potential_anchor)
 
 ############################REMOVING PROBABALE ANCHORS WHICH ARE EITHER POTENTIAL OR STARTING#####################
@@ -213,8 +243,7 @@ print(prob_potential_anchor)
 
 ###################################################################################################################
 with open(sent_dir+'/All_Resources.csv','a')as f1:
-        dwrite = csv.writer(f1)   
+        dwrite = csv.writer(f1)  
         dwrite.writerow(potential_anchor)
         dwrite.writerow(starting_anchor)
         dwrite.writerow(prob_potential_anchor)
-
