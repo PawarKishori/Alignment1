@@ -94,11 +94,14 @@ def extract_dictionary_ordered_fact_database_mng(filename):
             
             x = re.findall("(id-org_wrd-root-dbase_name-mng \w+ \w+ \w+ \w+)",entry)
             #y = re.findall("(.* \w+)",entry)
+            dict_source = entry.split(" ")[4]
+            hindi_equivalent = " ".join(entry.split(" ")[5:]).strip(")")
+            #print(hindi_equivalent)
             y = entry.split(" ")[-1].strip(")")
             #print(y)
             if len(x)>0:
                 key = x[0].split(" ")[3]
-                val = y
+                val = hindi_equivalent
                 #print(key,val)
                 if  key in dict1:
                     dict1[key].append(val)
@@ -236,7 +239,7 @@ def exact_match(tmp_dir):
 		h_word_root_same = check_word_and_root_same(h2w, h_root_dict) 
 		a = exact_match_WSD_modulo(e_word_root_same, h_word_root_same, db_dict)
 		b=remove_duplicate_lists_from_list_of_lists(a)
-		print("\n",b)
+		#print("\n",b)
 		add(b, "exact_match_WSD_modulo" , tmp_dir + "/A_exact_match_WSD_modulo.dat" )
 		return(b)
 	except:
