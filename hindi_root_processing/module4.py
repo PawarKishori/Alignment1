@@ -94,11 +94,12 @@ def extract_dictionary_ordered_fact_database_mng(filename):
             
             x = re.findall("(id-org_wrd-root-dbase_name-mng \w+ \w+ \w+ \w+)",entry)
             #y = re.findall("(.* \w+)",entry)
-            y = entry.split(" ")[-1].strip(")")
-            #print(y)
+            dict_source = entry.split(" ")[4]
+            hindi_equivalent = " ".join(entry.split(" ")[5:]).strip(")")
+            #print(hindi_equivalent)
             if len(x)>0:
                 key = x[0].split(" ")[3]
-                val = y
+                val = hindi_equivalent
                 #print(key,val)
                 if  key in dict1:
                     dict1[key].append(val)
@@ -108,8 +109,7 @@ def extract_dictionary_ordered_fact_database_mng(filename):
         #print("\n",dict1)
     return(dict1)
 
-
-
+#extract all words having E_word and E_root as same.(function works for hindi word and root too.)
 def check_word_and_root_same(e2w, e_root_dict):
    id_word=[]
    for kw,vw in e2w.items():
@@ -123,11 +123,13 @@ def check_word_and_root_same(e2w, e_root_dict):
    #print("\n",id_word)
    return(id_word)
 
+
+#Function which checks exact match of Eng root == Eng word and Hindi root == Hindi word
 def exact_match_WSD_modulo(einfo, hinfo, db):
    #print("=========================================")
-   #print(e)
-   #print(h)
-   #print(db)
+   print(einfo)
+   print(hinfo)
+   print(db)
    e=[x[1] for x in einfo]
    h=[x[1] for x in hinfo]
    #print(list(db.keys()))
@@ -141,7 +143,7 @@ def exact_match_WSD_modulo(einfo, hinfo, db):
                    if(mng1 == hentry):
                        pair=[eentry, hentry]
                        exact_match.append(pair)
-   #print(exact_match)
+   print(exact_match)
    return(exact_match)     
 
 no_root=['kA','ke','kI','ko','se','ne','meM','Ora','yA', 'kyA', 'waraha', 'ki','kevala','lekina','jabaki','waWA','xVArA','nahIM','Pira','hI    ','BI']
@@ -183,12 +185,36 @@ def add(fact_items,string,filename):
             f.write(fact)
             #print("File created")
 
+#This function reads manju mam's database_meaning.dat and create database_mng_preprocessed.dat which add _ in hindi meanings having >1 words
+def preprocess_database_mng(db,db1):
+    with open(db) as f:
+        all_entries = f.read().split("\n")
+        with open(db1, 'w') as f1:
+            for x in all_entries:
+                if len(x.split(" "))>3:    #handled entries having more than 3 columns 
+                    if x.split(" ")[4]=='default-iit-bombay-shabdanjali-dic_smt.gdbm':  #working on entries from only this dict
+                        hind_meaning=x.split(" ")[5:]
+                
+                        if len(hind_meaning)>1:
+                            hindi="_".join(hind_meaning)
+                        else:
+                            hindi=hind_meaning[0]
+                        #print(" ".join(x.split(" ")[0:5])+" "+hindi)
+                        f1.write(" ".join(x.split(" ")[0:5])+" "+hindi+"\n")
+            
+       
 
 import sys, re
 import pandas as pd
 import numpy as np
 from collections import OrderedDict 
 import csv
+
+
+
+
+
+
 def exact_match(tmp_dir):
 
 	try:
@@ -210,7 +236,9 @@ def exact_match(tmp_dir):
 
 	try:
 	    db = tmp_dir + '/database_mng.dat'
-	    db_dict = extract_dictionary_ordered_fact_database_mng(db)
+	    db1 = tmp_dir + '/database_mng_preprocessed.dat'
+	    preprocess_database_mng(db,db1)
+	    db_dict = extract_dictionary_ordered_fact_database_mng(db1)
 	except: 
 	    print("Issue with files: " + db)
 	   
@@ -228,21 +256,23 @@ def exact_match(tmp_dir):
 	except:
 	   print("File Missing: " + e_word_file )
 
-
-
 	try:
-	   #extract all words having E_word and E_root as same.
-		e_word_root_same = check_word_and_root_same(e2w, e_root_dict) 
+		e_word_root_same = check_word_and_root_same(e2w, e_root_dict)
+		#print(e_word_root_same) 
 		h_word_root_same = check_word_and_root_same(h2w, h_root_dict) 
 		a = exact_match_WSD_modulo(e_word_root_same, h_word_root_same, db_dict)
-		b=remove_duplicate_lists_from_list_of_lists(a)
-		print("\n",b)
+		b = remove_duplicate_lists_from_list_of_lists(a)
+		#print("\n",b)
 		add(b, "exact_match_WSD_modulo" , tmp_dir + "/A_exact_match_WSD_modulo.dat" )
 		return(b)
 	except:
-	    print("FIle missing in module4 ")    
+		print("FIle missing in module4 ")    
 
 	print("=========================================")
 
-	
-exact_match(sys.argv[1])
+tmp_dir = sys.argv[1]
+#db = tmp_dir + '/database_mng.dat'
+#db1 = tmp_dir + '/database_mng_preprocessed.dat'
+#preprocess_database_mng(db,db1)
+
+exact_match(tmp_dir)
