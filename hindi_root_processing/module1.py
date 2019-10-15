@@ -18,6 +18,7 @@ def contained(candidate, container):
     except ValueError:
         return False
 
+# returns starting index of vaa verb phrase from hindi parse
 def check_vaa(pos):
     # Note: iterate with length-2, so can use i+1 and i+2 in the loop
     start_index=[]
@@ -26,6 +27,7 @@ def check_vaa(pos):
             start_index.append(i)
     return start_index
 
+# returns starting index of va verb phrase from hindi parse
 def check_va(pos):
     # Note: iterate with length-2, so can use i+1 and i+2 in the loop
     start_index=[]
@@ -34,6 +36,7 @@ def check_va(pos):
             start_index.append(i)
     return start_index
 
+# returns starting index of vaaa verb phrase from hindi parse
 def check_vaaa(pos):
     # Note: iterate with length-2, so can use i+1 and i+2 in the loop
     start_index=[]
@@ -42,6 +45,7 @@ def check_vaaa(pos):
             start_index.append(i)
     return start_index
 
+# returns starting index of v verb phrase from hindi parse
 def check_v(pos):
     # Note: iterate with length-2, so can use i+1
     start_index=[]
@@ -66,10 +70,12 @@ def check_a(pos):
     return False'''
 
 
+# returns a substring of words starting from 'final' index of length 'num'
 def check(final,num):
     xxx=[];yyy=[]
     for entry in final:
         x=list(range(entry, entry+num))
+        #print(x)
         xx=[];yy=[]
         for i in x:
             xx.append(i)
@@ -77,6 +83,7 @@ def check(final,num):
             #print("=>",i)
         xxx.append(xx)
         yyy.append(yy)
+
     #print(xxx)
     #print(yyy)
     return(" ".join(yy))
@@ -96,12 +103,15 @@ def lwg(df):
         all_dict[wid[i]]=[word[i],pos[i]]    '''
     
     vaaa = ['VERB', 'AUX', 'AUX', 'AUX']; vaa = ['VERB', 'AUX', 'AUX']; va = ['VERB', 'AUX'] ; v = ['VERB']; a= ['AUX']
- 
+    
+    indexes_covered_in_all_VPs_of_sentences = []
+     
     if len(check_vaaa(pos)) > 0:
         #print("vaaa=>")
         #print(check_vaaa(pos))
         final = check_vaaa(pos)
-        expr_vaaa = check(final, 4)
+        #print(final)
+        expr_vaaa = check(final, 4)   
         print(expr_vaaa)
 
     if len(check_vaa(pos)) > 0:
@@ -159,7 +169,4 @@ for i in range(0,len(pos)):
    #print(word[i])
    all_dict[wid[i]]=[word[i],pos[i]]   
 
-
 lwg(relation_df)
-
-
