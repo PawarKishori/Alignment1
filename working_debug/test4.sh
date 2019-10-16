@@ -14,6 +14,7 @@ while [ "$i" -lt $END ]
                 source activate py3.6
                 python3 $HOME_alignment/working_debug/Final_CSV_Generator.py $filename "2."$i
                 python3 $HOME_alignment/working_debug/All_Resources_id_word.py $filename "2."$i
+                python3 $HOME_alignment/working_debug/CSV_to_HTML.py $filename "2."$i
                 conda deactivate
 
                 i=`expr $i + 1`

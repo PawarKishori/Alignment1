@@ -1,10 +1,10 @@
 import csv,sys, os
 tmp_path=os.getenv('HOME_anu_tmp')+'/tmp/'
 
-eng_file_name = 'ai1E'
-sent_no='2.5'
-# eng_file_name = sys.argv[1]
-# sent_no = sys.argv[2]
+#eng_file_name = 'ai1E'
+#sent_no='2.5'
+eng_file_name = sys.argv[1]
+sent_no = sys.argv[2]
 sent_dir = tmp_path + eng_file_name + "_tmp/" + sent_no
 def reading_all_resources():
     all_data=[]
