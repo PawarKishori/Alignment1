@@ -59,7 +59,7 @@ def check_a(pos):
     start_index=[]
     for i in range(len(pos)-1):
         #print("**",pos[i],pos[i-1],pos[i+1])
-        if pos[i]=='AUX' and pos[i-1]!='VERB' and pos[i+1]!='AUX':
+        if pos[i]=='AUX' and pos[i-1]!='VERB' and pos[i+1]!='AUX' and pos[i-1]!='AUX':
             start_index.append(i)
     return start_index
 
@@ -75,15 +75,18 @@ def check(final,num):
     xxx=[];yyy=[]
     for entry in final:
         x=list(range(entry, entry+num))
-        #print(x)
+        #print("In",x)
+        #for index in x:
+        #    indexes_covered_in_all_VPs_of_sentences.append(index)
+        #print("In",indexes_covered_in_all_VPs_of_sentences)
         xx=[];yy=[]
         for i in x:
+        #if i not in indexes_covered_in_all_VPs_of_sentences:
             xx.append(i)
             yy.append(all_dict['P'+str(i+1)][0])
             #print("=>",i)
         xxx.append(xx)
         yyy.append(yy)
-
     #print(xxx)
     #print(yyy)
     return(" ".join(yy))
@@ -104,43 +107,53 @@ def lwg(df):
     
     vaaa = ['VERB', 'AUX', 'AUX', 'AUX']; vaa = ['VERB', 'AUX', 'AUX']; va = ['VERB', 'AUX'] ; v = ['VERB']; a= ['AUX']
     
-    indexes_covered_in_all_VPs_of_sentences = []
      
     if len(check_vaaa(pos)) > 0:
-        #print("vaaa=>")
+        print("vaaa=>")
         #print(check_vaaa(pos))
         final = check_vaaa(pos)
         #print(final)
         expr_vaaa = check(final, 4)   
         print(expr_vaaa)
+        VPs.append(expr_vaaa)
+        print("----------------")
 
     if len(check_vaa(pos)) > 0:
-        #print("vaa=>")
+        print("vaa=>")
         #print(check_vaa(pos))
         final = check_vaa(pos)
         #print(final)
         #print(all_dict)
         expr_vaa=check(final, 3)
         print(expr_vaa)
+        VPs.append(expr_vaa)
+        print("----------------")
        
     
     if len(check_va(pos)) > 0:
-        #print("va=>")
+        print("va=>")
         final = check_va(pos)
         expr_va= check(final, 2)
         print(expr_va)
+        VPs.append(expr_va)
+        print("----------------")
 
     if len(check_v(pos))>0:
-        #print("v=>")
+        print("v=>")
         final = check_v(pos)
         expr_v = check(final,1)
         print(expr_v)
+        VPs.append(expr_v)
+        print("----------------")
     if len(check_a(pos))>0:
-        #print("a=>")
+        print("a=>")
         final = check_a(pos)
         expr_a = check(final,1)
         print(expr_a)
+        VPs.append(expr_a)
+        print("----------------")
     #print(list123(a,pos))
+    return(VPs)
 
 import sys
 import pandas as pd
@@ -148,7 +161,8 @@ import numpy as np
 from collections import OrderedDict 
 import csv
 
-parse_filepath = sys.argv[1] + '/hindi_parser_canonial.dat'
+sent_tmp_path=sys.argv[1]
+parse_filepath = sent_tmp_path + '/hindi_parser_canonial.dat'
 #parse_filepath = sys.argv[1] + '/hindi_dep_parser_original.dat'
 relation_df = create_hindi_dataframe(parse_filepath)
 #print(relation_df)
@@ -169,4 +183,14 @@ for i in range(0,len(pos)):
    #print(word[i])
    all_dict[wid[i]]=[word[i],pos[i]]   
 
-lwg(relation_df)
+#indexes_covered_in_all_VPs_of_sentences = []  #global variable to stom repetation of wrong AUX, but resolved without using it
+VPs=[]
+VPs=lwg(relation_df)
+print(VPs)
+
+#Following code is to generate VP_expr_by_hindi_parser in each directory, which is input of TAM-root generation program:
+with open(sent_tmp_path + '/VP_expr_by_hindi_parser','w') as f:
+    for vp in VPs:
+        f.write(vp+"\n")
+    
+
