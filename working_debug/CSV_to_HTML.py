@@ -27,10 +27,10 @@ import numpy as np
 #Specify path of sentence:
 tmp_path=os.getenv('HOME_anu_tmp')+'/tmp/'
 
-eng_file_name = 'ai1E'
-sent_no = '2.2' #2.29, 2.21, 2.61, 2.14, 2.64
-# eng_file_name = sys.argv[1]
-# sent_no = sys.argv[2]
+#eng_file_name = 'ai1E'
+#sent_no = '2.2' #2.29, 2.21, 2.61, 2.14, 2.64
+eng_file_name = sys.argv[1]
+sent_no = sys.argv[2]
 
 sent_dir = tmp_path + eng_file_name + "_tmp/" + sent_no
 path_tmp =  tmp_path + eng_file_name + "_tmp/"
