@@ -4,7 +4,7 @@ import sys
 
 """
 Created by	-	Saumya Navneet
-Date		-	27/September/2019
+Date		-	14/October/2019
 Purpose		-	To generate word groups based on POS information to help in word alignment.
 Input 		-	Enter the path to 'tmp' folder to iterate on all the translated sentences to generate word grouping.
 Output 		- 	Inside the folder for every translation, a file 'E_Word_Group_Sanity.dat', 'E_Word_Group_Sanity_HTML.dat', 'E_Word_Group_Sanity_MFS.dat' will be created containing details of word group, E_Word_Group_All_Sentences_Sanity.txt for groups of all sentences.
@@ -25,7 +25,8 @@ def english_grouping():
 	output_path = open(all_sentences,"w")
 	sanitylog = [ i.rstrip("\n") for i in open(all_sentences_log).readlines()]
 	for i in sanitylog:
-		sentences.remove(i)
+		if i in sentences:
+			sentences.remove(i)
 	output_path.flush()
 	
 	for sentence in sentences: 	#Change according to the number of sentences
@@ -99,19 +100,6 @@ def english_grouping():
 						out_list.append(temp_list[:])
 						temp_list.clear()
 						temp_list.append(eng[i][0])
-				elif current_word in ["between"]:
-					out_list.append(temp_list[:])
-					temp_list.clear()
-					temp_list.append(eng[i][0])
-					while current_word not in ['and'] and (counter < (len(eng)-1)):
-						counter += 1
-						current_word = eng[counter][2]
-						temp_list.append(eng[counter][0])
-					while current_pos not in ['NOUN','PROPN'] and (counter < (len(eng)-1)):
-						counter += 1
-						current_pos = eng[counter][1]
-						temp_list.append(eng[counter][0])
-					i = counter
 				elif prev_pos in ["DET","ADJ","NUM","NOUN","PROPN","PUNCT","AUX","VERB","PART","CCONJ","SCONJ","CONJ","PRON","ADV"]:
 					out_list.append(temp_list[:])
 					temp_list.clear()
@@ -199,11 +187,12 @@ def english_grouping():
 		final_list = [ current_pos for current_pos in out_list if current_pos ]		#For removing the empty word groups generated
 		output = list()									#List for storing values with actual words
 		
-		string = '"0" '
+		string = '(string "0" '
 		for i in range(0,len(final_list)):
 			for j in range(0,len(final_list[i])):
 				string = string + str(final_list[i][j]) +" "
 			string = string + '"' + str(final_list[i][j]) + '" '
+		string  = string + ")"
 
 		mfs_output_file.write(string)
 

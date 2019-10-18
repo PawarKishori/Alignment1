@@ -1,5 +1,16 @@
 import os, sys, subprocess, glob
 
+"""
+Created by	-	Saumya Navneet
+Date		-	14/October/2019
+Purpose		-	To select one POS out of the given sources.
+Input 		-	Enter the path to 'tmp' folder to iterate on all the translated sentences to generate word grouping.
+Output 		- 	Inside the folder for every translation, a file 'E_Sanity_Check.dat' will be created containing details of word group, E_Sanity_POS_All_Sentences.txt has POS of all sentences in tmp folder, E_Sanity_Log_All_Sentences.txt contains those sentences for which we are not able to select one single POS.
+Files used 	-	E_conll_parse and all_pos_details_combined.dat
+
+For any queries you may drop a message at - saumyanavneet26@gmail.com
+"""
+
 class POS:
 	def wordnet_pos(self, parser_pos_list, numb):
 	
@@ -103,6 +114,7 @@ class POS:
 				parser = (parser_pos[x][2])
 				word = (parser_pos[x][1])
 				relation = (parser_pos[x][3])
+				rel_with = (parser_pos[x][4])
 				
 				pos = []
 				temp = 0 
@@ -117,27 +129,27 @@ class POS:
 				if parser in ["NOUN","VERB","ADJ","ADV"]:			
 					if len(wordnet) == 0 :
 						if len(gcide) == 0:
-							final_fact = str(parser_pos[x][0])+"\t"+word+"\t"+str(parser_pos[x][2])+"\t"+relation+"\tPARSER (NPOS)\n"
+							final_fact = str(parser_pos[x][0])+"\t"+word+"\t"+str(parser_pos[x][2])+"\t"+relation+"\t"+rel_with+"\tPARSER (NPOS)\n"
 						elif len(gcide) == 1 and parser != gcide[0]:
-							final_fact = str(parser_pos[x][0])+"\t"+word+"\t"+str(gcide[0])+"\t"+relation+"\tGCIDE\n"
+							final_fact = str(parser_pos[x][0])+"\t"+word+"\t"+str(gcide[0])+"\t"+relation+"\t"+rel_with+"\tGCIDE\n"
 						elif parser in gcide:
-							final_fact = str(parser_pos[x][0])+"\t"+word+"\t"+str(gcide[0])+"\t"+relation+"\tPARSER and GCIDE\n"
+							final_fact = str(parser_pos[x][0])+"\t"+word+"\t"+str(gcide[0])+"\t"+relation+"\t"+rel_with+"\tPARSER and GCIDE\n"
 					elif len(wordnet) == 1 and parser != wordnet[0]:
-						final_fact = str(parser_pos[x][0])+"\t"+word+"\t"+str(wordnet[0])+"\t"+relation+"\tWORDNET\n"
+						final_fact = str(parser_pos[x][0])+"\t"+word+"\t"+str(wordnet[0])+"\t"+relation+"\t"+rel_with+"\tWORDNET\n"
 					else:
 						if parser in wordnet:
-							final_fact = str(parser_pos[x][0])+"\t"+word+"\t"+str(parser)+"\t"+relation+"\tPARSER and WORDNET\n"
+							final_fact = str(parser_pos[x][0])+"\t"+word+"\t"+str(parser)+"\t"+relation+"\t"+rel_with+"\tPARSER and WORDNET\n"
 						elif temp == 1 and len(pos) == 1: 
-							final_fact = str(parser_pos[x][0])+"\t"+word+"\t"+str(pos[0])+"\t"+relation+"\tWORDNET and GCIDE\n"	
+							final_fact = str(parser_pos[x][0])+"\t"+word+"\t"+str(pos[0])+"\t"+relation+"\t"+rel_with+"\tWORDNET and GCIDE\n"	
 						elif temp == 1 and len(pos) > 1: 
-							final_fact = str(parser_pos[x][0])+"\t"+word+"\t"+str(pos)+"\t"+relation+"\tWORDNET and GCIDE (MPOS)\n"
+							final_fact = str(parser_pos[x][0])+"\t"+word+"\t"+str(pos)+"\t"+relation+"\t"+rel_with+"\tWORDNET and GCIDE (MPOS)\n"
 							all_sentences_log.write(sentence + "\n")
 						else:
 							final_fact = str(parser_pos[x][0])+"\t"+word+"\tERROR \n"	
 							all_sentences_log.write(sentence + "\n")
 					
 				elif parser in ["DET","NUM","PROPN","PUNCT","AUX","PART","CCONJ","SCONJ","CONJ","PRON","ADP"]:
-					final_fact = str(parser_pos[x][0])+"\t"+word+"\t"+str(parser_pos[x][2])+"\t"+relation+"\tPARSER\n"
+					final_fact = str(parser_pos[x][0])+"\t"+word+"\t"+str(parser_pos[x][2])+"\t"+relation+"\t"+rel_with+"\tPARSER\n"
 					
 				else:
 					final_fact = str(parser_pos[x][0])+"\t"+word+"\tERROR\n"	
@@ -194,6 +206,7 @@ class POS:
 					l.append(x[1])			#Stores Word 
 					l.append(x[3])			#Stores POS information of the element
 					l.append(x[7])
+					l.append(x[6])
 					parser_pos_list.append(l[:])	#Storing the value in a list to further operate on
 					l.clear()			#Clearing the list for further processing 
 
