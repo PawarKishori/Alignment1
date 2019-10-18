@@ -70,7 +70,9 @@ def H_id_conversion() :
             elif ")" in str(j) :
                 j=str(j).strip(")").split(" ")
                 temp_list.append(" ".join(hin_id_to_idword_pair[k] for k in j)+")")
-                
+            elif " " in str(j) :
+                j=str(j).split(" ")
+                temp_list.append(" ".join(hin_id_to_idword_pair[k] for k in j))
             else :
                 temp_list.append('0')
         all_rows.append(temp_list)
