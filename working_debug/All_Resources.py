@@ -8,7 +8,7 @@ import os, re, sys, csv, string
 import anchor
 tmp_path=os.getenv('HOME_anu_tmp')+'/tmp/'
 # eng_file_name = 'ai1E'
-# sent_no = '2.2' #2.29, 2.21, 2.61, 2.14, 2.64
+# sent_no = '2.18' #2.29, 2.21, 2.61, 2.14, 2.64
 eng_file_name = sys.argv[1]
 sent_no = sys.argv[2]
 path_tmp= tmp_path + eng_file_name + "_tmp"
@@ -24,18 +24,22 @@ nandani_file = sent_dir +  '/corpus_specific_dic_facts_for_one_sent.dat'
 roja_transliterate_file = sent_dir +  '/Roja_chk_transliterated_words.dat'
 # roja_transliterate_file = path_tmp +  '/results_of_transliteration.dat'
 #html_file = path_tmp +'/'+ eng_file_name +'_table1.html'
-log_file = sent_dir + '/log_htmltocsv'
+log_file = sent_dir + '/All_Resources.log'
 
 k_layer_ids_file= sent_dir + '/H_alignment_parserid-new.csv'
-
-############################################Counting no of Eng Words###############################################
-eng=open(efilename,"r").read().strip("\n")
-no_of_eng_words=len(eng.split("\n"))
 ##############################################CREATING LOG OBJECT##################################################
 if os.path.exists(log_file):
     os.remove(log_file)
 log = open(log_file,'a')
 
+############################################Counting no of Eng Words###############################################
+try :
+    eng=open(efilename,"r").read().strip("\n")
+    no_of_eng_words=len(eng.split("\n"))
+except :
+    eng=open(esent,"r").read().strip("\n")
+#     print(eng)
+    no_of_eng_words=len(eng.split(" "))
 
 # In[346]:
 
@@ -85,8 +89,10 @@ def convert_words_to_ids_in_list(listofwords,id_word_dict) :
 ##############################FUNCTION FOR RETURNING MULTIPLE KEYS FOR VALUES######################################
 def return_key_from_value(dictionary, value):
     ids_to_return=[]
-    for ids, words in dictionary.items():    # for name, age in dictionary.iteritems():  (for Python 2.x)
-        if words == value:
+    for ids, words in dictionary.items(): 
+#         print(words,value)# for name, age in dictionary.iteritems():  (for Python 2.x)
+        if str(words) == str(value):
+#             print("###",ids)
             ids_to_return.append(ids)
         if len(ids_to_return) == 1 :
             id_to_return=ids_to_return[0]
@@ -120,15 +126,19 @@ def creating_h2w_dict():
     try:   
         h2w = create_dict(hfilename, '(H_wordid-word')
 #         print(h2w)
-        for k,v in h2w.items():
-            show_hindi[k] = str(k)+"_"+v
+#         for k,v in h2w.items():
+#             show_hindi[k] = str(k)+"_"+v
 #         print(show_hindi)
         
     except FileNotFoundError:
         print("FILE MISSING: " + hfilename )
         log.write("FILE MISSING: " + hfilename + "\n")
-    return h2w,show_hindi
-h2w,show_hindi=creating_h2w_dict()
+        hin=open(hsent,"r").read().strip("\n")
+        hin=hin.translate(hin.maketrans('', '', string.punctuation))
+        hin=hin.split(" ")
+        h2w = {i+1: hin[i] for i in range(0, len(hin))} 
+    return h2w
+h2w=creating_h2w_dict()
 
 
 # In[352]:
@@ -139,17 +149,24 @@ def creating_e2w_dict():
     show_eng ={}  
     try:   
         e2w = create_dict(efilename, '(E_wordid-word')
+        e2w=dict((k, v.lower()) for k,v in e2w.items())
 #         print(e2w)
            
-        for k,v in e2w.items():
-            show_eng[k] = str(k)+"_"+v
+#         for k,v in e2w.items():
+#             show_eng[k] = str(k)+"_"+v
 #         print(show_hindi)
         
     except FileNotFoundError:
         print("FILE MISSING: " + efilename )
         log.write("FILE MISSING: " + efilename + "\n")
-    return e2w,show_eng
-e2w,show_eng=creating_e2w_dict()
+        eng=open(esent,"r").read().strip("\n")
+        eng=eng.translate(eng.maketrans('', '', string.punctuation))
+        eng=eng.split(" ")
+        e2w = {i+1: eng[i] for i in range(0, len(eng))} 
+    
+#     print(e2w)
+    return e2w
+e2w=creating_e2w_dict()
 
 
 # In[353]:
@@ -193,36 +210,45 @@ def get_E_H_Ids_mfs(filename):
             hwords = new_entry[3]
 #             print(ewords,hwords)
         if " " in ewords or " " in hwords :
-            if ewords in e_sent and hwords in h_sent:
-                esearch= e_sent.find(ewords)+1
-                hsearch= h_sent.find(hwords)+1
-                ewords=ewords.split(" ")
-                hwords=hwords.split(" ")
-                e_pos.append(esearch)
-                h_pos.append(hsearch)
+            ewords=ewords.split()
+            e_len=len(ewords)
+            e_sent=e_sent.split()
+            for i,sublist in enumerate((e_sent[i:i+e_len] for i in range(len(e_sent)))):
+                if ewords==sublist:
+                    esearch=i+1
+            hwords=hwords.split()
+            h_len = len(hwords)
+            h_sent=h_sent.split()
+            for i,sublist in enumerate((h_sent[i:i+h_len] for i in range(len(h_sent)))):
+                if hwords==sublist:
+                    hsearch=i+1
+            e_pos.append(esearch)
+            h_pos.append(hsearch)
             for pos in range(1,len(ewords)):
                 e_pos.append(e_pos[pos-1]+1)
             for pos in range(1,len(hwords)):
-                h_pos.append(h_pos[pos-1]+1)
+                h_pos.append(h_pos[pos-1]+1) 
             
             head_in_english = e_pos[-1] 
             #This will change once we will get head id infrmation from english group.
             hindi_group = " ".join([str(i) for i in h_pos])+")"
+            
             tuple_list=[]
             tmp[head_in_english] = hindi_group
             tmp[e_pos[0]] = "(~"
-            for i in range(1,len(e_pos)) :
+            for i in e_pos :
                 if i != head_in_english and i != e_pos[0]:
                     tmp[i] = "~"   
         else:
-#                 print("one-to-one entry")
-#                 print(e2w)
-#                 print(ewords)
+#                 
                 eid = return_key_from_value(e2w, ewords)
+#                 print(e2w)
+#                 print(eid)
                 hid = return_key_from_value(h2w, hwords)
 #                 print(eid)
                 final_eids = eid
                 final_hids = hid           #IMP
+#                 print(final_hids)
                 if final_eids not in tmp:
                     tmp[final_eids] = final_hids
 
@@ -254,6 +280,7 @@ def get_E_H_dict_Ids(filename):
             hword = entry.split("\t")[2]
 #             print(eword, hword)
             eid = return_key_from_value(e2w, eword)
+            
             hid = return_key_from_value(h2w, hword)
 #             print(eid, hid)
             tmp[str(eid)] = str(hid)
@@ -372,8 +399,7 @@ def Nandani_Dict():
 
 
 # In[362]:
-
-
+#############################################BHARATVANI_DICT####################################################
 def Bharatvani_Dict():
     tech_dict_list=[]
     try:
@@ -454,39 +480,56 @@ def Kishori_exact_match_WSD_modulo():
 ##########################################INTEGRATION##############################################################
 
 def integrating_all_rows():
+    try :
         row0=A_layer()
         row1=K_exact_match_Roja()
         row2=K_exact_without_vib_Roja()
         row3=K_partial_Roja()
         row4=K_root_Roja()
         row5=K_dict_Roja()
-        row6=Nandani_Dict()
-        row7=Bharatvani_Dict()
-        row8=Transliteration_Dict()
-        row9=Kishori_exact_match_WSD_modulo()
-        print(h2w)
-        print(e2w)
-        print("0 :",row0)
-        print("1 :",row1)#De
-        print("2 :",row2)
-        print("3 :",row3)
-        print("4 :",row4)
-        print("5 :",row5)
-        print("6 :",row6)#
-        print("7 :",row7)#
-        print("8 :",row8)#
-        print("9 :",row9)#
-        with open(sent_dir+'/All_Resources.csv', 'w') as csvfile :
-            csvwriter = csv.writer(csvfile)
-            csvwriter.writerow(row0)
-            csvwriter.writerow(row1)
-            csvwriter.writerow(row2)
-            csvwriter.writerow(row3)
-            csvwriter.writerow(row4)
-            csvwriter.writerow(row5)
-            csvwriter.writerow(row6)
-            csvwriter.writerow(row7)
-            csvwriter.writerow(row8)
-            csvwriter.writerow(row9)
+    except :
+        print("FILE MISSING: " + k_layer_ids_file  )
+        log.write("FILE MISSING: " + k_layer_ids_file + "\n")
+        row0=[0]* (no_of_eng_words+1)
+        row0[0] = 'English_word_ids'
+        row1=[0]* (no_of_eng_words+1)
+        row1[0] = 'K_exact_match(Roja)'
+        row2=[0]* (no_of_eng_words+1)
+        row2[0] = 'K_exact_without_vib'
+        row3=[0]* (no_of_eng_words+1)
+        row3[0] = 'K_partial'
+        row4=[0]* (no_of_eng_words+1)
+        row4[0] = 'K_root'
+        row5=[0]* (no_of_eng_words+1)
+        row5[0] = 'K_dict'
+        
+    row6=Nandani_Dict()
+    row7=Bharatvani_Dict()
+    row8=Transliteration_Dict()
+    row9=Kishori_exact_match_WSD_modulo()
+#     print(h2w)
+#     print(e2w)
+#     print("0 :",row0)
+#     print("1 :",row1)#De
+#     print("2 :",row2)
+#     print("3 :",row3)
+#     print("4 :",row4)
+#     print("5 :",row5)
+#     print("6 :",row6)#
+#     print("7 :",row7)#
+#     print("8 :",row8)#
+#     print("9 :",row9)#
+    with open(sent_dir+'/All_Resources.csv', 'w') as csvfile :
+        csvwriter = csv.writer(csvfile)
+        csvwriter.writerow(row0)
+        csvwriter.writerow(row1)
+        csvwriter.writerow(row2)
+        csvwriter.writerow(row3)
+        csvwriter.writerow(row4)
+        csvwriter.writerow(row5)
+        csvwriter.writerow(row6)
+        csvwriter.writerow(row7)
+        csvwriter.writerow(row8)
+        csvwriter.writerow(row9)
 integrating_all_rows()
 
