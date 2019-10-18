@@ -4,7 +4,7 @@ import sys
 
 """
 Created by	-	Prashant Raj & Saumya Navneet
-Date		-	27/September/2019
+Date		-	14/October/2019
 Purpose		-	To generate local groups based on POS information to help in word alignment.
 Input 		-	Enter the name of 'tmp' folder to iterate on all the translated sentences to generate word grouping.
 Output 		- 	Inside the folder for every translation, a file 'H_Word_Group.txt', 'H_Word_Group_MFS.txt', 'H_group_HTML.txt'' will be created containing details of word group and a single file 'H_Word_Group_All_Sentences.txt' containing details of groupig of all sentences is formed in the tmp folder.
@@ -33,11 +33,11 @@ def hindi_group():
 		#Reading the file as an input
 		hindifile = open(conll_path).readlines()
 
-		outpath = str(sentence)+'/H_Word_Group.txt'
+		outpath = str(sentence)+'/H_Word_Group.dat'
 		output_file = open(outpath,"w")
 		output_file.flush()
 
-		outpathHTML = str(sentence) + '/H_group_HTML.txt'
+		outpathHTML = str(sentence) + '/H_group_HTML.dat'
 		outHTML = open(outpathHTML,'w')
 		outHTML.flush()
 
@@ -112,7 +112,7 @@ def hindi_group():
 				continue
 				
 			elif current_pos in ["ADP"]:
-				if current_word in ["kA","kI","ke","ko","meM","ne","par","se","vAlI","para"]:
+				if current_word in ["kA","kI","ke","ko","meM","ne","se","par","para","vAlA","vAlI","vAle"]:
 					temp_list.append(hin[i][0])
 					if next_word in ["liye","lie","se","xvArA","bIca","xOrAna"]:
 						counter += 1 
