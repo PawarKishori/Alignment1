@@ -1,15 +1,13 @@
 #This program creates a transliteration dictionary for entire corpus once.
 
 #This program calls Roja mam's program which runs in python2
-#This program imports commands which is depricated in python3, hence this code also has python2 dependency
-
 
 #import check_transliteration.py as ct                          ##Pending task to do, once roja mam completes this will be complete
 
 
 def remove_punct_from_word(word):
-    #print(word, word.strip(string.punctuation))
-    return(word.strip(string.punctuation))
+    word=word.translate(word.maketrans('','',string.punctuation))
+    return(word)
 
 
 def extract_only_words_from_sent(sent):
@@ -75,8 +73,8 @@ def transliterate_Dict():
                 #print(e,h)
                 call_roja_prog = "python "+roja_prog_path+" "+ e + " " + h +" "+ dict_path+"/Sound-dic.txt"
                 #print(e,h,commands.getoutput(call_roja_prog))
-                if commands.getoutput(call_roja_prog)=="Given word is transliterate word":
-                    print(call_roja_prog)
+                if subprocess.getoutput(call_roja_prog)=="Given word is transliterate word":
+                    #print(call_roja_prog)
                     print(e,h)
                     str_temp=e +" <> "+ h
                     if str_temp not in final :
@@ -87,7 +85,7 @@ def transliterate_Dict():
 
 
 import sys, string, os, itertools
-import commands
+import subprocess
 e_corpus=sys.argv[1]
 h_corpus=sys.argv[2]
 
