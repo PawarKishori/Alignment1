@@ -1,5 +1,5 @@
-tmp_path=$HOME_anu_tmp/tmp/$1
-read -p "Enter English Corpus name : " e
-read -p "Enter Hindi Corpus name : " h
-echo $tmp_path
-python3 $HOME_alignment/Transliteration/Transliterate_Dict.py "${tmp_path}/${e}" "${tmp_path}/${h}"   
+source activate python2.7
+python $HOME_alignment/Transliteration/Transliterate_Dict.py $1 $2  
+conda deactivate
+
+python3 $HOME_alignment/Transliteration/Acronym_Dict.py $1 $2
