@@ -6,33 +6,64 @@
 
 import csv,sys, os, string
 tmp_path=os.getenv('HOME_anu_tmp')+'/tmp/'
-#eng_file_name = 'ai1E'
-#sent_no='2.77'
+# eng_file_name = 'ai2E'
+# sent_no='2.8'
 eng_file_name = sys.argv[1]
 sent_no = sys.argv[2]
 sent_dir = tmp_path + eng_file_name + "_tmp/" + sent_no
-e_sent_file=sent_dir+"/E_sentence"
-h_sent_file=sent_dir+"/H_sentence"
+e_file=sent_dir+"/E_wordid-word_mapping.dat"
+h_file=sent_dir+"/H_wordid-word_mapping.dat"
+def create_dict(filename,string):
+    with open(filename,"r") as f1: 
+        text = f1.read().split("\n")
+        while("" in text) :
+            text.remove("")
+        p2w = {}
+        for line in text:
+            t = line.lstrip(string).strip(')').split("\t")
+            p2w[int(t[1].lstrip("P"))] = t[2]
+    return(p2w)
 def eng_id_to_idword_pair_hash():
-    id_to_word_pair={}
-    e_sent=open(e_sent_file,"r").read().strip("\n")
-    e_sent = e_sent.translate(e_sent.maketrans('', '', string.punctuation))
-    e_sent = e_sent.split()
-    for index,word in enumerate(e_sent):
-        temp=str(index+1)+"_"+word
-        id_to_word_pair[str(index+1)]=temp
-    return id_to_word_pair
+    e2w=[]
+    show_eng ={}  
+    try:   
+        e2w = create_dict(e_file, '(E_wordid-word')
+        e2w=dict((k, v.lower()) for k,v in e2w.items())
+#         print(e2w)
+           
+        for k,v in e2w.items():
+            show_eng[k] = str(k)+"_"+v
+#         print(show_hindi)
+        
+    except FileNotFoundError:
+        print("FILE MISSING: " + e_file )
+        log.write("FILE MISSING: " + e_file + "\n")
+    
+#     print(e2w)
+    return show_eng
+    
 eng_id_to_idword_pair=eng_id_to_idword_pair_hash()
-
+print(eng_id_to_idword_pair)
+for i in eng_id_to_idword_pair :
+    print
 def hin_id_to_idword_pair_hash():
-    id_to_word_pair={}
-    h_sent=open(h_sent_file,"r").read().strip("\n")
-    h_sent = h_sent.translate(h_sent.maketrans('', '', string.punctuation))
-    h_sent = h_sent.split()
-    for index,word in enumerate(h_sent):
-        temp=str(index+1)+"_"+word
-        id_to_word_pair[str(index+1)]=temp
-    return id_to_word_pair
+    h2w=[]
+    show_hin ={}  
+    try:   
+        h2w = create_dict(h_file, '(H_wordid-word')
+        h2w=dict((k, v.lower()) for k,v in h2w.items())
+#         print(e2w)
+           
+        for k,v in h2w.items():
+            show_hin[k] = str(k)+"_"+v
+#         print(show_hindi)
+        
+    except FileNotFoundError:
+        print("FILE MISSING: " + h_file )
+        log.write("FILE MISSING: " + h_file + "\n")
+    
+#     print(e2w)
+    return show_hin
 hin_id_to_idword_pair=hin_id_to_idword_pair_hash()
 # print(hin_id_to_idword_pair)
 
@@ -47,8 +78,10 @@ all_resources=reading_all_resources()
 def E_id_conversion():
     row0=[]
     row0.append("English_Word")
+    print(row0)
     for i in all_resources[0][1:] :
-        row0.append(eng_id_to_idword_pair[str(i)])
+#         print(eng_id_to_idword_pair[i])
+        row0.append(eng_id_to_idword_pair[int(i)])
     return row0
 row0=E_id_conversion()
 def H_id_conversion() :
@@ -61,18 +94,18 @@ def H_id_conversion() :
             if str(j) != '0' and "(" not in str(j) and " " not in str(j) and ")" not in str(j):
                 if "/" not in str(j):
                     if " " not in str(j):
-                        temp_list.append(hin_id_to_idword_pair[str(j)])  
+                        temp_list.append(hin_id_to_idword_pair[int(j)])  
                 elif "/" in str(j):
                     j=str(j).split("/")
-                    temp_list.append("/".join(hin_id_to_idword_pair[k] for k in j))
+                    temp_list.append("/".join(hin_id_to_idword_pair[int(k)] for k in j))
             elif "(" in str(j):
                 temp_list.append(j)
             elif ")" in str(j) :
                 j=str(j).strip(")").split(" ")
-                temp_list.append(" ".join(hin_id_to_idword_pair[k] for k in j)+")")
+                temp_list.append(" ".join(hin_id_to_idword_pair[int(k)] for k in j)+")")
             elif " " in str(j) :
                 j=str(j).split(" ")
-                temp_list.append(" ".join(hin_id_to_idword_pair[k] for k in j))
+                temp_list.append(" ".join(hin_id_to_idword_pair[int(k)] for k in j))
             else :
                 temp_list.append('0')
         all_rows.append(temp_list)
@@ -88,6 +121,5 @@ def creating_new_csv():
                 
 creating_new_csv()
 #print(all_resources)
-
 
 
