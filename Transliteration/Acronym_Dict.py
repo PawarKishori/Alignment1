@@ -53,8 +53,11 @@ def find_acronym():
         for h in h_words :
             if h == h_word :
                 temp_str=i+" <> "+h
-                final.append(temp_str)
+                if temp_str not in final:
+                    final.append(temp_str)
+
     for i in final :
+        print("Acronym:",i)
         fi.write(i+"\n")
 
 
@@ -63,7 +66,7 @@ e_sen=sys.argv[1]
 h_sen=sys.argv[2]
 dict_path = os.getenv('HOME_alignment')+'/Transliteration/dictionary'
 Acro_Dict=dict_path+"/Acronym_Dict"
-fi=open(dict_path+"/lookups/Lookup_transliteration_" + e_sen + ".txt", "a")
+fi=open(dict_path+"/lookups/Lookup_transliteration_acronym" + e_sen + ".txt", "w")
 #tmp_path="/".join(sys.argv[2].split("/")[:-1])
 #print(tmp_path)
 #fi=open(tmp_path+"/Acronym.txt",'w+')
