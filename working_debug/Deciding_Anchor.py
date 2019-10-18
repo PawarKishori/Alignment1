@@ -6,7 +6,7 @@ tmp_path=os.getenv('HOME_anu_tmp')+'/tmp/'
 eng_file_name = sys.argv[1]
 sent_no = sys.argv[2]
 sent_dir = tmp_path + eng_file_name + "_tmp/" + sent_no
-log_file = sent_dir + "Deciding_Anchor.log"
+log_file = sent_dir + "/Deciding_Anchor.log"
 ##############################################CREATING LOG OBJECT##################################################
 if os.path.exists(log_file):
     os.remove(log_file)
