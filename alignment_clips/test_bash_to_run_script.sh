@@ -4,14 +4,16 @@ END=`wc -l $1 | awk '{print $1}'`
 END=`expr $END + 1`
 #END=102
 
-python3 $HOME_alignment/alignment_clips/e_idgenerator.py $1
-python3 $HOME_alignment/alignment_clips/h_idgenerator.py $1
+#python3 $HOME_alignment/alignment_clips/e_idgenerator.py $1
+#python3 $HOME_alignment/alignment_clips/h_idgenerator.py $1
 #python3 $HOME_alignment/alignment_clips/pandas_generalised.py $1    #Old code Apratim
 for i in $(seq 1 $END)
 do
         sentence_dir='2.'$i
         echo $sentence_dir
         tmp_path=$HOME_anu_tmp/tmp/$1_tmp/$sentence_dir
+
+
         python3 $HOME_alignment/alignment_clips/Generating_Anchor_Facts.py $1 "2."$i    #Few changes by Jagrati
 
         cd $tmp_path
