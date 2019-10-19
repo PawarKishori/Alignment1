@@ -28,9 +28,10 @@ def english_grouping():
 		if i in sentences:
 			sentences.remove(i)
 	output_path.flush()
-	
 	for sentence in sentences: 	#Change according to the number of sentences
-	
+		print("\n\n",sentence)
+		print("English Grouping")
+		
 		#Reading the information of individual sentences
 		sanity_path = str(sentence) + '/E_Sanity_Check.dat'
 		sanityfile = open(sanity_path).readlines()
@@ -185,6 +186,7 @@ def english_grouping():
 		temp_list.clear()					#List cleared for further processing	
 		
 		final_list = [ current_pos for current_pos in out_list if current_pos ]		#For removing the empty word groups generated
+		print("\n",final_list)
 		output = list()									#List for storing values with actual words
 		
 		string = '(string "0" '

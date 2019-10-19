@@ -174,7 +174,7 @@ class POS:
 		all_sentences_log = open(all_sent_log,'a')
 
 		for sentence in sentences:
-			
+			print("\n",sentence)
 			#Reading the POS information of individual sentences
 			conll_path = str(sentence) + '/E_conll_parse'
 

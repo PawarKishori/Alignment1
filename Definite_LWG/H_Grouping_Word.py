@@ -26,6 +26,8 @@ def hindi_group():
 	
 
 	for sentence in sentences: 	#Change according to the number of sentences
+		print("\n\n",sentence)
+		print("Hindi Grouping")
 		
 		#Reading the conll parser information of individual sentences
 		conll_path = str(sentence) + '/hindi_parser_canonial.dat'
@@ -156,6 +158,7 @@ def hindi_group():
 		
 		
 		final_list = [ current_pos for current_pos in out_list if current_pos ]		#For removing the empty word groups generated
+		print(final_list)
 		output = list()						#List for storing values with actual words
 		
 		string = '"0" '
