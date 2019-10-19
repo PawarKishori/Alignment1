@@ -14,7 +14,7 @@ cp $2 $HOME_alignment_manju/$2
 cd $HOME_alignment_manju
 source activate python2.7               #irshad's parser needs 2.7
 echo "Time taken by alignment_manju module:"
-#time sh run_alignment.sh $1 $2 general nsdp
+time sh run_alignment.sh $1 $2 general nsdp
 echo "End of manju mam's module: "$1 $2
 conda deactivate
 ##==========================================================================
@@ -39,10 +39,10 @@ sh $HOME_alignment/canonical/remove_nukta.sh $1
 #RUN ONLY ONCE:
 #sh $HOME_alignment/tech_dict/run_tech-dict_first_run.sh GeoE GeoH dictionary/technical_geography_dictionary Lookup_dict
 #---
-sh $HOME_alignment/tech_dict/run_tech-dict.sh $1 $2 Lookup_dict
+sh $HOME_alignment/tech_dict/run_tech-dict.sh $1 $2 Lookup_dict_ai
 ##==========================================================================
 #cd $HOME_alignment
-#sh $HOME_alignment/run_alignment.sh $1 $2 
+sh $HOME_alignment/run_alignment.sh $1 $2 
 ##==========================================================================
 ##Roja Transliteration Module
 source activate python2.7               #irshad's parser needs 2.7
@@ -52,13 +52,14 @@ conda deactivate
 ##==========================================================================
 ##Parser's Module
 source activate py3.6
-#python $HOME_alignment/H_Createdata.py $1
-#python $HOME_alignment/E_Createdata.py $1
-
+python $HOME_alignment/H_Createdata.py $1
+python $HOME_alignment/E_Createdata.py $1
+conda deactivate
 #sh $HOME_alignment/hindi_wordid_sanity.sh $1
 ##=========================================================================
 #python $HOME_alignment/Definite_LWG/E_Grouping_Word_Dependency.py $1
 #python $HOME_alignment/Definite_LWG/H_Grouping_Word.py $1
+source activate py3.6
 sh $HOME_alignment/Definite_LWG/Run_Grouping_Files.sh $1
 
 conda deactivate 
@@ -77,12 +78,12 @@ sh $HOME_alignment/csv_creation/create_html_csv.sh $1
 ##=========================================================================
 ##Align_debug Module
 cp -r $HOME_alignment/styles $HOME_anu_tmp/tmp/$1_tmp/
-cp -r $HOME_alignment/ihss102.pdf $HOME_anu_tmp/tmp/$1_tmp/
-cp -r $HOME_alignment/iess102.pdf $HOME_anu_tmp/tmp/$1_tmp/
-cp $HOME_alignment/working_debug/index.html $HOME_anu_tmp/tmp/$1_tmp/
+#cp -r $HOME_alignment/ihss102.pdf $HOME_anu_tmp/tmp/$1_tmp/
+#cp -r $HOME_alignment/iess102.pdf $HOME_anu_tmp/tmp/$1_tmp/
+#cp $HOME_alignment/working_debug/index.html $HOME_anu_tmp/tmp/$1_tmp/
 
 #One time task. alignment_debug_org.sh needed to be placed in following folder as per it's dependency
-cp $HOME_alignment/working_debug/alignment_debug_org.sh $HOME_anu_test/miscellaneous/SMT/phrasal_alignment/align_debug
+#cp $HOME_alignment/working_debug/alignment_debug_org.sh $HOME_anu_test/miscellaneous/SMT/phrasal_alignment/align_debug
 
 sh $HOME_alignment/working_debug/test0.sh $1
 
