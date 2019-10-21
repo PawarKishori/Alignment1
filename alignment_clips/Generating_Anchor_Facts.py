@@ -61,7 +61,7 @@ def generate_starting_anchor():
                     for j in range(i + 1, len(starting)):
                         if ")" in starting[j]:
                             print(
-                                "(anchor_type-english_ids-mfs-hindi_ids starting "
+                                "(anchor_type-english_ids-mfs-hindi_ids anchor "
                                 + str(i + 1)
                                 + " "
                                 + str(j + 1)
@@ -70,7 +70,7 @@ def generate_starting_anchor():
                                 ")",
                             )
                             multiword_fact = (
-                                "(anchor_type-english_ids-mfs-hindi_ids starting "
+                                "(anchor_type-english_ids-mfs-hindi_ids anchor"
                                 + str(i + 1)
                                 + " "
                                 + str(j + 1)
