@@ -1,9 +1,13 @@
 (load "new_alignment.clp")
 (bind ?*hpath* (str-cat ?*hpath* "/alignment_clips/check.clp"))
 (load ?*hpath*)
-(load-facts "E_clip_deffact.dat")
-(load-facts "H_clip_deffact.dat")
-(load-facts "deffact_anchors.dat")
+;(load-facts "E_clip_deffact.dat")
+;(load-facts "H_clip_deffact.dat")
+;(load-facts "deffact_anchors.dat")
+(load-facts "E_Group_Facts_Parser_POS.dat")
+(load-facts "H_Group_Facts_Parser_POS.dat")
+(load-facts "Anchor_Facts.dat")
+
 (run)
 (facts)
 ;(save-facts "save_facts1" local final_english_id-final_hindi_id)                             ;final_set-eid-hid
