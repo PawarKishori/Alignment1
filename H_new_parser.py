@@ -39,7 +39,8 @@ for i in range(1,101):
     sent_number = str(i)
     rawFile =  folder_name +'/2.'+sent_number+'/H_sentence'  #change_in_eng
     which_lang= rawFile.split('/')[-1].split('_')[0]
-    parse = folder_name +'/2.'+sent_number+'/hindi_dep_parser_original.dat' #change_in_eng
+    #parse = folder_name +'/2.'+sent_number+'/hindi_dep_parser_original.dat' #change_in_eng
+    parse = folder_name +'/2.'+sent_number+'/hindi_parser_canonial.dat' #change_in_eng
     tmpSentPath = folder_name+ '/2.'+sent_number+'/'
     print("============",sent_number)
     

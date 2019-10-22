@@ -41,7 +41,7 @@ def unknown_function():
 
 
 #MAin function--------------------------------------------------------------------------------------------------------------------------------------------------
-for k in range(1,103):
+for k in range(1,116):
     try:
                 print()
                 print("----------------------------")
@@ -57,12 +57,14 @@ for k in range(1,103):
                 print(column_of_names)
                 # print(df.iloc[:,0])
                 for i in range(row_length):
-                    if((df.iloc[:, column_of_names].tolist())[i]) == "Potential anchors v2":
+                    #if((df.iloc[:, column_of_names].tolist())[i]) == "Potential anchors v2":
+                    if((df.iloc[:, column_of_names].tolist())[i]) == "Potential anchors (exact)":
                             #print(((df.iloc[:, column_of_names].tolist())[i])," ",((df.iloc[:, column_of_names].tolist())[i+1]))                         To check what's getting printed(Starting anchor and potential anchor)
                             store_potential = i
                             break
                 for i in range(row_length):
-                    if((df.iloc[:, column_of_names].tolist())[i]) == "Starting anchor v2":
+                    #if((df.iloc[:, column_of_names].tolist())[i]) == "Starting anchor v2":
+                    if((df.iloc[:, column_of_names].tolist())[i]) == "Starting anchor":
                             #print(((df.iloc[:, column_of_names].tolist())[i])," ",((df.iloc[:, column_of_names].tolist())[i+1]))                         To check what's getting printed(Starting anchor and potential anchor)
                             store_start = i
                             break

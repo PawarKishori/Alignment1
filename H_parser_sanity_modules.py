@@ -25,7 +25,9 @@ def children_check(relation_df, filename, error_flag, path):
 	list2_1 = []
 	for i in relation_df.index:
 		if relation_df.RELATION[i] in list1:
-			list2_0.append(relation_df.PID[i])
+			child_id = relation_df.PIDWITH[i]
+			if relation_df.RELATION[child_id] != 'mwe':
+				list2_0.append(relation_df.PID[i])
 		if relation_df.RELATION[i] == 'punct':
 			list2_1.append(relation_df.PID[i])
 	list3 = []
@@ -36,6 +38,7 @@ def children_check(relation_df, filename, error_flag, path):
 		if relation_df.PIDWITH[i] in list2_1 and relation_df.RELATION[i] != "punct":
 			if relation_df.PIDWITH[i] not in list3:
 				list3.append(relation_df.PIDWITH[i])
+	
 	f = open(path+'/H_sanity_log.dat', 'a+')
 	for i in range(0, len(list3)):
 		f.write(str(filename)+'\t'+str(list3[i])+'\t'+relation_df.WORD[list3[i]]+'\t'+relation_df.RELATION[list3[i]]+' has children\n')

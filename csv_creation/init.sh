@@ -31,7 +31,7 @@ do
     rm csv_word.py
     rm extract_anu_root.py
     rm extract_hindi_id_root.py
-    rm vibhakti
+    #rm vibhakti
     #cd ../../shell
     cd $current
 #	# Print the values

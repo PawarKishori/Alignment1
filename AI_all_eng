@@ -1,0 +1,368 @@
+What is AI?
+Artificial Intelligence is concerned with the design of intelligence in an artificial device.
+The term was coined by McCarthy in 1956.
+What is intelligence?
+Is it that which characterize humans?
+Or is there an absolute standard of judgement?
+A system with intelligence is expected to behave as intelligently as a human.
+A system with intelligence is expected to behave in the best possible manner.
+What type of behavior are we talking about?
+Are we looking at the thought process or reasoning ability of the system?
+Or are we only interested in the final manifestations of the system in terms of its actions?
+Given this scenario different interpretations have been used by different researchers as defining the scope and view of Artificial Intelligence.
+One view is that artificial intelligence is about designing systems that are as intelligent as humans.
+This view involves trying to understand human thought and an effort to build machines that emulate the human thought process.
+This view is the cognitive science approach to AI.
+The second approach is best embodied by the concept of the Turing Test.
+Turing held that in future computers can be programmed to acquire abilities rivaling human intelligence.
+As part of his argument Turing put forward the idea of an 'imitation game', in which a human being and a computer would be interrogated under conditions where the interrogator would not know which was which, the communication being entirely by textual messages.
+Turing argued that if the interrogator could not distinguish them by questioning, then it would be unreasonable not to call the computer intelligent.
+Turing's 'imitation game' is now usually called 'the Turing test' for intelligence.
+Consider the following setting.
+There are two rooms, A and B.
+One of the rooms contains a computer.
+The other contains a human.
+The interrogator is outside and does not know which one is a computer.
+He can ask questions through a teletype and receives answers from both A and B.
+The interrogator needs to identify whether A or B are humans.
+To pass the Turing test, the machine has to fool the interrogator into believing that it is human.
+Logic and laws of thought deals with studies of ideal or rational thought process and inference.
+The emphasis in this case is on the inferencing mechanism, and its properties.
+That is how the system arrives at a conclusion, or the reasoning behind its selection of actions is very important in this point of view.
+The soundness and completeness of the inference mechanisms are important here.
+The fourth view of AI is that it is the study of rational agents.
+This view deals with building machines that act rationally.
+The focus is on how the system acts and performs, and not so much on the reasoning process.
+A rational agent is one that acts rationally, that is, is in the best possible manner.
+While studying the typical range of tasks that we might expect an "intelligent entity" to perform, we need to consider both "common-place" tasks as well as expert tasks.
+These tasks cannot be done by all people, and can only be performed by skilled specialists.
+Clearly tasks of the first type are easy for humans to perform, and almost all are able to master them.
+The second range of tasks requires skill development and/or intelligence and only some specialists can perform them well.
+However, when we look at what computer systems have been able to achieve to date, we see that their achievements include performing sophisticated tasks like medical diagnosis, performing symbolic integration, proving theorems and playing chess.
+On the other hand it has proved to be very hard to make computer systems perform many routine tasks that all humans and a lot of animals can do.
+Examples of such tasks include navigating our way without running into things, catching prey and avoiding predators.
+Humans and animals are also capable of interpreting complex sensory information.
+We are able to recognize objects and people from the visual image that we receive.
+We are also able to perform complex social functions.
+This discussion brings us back to the question of what constitutes intelligent behaviour.
+AI systems are in everyday use for identifying credit card fraud, for advising doctors, for recognizing speech and in helping complex planning tasks.
+Then there are intelligent tutoring systems that provide students with personalized attention.
+Thus AI has increased understanding of the nature of intelligence and found many applications.
+It has helped in the understanding of human reasoning, and of the nature of intelligence.
+It has also helped us understand the complexity of modeling human reasoning.
+Strong AI aims to build machines that can truly reason and solve problems.
+These machines should be self aware and their overall intellectual ability needs to be indistinguishable from that of a human being.
+Excessive optimism in the 1950s and 1960s concerning strong AI has given way to an appreciation of the extreme difficulty of the problem.
+Strong AI maintains that suitably programmed machines are capable of cognitive mental states.
+Weak AI deals with the creation of some form of computer-based artificial intelligence that cannot truly reason and solve problems, but can act as if it were intelligent.
+Weak AI holds that suitably programmed machines can simulate human cognition.
+Applied AI aims to produce commercially viable "smart" systems such as, for example, a security system that is able to recognise the faces of people who are permitted to enter a particular building.
+Applied AI has already enjoyed considerable success.
+Cognitive AI computers are used to test theories about how the human mind works for example, theories about how we recognise faces and other objects, or about how we solve abstract problems.
+Today's successful AI systems operate in well-defined domains and employ narrow, specialized knowledge.
+Common sense knowledge is needed to function in complex, open-ended worlds.
+Such a system also needs to understand unconstrained natural language.
+However these capabilities are not yet fully present in today's intelligent systems.
+Today's AI systems have been able to achieve limited success in some of these tasks.
+In Computer vision, the systems are capable of face recognition.
+In Robotics, we have been able to make vehicles that are mostly autonomous.
+In Natural language processing, we have systems that are capable of simple machine translation.
+Today's Expert systems can carry out medical diagnosis in a narrow domain.
+Speech understanding systems are capable of recognizing several thousand words continuous speech.
+Planning and scheduling systems had been employed in scheduling experiments with the Hubble Telescope.
+The Learning systems are capable of doing text categorization into about 1000 topics.
+What can AI systems not do yet?
+Understand natural language robustly (e.g., read and understand articles in a newspaper).
+Surf the web.
+Interpret an arbitrary visual scene.
+Learn a natural language.
+Construct plans in dynamic real-time domains.
+Exhibit true autonomy and intelligence.
+Intellectual roots of AI date back to the early studies of the nature of knowledge and reasoning.
+The dream of making a computer imitate humans also has a very early history.
+The concept of intelligent machines is found in Greek mythology.
+There is a story in the 8th century about Pygmalion Olio, the legendary king of Cyprus.
+He fell in love with an ivory statue he made to represent his ideal woman.
+The king prayed to the goddess Aphrodite, the goddess miraculously brought the statue to life.
+Other myths involve human-like artifacts.
+As a present from Zeus to Europa, Hephaestus created Talos, a huge robot.
+Talos was made of bronze and his duty was to patrol the beaches of Crete.
+Aristotle developed an informal system of syllogistic logic, which is the basis of the first formal deductive reasoning system.
+Early in the 17th century, Descartes proposed that bodies of animals are nothing more than complex machines.
+Pascal in 1642 made the first mechanical digital calculating machine.
+In the 19th century, George Boole developed binary algebra representing (some) "laws of thought."
+Charles Babbage and Ada Byron worked on programmable mechanical calculating machines.
+In the late 19th century and early 20th century, mathematical philosophers like Gottlob Frege, Bertram Russell, Alfred North Whitehead, and Kurt Gödel built on Boole's initial logic concepts to develop mathematical representations of logic problems.
+The advent of electronic computers provided a revolutionary advance in the ability to study intelligence.
+In 1943 McCulloch & Pitts developed a Boolean circuit model of brain.
+In 1950 Turing wrote an article on "Computing Machinery and Intelligence" which articulated a complete vision of AI.
+Turing's paper talked of many things, of solving problems by searching through the space of possible solutions, guided by heuristics.
+He illustrated his ideas on machine intelligence by reference to chess.
+He even propounded the possibility of letting the machine alter its own instructions so that machines can learn from experience.
+In 1956 a famous conference took place in Dartmouth.
+The conference brought together the founding fathers of artificial intelligence for the first time.
+In this meeting the term "Artificial Intelligence" was adopted.
+The years from 1969 to 1979 marked the early development of knowledge-based systems.
+Logic based languages like Prolog and Planner were developed.
+Around 1985, neural networks return to popularity.
+In 1988, there was a resurgence of probabilistic and decision-theoretic methods.
+The early AI systems used general systems, little knowledge.
+AI researchers realized that specialized knowledge is required for rich tasks to focus reasoning.
+A system capable of translations between people speaking different languages will be a remarkable achievement of enormous economic and cultural benefits.
+Machine translation is one of the important fields of endeavour in AI.
+While some translation systems have been developed, there is a lot of scope for improvement in translation quality.
+In space exploration, robotic space probes autonomously monitor their surroundings, make decisions and act to achieve their goals.
+The explosive growth of the internet has also led to growing interest in internet agents to monitor users' tasks, seek needed information, and to learn which information is most useful.
+An agent perceives its environment through sensors.
+The complete set of inputs at a given time is called a percept.
+The current percept, or a sequence of percepts can influence the actions of an agent.
+The agent can change the environment through actuators or effectors.
+An operation involving an effector is called an action.
+Actions can be grouped into action sequences.
+The agent can have goals which it tries to achieve.
+Thus, an agent can be looked upon as a system that implements a mapping from percept sequences to actions.
+A performance measure has to be used in order to evaluate an agent.
+An autonomous agent decides autonomously which action to take in the current situation to maximize progress towards its goals.
+An agent function implements a mapping from perception history to action.
+The behaviour and performance of intelligent agents have to be evaluated in terms of the agent function.
+The ideal mapping specifies which actions an agent ought to take at any point in time.
+The performance measure is a subjective measure to characterize how successful an agent is.
+The success can be measured in various ways.
+It can be measured in terms of speed or efficiency of the agent.
+It can be measured by the accuracy or the quality of the solutions achieved by the agent.
+It can also be measured by power usage, money, etc.
+Humans can be looked upon as agents.
+They have eyes, ears, skin, taste buds, etc for sensors, and hands, fingers, legs, mouth for effectors.
+Robots are agents.
+Robots may have camera, sonar, infrared, bumper, etc for sensors.
+They can have grippers, wheels, lights, speakers, etc for actuators.
+We also have software agents or softbots that have some functions as sensors and some functions as actuators.
+Askjeeves.com is an example of a softbot.
+Expert systems like the Cardiologist is an agent.
+Blind action is not a characterization of intelligence.
+In order to act intelligently, one must sense.
+Understanding is essential to interpret the sensory percepts and decide on an action.
+Many robotic agents stress sensing and acting, and do not have understanding.
+An Intelligent Agent must sense, must act, must be autonomous (to some extent).
+It also must be rational.
+AI is about building rational agents.
+An agent is something that perceives and acts.
+A rational agent always does the right thing.
+Perfect Rationality assumes that the rational agent knows all and will take the action that maximizes her utility.
+Human beings do not satisfy this definition of rationality.
+Rational Action is the action that maximizes the expected value of the performance measure given the percept sequence to date.
+However, a rational agent is not omniscient.
+It does not know the actual outcome of its actions, and it may not know certain aspects of its environment.
+Therefore rationality must take into account the limitations of the agent.
+The agent has too select the best action to the best of its knowledge depending on its percept sequence, its background knowledge and its feasible actions.
+An agent also has to deal with the expected outcome of the actions where the action effects are not deterministic.
+"Because of the limitations of the human mind, humans must use approximate methods to handle many tasks." Herbert Simon, 1972.
+Evolution did not give rise to optimal agents, but to agents which are in some senses locally optimal at best.
+In 1957, Simon proposed the notion of Bounded Rationality as the property of an agent that behaves in a manner that is nearly optimal with respect to its goals as its resources will allow.
+Under these promises an intelligent agent will be expected to act optimally to the best of its abilities and its resource constraints.
+Environments in which agents operate can be defined in different ways.
+It is helpful to view the following definitions as referring to the way the environment appears from the point of view of the agent itself.
+In terms of observability, an environment can be characterized as fully observable or partially observable.
+In a fully observable environment all of the environment relevant to the action being considered is observable.
+In such environments, the agent does not need to keep track of the changes in the environment.
+A chess playing system is an example of a system that operates in a fully observable environment.
+In a partially observable environment, the relevant features of the environment are only partially observable.
+A bridge playing program is an example of a system operating in a partially observable environment.
+In deterministic environments, the next state of the environment is completely described by the current state and the agent's action.
+Image analysis systems are examples of this kind of situation.
+The processed image is determined completely by the current image and the processing operations.
+If an element of interference or uncertainty occurs then the environment is stochastic.
+Note that a deterministic yet partially observable environment will appear to be stochastic to the agent.
+Examples of this are the automatic vehicles that navigate a terrain, say, the Mars rovers robot.
+The new environment in which the vehicle is in is stochastic in nature.
+If the environment state is wholly determined by the preceding state and the actions of multiple agents, then the environment is said to be strategic.
+In chess, there are two agents, the players and the next state of the board is strategically determined by the players' actions.
+An episodic environment means that subsequent episodes do not depend on what actions occurred in previous episodes.
+In a sequential environment, the agent engages in a series of connected episodes.
+Static Environment does not change from one state to the next while the agent is considering its course of action.
+The only changes to the environment are those caused by the agent itself.
+A static environment does not change while the agent is thinking.
+The passage of time as an agent deliberates is irrelevant.
+The agent doesn't need to observe the world during deliberation.
+A Dynamic Environment changes over time independent of the actions of the agent.
+Thus if an agent does not respond in a timely manner, this counts as a choice to do nothing.
+If the number of distinct percepts and actions is limited, the environment is discrete, otherwise it is continuous.
+A multi-agent environment has other agents.
+If the environment contains other intelligent agents, the agent needs to be concerned about strategic, game-theoretic aspects of the environment (for either cooperative or competitive agents).
+Most engineering environments do not have multi-agent properties, whereas most social and economic systems get their complexity from the interactions of (more or less) rational agents.
+In table based agent the action is looked up from a table based on information about the agent's percepts.
+A table is simple way to specify a mapping from percepts to actions.
+The mapping is implicitly defined by a program.
+The mapping may be implemented by a rule based system, by a neural network or by a procedure.
+There are several disadvantages to a table based system.
+The tables may become very large.
+Learning a table may take a very long time, especially if the table is large.
+Such systems usually have little autonomy, as all actions are pre-determined.
+Such agents are called reactive agents or stimulus-response agents.
+Reactive agents have no notion of history.
+The current state is as the sensors see it right now.
+The action is based on the current percepts only.
+We will now briefly describe the subsumption architecture (Rodney Brooks, 1986).
+This architecture is based on reactive systems.
+Brooks notes that in lower animals there is no deliberation and the actions are based on sensory inputs.
+But even lower animals are capable of many complex tasks.
+His argument is to follow the evolutionary path and build simple agents for complex worlds.
+The Subsumption Architecture built in layers.
+There are different layers of behaviour.
+The higher layers can override lower layers.
+Each activity is modeled by a finite state machine.
+State based agents differ from percept based agents in that such agents maintain some sort of state based on the percept sequence received so far.
+The state is updated regularly based on what the agent senses, and the agent's actions.
+Keeping track of the state requires that the agent has knowledge about how the world evolves, and how the agent's actions affect the world.
+The goal based agent has some goal which forms a basis of its actions.
+Goal formulation based on the current situation is a way of solving many problems and search is a universal problem solving mechanism in AI.
+The sequence of steps required to solve a problem is not known a priori and must be determined by a systematic exploration of the alternatives.
+Utility based agents provides a more general agent framework.
+In case that the agent has multiple goals, this framework can accommodate different preferences for the different goals.
+Such systems are characterized by a utility function that maps a state or a sequence of states to a real valued utility.
+The agent acts so as to maximize expected utility.
+Learning allows an agent to operate in initially unknown environments.
+The learning element modifies the performance element.
+Learning is required for true autonomy.
+In conclusion AI is a truly fascinating field.
+It deals with exciting but hard problems.
+A goal of AI is to build intelligent agents that act so as to optimize performance.
+An agent perceives and acts in an environment, has an architecture, and is implemented by an agent program.
+An ideal agent always chooses the action which maximizes its expected performance, given its percept sequence so far.
+An autonomous agent uses its own experience rather than built-in knowledge of the environment by the designer.
+An agent program maps from percept to action and updates its internal state.
+Reflex agents respond immediately to percepts.
+Goal-based agents act in order to achieve their goal(s).
+Utility-based agents maximize their own utility function.
+Representing knowledge is important for successful agent design.
+The most challenging environments are partially observable, stochastic, sequential, dynamic, and continuous, and contain multiple intelligent agents.We have earlier discussed about an intelligent agent.
+Today we will study a type of intelligent agent which we will call a goal directed agent.
+A goal directed agent needs to achieve certain goals.
+Such an agent selects its actions based on the goal it has.
+Many problems can be represented as a set of states and a set of rules of how one state is transformed to another.
+Each state is an abstract representation of the agent's environment.
+It is an abstraction that denotes a configuration of the agent.
+An action or operator takes the agent from one state to another state.
+A state can have a number of successor states.
+A plan is a sequence of actions.
+A goal is a description of a set of desirable states of the world.
+Goal states are often specified by a goal test which any goal state must satisfy.
+The goal of an agent working on a 15-puzzle problem may be to reach a configuration which satisfies the condition that the top row has the tiles 1, 2 and 3.
+The details of this problem will be described later.
+The goal of an agent may be to navigate a maze and reach the HOME position.
+The agent must choose a sequence of actions to achieve the desired goal.
+Let us begin by introducing certain terms.
+An initial state is the description of the starting configuration of the agent.
+An action or an operator takes the agent from one state to another state which is called a successor state.
+A state can have a number of successor states.
+A plan is a sequence of actions.
+The cost of a plan is referred to as the path cost.
+The path cost is a positive number, and a common path cost may be the sum of the costs of the steps in the path.
+Now let us look at the concept of a search problem.
+Problem formulation means choosing a relevant set of states to consider, and a feasible set of operators for moving from one state to another.
+Search is the process of considering various possible sequences of operators applied to the initial state, and finding out a sequence which culminates in a goal state.
+A goal state has been found.
+The above example illustrates how we can start from a given state and follow the successors, and be able to find solution paths that lead to a goal state.
+The grey nodes define the search tree.
+Usually the search tree is extended one node at a time.
+The order in which the search tree is extended depends on the search strategy.
+We will now illustrate state space search with one more example – the pegs and disks problem.
+We will illustrate a solution sequence which when applied to the initial state takes us to a goal state.
+Consider the following problem.
+We have 3 pegs and 3 disks.
+One may move the topmost disk on any needle to the topmost position to any other needle 
+In the goal state all the pegs are in the needle B as shown in the figure below.
+The problem is to place 8 queens on a chessboard so that no two queens are in the same row, column or diagonal.The picture below on the left shows a solution of the 8-queens problem.
+The picture on the right is not a correct solution, because some of the queens are attacking each other.
+How do we formulate this in terms of a state space search problem? The problem formulation involves deciding the representation of the states, selecting the initial state representation, the description of the operators, and the successor states.
+We will now show that we can formulate the search problem in several different ways for this problem.
+The initial state has 64 successors.
+Each of the states at the next level have 63 successors, and so on.
+We can restrict the search tree somewhat by considering only those successors where no queen is attacking each other.
+To do that we have to check the new queen against all existing queens on the board.
+The solutions are found at a depth of 8.
+The state space may be explicitly represented by a graph.
+But more typically the state space can be implicitly represented and generated when required.
+An operator is a function which "expands" a node and computes the successor node(s).
+In the various formulations of the N-queen's problem, note that if we know the effects of the operators, we do not need to keep an explicit representation of all the possible states, which may be quite large.We need to denote the states that have been generated.
+We will call these as nodes.
+The data structure for a node will keep track of not only the state, but also the parent state or the operator that was applied to get this state.
+In addition the search algorithm maintains a list of nodes called the fringe.
+The fringe keeps track of the nodes that have been generated but are yet to be explored.
+The fringe represents the frontier of the search tree generated.
+Initially, the fringe contains a single node corresponding to the start state.
+In this version we use only the OPEN list or fringe.
+The algorithm always picks the first node from fringe for expansion.
+The path corresponding to a goal node can be found by following the parent pointers.
+Otherwise all the successor nodes are generated and they are added to the fringe.
+We will soon see that the order in which the successors are put in fringe will determine the property of the search algorithm.
+Corresponding to a search algorithm, we get a search tree which contains the generated and the explored nodes.
+The search tree may be unbounded.
+This may happen if the state space is infinite.
+This can also happen if there are loops in the search space.
+How can we handle loops?
+Corresponding to a search algorithm, should we return a path or a node?
+The answer to this depends on the problem.
+For problems like N-queens we are only interested in the goal state.
+For problems like 15-puzzle, we are interested in the solution path.
+Which node should we select?
+Alternatively, how would we place the newly generated nodes in the fringe?
+Depending on the search problem, we will have different cases.
+In some cases we may have some knowledge about the quality of intermediate states and this can perhaps be exploited by the search algorithm.
+Which path to find? 
+The objective of a search problem is to find a path from the initial state to a goal state.
+If there are several paths which path should be chosen?
+Our objective could be to find any path, or we may need to find the shortest path or least cost path.
+In this lesson we will talk about blind search or uninformed search that does not use any extra information about the problem domain.
+One may list all possible paths, eliminating cycles from the paths, and we would get the complete search tree from a state space graph.
+Let us examine certain terminology associated with a search tree.
+A search tree is a data structure containing a root node, from where the search starts.
+Every node may have 0 or more children.
+If a node X is a child of node Y, node Y is said to be a parent of node X.
+Assume that the arcs are bidirectional.
+The search starts with the root node.
+The algorithm picks a node from OPEN for expanding and generates all the children of the node.
+Some search algorithms keep track of the closed nodes in a data structure called CLOSED.
+A solution to the search problem is a sequence of operators that is associated with a path from a start node to a goal node.
+The cost of a solution is the sum of the arc costs on the solution path.
+For large state spaces, it is not practical to represent the whole space.
+State space search makes explicit a sufficient portion of an implicit state space graph to find a goal node.
+Each node represents a partial solution path from the start node to the given node.
+In general, from this node there are many possible paths that have this partial path as a prefix.
+In uniform cost search the newly generated nodes are put in OPEN according to their path costs.
+This ensures that when a node is selected for expansion it is a node with the cheapest cost among the nodes in OPEN.
+Let us now examine some properties of the DFS algorithm.
+The algorithm takes exponential time.
+Note that the time taken by the algorithm is related to the maximum depth of the search tree.
+If the search tree has infinite depth, the algorithm may not terminate.
+This can happen if the search space is infinite.
+It can also happen if the search space contains cycles.
+The latter case can be handled by checking for cycles in the algorithm.
+Thus Depth First Search is not complete.
+A variation of Depth First Search circumvents the above problem by keeping a depth bound.
+Nodes are only expanded if they have depth less than the bound.
+This algorithm is known as depth-limited search.
+Suppose that the search problem is such that the arcs are bidirectional.
+If there is a single state that satisfies the goal property, the search problems are identical.
+How do we search backwards from goal?
+One should be able to generate predecessor states.
+This is the motivation to consider bidirectional search.
+The algorithm stops when the frontiers intersect.
+A search algorithm has to be selected for each half.
+How does the algorithm know when the frontiers of the search tree intersect?
+Bidirectional search can sometimes lead to finding a solution more quickly.
+If the search space is not a tree, but a graph, the search tree may contain different nodes corresponding to the same state.
+It is easy to consider a pathological example to see that the search space size may be exponential in the total number of states.
+In many cases we can modify the search algorithm to avoid repeated state expansions.
+The way to avoid generating the same state again when not required, the search algorithm can be modified to check a node when it is being generated.
+If another node corresponding to the state is already in OPEN, the new node should be discarded.
+But what if the state was in OPEN earlier but has been removed and expanded?
+To keep track of this phenomenon, we use another list called CLOSED, which records all the expanded nodes.
+The newly generated node is checked with the nodes in CLOSED too, and it is put in OPEN if the corresponding state cannot be found in CLOSED.
+Apart from the fact that the CLOSED list has to be maintained, the algorithm is required to check every generated node to see if it is already there in OPEN or CLOSED.
+Unless there is a very efficient way to index nodes, this will require additional overhead for every node.
+Such strategies do not stop duplicate states from being generated, but are able to reduce many of such cases.
+The simplest strategy is to not return to the state the algorithm just came from.
+A second strategy is to check that you do not create paths with cycles in them.
+This algorithm only needs to check the nodes in the current path so is much more efficient than the full checking algorithm.
+Besides this strategy can be employed successfully with depth first search and not require additional storage.

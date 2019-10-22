@@ -3,58 +3,72 @@ import os
 import sys
 
 """
-Created by	-	Saumya Navneet & Prashant Raj 
-Date		-	09/September/2019
-Purpose		-	To generate local groups based on POS information to help in word alignment.
-Input 		-	Enter the name of the 'tmp' folder to iterate on all the translated sentences to generate word grouping.
-Output 		- 	Inside the folder for every translation, files E_group_HTML.txt and 'E_Word_Group.txt' will be created containing details of word group and a single file 'E_Word_Group_All_Sentences.txt' containing details of groupig of all sentences is formed in the tmp folder.
-Files used 	-	E_conll_parse
+Created by	-	Saumya Navneet
+Date		-	14/October/2019
+Purpose		-	To generate word groups based on POS information to help in word alignment.
+Input 		-	Enter the path to 'tmp' folder to iterate on all the translated sentences to generate word grouping.
+Output 		- 	Inside the folder for every translation, a file 'E_Word_Group_Sanity.dat', 'E_Word_Group_Sanity_HTML.dat', 'E_Word_Group_Sanity_MFS.dat' will be created containing details of word group, E_Word_Group_All_Sentences_Sanity.txt for groups of all sentences.
+Files used 	-	E_Sanity_Check.dat
 
-For any queries you may drop a message at - saumyanavneet26@gmail.com or prashantraj012@gmail.com
+For any queries you may drop a message at - saumyanavneet26@gmail.com
 """
 
-def english_group():
+def english_grouping():
 	
 	#Taking the path of the BUgol tmp folder
 	tmp_path=os.getenv('HOME_anu_tmp')+'/tmp/'
 	path = tmp_path + sys.argv[1] + '_tmp'
-	all_sentences = path + "/E_Word_Group_All_Sentences.txt"
+	all_sentences = path + "/E_Word_Group_All_Sentences_Sanity.txt"
+	all_sentences_log = path + "/E_Sanity_Log_All_Sentences.txt"
 	path = path + '/2.*'
 	sentences = sorted(glob.glob(path))
 	output_path = open(all_sentences,"w")
+	sanitylog = [ i.rstrip("\n") for i in open(all_sentences_log).readlines()]
+	for i in sanitylog:
+		if i in sentences:
+			sentences.remove(i)
 	output_path.flush()
-	
 	for sentence in sentences: 	#Change according to the number of sentences
+		print("\n\n",sentence)
+		print("English Grouping")
 		
-		#Reading the conll parser information of individual sentences
-		conll_path = str(sentence) + '/E_conll_parse'
+		#Reading the information of individual sentences
+		sanity_path = str(sentence) + '/E_Sanity_Check.dat'
+		sanityfile = open(sanity_path).readlines()
+
+		while("\n" in sanityfile):
+			sanityfile.remove("\n")
 		
-		#Reading the file as an input
-		englishfile = open(conll_path).readlines()
-		outpath = str(sentence)+'/E_Word_Group.txt'
-		outpathHTML = str(sentence) + '/E_group_HTML.txt'
-		outHTML = open(outpathHTML,'w')
-		outHTML.flush()
+		outpath = str(sentence)+'/E_Word_Group_Sanity.dat'
 		output_file = open(outpath,"w")
 		output_file.flush()
+
+		outpathHTML = str(sentence) + '/E_Group_Sanity_HTML.dat'
+		outHTML = open(outpathHTML,'w')
+		outHTML.flush()
+
+		mfs_outpath = str(sentence)+'/E_Word_Group_MFS.dat'
+		mfs_output_file = open(mfs_outpath,"w")
+		mfs_output_file.flush()
+
 		eng = list()				#Temporary list to extract infromation
 		l = list()					#Helper list
 		counter = 1
-		
+
 		#Cleaning the file
-		for i in englishfile:
-			if i in ['\n']:
+		for j in sanityfile:
+			if j in ['\n']:
 				continue
 			else:
-				x = i.split("\t")
-				if x[3] == 'PUNCT':
+				y = j.split("\t")
+				if y[2] == 'PUNCT':
 					continue
 				else:
 					l.append(counter)
 					counter += 1		#Stores element ID
-					l.append(x[3])		#Stores POS information of the element
-					l.append(x[1])		#Stores the actual word element
-					l.append(x[7])		#Stores relation of word with it's head
+					l.append(y[2])		#Stores POS information of the element
+					l.append(y[1])		#Stores the actual word element
+					l.append(y[3])		#Stores relation of word with it's head
 					eng.append(l[:])	#Storing the value in a list to further operate on
 					l.clear()		#Clearing the list for further processing
 
@@ -83,23 +97,10 @@ def english_group():
 				if current_word in ["to"]:
 					if prev_word in ["Due","due","According","according"]:
 						temp_list.append(eng[i][0])
-					else:
+					else:			
 						out_list.append(temp_list[:])
 						temp_list.clear()
 						temp_list.append(eng[i][0])
-				elif current_word in ["between"]:
-					out_list.append(temp_list[:])
-					temp_list.clear()
-					temp_list.append(eng[i][0])
-					while current_word not in ['and'] and (counter < (len(eng)-1)):
-						counter += 1
-						current_word = eng[counter][2]
-						temp_list.append(eng[counter][0])
-					while current_pos not in ['NOUN','PROPN'] and (counter < (len(eng)-1)):
-						counter += 1
-						current_pos = eng[counter][1]
-						temp_list.append(eng[counter][0])
-					i = counter
 				elif prev_pos in ["DET","ADJ","NUM","NOUN","PROPN","PUNCT","AUX","VERB","PART","CCONJ","SCONJ","CONJ","PRON","ADV"]:
 					out_list.append(temp_list[:])
 					temp_list.clear()
@@ -111,7 +112,7 @@ def english_group():
 				if current_word in ['A', 'An', 'The', 'a', 'an', 'the']:
 				        if prev_pos in ["ADP"]:
 				        	temp_list.append(eng[i][0])
-				        else: 	
+				        else:     	
 				        	out_list.append(temp_list[:])
 				        	temp_list.clear()
 				        	temp_list.append(eng[i][0])
@@ -144,7 +145,10 @@ def english_group():
 					out_list.append(temp_list[:])
 					temp_list.clear()
 					temp_list.append(eng[i][0])
-
+					
+			elif current_pos in "PUNCT":
+				continue
+		
 			elif current_pos in "SYM":
 				temp_list.append(eng[i][0])
 
@@ -182,8 +186,18 @@ def english_group():
 		temp_list.clear()					#List cleared for further processing	
 		
 		final_list = [ current_pos for current_pos in out_list if current_pos ]		#For removing the empty word groups generated
+		print("\n",final_list)
 		output = list()									#List for storing values with actual words
-			
+		
+		string = '(string "0" '
+		for i in range(0,len(final_list)):
+			for j in range(0,len(final_list[i])):
+				string = string + str(final_list[i][j]) +" "
+			string = string + '"' + str(final_list[i][j]) + '" '
+		string  = string + ")"
+
+		mfs_output_file.write(string)
+
 		for i in final_list:
 			for j in i:
 				if j == 999:
@@ -208,6 +222,7 @@ def english_group():
 			z = z[:-1] + '))'
 			s = x + y + z
 			output_file.write(s + '\n')
+
 
 		final_out_list = []
 		temp_list = []
@@ -234,8 +249,8 @@ def english_group():
 			output_path.write(x)
 			outHTML.write(x)
 		output_path.write("\n\n")
-		output_path.write("----------------------------------------------------------------------------------------------------------------------------------")
+		output_path.write("---------------------------------------------------------------------------------------------------------------------------------")
 		output_path.write("\n\n")
 		
 #Calling the function to group words in English
-english_group()
+english_grouping()

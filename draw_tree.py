@@ -24,7 +24,8 @@ path = '/home/kishori/rule1E_tmp/2.1/'
 #relation_df = AnuLibrary.create_dataframe(path + 'cc_resolved_eng.dat')  
 
 which_lang = 'H'
-relation_df = AnuLibrary.create_dataframe(path + 'hindi_dep_parser_original.dat')  
+#relation_df = AnuLibrary.create_dataframe(path + 'hindi_dep_parser_original.dat')  
+relation_df = AnuLibrary.create_dataframe(path + 'hindi_parser_canonial.dat')  
 #which_lang = 'E'
 #relation_df = AnuLibrary.create_dataframe(path + 'E_conll_parse')  
 

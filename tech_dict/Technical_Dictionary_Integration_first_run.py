@@ -2,6 +2,7 @@ import re,sys,os
 e_corpus=sys.argv[1]
 h_corpus=sys.argv[2]
 dicname=sys.argv[3]
+final_dict_created = sys.argv[4]
 def read_dic():
     lines=open(dicname,"r").readlines()
     lines = sorted(lines, key=lambda line: len(line.split(" <> ")[0]), reverse=True)
@@ -105,8 +106,8 @@ def fact_generation() :
     path=os.getenv("HOME_anu_tmp")
     #/home/nupur/tmp_anu_dir/tmp/BUgol2.1E_tmp
     #final_file=path+"/tmp/"+e_corpus+"_tmp/multiword_facts.dat" #name to be confirmed from ma'am
-    final_file="Lookup_of_tech_dictionary_Bhratavani.txt" #name to be confirmed from ma'am
-    fact=open(final_file,"w")
+#    final_file="Lookup_of_tech_dictionary_Bhratavani.txt" #name to be confirmed from ma'am
+    fact=open(final_dict_created,"w")
     for i in final :
         fact.write(i+"\n")
     return final_sent
