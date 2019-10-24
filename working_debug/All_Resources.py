@@ -21,12 +21,13 @@ esent = sent_dir + '/E_sentence'
 hsent = sent_dir + '/H_sentence'
 hparserid_to_wid = sent_dir + '/H_parserid-wordid_mapping.dat'
 nandani_file = sent_dir +  '/corpus_specific_dic_facts_for_one_sent.dat'
-roja_transliterate_file = sent_dir +  '/Tranliterated_words_first_run.dat'
+#roja_transliterate_file = sent_dir +  '/Tranliterated_words_first_run.dat'
+roja_transliterate_file = sent_dir +  '/Roja_chk_transliterated_words.dat'
 # roja_transliterate_file = path_tmp +  '/results_of_transliteration.dat'
 #html_file = path_tmp +'/'+ eng_file_name +'_table1.html'
 log_file = sent_dir + '/All_Resources.log'
 
-k_layer_ids_file= sent_dir + '/H_alignment_parserid-new.csv'
+k_layer_ids_file= sent_dir + '/H_alignment_parserid.csv'
 ##############################################CREATING LOG OBJECT##################################################
 if os.path.exists(log_file):
     os.remove(log_file)
@@ -484,9 +485,9 @@ def integrating_all_rows():
         row0=A_layer()
         row1=K_exact_match_Roja()
         row2=K_exact_without_vib_Roja()
-        row3=K_partial_Roja()
-        row4=K_root_Roja()
-        row5=K_dict_Roja()
+        row6=K_partial_Roja()
+        row9=K_root_Roja()
+        row8=K_dict_Roja()
     except :
         print("FILE MISSING: " + k_layer_ids_file  )
         log.write("FILE MISSING: " + k_layer_ids_file + "\n")
@@ -496,17 +497,17 @@ def integrating_all_rows():
         row1[0] = 'K_exact_match(Roja)'
         row2=[0]* (no_of_eng_words+1)
         row2[0] = 'K_exact_without_vib'
-        row3=[0]* (no_of_eng_words+1)
-        row3[0] = 'K_partial'
-        row4=[0]* (no_of_eng_words+1)
-        row4[0] = 'K_root'
-        row5=[0]* (no_of_eng_words+1)
-        row5[0] = 'K_dict'
+        row6=[0]* (no_of_eng_words+1)
+        row6[0] = 'K_partial'
+        row9=[0]* (no_of_eng_words+1)
+        row9[0] = 'K_root'
+        row8=[0]* (no_of_eng_words+1)
+        row8[0] = 'K_dict'
         
-    row6=Nandani_Dict()
-    row7=Bharatvani_Dict()
-    row8=Transliteration_Dict()
-    row9=Kishori_exact_match_WSD_modulo()
+    row4=Nandani_Dict()
+    row5=Bharatvani_Dict()
+    row3=Transliteration_Dict()
+    row7=Kishori_exact_match_WSD_modulo()
 #     print(h2w)
 #     print(e2w)
 #     print("0 :",row0)
