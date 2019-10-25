@@ -6,7 +6,9 @@ END=`expr $END + 1`
 
 #python3 $HOME_alignment/alignment_clips/e_idgenerator.py $1
 #python3 $HOME_alignment/alignment_clips/h_idgenerator.py $1
-#python3 $HOME_alignment/alignment_clips/pandas_generalised.py $1    #Old code Apratim
+#python3 $HOME_alignment/alignment_clips/pandas_generalised_new.py $1    #Old code Apratim
+
+#for i in $(seq 1 $END)
 for i in $(seq 1 $END)
 do
         sentence_dir='2.'$i
@@ -20,7 +22,7 @@ do
         echo "(defglobal ?*hpath* = $HOME_alignment)" > $tmp_path/new_alignment.clp
 
         myclips -f  $HOME_alignment/alignment_clips/anchor_clp_run.bat >  $tmp_path/clips_error_alignment
-        python3 $HOME_alignment/alignment_clips/tocsv_converter.py  $tmp_path
+        python3 $HOME_alignment/alignment_clips/tocsv_converter.py  
 
 done
 

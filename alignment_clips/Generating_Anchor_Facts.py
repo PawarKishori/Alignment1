@@ -26,14 +26,14 @@ def reading_csv():
         with open(csv_file, "rt") as f:
             data = csv.reader(f)
             rows = list(data)
-            probable = rows[-1][1:]
-            starting = rows[-2][1:]
-            potential = rows[-3][1:]
+            #probable = rows[-1][1:]
+            starting = rows[-1][1:]
+            potential = rows[-2][1:]
     except:
         print(csv_file + " missing")
         log.write(csv_file + " missing")
         sys.exit(0)
-    return probable, starting, potential
+    return starting, potential
 
 
 def generate_starting_anchor():
@@ -136,8 +136,8 @@ def generate_probable_anchor():
 
 def generate_unknown_anchor():
     unknown_facts = []
-    for count, (i, j, k) in enumerate(zip(starting, potential, probable)):
-        if str(i) == str(j) == str(k) == str("0"):
+    for count, (i, j) in enumerate(zip(starting, potential)):
+        if str(i) == str(j) == str("0"):
             print(
                 "(anchor_type-english_id-hindi_id unknown " + str(count + 1) + " 0 )\n"
             )
@@ -152,7 +152,7 @@ def generate_unknown_anchor():
 def writing_facts():
     starting_facts = generate_starting_anchor()
     potential_facts = generate_potential_anchor()
-    probable_facts = generate_probable_anchor()
+    #probable_facts = generate_probable_anchor()
     unknown_facts = generate_unknown_anchor()
 
     with open(anchor_fact_file, "w") as out_file:
@@ -160,14 +160,14 @@ def writing_facts():
             out_file.write(str(s))
         for p in potential_facts:
             out_file.write(str(p))
-        for r in probable_facts:
-            out_file.write(str(r))
+        #for r in probable_facts:
+        #    out_file.write(str(r))
         for u in unknown_facts:
             out_file.write(str(u))
 
 
-probable, starting, potential = reading_csv()
+starting, potential = reading_csv()
 print(starting)
 print(potential)
-print(probable)
+#print(probable)
 writing_facts()
