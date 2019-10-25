@@ -105,12 +105,15 @@ def Select_Root(filename,depname):
 
 
 import re,sys
-path_tmp="/".join(sys.argv[2].split("/")[:-1])
+path_tmp = sys.argv[1]
+
+#path_tmp="/".join(sys.argv[2].split("/")[:-1])
 #out=open(path_tmp+"/H_headid-root_info_from_morph_and_parser.dat","w")
 #err=open(path_tmp+"/morph_and_parser_root_info_log","w")
 
-morphfile=sys.argv[1]
-depfile=sys.argv[2]
+morphfile=sys.argv[1] + '/hindi.morph.dat'
+depfile=sys.argv[1] + '/hindi_parser_canonial.dat'
+
 
 
 exception=[]
