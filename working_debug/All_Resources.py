@@ -21,8 +21,8 @@ esent = sent_dir + '/E_sentence'
 hsent = sent_dir + '/H_sentence'
 hparserid_to_wid = sent_dir + '/H_parserid-wordid_mapping.dat'
 nandani_file = sent_dir +  '/corpus_specific_dic_facts_for_one_sent.dat'
-#roja_transliterate_file = sent_dir +  '/Tranliterated_words_first_run.dat'
-roja_transliterate_file = sent_dir +  '/Roja_chk_transliterated_words.dat'
+roja_transliterate_file = sent_dir +  '/Tranliterated_words_first_run.dat'
+#roja_transliterate_file = sent_dir +  '/Roja_chk_transliterated_words.dat'
 # roja_transliterate_file = path_tmp +  '/results_of_transliteration.dat'
 #html_file = path_tmp +'/'+ eng_file_name +'_table1.html'
 log_file = sent_dir + '/All_Resources.log'
@@ -47,7 +47,7 @@ except :
 
 def lower_e_sentence() :
     with open(esent,"r") as esen :
-        edata=esen.read().strip("\n").lower()
+        edata=esen.read().strip("\n")
         edata=edata.translate(edata.maketrans('', '', string.punctuation))
         return(edata)
 
@@ -150,7 +150,7 @@ def creating_e2w_dict():
     show_eng ={}  
     try:   
         e2w = create_dict(efilename, '(E_wordid-word')
-        e2w=dict((k, v.lower()) for k,v in e2w.items())
+        e2w=dict((k, v) for k,v in e2w.items())
 #         print(e2w)
            
 #         for k,v in e2w.items():
@@ -202,7 +202,7 @@ def get_E_H_Ids_mfs(filename):
     with open(filename,'r') as f:
         entries=f.read().strip("\n").split("\n")
         entries = [item.rstrip(")") for item in entries]
-#         print(entries)
+        print(entries)
         for entry in entries:
 #             print(entry)
             new_entry = entry.split("\t")
@@ -217,14 +217,16 @@ def get_E_H_Ids_mfs(filename):
             for i,sublist in enumerate((e_sent[i:i+e_len] for i in range(len(e_sent)))):
                 if ewords==sublist:
                     esearch=i+1
+                    e_pos.append(esearch)
             hwords=hwords.split()
             h_len = len(hwords)
             h_sent=h_sent.split()
             for i,sublist in enumerate((h_sent[i:i+h_len] for i in range(len(h_sent)))):
                 if hwords==sublist:
                     hsearch=i+1
-            e_pos.append(esearch)
-            h_pos.append(hsearch)
+                    h_pos.append(hsearch)
+            #e_pos.append(esearch)
+            #h_pos.append(hsearch)
             for pos in range(1,len(ewords)):
                 e_pos.append(e_pos[pos-1]+1)
             for pos in range(1,len(hwords)):
@@ -252,10 +254,6 @@ def get_E_H_Ids_mfs(filename):
 #                 print(final_hids)
                 if final_eids not in tmp:
                     tmp[final_eids] = final_hids
-
-            
-           
-
         #print(tmp)
     return(tmp) 
 
@@ -267,21 +265,24 @@ def get_E_H_Ids_mfs(filename):
 def get_E_H_dict_Ids(filename):
     tmp={}
     with open(filename,'r') as f:
-#         print(f.read())
+        #print(f.read())
 #         print("====")
 #         print(f.read().strip("\n").split("\n"))
         entries=f.read().strip("\n").split("\n")
         entries = [item.rstrip(")") for item in entries]
-#         print("=>",entries)
+        #print("=>",entries)
 
 #         print(h2w)
         for entry in entries:
-#             print(entry)
+            #print(entry)
             eword = entry.split("\t")[1]
             hword = entry.split("\t")[2]
-#             print(eword, hword)
+            #print(eword)
+            #print(hword)
+            #print(e2w)
+            #print(h2w)
             eid = return_key_from_value(e2w, eword)
-            
+            print(eid) 
             hid = return_key_from_value(h2w, hword)
 #             print(eid, hid)
             tmp[str(eid)] = str(hid)
@@ -303,7 +304,7 @@ def K_exact_match_Roja():
     
     k_layer_ids= anchor.load_row_from_csv(k_layer_ids_file, 1)
     k_layer_ids = anchor.cleaning_list(k_layer_ids) #assigning Zero at - places
-    k_layer_ids[0]= "K_exact_match(Roja)"
+    k_layer_ids[0]= "K_exact_match"
     return k_layer_ids
 
 
@@ -389,11 +390,11 @@ def Nandani_Dict():
                     nandani_mapping[eng_group_list[i]]= hindi_group_list[i]
     #             print("Multiword entry in nandani dictionary")
     # print(nandani_mapping)
-        nandani_mapping_list[0] = 'Nandani dict'
+        nandani_mapping_list[0] = 'Preprocessing'
         
     except :
         nandani_mapping_list=['0']* (no_of_eng_words+1)
-        nandani_mapping_list[0] = 'Nandani dict'
+        nandani_mapping_list[0] = 'Preprocessing'
         print("FILE MISSING: " + nandani_file ) 
         log.write("FILE MISSING: " + nandani_file  + "\n")
     return nandani_mapping_list
@@ -405,7 +406,7 @@ def Bharatvani_Dict():
     tech_dict_list=[]
     try:
         tech_dict_filename = sent_dir + '/Tech_dict_lookup.dat'
-        tech_dict_dict = get_E_H_Ids_mfs(tech_dict_filename)
+        #tech_dict_dict = get_E_H_Ids_mfs(tech_dict_filename)
 #         print(tech_dict_dict)
         for j in range(0,no_of_eng_words+1):
             if j in tech_dict_dict.keys():
@@ -413,11 +414,12 @@ def Bharatvani_Dict():
                 tech_dict_list.append(tech_dict_dict[j])
             else:
                 tech_dict_list.append('0')
-        tech_dict_list[0] = 'Bharatwani Dict.' 
+        tech_dict_list[0] = 'Tech Dict' 
 
-    except FileNotFoundError:
+    #except FileNotFoundError:
+    except:
         tech_dict_list=['0']*(no_of_eng_words+1)
-        tech_dict_list[0]='Bharatwani Dict.'
+        tech_dict_list[0]='Tech Dict'
         print("Tech dict not created")
         
     return tech_dict_list
@@ -427,12 +429,13 @@ def Bharatvani_Dict():
 
 
 ########################################TRANSLITERATION DICT ROW###################################################
-def Transliteration_Dict():
+
+def Transliteration_Dict_old():
     roja_transliterate_list=[]
     try:
         tranliterate_dict={}
         transliterate_mapping = get_E_H_dict_Ids(roja_transliterate_file)  
-    #     print(transliterate_mapping)
+        print("==>",transliterate_mapping)
        
     
         for j in range(0,no_of_eng_words+1):
@@ -442,15 +445,33 @@ def Transliteration_Dict():
             
             else:
                 roja_transliterate_list.append('0')
-        roja_transliterate_list[0] = 'Roja Transliterate'
+        roja_transliterate_list[0] = 'Transliterate'
         
     except :
         roja_transliterate_list=[0]* (no_of_eng_words+1)
-        roja_transliterate_list[0] = 'Roja Transliterate'
+        roja_transliterate_list[0] = 'Transliterate'
         print("FILE MISSING: " + roja_transliterate_file )
         log.write("FILE MISSING: " + roja_transliterate_file + "\n")
     return roja_transliterate_list
 
+
+
+########################################TRANSLITERATION DICT ROW###################################################
+def Transliteration_Dict():
+    roja_transliterate_list=[]
+    try:
+        transl_csv = sent_dir + '/Transliterate1.csv'
+        dict_new= anchor.load_row_from_csv(transl_csv, 2)
+        dit_new=convert_words_to_ids_in_list(dict_new,h2w)
+        dict_new.insert(0,"Transliteration")
+
+    except FileNotFoundError:
+        dict_new = ['0'] * (no_of_eng_words+1)
+        dict_new[0] = "Transliteration"
+        print(transl_csv +" not found")
+        log.write("FILE MISSING: " + transl_csv  + "\n")
+        
+    return dict_new
 
 # In[364]:
 
@@ -463,12 +484,12 @@ def Kishori_exact_match_WSD_modulo():
         kishori_csv = sent_dir + '/Exact_match_dict.csv'
         dict_new= anchor.load_row_from_csv(kishori_csv, 2)
         dit_new=convert_words_to_ids_in_list(dict_new,h2w)
-        dict_new.insert(0,"Kishori_exact_match_WSD_modulo")
+        dict_new.insert(0,"Dict_special_case")
 #         print(dict_new)
         
     except FileNotFoundError:
         dict_new = ['0'] * (no_of_eng_words+1)
-        dict_new[0] = "Kishori_exact_match_WSD_modulo"
+        dict_new[0] = "Dict_special_case"
         print(kishori_csv +" not found")
         log.write("FILE MISSING: " + kishori_csv  + "\n")
         
@@ -494,7 +515,7 @@ def integrating_all_rows():
         row0=[0]* (no_of_eng_words+1)
         row0[0] = 'English_word_ids'
         row1=[0]* (no_of_eng_words+1)
-        row1[0] = 'K_exact_match(Roja)'
+        row1[0] = 'K_exact_match'
         row2=[0]* (no_of_eng_words+1)
         row2[0] = 'K_exact_without_vib'
         row6=[0]* (no_of_eng_words+1)
