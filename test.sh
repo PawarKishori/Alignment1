@@ -17,6 +17,9 @@ echo "Time taken by alignment_manju module:"
 time sh run_alignment.sh $1 $2 general nsdp
 echo "End of manju mam's module: "$1 $2
 conda deactivate
+
+
+
 ##==========================================================================
 cp $HOME_alignment/$2  $HOME_anu_tmp/tmp/$1_tmp/org_hindi
 echo "copied $1 and $2 from alignment_manju to $HOME_alignment"
@@ -34,6 +37,10 @@ sh $HOME_alignment/morph/generate_morph_facts.sh $1
 ##==========================================================================
 ##Remove nukta from org_hindi, hence this module will create org_hindi_without_nukta in tmp
 sh $HOME_alignment/canonical/remove_nukta.sh $1
+
+
+
+
 ##==========================================================================
 ##Integration of technical dictionary
 #RUN ONLY ONCE:
