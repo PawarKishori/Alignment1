@@ -10,5 +10,3 @@ $HOME_alignment/morph/morph.out $tmp_path/hindi.morph.facts $tmp_path/hindi.verb
 cd $tmp_path
 $HOME_anu_test/Anu_src/split_file.out  hindi.morph.facts dir_names.txt hindi.morph.dat
 
-
-
