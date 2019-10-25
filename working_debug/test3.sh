@@ -11,12 +11,11 @@ while [ "$i" -lt $END ]
 	do
 		
 		echo "2."$i
+		python $HOME_alignment/working_debug/eng_lwg.py $filename "2."$i
 		source activate py3.6
 		python $HOME_alignment/working_debug/All_Resources.py $filename "2."$i
-		python $HOME_alignment/working_debug/Deciding_Anchor.py $filename "2."$i
-		#python $HOME_alignment/working_debug/All_Resources_id_word.py $filename "2."$i
+		python $HOME_alignment/working_debug/Deciding_Anchor_sequence.py $filename "2."$i
 		conda deactivate
-
 		i=`expr $i + 1`
 	done
 	
