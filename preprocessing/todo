@@ -1,3 +1,5 @@
+Preparing parallel texts
+
 1. Run utf8_to_wx.sh on hindi file.
 Eg. sh utf8_to_wx.sh BUgol2.1H_utf BUgol2.1H
 This will convert all hindi devnagari characters into wx script
@@ -6,5 +8,8 @@ This will aslo convert all nonascii characters lik EMdash Endash, hindi double q
 2. Run utf8_to_wx.sh on english file to for nonascii characters like EMDASH etc.
 Eg. sh utf8_to_wx.sh BUgol2.1E_nonscii BUgol2.1E
 
+3.
+running detokeniser on hidni wx text
+Eg. /home/kishori/a/anusaaraka/miscellaneous/HANDY_SCRIPTS/detokenizer.perl  < histH_wx > histH
 ====
 Keeping space on both sides of EMDAHSH and ENDASH and hyphen (Not compound hyphen) 
