@@ -1,9 +1,3 @@
-
-# coding: utf-8
-
-# In[26]:
-
-
 import csv,sys, os, string
 tmp_path=os.getenv('HOME_anu_tmp')+'/tmp/'
 # eng_file_name = 'ai2E'
@@ -32,7 +26,7 @@ def eng_id_to_idword_pair_hash():
     show_eng ={}  
     try:   
         e2w = create_dict(e_file, '(E_wordid-word')
-        e2w=dict((k, v.lower()) for k,v in e2w.items())
+        e2w=dict((k, v) for k,v in e2w.items())
 #         print(e2w)
            
         for k,v in e2w.items():
@@ -55,7 +49,7 @@ def hin_id_to_idword_pair_hash():
     show_hin ={}  
     try:   
         h2w = create_dict(h_file, '(H_wordid-word')
-        h2w=dict((k, v.lower()) for k,v in h2w.items())
+        h2w=dict((k, v) for k,v in h2w.items())
 #         print(e2w)
            
         for k,v in h2w.items():
