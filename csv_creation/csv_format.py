@@ -1,6 +1,5 @@
 import csv
 import re
-#log=open('file_missing_log1','w')
 log=open('file_missing_log','a')
 flag=0
 flag4=0
@@ -173,7 +172,7 @@ if(flag15==0):
 
 ##===================
 for key in sorted(m_root_dic):
-	print(str(key) + '\t' + m_root_dic[key])
+	print(key + '\t' + m_root_dic[key])
 
 ##===================
 def check_for_consecutive_ids(ids, id2):
@@ -295,12 +294,12 @@ if(flag16 == 0):
             if(lst[4] == 'default-iit-bombay-shabdanjali-dic_smt.gdbm'):
                 for key in sorted(wrd_dic):
                     if(wrd_dic[key] == lst[3]):
-                        add_data_in_dic(database_dic, key, lst[5])
+                        add_data_in_dic(database_dic, key, '_'.join(lst[5:]))  
                         
 ##===================
 #To handle hE/hEM etc. using tam info. If this is part of tam then restricting them to display in partial layer.
 tam_dic = {}
-restricted_wrds = ['hE', 'hEM', 'WA', 'WIM', 'WI']
+restricted_wrds = ['hE', 'hEM', 'WA', 'WIM', 'WI', 'nahIM']
 if(flag13==0):
     for line in f13:
         if line.startswith('(pada_info'):
@@ -337,7 +336,7 @@ for i in f11:
                 print('Exact', anu_mng)
             ############ K partial code            
             else:
-                print('Manual_mng is', man_mng)
+#                print('Manual_mng is', man_mng)
                 out = check_for_vib(man_mng, f12)
                 if out == True:
                     if man_mng not in restricted_wrds:
@@ -352,17 +351,28 @@ for i in f11:
         ############ K Root code            
         if int(ap_out[1]) in a_root_dic.keys():
             a_root = a_root_dic[int(ap_out[1])]
+            ar = []
             for key in sorted(m_root_dic):
-                if key == a_root:
+                k = key.split('/')
+                if '_' in a_root: 
+                    ar = a_root.split('_')
+                if a_root in k:
                         out = check_for_vib(a_root, f12)
 			#print a_root, out, key
                         if(out == True):
-                            k_rt[int(ap_out[1])] = m_root_dic[key] 
-                elif key in a_root.split():
-                        out = check_for_vib(key, f12)
-			#print m_root_dic[key], out, key
-                        if out == True:
                             k_rt[int(ap_out[1])] = m_root_dic[key]
+                elif ar != [] and len(k) == 1:   #Ex: ar =  ['sahAyawA', 'kara'], k = ['sahAyawA'] (ai1E , 2.51)
+                    if k[0] in ar and k[0] not in restricted_wrds: # ar = ['nahIM', 'jAna'], k = ['nahIM'] (ai1E, 2.25)
+                       out = check_for_vib(k[0], f12)
+                       if(out == True):
+                            k_rt[int(ap_out[1])] = m_root_dic[key]
+                else:
+                    for each in k:
+                        if each in ar:
+                            out = check_for_vib(each, f12)
+		#	    print '%%%%', m_root_dic[key], out, k
+                            if out == True:
+                                k_rt[int(ap_out[1])] = m_root_dic[key]
         ############ K Dic code            
         if(ap_out[1]) in database_dic.keys():
             for key in sorted(m_root_dic):
@@ -654,7 +664,7 @@ if(flag9==0):
     print(list_R)
 log.close()
 
-with open("H_alignment_parserid-new.csv", 'w') as csvfile:
+with open("H_alignment_parserid.csv", 'w') as csvfile:
 
     csvwriter = csv.writer(csvfile)
     csvwriter.writerow(list_A)
