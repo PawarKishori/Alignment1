@@ -17,7 +17,7 @@ sh $HOME_alignment/morph/generate_morph_facts.sh $1
 sh $HOME_alignment/canonical/remove_nukta.sh $1
 
 
-#sh $HOME_alignment/run_alignment.sh $1 $2
+sh $HOME_alignment/run_alignment.sh $1 $2
 
 ####################################################################################################################
 ## Given a Lookup_dict for a corpus, this module generates Tech_dict_lookup.dat for each 2.1, 2.2 etc. directories
