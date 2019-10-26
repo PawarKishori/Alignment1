@@ -127,9 +127,9 @@ def check_word_and_root_same(e2w, e_root_dict):
 #Function which checks exact match of Eng root == Eng word and Hindi root == Hindi word
 def exact_match_WSD_modulo(einfo, hinfo, db):
    #print("=========================================")
-   print(einfo)
-   print(hinfo)
-   print(db)
+   #print(einfo)   #comment
+   #print(hinfo)
+   #print(db)
    e=[x[1] for x in einfo]
    h=[x[1] for x in hinfo]
    #print(list(db.keys()))
@@ -143,7 +143,7 @@ def exact_match_WSD_modulo(einfo, hinfo, db):
                    if(mng1 == hentry):
                        pair=[eentry, hentry]
                        exact_match.append(pair)
-   print(exact_match)
+   #print(exact_match) #comment
    return(exact_match)     
 
 no_root=['kA','ke','kI','ko','se','ne','meM','Ora','yA', 'kyA', 'waraha', 'ki','kevala','lekina','jabaki','waWA','xVArA','nahIM','Pira','hI    ','BI']
@@ -216,10 +216,7 @@ import csv
 
 
 def exact_match(tmp_dir):
-
 	try:
-	    root_tam_file = tmp_dir +'/verb_root_tam_info'
-	    h_root_info_file = tmp_dir + '/H_headid-root_info_from_morph_and_parser.dat'
 	    #bring hindi root for all nouns directly from H_headid-root_info_from_morph_and_parser.dat
 	    #merge hindi root for verbs, from H_headid-root_info_from_morph_and_parser.dat and verb_root_tam_info
 	    h_root_dict = extract_dictionary_ordered_fact_H_root(h_root_info_file)
@@ -227,30 +224,23 @@ def exact_match(tmp_dir):
 	    print("File Missing: " + root_tam_file +'/' + h_root_info_file )
 
 	try:
-	    e_root_file = tmp_dir + '/revised_root.dat'   #get english root for N and verbs too
-	    root_tam_grouping = tmp_dir + '/tam_id.dat' # to get english tam part of verb  (equivalent to root:.. of yukti)
-	    root_tam_grouping_final = tmp_dir + '/E_lwg.dat' # to get english grouping of verb  (similar to VP_expr_by_hindi_parser[this is a group of hindi words], tam_id.dat is group of proper ids)
 	    e_root_dict = extract_dictionary_ordered_fact(e_root_file)
 	except:
 	    print("Issue with files: " + e_root_file +'/'+root_tam_grouping +'/'+root_tam_grouping_final)
 
 	try:
-	    db = tmp_dir + '/database_mng.dat'
-	    db1 = tmp_dir + '/database_mng_preprocessed.dat'
 	    preprocess_database_mng(db,db1)
 	    db_dict = extract_dictionary_ordered_fact_database_mng(db1)
 	except: 
 	    print("Issue with files: " + db)
 	   
 	try:
-	    h_word_file = tmp_dir + '/H_wordid-word_mapping.dat'
 	    h2w = create_dict(h_word_file, '(H_wordid-word')
 	    #print("\n",h2w)
 	except:
 	   print("File Missing: " + h_word_file )
 
 	try:
-	   e_word_file = tmp_dir + '/E_wordid-word_mapping.dat'
 	   e2w = create_dict(e_word_file, '(E_wordid-word')
 	   #print("\n",e2w)
 	except:
@@ -262,17 +252,51 @@ def exact_match(tmp_dir):
 		h_word_root_same = check_word_and_root_same(h2w, h_root_dict) 
 		a = exact_match_WSD_modulo(e_word_root_same, h_word_root_same, db_dict)
 		b = remove_duplicate_lists_from_list_of_lists(a)
-		#print("\n",b)
-		add(b, "exact_match_WSD_modulo" , tmp_dir + "/A_exact_match_WSD_modulo.dat" )
+		print(b)
+		c=remove_weak_choices(b)
+		print(c)
+		add(c, "exact_match_WSD_modulo" , tmp_dir + "/A_exact_match_WSD_modulo.dat" )
 		return(b)
 	except:
-		print("FIle missing in module4 ")    
+		print("FIle missing in module4 ")   
+
+	
+	'''e_word_root_same = check_word_and_root_same(e2w, e_root_dict)
+	#print(e_word_root_same) 
+	h_word_root_same = check_word_and_root_same(h2w, h_root_dict) 
+	a = exact_match_WSD_modulo(e_word_root_same, h_word_root_same, db_dict)
+	b = remove_duplicate_lists_from_list_of_lists(a)
+	print(b)
+	c=remove_weak_choices(b)
+	print(c)
+	add(c, "exact_match_WSD_modulo" , tmp_dir + "/A_exact_match_WSD_modulo.dat" )'''
 
 	print("=========================================")
+#c=remove_weak_choices(b)
+def set_difference(l1,l2):
+	l3 = [x for x in l1 if x not in l2]
+	return l3
+def remove_weak_choices(b):
+	to_be_removed=[]
+	for i in b:
+		if i[0] in weak_choice:
+			to_be_removed.append(i)
+	b=set_difference(b, to_be_removed)
+	return(b)
 
 tmp_dir = sys.argv[1]
 #db = tmp_dir + '/database_mng.dat'
 #db1 = tmp_dir + '/database_mng_preprocessed.dat'
 #preprocess_database_mng(db,db1)
-
+weak_choice = ['from','with', 'on', 'to', 'of','in','at', 'through', 'by', 'at', 'into', 'over']
+root_tam_file = tmp_dir +'/verb_root_tam_info'
+h_root_info_file = tmp_dir + '/H_headid-root_info_from_morph_and_parser.dat'
+e_root_file = tmp_dir + '/revised_root.dat'   #get english root for N and verbs too
+root_tam_grouping = tmp_dir + '/tam_id.dat' # to get english tam part of verb  (equivalent to root:.. of yukti)
+root_tam_grouping_final = tmp_dir + '/E_lwg.dat' # to get english grouping of verb  (similar to VP_expr_by_hindi_parser[this is a group of hindi words], tam_id.dat is group of proper ids)
+db = tmp_dir + '/database_mng.dat'
+db1 = tmp_dir + '/database_mng_preprocessed.dat'
+h_word_file = tmp_dir + '/H_wordid-word_mapping.dat'
+e_word_file = tmp_dir + '/E_wordid-word_mapping.dat'
+h_root_dict={};e_root_dict={}; e2w={};h2w={}; db_dict={}
 exact_match(tmp_dir)
