@@ -20,7 +20,7 @@ cap_def_dic = {}
 man_mng_dic = {}
 k_align_dic = {}
 
-list_K_alignment=['K_alignment_for_proper_nouns']
+list_K_alignment=['K_1st_letter_capital_word']
 #################################
 def unique_val(val):
     value = []
@@ -51,7 +51,7 @@ def return_key(val, dic):
 #Collecting first word Capital from original_word.dat
 for line in fo:
     lst = line[:-2].split()
-    if(lst[2][0].isupper() and lst[1] != '1'):
+    if(lst[2][0].isupper()):# and lst[1] != '1'):
         add_data_in_dic(cap_dic, int(lst[1]), lst[2].lower())
 
 #for key in sorted(cap_dic):
@@ -129,6 +129,6 @@ for i in range(1, len(fo)+1):
 #print('K Alignment layer info::\n', list_K_alignment)
 #################################
 #Writing in csv
-with open("K_alignment_for_prop.csv", 'w') as csvfile:
+with open("K_1st_letter_capital_word.csv", 'w') as csvfile:
    csvwriter = csv.writer(csvfile)
    csvwriter.writerow(list_K_alignment)
