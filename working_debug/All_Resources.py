@@ -463,6 +463,7 @@ def K_exact_mwe_word_align_csv():
         k_mwe = anchor.load_row_from_csv(k_mwe_csv_file, 0)
         k_mwe = anchor.cleaning_list(k_mwe)                         #
         k_mwe = convert_words_to_ids_in_list(k_mwe, h2w)
+        print(k_mwe)
         #k_mwe.insert(0,"K_exact_mwe_word_align.csv")
     except FileNotFoundError:
         k_mwe = ['0'] * (no_of_eng_words + 1)
@@ -478,12 +479,12 @@ def K_1st_letter_capital_word():
         k_prop_csv_file = sent_dir + '/K_1st_letter_capital_word.csv'
         k_prop = anchor.load_row_from_csv(k_prop_csv_file, 0)
         k_prop = anchor.cleaning_list(k_prop)
-        print(k_prop)
-        print(len(k_prop))
-        print(type(k_prop[1]))
+        #print(k_prop)
+        #print(len(k_prop))
+        #print(type(k_prop[1]))
         k_prop = convert_words_to_ids_in_list(k_prop, h2w)
-        print(k_prop)
-        print(len(k_prop))
+        #print(k_prop)
+        #print(len(k_prop))
 
         #k_prop.insert(0,"K_1st_letter_capital_word")
     except FileNotFoundError:
@@ -580,7 +581,7 @@ def integrating_all_rows():
 
 
 
-#     print(h2w)
+    #print("===============>",h2w)
 #     print(e2w)
 #     print("0 :",row0)
 #     print("1 :",row1)#De
