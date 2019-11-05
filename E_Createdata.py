@@ -111,8 +111,8 @@ for parse in files:
 	#[relation_df, sub_tree] = E_Modules.obl_err(relation_df, sub_tree, path, filename)
 
 	#Calling function to correct cc-conj errors
-	stack = E_Modules.BFS(relation_df, sub_tree)
-	[relation_df, stack, sub_tree, cc_list] = E_Modules.conj_cc_resolution(relation_df, stack, sub_tree, path, filename)
+	#stack = E_Modules.BFS(relation_df, sub_tree)
+	#[relation_df, stack, sub_tree, cc_list] = E_Modules.conj_cc_resolution(relation_df, stack, sub_tree, path, filename)
 
 	#Calling function to create json input string
 	with open(path_des+'/E_clause_single_line_words_corrected' , 'w') as f:
