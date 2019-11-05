@@ -72,7 +72,7 @@ with open(path_tmp  + '/H_alignment_parserid.csv','r') as csvfile:
         new_list.append(row)
 #        print(row)
 
-with open('H_alignment_parserid-new.csv','w') as csvfile:
+with open(path_tmp  + '/H_alignment_parserid-new.csv','w') as csvfile:
     csvwriter=csv.writer(csvfile)
     csvwriter.writerows(new_list)
 
