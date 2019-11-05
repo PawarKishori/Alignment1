@@ -1,0 +1,3 @@
+Step to generate morph.out
+1. cd $HOME_alignment/morph
+2. sh comp.sh morph
