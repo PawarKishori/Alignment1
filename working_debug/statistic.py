@@ -10,7 +10,7 @@ from os import path
 
 temp_path = sys.argv[1]
 sent_no = sys.argv[2]
-csv_file = temp_path + '/' +sent_no +'/new_N1.csv'
+csv_file = temp_path + '/' +sent_no +'/N1.csv'
 hindi_file = temp_path +  '/' +sent_no +'/H_wordid-word_mapping.dat'
 lwg_file = temp_path + '/' +sent_no + '/E_lwg.dat'
 
@@ -39,7 +39,7 @@ def ids_from_csv() :
         e_total=e_ids[-1]
         return e_ids,h_ids,int(e_total)
     except(EmptyError) :
-        log.write("In "+sent_no+" new_N1.csv file is absent\n")
+        log.write("In "+sent_no+" N1.csv file is absent\n")
         exit()
     
     

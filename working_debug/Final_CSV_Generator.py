@@ -16,18 +16,18 @@ log_file = sent_dir+"/Final_CSV_Generator.log"
 if os.path.exists(log_file) :
     os.remove(log_file)
 log = open(log_file,'a')
-def reading_new_N1():
+def reading_N1():
     try:
-        with open(sent_dir+'/new_N1.csv','rt')as f: ####PATH TO BE CHANGED
+        with open(sent_dir+'/N1.csv','rt')as f: ####PATH TO BE CHANGED
             data = csv.reader(f)
             rows=list(data)
         return rows[-1]
     except :
-        print("new_N1.csv is absent in "+sent_no)
-        log.write("new_N1.csv is absent in "+sent_no)
+        print("N1.csv is absent in "+sent_no)
+        log.write("N1.csv is absent in "+sent_no)
         sys.exit(0)
     
-N1_Layer=reading_new_N1()
+N1_Layer=reading_N1()
 # print(N1_Layer)
 N1_Layer.insert(0,"N1_Layer")
 print(N1_Layer)
