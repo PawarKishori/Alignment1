@@ -27,7 +27,7 @@ roja_transliterate_file = sent_dir +  '/Tranliterated_words_first_run.dat'
 #html_file = path_tmp +'/'+ eng_file_name +'_table1.html'
 log_file = sent_dir + '/All_Resources.log'
 
-k_layer_ids_file= sent_dir + '/H_alignment_parserid.csv'
+k_layer_ids_file= sent_dir + '/H_alignment_parserid-new.csv'
 ##############################################CREATING LOG OBJECT##################################################
 if os.path.exists(log_file):
     os.remove(log_file)
@@ -573,7 +573,8 @@ def integrating_all_rows():
     row3 = K_exact_without_vib_Roja()
     row4 = K_1st_letter_capital_word()
 
-    row5 = Transliteration_Dict()
+    #row5 = Transliteration_Dict()
+    row5 = Transliteration_Dict_old()
     row6 = Nandani_Dict()
     row7 = Bharatvani_Dict()
 
