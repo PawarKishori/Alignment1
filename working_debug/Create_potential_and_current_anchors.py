@@ -116,6 +116,7 @@ def create_tmp_from_dict_of_key_val_priority(new_dict):
 def compare_two_cells(val, val1):
     val_new=[]
     val1_new=[]
+    flag=0
     for v in val:
         to_be_deleted = 0
         for v1 in val1:
@@ -125,15 +126,18 @@ def compare_two_cells(val, val1):
             common = intersection_of_two_list(v_list,v1_list)
             v_new= (v[0],v[1])
             v1_new= (v1[0],v1[1])
-            if (len(common) > 0):
-               print("candidate")
-               #print("----")
+            if (len(common) > 0 and v[0]!='0'):
+               flag=1
+               print("candidate", v[0], v1[0])
+               print(v[1], v1[1])
                if (v[1]>v1[1]):
                    #v_new = (v[0],v[1])
                    v_new = ('0',0)
-               elif (v1[1]<v[1]):
+                   print("v1[1] is smaller and v_new= ", v_new )
+               elif (v[1]<v1[1]):
                    #v1_new = (v1[0],v1[1])
                    v1_new = ('0',0)
+                   print("v[1] is smaller and v1_new= ", v1_new)
                else:
                    #[key,val] if len(val) > len(val1) else [key1,val1]
                    if len(val) > len(val1):
@@ -145,28 +149,39 @@ def compare_two_cells(val, val1):
                #print(val1_new)
             val_new.append(v_new)
             val1_new.append(v1_new)
+            #print(val1_new)
     val_new = remove_duplicates(val_new)
     val1_new = remove_duplicates(val1_new)
-    return([val_new, val1_new])
+    #print(val1_new)
+    return([val_new, val1_new, flag])
 
 
 
 def resolve_overlapping_entries(e2h_dict):
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-    new_dict={}
-    print(e2h_dict)
+    new_dict=e2h_dict
+    #print(e2h_dict)
     keys = list(e2h_dict.keys())
     values = list(e2h_dict.values())
     for i in range(0, len(keys)):
         for j in range(i,len(keys)):
             if keys[i]!=keys[j]:
-                print(keys[i], values[i], "=>", keys[j], values[j])
+                #print(keys[i], values[i], "=>", keys[j], values[j])
                 #compare_two_cells(keys[i], values[i], keys[j], values[j])
-                x, y = compare_two_cells( values[i], values[j])
-                #print(x)
-                #print(y)
-                new_dict[keys[i]] = x
-                new_dict[keys[j]] = y
+                #if values[i]==[('7', 8)] and values[j]==[('7', 9)]:
+                '''if values[i]==[('7', 9)]:
+                    print("initial:", values[i], values[j])
+                    x, y, flag = compare_two_cells( values[i], values[j])
+                    print("final:",x,y)
+                else:
+                    x, y, flag = compare_two_cells( values[i], values[j])'''
+                x, y, flag = compare_two_cells( values[i], values[j])
+                
+                #print(keys[i], x)  
+                #print("&",keys[j], y)  
+                if flag == 1:
+                    new_dict[keys[i]] = x
+                    new_dict[keys[j]] = y
     print(new_dict)
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     return(new_dict)
