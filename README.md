@@ -7,6 +7,12 @@ For those who does not  have Anaconda, kindly call python3 and python2 whereever
 And remove "source activate _ " and "conda deactivate" from the shell scripts in the Alignment1 repository.
 ]
 
+One time compilation in Alignment1 for morph module:
+step 1: cd morph
+step 2: sh comp.sh morph
+This will create morph.out in morph/ directory, which is used by other shell.
+
+
 
 1. Runing anusaaraka and alignment_Manju
    sh test_old.sh ai1E ai1H computer_science
