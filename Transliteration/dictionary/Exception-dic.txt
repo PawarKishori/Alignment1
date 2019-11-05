@@ -3,3 +3,4 @@ Chilika	cilkA
 Kumaon	kumAzU
 Hephaestus	hIPestasa
 Aristotle	araswU
+AI	eAI
