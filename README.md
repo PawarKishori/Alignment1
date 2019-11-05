@@ -1,7 +1,13 @@
 Steps to run Alignment1:
 
+[Note: Depending on the code's dependency (python2/python3) I have activated the conda sessions in the following shells.
+name for python3 env in the shell used is "py3.6" and for python2 it is "python2.7". Kindly create these environmrnts in your machine too.]
+
 1. Runing anusaaraka and alignment_Manju
    sh test_old.sh ai1E ai1H computer_science
+
+   note: ai2H should be in wx
+         ai2E and ai3E preprocessed as per the steps of preprocessing/todo
 
 2. Running main Alignment1 module
    sh new_test.sh ai1E ai1H
