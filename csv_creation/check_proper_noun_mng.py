@@ -7,6 +7,11 @@
 import sys
 import csv
 
+from functions import unique_val
+from functions import add_data_in_dic
+from functions import return_key
+
+
 fr = open("H_wordid-word_mapping.dat", "r").readlines()
 fo = open("original_word.dat", "r").readlines()
 
@@ -22,36 +27,10 @@ k_align_dic = {}
 
 list_K_alignment=['K_1st_letter_capital_word']
 #################################
-def unique_val(val):
-    value = []
-    lst = val.split('/')
-    for each in lst:
-        if(each not in value):
-            value.append(each)
-    return '/'.join(value)
-
-#Creating dic:
-def add_data_in_dic(dic, key, val):
-    if key not in dic:
-        value =  unique_val(val)
-        dic[key] = value
-    elif(val not in dic[key].split('/')):
-        dic[key] = dic[key] + '/' + val
-
-#Return key for a known value:
-def return_key(val, dic):
-    for key in dic:
-        if val == dic[key]:
-            return key
-        elif val in dic[key].split('/'):
-            return key
-        
-
-#################################
 #Collecting first word Capital from original_word.dat
 for line in fo:
     lst = line[:-2].split()
-    if(lst[2][0].isupper()):# and lst[1] != '1'):
+    if(lst[2][0].isupper()): #and lst[1] != '1'):
         add_data_in_dic(cap_dic, int(lst[1]), lst[2].lower())
 
 #for key in sorted(cap_dic):
@@ -74,7 +53,7 @@ for key in sorted(domain_dic):
         key_id = return_key(key, cap_dic)
    #    if(key_id not in cap_dom_dic.keys()):  #If neccessary uncomment this loop
         cap_dom_dic[key_id] = domain_dic[key]
-#        print(str(key_id) + '\t' + domain_dic[key])
+   #    print(str(key_id) + '\t' + domain_dic[key])
 
 
 #################################
@@ -132,3 +111,4 @@ for i in range(1, len(fo)+1):
 with open("K_1st_letter_capital_word.csv", 'w') as csvfile:
    csvwriter = csv.writer(csvfile)
    csvwriter.writerow(list_K_alignment)
+#################################
