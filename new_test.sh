@@ -35,7 +35,7 @@ END=`wc -l $1 | awk '{print $1}'`
 END=`expr $END + 1`
 while [ "$i" -lt $END ]
     do
-    python3 $HOME_alignment/Transliteration/generate_transliterated_file_for_every_sentences.py $1 Lookup_transliteration_final_AI_all_eng.txt  "2."$i
+    python3 $HOME_alignment/Transliteration/generate_transliterated_file_for_every_sentences.py $1 Lookup_transliteration_AI_all_eng.txt  "2."$i
     #python3 $HOME_alignment/Transliteration/generate_transliterated_file_for_every_sentences.py $1 Lookup_transliteration_final_histE.txt  "2."$i
     i=`expr $i + 1` 
     done
