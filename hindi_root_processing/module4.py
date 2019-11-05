@@ -228,11 +228,12 @@ def exact_match(tmp_dir):
 	except:
 	    print("Issue with files: " + e_root_file +'/'+root_tam_grouping +'/'+root_tam_grouping_final)
 
-	try:
-	    preprocess_database_mng(db,db1)
-	    db_dict = extract_dictionary_ordered_fact_database_mng(db1)
-	except: 
-	    print("Issue with files: " + db)
+	#try:
+	#    preprocess_database_mng(db,db1)
+	#    db_dict = extract_dictionary_ordered_fact_database_mng(db1)
+	#    print(db_dict)
+	#except: 
+	#   print("Issue with files: " + db)
 	   
 	try:
 	    h2w = create_dict(h_word_file, '(H_wordid-word')
@@ -246,6 +247,17 @@ def exact_match(tmp_dir):
 	except:
 	   print("File Missing: " + e_word_file )
 
+	
+	'''e_word_root_same = check_word_and_root_same(e2w, e_root_dict)
+	#print(e_word_root_same) 
+	h_word_root_same = check_word_and_root_same(h2w, h_root_dict) 
+	a = exact_match_WSD_modulo(e_word_root_same, h_word_root_same, db_dict)
+	b = remove_duplicate_lists_from_list_of_lists(a)
+	print(b)
+	c=remove_weak_choices(b)
+	print(c)
+	add(c, "exact_match_WSD_modulo" , tmp_dir + "/A_exact_match_WSD_modulo.dat" )'''
+
 	try:
 		e_word_root_same = check_word_and_root_same(e2w, e_root_dict)
 		#print(e_word_root_same) 
@@ -258,7 +270,7 @@ def exact_match(tmp_dir):
 		add(c, "exact_match_WSD_modulo" , tmp_dir + "/A_exact_match_WSD_modulo.dat" )
 		return(b)
 	except:
-		print("FIle missing in module4 ")   
+		print("FIle missing in module4 ") 
 
 	
 	'''e_word_root_same = check_word_and_root_same(e2w, e_root_dict)
@@ -273,6 +285,7 @@ def exact_match(tmp_dir):
 
 	print("=========================================")
 #c=remove_weak_choices(b)
+
 def set_difference(l1,l2):
 	l3 = [x for x in l1 if x not in l2]
 	return l3
@@ -299,4 +312,9 @@ db1 = tmp_dir + '/database_mng_preprocessed.dat'
 h_word_file = tmp_dir + '/H_wordid-word_mapping.dat'
 e_word_file = tmp_dir + '/E_wordid-word_mapping.dat'
 h_root_dict={};e_root_dict={}; e2w={};h2w={}; db_dict={}
+try:
+    preprocess_database_mng(db,db1)
+    db_dict = extract_dictionary_ordered_fact_database_mng(db1)
+except:
+    print("Issue with files: " + db)
 exact_match(tmp_dir)
