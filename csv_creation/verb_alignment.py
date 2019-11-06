@@ -30,7 +30,8 @@ for line in open(sys.argv[1]):
 #storing K layer root info in dic:
 for line in open(sys.argv[2]):
     lst = line.strip().split()
-    anu_rt_dic[int(lst[1])] = lst[2]     
+    if 'id-anu_root' in lst[0]:
+        anu_rt_dic[int(lst[1])] = lst[2]     
 
 ##############################################
 #aligning verb root
