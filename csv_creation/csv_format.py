@@ -16,6 +16,7 @@ flag13=0
 flag14=0
 flag15=0
 flag16=0
+flag17=0
 
 try:
     f=open("word.dat",'r').readlines()
@@ -94,7 +95,12 @@ try:
     f16=open("database_mng.dat", "r")
 except:
     flag16=1
-    log.write("database_mng.dat not found")    
+    log.write("database_mng.dat not found")   
+try:
+    f17=open("revised_root.dat", "r")
+except:
+    flag17=1
+    log.write("revised_root.dat not found")   
    
 
 list_A=['A']
@@ -137,6 +143,7 @@ if(flag==0):
         # print 'word is ', word
         list_A[i]=word[1] #A_Layer
         if word[1] not in wrd_dic.keys():
+            #print word[1]
             wrd_dic[word[1]] = word[2][:-1]            
 
 
@@ -286,14 +293,22 @@ def check_for_root(a_root, m_root):
 		return True
 
 ##===================
+anu_rt_dic = {}
+if(flag17 == 0):
+    for line in f17:
+        lst = line.strip().split()
+        add_data_in_dic(anu_rt_dic, lst[1], lst[2])  
+
+##===================
 database_dic = {}
 if(flag16 == 0):
     for line in f16:
         lst = line[:-2].split()
         if 'default-iit-bombay-shabdanjali-dic_smt.gdbm' in line.strip():
             if(lst[4] == 'default-iit-bombay-shabdanjali-dic_smt.gdbm'):
-                for key in sorted(wrd_dic):
-                    if(wrd_dic[key] == lst[3]):
+                #for key in sorted(wrd_dic):
+                for key in sorted(anu_rt_dic):
+                    if(anu_rt_dic[key] == lst[3]):
                         add_data_in_dic(database_dic, key, '_'.join(lst[5:]))  
                         
 ##===================
@@ -375,6 +390,7 @@ for i in f11:
                                 k_rt[int(ap_out[1])] = m_root_dic[key]
         ############ K Dic code            
         if(ap_out[1]) in database_dic.keys():
+            print('%%', ap_out[1])
             for key in sorted(m_root_dic):
                 if(key in database_dic[ap_out[1]].split('/')):
                     k_database_dic[int(ap_out[1])] = m_root_dic[key]

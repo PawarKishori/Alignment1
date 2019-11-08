@@ -68,8 +68,15 @@ conda deactivate
 sh $HOME_alignment/hindi_root_processing/deciding_verb_tam.sh $1
 
 sh $HOME_alignment/csv_creation/create_html_csv.sh $1
+cd $HOME_anu_tmp/tmp/$1_tmp
+while read line 
+do
+   cd $line	
+  	 bash $HOME_alignment/csv_creation/run_K_layer_alignment.sh
+   cd ..
+done < dir_names.txt	
 #####################################################################################################################
-
+cd $HOME_alignment
 
 sh $HOME_alignment/working_debug/test3.sh $1
 sh $HOME_alignment/alignment_clips/test_bash_to_run_script.sh $1
