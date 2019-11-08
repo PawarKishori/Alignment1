@@ -15,6 +15,7 @@ from functions import return_key
 fr = open("H_wordid-word_mapping.dat", "r").readlines()
 fo = open("original_word.dat", "r").readlines()
 
+weak_choice = ['from','with', 'on', 'to', 'of','in','at', 'through', 'by', 'at', 'into', 'over']
 ###############################
 #Declarations:
 cap_dic = {}
@@ -30,9 +31,14 @@ list_K_alignment=['K_1st_letter_capital_word']
 #Collecting first word Capital from original_word.dat
 for line in fo:
     lst = line[:-2].split()
-    if(lst[2][0].isupper()): #and lst[1] != '1'):
-        add_data_in_dic(cap_dic, int(lst[1]), lst[2].lower())
-
+    if (lst[2].lower() not in weak_choice):   # Condition added by Kishori 9 nov to remove 1_In = 3_meM/10_meM in K_1st_letter_capital_word
+        if(lst[2][0].isupper()): #and lst[1] != '1'):
+            #print(lst[2])
+            add_data_in_dic(cap_dic, int(lst[1]), lst[2].lower())
+    
+    
+    
+    
 #for key in sorted(cap_dic):
 #    print(str(key) + '\t' + cap_dic[key])
 
