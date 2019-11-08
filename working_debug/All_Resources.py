@@ -27,7 +27,7 @@ roja_transliterate_file = sent_dir +  '/Tranliterated_words_first_run.dat'
 #html_file = path_tmp +'/'+ eng_file_name +'_table1.html'
 log_file = sent_dir + '/All_Resources.log'
 
-k_layer_ids_file= sent_dir + '/H_alignment_parserid.csv'
+k_layer_ids_file= sent_dir + '/H_alignment_parserid-new.csv'
 ##############################################CREATING LOG OBJECT##################################################
 if os.path.exists(log_file):
     os.remove(log_file)
@@ -65,7 +65,7 @@ def h_sentence() :
 # In[348]:
 
 
-########################################convert_words_to_ids_in_list###############################################
+######################################## convert_words_to_ids_in_list ###############################################
 def convert_words_to_ids_in_list(listofwords,id_word_dict) :   
     for n, i in enumerate(listofwords):
         for key,values in id_word_dict.items() :
@@ -359,45 +359,25 @@ def K_dict_Roja():
 # In[361]:
 
 
-############################################NANDINI's DICT ROW#####################################################
-def Nandani_Dict():
-    nandani_mapping_list=[]
-    try:
+############################################DOMAIN_SPECIFIC_ALIGN_DICT_ROW#####################################################
+def Domain_Specific_Alignment_Dict():
+    dict_new=[] 
     
-#     print(nandani_file)
-        data=""
-        nandani_mapping = extract_dictionary_from_deftemplate(nandani_file)  
-#     print(nandani_mapping)
-    # print(nandani_mapping)
+    try:
+        nupur_csv = sent_dir + '/Domain_Specific_Align_Dict.csv'
+        dict_new= anchor.load_row_from_csv(nupur_csv, 2)
+        dict_new=convert_words_to_ids_in_list(dict_new,h2w)
+        dict_new.insert(0,"Preprocessing")
+#         print(dict_new)
         
-        for j in range(0,no_of_eng_words+1):
-            if str(j) in nandani_mapping.keys():
-    #         print(str(j), transliterate_mapping[str(j)])
-                nandani_mapping_list.append(nandani_mapping[str(j)])
-            else:
-    #         print(str(j), '0')
-                nandani_mapping_list.append('0')
-
-       
-        for every_entry in nandani_mapping.keys():
-            if " " in every_entry:
-                eng_group_list = every_entry.split(" ")
-                hindi_group_list = nandani_mapping[every_entry].split(" ")
-    #             print(eng_group_list, hindi_group_list)
-
-                #Till now nandani's entries are of same length
-                for i in range(0, len(eng_group_list)):
-                    nandani_mapping[eng_group_list[i]]= hindi_group_list[i]
-    #             print("Multiword entry in nandani dictionary")
-    # print(nandani_mapping)
-        nandani_mapping_list[0] = 'Preprocessing'
+    except FileNotFoundError:
+        dict_new = ['0'] * (no_of_eng_words+1)
+        dict_new[0] = "Preprocessing"
+        print(nupur_csv +" not found")
+        log.write("FILE MISSING: " + nupur_csv  + "\n")
         
-    except :
-        nandani_mapping_list=['0']* (no_of_eng_words+1)
-        nandani_mapping_list[0] = 'Preprocessing'
-        print("FILE MISSING: " + nandani_file ) 
-        log.write("FILE MISSING: " + nandani_file  + "\n")
-    return nandani_mapping_list
+    return dict_new
+
 
 
 # In[362]:
@@ -454,15 +434,55 @@ def Transliteration_Dict_old():
         log.write("FILE MISSING: " + roja_transliterate_file + "\n")
     return roja_transliterate_list
 
+######################################## K_exact_mwe_word_align.csv ###################################################
+
+def K_exact_mwe_word_align_csv():
+    k_mwe =[]
+    try:
+        k_mwe_csv_file = sent_dir + '/K_exact_mwe_word_align.csv'
+        k_mwe = anchor.load_row_from_csv(k_mwe_csv_file, 0)
+        k_mwe = anchor.cleaning_list(k_mwe)                         #
+        k_mwe = convert_words_to_ids_in_list(k_mwe, h2w)
+        print(k_mwe)
+        #k_mwe.insert(0,"K_exact_mwe_word_align.csv")
+    except FileNotFoundError:
+        k_mwe = ['0'] * (no_of_eng_words + 1)
+        k_mwe[0] = 'K_exact_mwe_word_align.csv'
+        log.write("FILE MISSING: " + k_mwe_csv_file + "\n")
+    return k_mwe
+
+######################################## K_alignment_for_prop.csv (K_1st_letter_capital_word) ###############################
+
+def K_1st_letter_capital_word():
+    k_prop_list=[]
+    try:
+        k_prop_csv_file = sent_dir + '/K_1st_letter_capital_word.csv'
+        k_prop = anchor.load_row_from_csv(k_prop_csv_file, 0)
+        k_prop = anchor.cleaning_list(k_prop)
+        print("%%%%%%")
+        print(k_prop)
+        print(len(k_prop))
+        print(type(k_prop[1]))
+        k_prop = convert_words_to_ids_in_list(k_prop, h2w)
+        #print(k_prop)
+        #print(len(k_prop))
+
+        #k_prop.insert(0,"K_1st_letter_capital_word")
+    except FileNotFoundError:
+        k_prop = ['0'] * (no_of_eng_words + 1)
+        k_prop[0] = 'K_1st_letter_capital_word'
+        log.write("FILE MISSING: " + k_prop_csv_file + "\n")
+    return k_prop
 
 
-########################################TRANSLITERATION DICT ROW###################################################
+######################################## TRANSLITERATION DICT ROW ###################################################
 def Transliteration_Dict():
     roja_transliterate_list=[]
     try:
         transl_csv = sent_dir + '/Transliterate1.csv'
         dict_new= anchor.load_row_from_csv(transl_csv, 2)
-        dit_new=convert_words_to_ids_in_list(dict_new,h2w)
+        
+        dict_new=convert_words_to_ids_in_list(dict_new,h2w)
         dict_new.insert(0,"Transliteration")
 
     except FileNotFoundError:
@@ -483,13 +503,13 @@ def Kishori_exact_match_WSD_modulo():
     try:
         kishori_csv = sent_dir + '/Exact_match_dict.csv'
         dict_new= anchor.load_row_from_csv(kishori_csv, 2)
-        dit_new=convert_words_to_ids_in_list(dict_new,h2w)
-        dict_new.insert(0,"Dict_special_case")
+        dict_new= convert_words_to_ids_in_list(dict_new,h2w)
+        dict_new.insert(0,"WSD_modulo")
 #         print(dict_new)
         
     except FileNotFoundError:
         dict_new = ['0'] * (no_of_eng_words+1)
-        dict_new[0] = "Dict_special_case"
+        dict_new[0] = "WSD_modulo"
         print(kishori_csv +" not found")
         log.write("FILE MISSING: " + kishori_csv  + "\n")
         
@@ -503,14 +523,20 @@ def Kishori_exact_match_WSD_modulo():
 
 def integrating_all_rows():
     try :
-        row0=A_layer()
-        row1=K_exact_match_Roja()
-        row2=K_exact_without_vib_Roja()
-        row6=K_partial_Roja()
-        row9=K_root_Roja()
-        row8=K_dict_Roja()
+        row0 = A_layer()
+        row1 = K_exact_match_Roja()
+        row2 = K_exact_mwe_word_align_csv() 
+
+
+
+        row8 = K_partial_Roja()
+
+        row10 = K_dict_Roja()
+        row11 = K_root_Roja()
+
     except :
         print("FILE MISSING: " + k_layer_ids_file  )
+
         log.write("FILE MISSING: " + k_layer_ids_file + "\n")
         row0=[0]* (no_of_eng_words+1)
         row0[0] = 'English_word_ids'
@@ -518,18 +544,31 @@ def integrating_all_rows():
         row1[0] = 'K_exact_match'
         row2=[0]* (no_of_eng_words+1)
         row2[0] = 'K_exact_without_vib'
-        row6=[0]* (no_of_eng_words+1)
-        row6[0] = 'K_partial'
+        #row6=[0]* (no_of_eng_words+1)
+        #row6[0] = 'K_partial'
         row9=[0]* (no_of_eng_words+1)
         row9[0] = 'K_root'
         row8=[0]* (no_of_eng_words+1)
-        row8[0] = 'K_dict'
-        
-    row4=Nandani_Dict()
-    row5=Bharatvani_Dict()
-    row3=Transliteration_Dict()
-    row7=Kishori_exact_match_WSD_modulo()
-#     print(h2w)
+        row8[0] = 'K_partial'
+        row10=[0]* (no_of_eng_words+1)
+        row10[0] = 'K_dict'
+        row11=[0]* (no_of_eng_words+1)
+        row11[0] = 'K_root'
+
+ 
+    row3 = K_exact_without_vib_Roja()
+    row4 = K_1st_letter_capital_word()
+
+    #row5 = Transliteration_Dict()
+    row5 = Transliteration_Dict_old()
+    row6 = Domain_Specific_Alignment_Dict()
+    row7 = Bharatvani_Dict()
+
+    row9 =Kishori_exact_match_WSD_modulo()
+
+
+
+    #print("===============>",h2w)
 #     print(e2w)
 #     print("0 :",row0)
 #     print("1 :",row1)#De
@@ -541,6 +580,7 @@ def integrating_all_rows():
 #     print("7 :",row7)#
 #     print("8 :",row8)#
 #     print("9 :",row9)#
+
     with open(sent_dir+'/All_Resources.csv', 'w') as csvfile :
         csvwriter = csv.writer(csvfile)
         csvwriter.writerow(row0)
@@ -553,5 +593,7 @@ def integrating_all_rows():
         csvwriter.writerow(row7)
         csvwriter.writerow(row8)
         csvwriter.writerow(row9)
+        csvwriter.writerow(row10)
+        csvwriter.writerow(row11)
 integrating_all_rows()
 
