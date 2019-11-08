@@ -2365,6 +2365,7 @@ nA_xiyA_howA,f,s,u                    nA_xI_howI
 nA_xiyA_howA,f,p,a                    nA_xIM_howIM
 nA_xiyA_howA,f,p,m                    nA_xIM_howIM
 nA_xiyA_howA,f,p,u                    nA_xIM_howIM
+yA,m,s,a                    yA
 yA_A_rahA_WA,m,s,a                    yA_A_rahA_WA
 yA_A_rahA_WA,m,s,m                    yA_A_rahA_WA
 yA_A_rahA_WA,m,s,u                    yA_A_rahA_WA
@@ -2757,6 +2758,7 @@ yA_jA_gA,m,p,m                    yA_jAeMge
 yA_jA_gA,f,s,m                    yA_jAegI
 yA_jA_gA,f,p,m                    yA_jAeMgI
 yA_jAnA,m,p,m                    yA_#jA
+yA_jAnA_cAhie,m,s,a                    yA_jAnA_cAhie
 yA_jAnA_WA,m,s,a                    yA_jAnA_WA
 yA_jAnA_WA,m,s,m                    yA_jAnA_WA
 yA_jAnA_WA,m,s,u                    yA_jAnA_WA
