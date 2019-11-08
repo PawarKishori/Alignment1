@@ -6,14 +6,16 @@
 
 import sys,os,re
 from os import path
+import numpy as np
 #csv_file="/home/nupur/ai1E_tmp/2.1/new_N1.csv" 
 
-temp_path = sys.argv[1]
+temp_path = sys.argv[1]     #full path of temp directory
 sent_no = sys.argv[2]
 csv_file = temp_path + '/' +sent_no +'/N1.csv'
 hindi_file = temp_path +  '/' +sent_no +'/H_wordid-word_mapping.dat'
 lwg_file = temp_path + '/' +sent_no + '/E_lwg.dat'
-
+e_grouping_file = temp_path + '/' + sent_no + '/E_Word_Group_Sanity.dat'
+h_grouping_file = temp_path + '/' + sent_no + '/H_Word_Group.dat'
 #temp = hindi_file.split("/")[:-1]
 #temp_path="/".join(temp[:-1])
 #sent_no = "".join(temp[-1:])
@@ -40,7 +42,7 @@ def ids_from_csv() :
         return e_ids,h_ids,int(e_total)
     except(EmptyError) :
         log.write("In "+sent_no+" N1.csv file is absent\n")
-        exit()
+        sys.exit()
     
     
 #######
@@ -58,7 +60,7 @@ def h_total_words() :
         return h_total
     except(EmptyError) :
         log.write("In "+sent_no+" H_wordid-word_mapping.dat file is absent\n")
-        exit()
+        sys.exit()
 #####
 h_total=h_total_words()
 
@@ -75,6 +77,8 @@ def left_and_mapping_list():
     return e_mapp,left
 e_mapp,left=left_and_mapping_list()
 
+eng_stopList = ['is','are','am','was','were','a','an','the','in','to','of']
+hin_stopList = ['kA','kI','ke','ko','meM','ne','se','para','vAlA','vAlI','vAle','waka','xvArA']
 
 def e_mapping_info() :
     all_lwg=[]
@@ -100,14 +104,33 @@ def e_mapping_info() :
             for j in flat_all_mapped :
                 if i == j :
                     e_mapp.append(i)
+
         return len(e_mapp),e_mapp
     except(EmptyError) :
         log.write("In "+sent_no+" H_wordid-word_mapping.dat file is absent\n")
-        exit()
-        
+        sys.exit()
         
         
 mapp_len,e_mapped_ids=e_mapping_info()
+
+def e_temp_mapped() :
+    e_group = open(e_grouping_file,"r").read()
+    e_group = e_group.strip('\n').split('\n')
+    for i in e_group :
+        i = i.lstrip('(E_group')
+        i = i.split(') (')
+        i[2] = i[2].strip(")")
+        eids = i[1].split(" ")[1:]
+        ewords = i[2].split(" ")[1:]
+        main_list = np.setdiff1d(eids,e_mapped_ids)
+        for ids in main_list :
+            if ewords[eids.index(ids)] in eng_stopList :
+                e_mapped_ids.append(ids)
+    return len(e_mapped_ids),e_mapped_ids
+mapp_len,e_mapped_ids= e_temp_mapped()  
+
+
+
 
 def h_mapping_info() :
     final=[]
@@ -122,6 +145,23 @@ def h_mapping_info() :
             h_mapped.append(i)
     return len(h_mapped),h_mapped
 h_len,h_mapped_ids=h_mapping_info()
+
+def h_temp_mapped() :
+    h_group = open(h_grouping_file,"r").read()
+    h_group = h_group.strip('\n').split('\n')
+    for i in h_group :
+        i = i.lstrip('(H_group')
+        i = i.split(') (')
+        i[2] = i[2].strip(")")
+        hids = i[1].split(" ")[1:]
+        hwords = i[2].split(" ")[1:]
+        found = np.setdiff1d(hids,h_mapped_ids)
+        
+        for ids in found :
+            if hwords[hids.index(ids)] in hin_stopList :
+                h_mapped_ids.append(ids)
+    return len(h_mapped_ids),h_mapped_ids
+h_len,h_mapped_ids= h_temp_mapped()
 def e_leftovers():
     e_left_ids=[]
     
@@ -130,6 +170,8 @@ def e_leftovers():
             e_left_ids.append(str(i))
             #print(i)
     return e_left_ids
+
+
 def h_leftovers() :
     h_left_ids=[]
     for i in range(1,h_total+1) :
