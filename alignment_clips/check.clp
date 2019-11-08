@@ -64,7 +64,7 @@
 	?HG1 <- (Hgroup_id-group_elements ?hgid1 $?gph1)
 	?HG2 <- (Hgroup_id-group_elements ?hgid2 $?gph2)
 	;?P <- (proposed_anchor_ids $?r)
-	(test (and (member$ ?a $?gpe) (member$ $?y1 $?gph1) (member$ $?y2 $?gph2)))
+	(test (and (member$ ?a $?gpe) (member$ $?y1 $?gph1) (member$ $?y2 $?gph2) (neq ?hgid1 ?hgid2) (neq (length$ $?y1) 0) (neq (length$ $?y2) 0)))
 	=>
 	(retract ?e)
 	(assert (remove ?a $?y1))
@@ -313,46 +313,46 @@
 ;ambiguous entries present for 'Himalayas' in the 'part of the Himalayas lying' and now only a single entry is left as potential
 ;for which this rule will fire and assert it as a final anchor, it will also store the information about the group.
 
-(defrule check_unique_potential
-	(declare (salience -500))
-	?e1 <- (anchor_type-english_id-hindi_id potential ?a $?y1)
-	?e2 <- (anchor_type-english_id-hindi_id potential ?a $?)
-	?e3 <- (anchor_type-english_id-hindi_id potential ? $?y1)
-	;?E <- (english_group_ids_mfs $?n)
-	?EG <- (Egroup_id-group_elements ?egid $?gpe)
-	?HG <- (Hgroup_id-group_elements ?hgid $?gph)
-	;?P <- (proposed_anchor_ids $?r) 
-	(test (and (eq ?e1 ?e2 ?e3) (member$ ?a $?gpe) (member$ $?y1 $?gph) (neq (length$ $?y1) 0)))
-	=>
-	(retract ?e1)
-	(assert (remove ?a $?y1))
-	(printout t "Rule check_unique_potential fired for " ?a " " $?y1 crlf)
-	(assert (proposed_groups ?egid ?hgid))
-	(assert (final_set-eid-hid ?a $?y1)))
-	;(assert (new_proposed_anchor_ids (replace$ $?r (member$ ?a $?n) (member$ ?a $?n) $?y1))))
+;(defrule check_unique_potential
+;	(declare (salience -500))
+;	?e1 <- (anchor_type-english_id-hindi_id potential ?a $?y1)
+;	?e2 <- (anchor_type-english_id-hindi_id potential ?a $?)
+;	?e3 <- (anchor_type-english_id-hindi_id potential ? $?y1)
+;	;?E <- (english_group_ids_mfs $?n)
+;	?EG <- (Egroup_id-group_elements ?egid $?gpe)
+;	?HG <- (Hgroup_id-group_elements ?hgid $?gph)
+;	;?P <- (proposed_anchor_ids $?r) 
+;	(test (and (eq ?e1 ?e2 ?e3) (member$ ?a $?gpe) (member$ $?y1 $?gph) (neq (length$ $?y1) 0)))
+;	=>
+;	(retract ?e1)
+;	(assert (remove ?a $?y1))
+;	(printout t "Rule check_unique_potential fired for " ?a " " $?y1 crlf)
+;	(assert (proposed_groups ?egid ?hgid))
+;	(assert (final_set-eid-hid ?a $?y1)))
+;	;(assert (new_proposed_anchor_ids (replace$ $?r (member$ ?a $?n) (member$ ?a $?n) $?y1))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;Adding to the above rule, if X-->Y,Z is the information present with us and Y and Z belong to different groups of Hindi,
 ;this rule asserts that they should be aligned and corresponding group alignment information is also asserted.
 
-(defrule check_unique_potential_multiple_hindi_groups
-	(declare (salience -500))
-	?e1 <- (anchor_type-english_id-hindi_id potential ?a $?y1 $?y2)
-	?e2 <- (anchor_type-english_id-hindi_id potential ?a $? $?)
-	?e3 <- (anchor_type-english_id-hindi_id potential ? $?y1 $?y2)
-	;?E <- (english_group_ids_mfs $?n)
-	?EG <- (Egroup_id-group_elements ?egid $?gpe)
-	?HG1 <- (Hgroup_id-group_elements ?hgid1 $?gph1)
-	?HG2 <- (Hgroup_id-group_elements ?hgid2 $?gph2)
-	;?P <- (proposed_anchor_ids $?r) 
-	(test (and (eq ?e1 ?e2 ?e3) (member$ ?a $?gpe) (member$ $?y2 $?gph2) (member$ $?y1 $?gph1) (neq (length$ $?y1) 0) (neq (length$ $?y2) 0)))
-	=>
-	(retract ?e1)
-	(assert (remove ?a $?y1))
-	(assert (remove ?a $?y2))
-	(printout t "Rule check_unique_potential fired for " ?a " " $?y1 crlf)
-	(assert (proposed_groups ?egid ?hgid1))
-	(assert (proposed_groups ?egid ?hgid2))
-	(assert (final_set-eid-hid ?a $?y1 $?y2)))
-	;(assert (new_proposed_anchor_ids (replace$ $?r (member$ ?a $?n) (member$ ?a $?n) $?y1))))
+;(defrule check_unique_potential_multiple_hindi_groups
+;	(declare (salience -500))
+;	?e1 <- (anchor_type-english_id-hindi_id potential ?a $?y1 $?y2)
+;	?e2 <- (anchor_type-english_id-hindi_id potential ?a $? $?)
+;	?e3 <- (anchor_type-english_id-hindi_id potential ? $?y1 $?y2)
+;	;?E <- (english_group_ids_mfs $?n)
+;	?EG <- (Egroup_id-group_elements ?egid $?gpe)
+;	?HG1 <- (Hgroup_id-group_elements ?hgid1 $?gph1)
+;	?HG2 <- (Hgroup_id-group_elements ?hgid2 $?gph2)
+;	;?P <- (proposed_anchor_ids $?r) 
+;	(test (and (eq ?e1 ?e2 ?e3) (member$ ?a $?gpe) (member$ $?y2 $?gph2) (member$ $?y1 $?gph1) (neq (length$ $?y1) 0) (neq (length$ $?y2) 0)))
+;	=>
+;	(retract ?e1)
+;	(assert (remove ?a $?y1))
+;	(assert (remove ?a $?y2))
+;	(printout t "Rule check_unique_potential fired for " ?a " " $?y1 crlf)
+;	(assert (proposed_groups ?egid ?hgid1))
+;	(assert (proposed_groups ?egid ?hgid2))
+;	(assert (final_set-eid-hid ?a $?y1 $?y2)))
+;	;(assert (new_proposed_anchor_ids (replace$ $?r (member$ ?a $?n) (member$ ?a $?n) $?y1))))
