@@ -49,9 +49,9 @@ final_dict={}
 
 for k,v in eid_n1_dict.items():
     if len(v)==1:
-        final_dict[k]=v[0]
+        final_dict[int(k)]=v[0]
     else:
-        final_dict[k]='0'
+        final_dict[int(k)]='0'
 final = sorted(final_dict.items())
 print(final)
 
