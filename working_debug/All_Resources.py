@@ -479,9 +479,10 @@ def K_1st_letter_capital_word():
         k_prop_csv_file = sent_dir + '/K_1st_letter_capital_word.csv'
         k_prop = anchor.load_row_from_csv(k_prop_csv_file, 0)
         k_prop = anchor.cleaning_list(k_prop)
-        #print(k_prop)
-        #print(len(k_prop))
-        #print(type(k_prop[1]))
+        print("%%%%%%")
+        print(k_prop)
+        print(len(k_prop))
+        print(type(k_prop[1]))
         k_prop = convert_words_to_ids_in_list(k_prop, h2w)
         #print(k_prop)
         #print(len(k_prop))
@@ -500,6 +501,7 @@ def Transliteration_Dict():
     try:
         transl_csv = sent_dir + '/Transliterate1.csv'
         dict_new= anchor.load_row_from_csv(transl_csv, 2)
+        
         dict_new=convert_words_to_ids_in_list(dict_new,h2w)
         dict_new.insert(0,"Transliteration")
 
@@ -521,7 +523,7 @@ def Kishori_exact_match_WSD_modulo():
     try:
         kishori_csv = sent_dir + '/Exact_match_dict.csv'
         dict_new= anchor.load_row_from_csv(kishori_csv, 2)
-        dict_new=convert_words_to_ids_in_list(dict_new,h2w)
+        dict_new= convert_words_to_ids_in_list(dict_new,h2w)
         dict_new.insert(0,"WSD_modulo")
 #         print(dict_new)
         
@@ -562,12 +564,16 @@ def integrating_all_rows():
         row1[0] = 'K_exact_match'
         row2=[0]* (no_of_eng_words+1)
         row2[0] = 'K_exact_without_vib'
-        row6=[0]* (no_of_eng_words+1)
-        row6[0] = 'K_partial'
+        #row6=[0]* (no_of_eng_words+1)
+        #row6[0] = 'K_partial'
         row9=[0]* (no_of_eng_words+1)
         row9[0] = 'K_root'
         row8=[0]* (no_of_eng_words+1)
-        row8[0] = 'K_dict'
+        row8[0] = 'K_partial'
+        row10=[0]* (no_of_eng_words+1)
+        row10[0] = 'K_dict'
+        row11=[0]* (no_of_eng_words+1)
+        row11[0] = 'K_root'
 
  
     row3 = K_exact_without_vib_Roja()
