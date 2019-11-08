@@ -11,6 +11,9 @@ python3 $HOME_alignment/Transliteration/Remove_entries_handled_by_acronym_from_T
 file_dir=$1'_tmp'
 END=`wc -l $1 | awk '{print $1}'`
 
+
+
+# Following code generated Transliterate1.csv
 for i in $(seq 1 $END)
 do
         sentence_dir='2.'$i
@@ -19,4 +22,5 @@ do
         python3 $HOME_alignment/Transliteration/Exact_match_dict.py $tmp_path/E_sentence $tmp_path/H_sentence $tmp_path/Tranliterated_words_first_run.dat
         cat $tmp_path/Transliterate1.csv
 done
+###################################################################################################
 
