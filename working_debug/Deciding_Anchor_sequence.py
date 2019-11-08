@@ -71,6 +71,10 @@ def return_if_all_rows_of_same_length():
     all_rows_list = reading_all_resources()
     #print(nested_list)
     n = len(all_rows_list[0])
+    #print(n)
+    #for i in all_rows_list:
+        #print(i)
+        #print(len(i), i[0])
     if all(len(x) == n for x in all_rows_list):
         print("ALL ROWS HAVE EQUAL LENGTH")
     else:

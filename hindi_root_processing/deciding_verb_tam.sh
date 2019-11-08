@@ -11,7 +11,8 @@ do
         tmp_path=$HOME_anu_tmp/tmp/$1_tmp/$sentence_dir
 
         python3 $HOME_alignment/hindi_root_processing/module1.py $tmp_path
-        python3 $HOME_alignment/hindi_root_processing/verb_7_10.py  $tmp_path >  $tmp_path/verb_root_tam_info
+        python3 $HOME_alignment/hindi_root_processing/verb_8_11_19.py  $tmp_path >  $tmp_path/verb_root_tam_info
+
         python3 $HOME_alignment/hindi_root_processing/generate_root.py $tmp_path  #c    hange the path acc. to the location of generate_root.py 
         python $HOME_alignment/hindi_root_processing/module4.py $tmp_path
         python3 $HOME_alignment/hindi_root_processing/Exact_match_dict.py $tmp_path/E_sentence $tmp_path/H_sentence $tmp_path/A_exact_match_WSD_modulo.dat

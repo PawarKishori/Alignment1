@@ -1,5 +1,18 @@
 import csv
 import re
+
+
+'''def cleaning_list(k_layer_ids):
+    for n, i in enumerate(k_layer_ids):
+        if i == '-': 
+            k_layer_ids[n] = '0'
+#     for n, i in enumerate(k_layer_ids):
+#         if i == '_':
+#             k_layer_ids[n] = 0
+    return(k_layer_ids)'''
+
+
+
 def load_row_from_csv(filename, row_number):
     try:
         with open(filename, newline='') as iris:
@@ -146,7 +159,7 @@ def write_dictionary_row_by_row_in_fact_file(dict1, fact_label, filepath):
 def cleaning_list(k_layer_ids):
     for n, i in enumerate(k_layer_ids):
         if i == '-':
-            k_layer_ids[n] = 0
+            k_layer_ids[n] = '0'
     return(k_layer_ids)
 
 #Extracting a row from csv file

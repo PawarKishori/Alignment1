@@ -22,7 +22,8 @@ do
         echo "(defglobal ?*hpath* = $HOME_alignment)" > $tmp_path/new_alignment.clp
 
         myclips -f  $HOME_alignment/alignment_clips/anchor_clp_run.bat >  $tmp_path/clips_error_alignment
-        python3 $HOME_alignment/alignment_clips/tocsv_converter.py  
+        #python3 $HOME_alignment/alignment_clips/tocsv_converter_old.py  
+        python3 $HOME_alignment/alignment_clips/clips_to_csv_N1.py $1 "2."$i  
 
 done
 

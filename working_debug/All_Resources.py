@@ -561,7 +561,10 @@ def integrating_all_rows():
 
     #row5 = Transliteration_Dict()
     row5 = Transliteration_Dict_old()
+
     row6 = Domain_Specific_Alignment_Dict()
+
+    row6 = Nandani_Dict()
     row7 = Bharatvani_Dict()
 
     row9 =Kishori_exact_match_WSD_modulo()

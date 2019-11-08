@@ -78,6 +78,7 @@ def reading_all_resources():
     return rows
 all_resources=reading_all_resources()
 #print(all_resources)
+
 def E_id_conversion():
     row0=[]
     row0.append("English_Word")
@@ -89,6 +90,7 @@ def E_id_conversion():
     #print(row0)
     return row0
 row0=E_id_conversion()
+
 def H_id_conversion() :
     all_rows= []
     for i in all_resources[1:] :
@@ -124,7 +126,8 @@ def H_id_conversion() :
                 temp_list.append('0')
         all_rows.append(temp_list)
     return all_rows
-all_rows=H_id_conversion()
+
+all_rows = H_id_conversion()
 #print(all_rows)
 def creating_new_csv():
     with open(sent_dir+"/All_Resources_id_word.csv","w") as csvfile :
@@ -136,5 +139,3 @@ def creating_new_csv():
                 
 creating_new_csv()
 #print(all_resources)
-
-
