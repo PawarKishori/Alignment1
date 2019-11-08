@@ -1,0 +1,59 @@
+initial state <> prAraMBika avasWA
+goal state <> lakRya avasWA
+search tree <> Koja vqkRa
+state space <> rAjya aMwarikRa
+state space search <> rAjya aMwarikRa Koja
+search algorithm <> Koja elgoriWma
+expert system <> viSeRajFa praNAlI
+knowledge representation <> jFAna prawiniXiwva
+search problem <> Koja samasyA
+current state <> varwamAna sWiwi
+membership function <> saxasyawA samAroha
+horn clause <> hoYrna KaMda
+propositional logic <> praswAvAwmaka warka
+goal node <> lakRya noda
+neural network <> waMwrikA netavarka
+constraint satisfaction <> bAXA saMwoRa
+constraint satisfaction problem <> bAXA saMwoRa samasyA
+order logic <> jFAna prawiniXiwva
+random variable <> yAxqcCika cara
+search space <> Koja sWAna
+positive literal <> sakArAwmaka SAbxika
+decision tree <> nirNaya vqkRa
+search strategy <> Koja raNanIwi
+satisfaction problem <> saMwoRa samasyA
+constraint satisfaction problem <> bAXA saMwoRa samasyA
+breadth first search <> cOdZAI pahale Koja
+constraint graph <> bAXA grAPa
+logical consequence <> wArkika pariNAma
+constraint satisfaction problem <> bAXA saMwoRa samasyA
+fuzzy set <> PajI seta
+bayesian network <> besiyana netavarka
+successor state <> uwwarAXikArI rAjya
+planning algorithm <> yojanA elgoriWma
+arc consistency <> cApa saMgawawA
+conditional probability <> saSarwa saMBAvyawA
+conditional independence <> saSarwa svawaMwrawA
+depth first search <> gaharAI praWama Koja
+instructional objective <> 1 anuxeSAwmaka
+start node <> SurU noda
+joint distribution <> saMyukwa viwaraNa
+state description <> rAjya vivaraNa
+state space search <> rAjya aMwarikRa Koja
+rational agent <> warkasaMgawa ejeMta
+consequence of gamma <> A GAMMA wArkika
+bayes net <> beyasa neta
+intelligent agent <> buxXimAna ejeMta
+artificial intelligence <> kqwrima buxXi
+truth table <> sawya sAraNI
+fuzzy logic <> PajI loYjika
+probability distribution <> prAyikawA viwaraNa
+probabilistic reasoning <> aniSciwawA saMBAvyawAvAxI
+causal link <> kAraNa liMka
+bidirectional search <> xvixiSa Koja
+binary constraint <> bIca xviAXArmika
+path cost <> paWa lAgawa
+arc consistency <> cApa saMgawawA
+path cost <> paWa lAgawa
+state space search <> rAjya aMwarikRa Koja
+decision tree <> nirNaya vqkRa
