@@ -359,45 +359,25 @@ def K_dict_Roja():
 # In[361]:
 
 
-############################################NANDINI's DICT ROW#####################################################
-def Nandani_Dict():
-    nandani_mapping_list=[]
-    try:
+############################################DOMAIN_SPECIFIC_ALIGN_DICT_ROW#####################################################
+def Domain_Specific_Alignment_Dict():
+    dict_new=[] 
     
-#     print(nandani_file)
-        data=""
-        nandani_mapping = extract_dictionary_from_deftemplate(nandani_file)  
-#     print(nandani_mapping)
-    # print(nandani_mapping)
+    try:
+        nupur_csv = sent_dir + '/Domain_Specific_Align_Dict.csv'
+        dict_new= anchor.load_row_from_csv(nupur_csv, 2)
+        dict_new=convert_words_to_ids_in_list(dict_new,h2w)
+        dict_new.insert(0,"Preprocessing")
+#         print(dict_new)
         
-        for j in range(0,no_of_eng_words+1):
-            if str(j) in nandani_mapping.keys():
-    #         print(str(j), transliterate_mapping[str(j)])
-                nandani_mapping_list.append(nandani_mapping[str(j)])
-            else:
-    #         print(str(j), '0')
-                nandani_mapping_list.append('0')
-
-       
-        for every_entry in nandani_mapping.keys():
-            if " " in every_entry:
-                eng_group_list = every_entry.split(" ")
-                hindi_group_list = nandani_mapping[every_entry].split(" ")
-    #             print(eng_group_list, hindi_group_list)
-
-                #Till now nandani's entries are of same length
-                for i in range(0, len(eng_group_list)):
-                    nandani_mapping[eng_group_list[i]]= hindi_group_list[i]
-    #             print("Multiword entry in nandani dictionary")
-    # print(nandani_mapping)
-        nandani_mapping_list[0] = 'Preprocessing'
+    except FileNotFoundError:
+        dict_new = ['0'] * (no_of_eng_words+1)
+        dict_new[0] = "Preprocessing"
+        print(nupur_csv +" not found")
+        log.write("FILE MISSING: " + nupur_csv  + "\n")
         
-    except :
-        nandani_mapping_list=['0']* (no_of_eng_words+1)
-        nandani_mapping_list[0] = 'Preprocessing'
-        print("FILE MISSING: " + nandani_file ) 
-        log.write("FILE MISSING: " + nandani_file  + "\n")
-    return nandani_mapping_list
+    return dict_new
+
 
 
 # In[362]:
@@ -581,6 +561,9 @@ def integrating_all_rows():
 
     #row5 = Transliteration_Dict()
     row5 = Transliteration_Dict_old()
+
+    row6 = Domain_Specific_Alignment_Dict()
+
     row6 = Nandani_Dict()
     row7 = Bharatvani_Dict()
 
