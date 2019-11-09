@@ -45,7 +45,7 @@ hin_lo_dict={}
 eng_lo_dict={}
 
 #print(lo_hin.split())
-with open("hindi_leftover_words.dat","w") as f:
+with open(tmp_path + "hindi_leftover_words.dat","w") as f:
     tmp = []
     for i in lo_hin.split():
         print(int(i),h2w[int(i)])
@@ -56,7 +56,7 @@ with open("hindi_leftover_words.dat","w") as f:
 
 
 print("------------------------")
-with open("english_leftover_words.dat","w") as f:
+with open(tmp_path + "english_leftover_words.dat","w") as f:
     tmp = []
     for i in lo_eng.split():
         print(int(i),e2w[int(i)])
