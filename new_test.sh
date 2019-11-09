@@ -17,7 +17,7 @@ sh $HOME_alignment/morph/generate_morph_facts.sh $1
 sh $HOME_alignment/canonical/remove_nukta.sh $1
 
 
-sh $HOME_alignment/run_alignment.sh $1 $2
+#sh $HOME_alignment/run_alignment.sh $1 $2
 
 ####################################################################################################################
 ## Given a Lookup_dict for a corpus, this module generates Tech_dict_lookup.dat for each 2.1, 2.2 etc. directories
@@ -51,8 +51,8 @@ sh $HOME_alignment/run_only_my_clips_module.sh $1
 
 ##Parser's Module
 source activate py3.6
-python $HOME_alignment/H_Createdata.py $1
-python $HOME_alignment/E_Createdata.py $1
+#python $HOME_alignment/H_Createdata.py $1
+#python $HOME_alignment/E_Createdata.py $1
 conda deactivate
 #sh $HOME_alignment/hindi_wordid_sanity.sh $1
 
@@ -76,12 +76,27 @@ do
    cd ..
 done < dir_names.txt	
 #####################################################################################################################
+
+sh $HOME_alignment/Domain_Specific_Align_Dict/Domain_Specific_Align_Dict_shell.sh $1
+
+#####################################################################################################################
+
+
 cd $HOME_alignment
 
 sh $HOME_alignment/working_debug/test3.sh $1
 sh $HOME_alignment/alignment_clips/test_bash_to_run_script.sh $1
 cp -r $HOME_alignment/styles $HOME_anu_tmp/tmp/$1_tmp/
 sh $HOME_alignment/working_debug/test4.sh $1
+
+
+#####################################################################################################################
+
 sh $HOME_alignment/working_debug/statistic-shell.sh $1
+
+#####################################################################################################################
+sh $HOME_alignment/working_debug/generate_1st_iter_leftover.sh $1
+
+sh $HOME_alignment/Transliteration/Transliteration_Second_Run-shell.sh $1
 
 #####################################################################################################################
