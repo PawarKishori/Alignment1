@@ -27,11 +27,16 @@ roja_transliterate_file = sent_dir +  '/Tranliterated_words_first_run.dat'
 #html_file = path_tmp +'/'+ eng_file_name +'_table1.html'
 log_file = sent_dir + '/All_Resources.log'
 
+All_resources_filename = sent_dir+'/All_Resources.csv'
+
 k_layer_ids_file= sent_dir + '/H_alignment_parserid-new.csv'
 ##############################################CREATING LOG OBJECT##################################################
 if os.path.exists(log_file):
     os.remove(log_file)
 log = open(log_file,'a')
+############################################## Deleting old All_Resources.csv  ##################################################
+if os.path.exists(All_resources_filename):
+    os.remove(All_resources_filename)
 
 ############################################Counting no of Eng Words###############################################
 try :
@@ -584,7 +589,7 @@ def integrating_all_rows():
 #     print("8 :",row8)#
 #     print("9 :",row9)#
 
-    with open(sent_dir+'/All_Resources.csv', 'w') as csvfile :
+    with open(All_resources_filename , 'w') as csvfile :
         csvwriter = csv.writer(csvfile)
         csvwriter.writerow(row0)
         csvwriter.writerow(row1)
