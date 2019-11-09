@@ -31,7 +31,7 @@ list_K_alignment=['K_1st_letter_capital_word']
 #Collecting first word Capital from original_word.dat
 for line in fo:
     lst = line[:-2].split()
-    if (lst[2].lower() not in weak_choice):   # Condition added by Kishori 9 nov to remove 1_In = 3_meM/10_meM in K_1st_letter_capital_word
+    if (lst[2].lower() not in weak_choice):#ai1E/2.67:  Condition added by Kishori 9 nov to remove 1_In = 3_meM/10_meM in K_1st_letter_capital_word
         if(lst[2][0].isupper()): #and lst[1] != '1'):
             #print(lst[2])
             add_data_in_dic(cap_dic, int(lst[1]), lst[2].lower())
