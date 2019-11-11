@@ -43,17 +43,18 @@ for line in open(sys.argv[2]):
 #aligning verb root
 for key in sorted(anu_rt_dic):
     anu_rt = anu_rt_dic[key]
-    print(anu_rt)
+    #print('^^', anu_rt, key)
     if key in anu_km_dic_match.keys(): #bAwa_kara
-        #print(key, anu_km_dic_match.keys())
+        #print('%%', key, anu_km_dic_match.keys(), anu_km_dic_match[key])
         k_v_rt_dic[key] = anu_km_dic_match[key]  #Ex:vApasa_A
     elif anu_rt in v_rt_dic.keys():
-        print(v_rt_dic.values())
+        #print('##', key, anu_rt, v_rt_dic[anu_rt], v_rt_dic.values())
         k_v_rt_dic[key] = v_rt_dic[anu_rt]  #Ex:vApasa_A
     else:
         a_rt_lst = anu_rt.split('_')
         for each in a_rt_lst:
             if each in v_rt_dic.keys():
+                #print('&&', key, each,v_rt_dic[each])
                 k_v_rt_par_dic[key] = v_rt_dic[each]
 
 ##############################################
@@ -72,11 +73,11 @@ with open('H_alignment_parserid.csv','r') as csvfile:
         if row[0] == 'K_exact_without_vib' or row[0] =='K_Root' or row[0] == 'K_Dic':
             for i in range(len(row)):
                 if i in k_v_rt_dic.keys():
-                    row[i] = k_v_rt_dic[key]
+                    row[i] = k_v_rt_dic[i]
         elif row[0] == 'K_par':
             for i in range(len(row)):
                 if i in k_v_rt_par_dic.keys():
-                   row[i] = k_v_rt_par_dic[key]
+                    row[i] = k_v_rt_par_dic[i]
         new_list.append(row)
 #        print(row)
 

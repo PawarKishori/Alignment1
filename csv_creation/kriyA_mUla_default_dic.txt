@@ -1551,7 +1551,7 @@ distance	xUra_rAka/xUra_raKa/alaga_karanA/svayaM_ko_kisI_se_xUra_kara
 distend	PEl_jA
 distil	svacCa_kara/sAraBUwa_ho/Asavana_kara
 distill	SuxXa_kara/SuxXa_ho/sAraBUwa_ho/Asavana_kara
-distinguish	alaga_kara/Parka_bawA/maSahUra_ho/Bexa_nikAla/apane_ko_pramuKa_banA
+distinguish	alaga_kara/Parka_bawA/maSahUra_ho/Bexa_nikAla/apane_ko_pramuKa_banA/Bexa_kara
 distort	woda-maroda_kara/vikqwa_kara/rUpa_bigAda
 distract	XyAna_KIFca/XyAna_Bafga_kara
 distress	xuHKa_ho
@@ -1725,7 +1725,7 @@ empathise	samAnuBUwi_ho
 empathize	samAnuBUwa_ho/samAnuBUwi_ho
 emphasise	jora_xe/mahawva_xe/bala_xe
 emphasize	jora_xe/mahawwva_xe/bala_xe
-employ	XanXe_meM_lagA/upayoga_meM_lA/prayoga_meM_le/nOkar_raKa/nOkara_raKa/niyukwa_kara/kAma_meM_le/kAma_meM_lA/kAma_meM_lagA/kAma_para_lagA
+employ	XanXe_meM_lagA/upayoga_meM_lA/prayoga_meM_le/nOkar_raKa/nOkara_raKa/niyukwa_kara/kAma_meM_le/kAma_meM_lA/kAma_meM_lagA/kAma_para_lagA/prayoga_kara
 empower	samarWa_kara/samarWa_banA/aXikAra_xe
 empty	KAlI_kara/KAlI_ho
 emulate	kI_waraha_kAma_kara/anukaraNa_kara

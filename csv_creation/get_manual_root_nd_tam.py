@@ -46,35 +46,42 @@ def check_wrd(index, length, word, f_wrd):
 def return_id(word):
     lst = word.split()
     length = len(lst)
+    ind_lst = []
     if lst[0] in h_wrd_dict.keys():
         w = []
         out = h_wrd_dict[lst[0]]
         if '/' not in out:
             ind = check_wrd(int(out), length, word, lst[0]) 
             if ind != None:
-                return ind
+                ind_lst.append(ind)
         else:
             ids = out.split('/')
             for each in ids:
                 ind = check_wrd(int(each), length, word, lst[0])
+                print('^^', each,ind)
                 if ind != None:
-                    return ind
+                    print(ind)
+                    ind_lst.append(ind)
+    return ind_lst
 ##############################
 for line in fv:
     if 'root:' not in line.strip() and 'tam:' not in line.strip():
         wrd = line.strip()
 #        print(wrd)
         out = return_id(wrd)
+        #print(out)
     if 'root:' in line.strip():
         rt = line.strip()[5:]
 #       print(rt)
         if out != None:
-           v_rt_dic[out] = rt
+            for each in out:
+                v_rt_dic[int(each)] = rt
     if 'tam:' in line.strip():
         tam = line.strip()[4:-7]
 #       print(tam)
         if out != None:
-           tam_dic[out] = tam
+            for each in out:
+                tam_dic[int(each)] = tam
 
 ##############################
 #for key in sorted(v_rt_dic):
@@ -111,12 +118,21 @@ def check_for_kriyA_mUla(start_id, length, anu_vb_word):
     for i in range(length):
         if start_id+i not in v_rt_dic.keys():
             val = return_key(str(start_id+i), h_wrd_dict)
-            if val != None:
+            if val != None and val != 'nahIM':
                 k_m_wrd.append(val)   #bAwa
                 ids.append(str(start_id+i))
+            elif val == 'nahIM':
+                v = return_key(str(start_id+i+1), h_wrd_dict)
+                k_m_wrd.append(v)   #Bexa_nahIM_kara
+                ids.append(str(start_id+i+1))
+
         else:
-                k_m_wrd.append(v_rt_dic[start_id+i])  #kara
-                ids.append(str(start_id+i))
+                if v_rt_dic[start_id+i] != 'nahIM':
+                    k_m_wrd.append(v_rt_dic[start_id+i])  #kara
+                    ids.append(str(start_id+i))
+                else:
+                    k_m_wrd.append(v_rt_dic[start_id+i+1])  
+                    ids.append(str(start_id+i+1))
 
     if anu_vb_word == '_'.join(k_m_wrd):
         return ' '.join(ids) 
