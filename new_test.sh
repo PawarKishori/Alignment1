@@ -89,6 +89,10 @@ sh $HOME_alignment/alignment_clips/test_bash_to_run_script.sh $1
 cp -r $HOME_alignment/styles $HOME_anu_tmp/tmp/$1_tmp/
 sh $HOME_alignment/working_debug/test4.sh $1
 
+#####################################################################################################################
+# 2 Run programs (H_wordnet and Bahri)
+sh $HOME_ailgnment/dict_suggest_srun/bahri_dict_suggestion/bahri_UTF_WX.sh $1
+python3 $HOME_ailgnment/dict_suggest_srun/h_wordnet_suggest/Srun_H_wordnet_suggested_words.py $1
 
 #####################################################################################################################
 
@@ -99,4 +103,5 @@ sh $HOME_alignment/working_debug/generate_1st_iter_leftover.sh $1
 
 sh $HOME_alignment/Transliteration/Transliteration_Second_Run-shell.sh $1
 
+sh $HOME_alignment/working_debug/test5.sh $1
 #####################################################################################################################

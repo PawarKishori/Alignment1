@@ -14,6 +14,8 @@ hsent = sent_dir + '/H_sentence'
 hparserid_to_wid = sent_dir + '/H_parserid-wordid_mapping.dat'
 roja_transliterate_file = sent_dir +  '/Tranliterated_words_2nd_run.dat'
 log_file = sent_dir + '/srun_All_Resources.log'
+bahri_dict_file = sent_dir + '/srun_bahri_dict_suggestion.dat'
+hindi_wordnet_file = sent_dir + '/srun_H_wordnet.dat'
 
 ##############################################CREATING LOG OBJECT##################################################
 if os.path.exists(log_file):
@@ -77,7 +79,7 @@ def convert_words_to_ids_in_list(listofwords,id_word_dict) :
 def return_key_from_value(dictionary, value):
     ids_to_return=[]
     for ids, words in dictionary.items(): 
-#         print(words,value)# for name, age in dictionary.iteritems():  (for Python 2.x)
+        #print(words,value)# for name, age in dictionary.iteritems():  (for Python 2.x)
         if str(words) == str(value):
 #             print("###",ids)
             ids_to_return.append(ids)
@@ -86,7 +88,6 @@ def return_key_from_value(dictionary, value):
             return id_to_return
         
     return ids_to_return
-
 
 # In[350]:
 
@@ -169,7 +170,7 @@ def get_E_H_Ids_mfs(filename):
     with open(filename,'r') as f:
         entries=f.read().strip("\n").split("\n")
         entries = [item.rstrip(")") for item in entries]
-        print(entries)
+        #print("\nEntries: \n",entries)
         for entry in entries:
 #             print(entry)
             new_entry = entry.split("\t")
@@ -249,7 +250,7 @@ def get_E_H_dict_Ids(filename):
             #print(e2w)
             #print(h2w)
             eid = return_key_from_value(e2w, eword)
-            print(eid) 
+            #print("\nEID :\n",eid) 
             hid = return_key_from_value(h2w, hword)
 #             print(eid, hid)
             tmp[str(eid)] = str(hid)
@@ -257,7 +258,24 @@ def get_E_H_dict_Ids(filename):
     return(tmp) 
 
 
-# In[356]:
+def E_H_IDS(filename):
+    with open(filename,'r') as file:
+        data = file.read().strip("\n").split("\n")
+        new_dict = dict()   
+        if data[0] != "":
+            for i in data:
+                if filename == sent_dir + '/bahri_dict_suggestion.dat':
+                    eword = i.split(" <> ")[1]
+                    hword = i.split(" <> ")[0]
+                else:
+                    eword = i.split(" <> ")[0]
+                    hword = i.split(" <> ")[1]
+                eid = return_key_from_value(e2w, eword)
+                hid = return_key_from_value(h2w, hword)
+                new_dict[str(eid)] = str(hid)
+    return(new_dict)
+
+transliterate_mapping = E_H_IDS(roja_transliterate_file)# In[356]:
 
 
 ##############################################ROW 1################################################################
@@ -273,8 +291,8 @@ def Transliteration_Dict_old():
     roja_transliterate_list=[]
     try:
         tranliterate_dict={}
-        transliterate_mapping = get_E_H_dict_Ids(roja_transliterate_file)  
-        print("==>",transliterate_mapping)
+        transliterate_mapping = E_H_IDS(roja_transliterate_file)  
+        print("\n==>",transliterate_mapping)
        
     
         for j in range(0,no_of_eng_words+1):
@@ -294,21 +312,45 @@ def Transliteration_Dict_old():
     return roja_transliterate_list
 
 
+########################################BAHRI DICT ROW###################################################
+
+b_list = list() 
+b_list.append("Bahri_dict")
+for i in range(no_of_eng_words):
+    b_list.append(str(0))
+
+def add_bahri_layer():
+    try:
+        b_dict = E_H_IDS(bahri_dict_file)
+        for i in b_dict:
+            b_list[int(i)] = b_dict[i]
+    except:
+        print("FILE MISSING: " + bahri_dict_file)
+        pass
+
+add_bahri_layer()
+
+
+########################################HINDI WORDNET ROW###################################################
+
+hw_list = list() 
+hw_list.append("Hindi_wordnet")
+for i in range(no_of_eng_words):
+    hw_list.append(str(0))
+
+def add_hindi_wordnet_layer():
+    try:
+        hw_dict = E_H_IDS(hindi_wordnet_file)
+        for i in hw_dict:
+            hw_list[int(i)] = hw_dict[i]
+    except:
+        print("FILE MISSING: " + hindi_wordnet_file)
+        pass
+
+add_hindi_wordnet_layer()
+
 ##########################################INTEGRATION##############################################################
 
-def integrating_all_rows():
-
-    row = Transliteration_Dict_old()
-
-
-    with open(sent_dir+'/sun_All_Resources.csv', 'w') as csvfile :
-        csvwriter = csv.writer(csvfile)
-        csvwriter.writerow(row0)
-        csvwriter.writerow(row)
-
-
-#def integrate_N2_to_all_rows():
-    
 
 with open(sent_dir + '/All_Resources.csv', 'r') as f:
     f = csv.reader(f)
@@ -316,9 +358,38 @@ with open(sent_dir + '/All_Resources.csv', 'r') as f:
     N1_layer = all_rows[-1]
 
 
-print(all_rows)
-print(N1_layer)
-integrating_all_rows(all_rows)
+def create_n2_layer():
+    row = Transliteration_Dict_old()
+    row[0] = "Transliterate_2"
+    #print(row)
+    N2 = list()
+
+    for i in range(0,len(N1_layer)):
+        if N1_layer[i] != "0":
+            N2.append(N1_layer[i])
+        elif row[i] != "0":
+            N2.append(row[i])
+        elif b_list[i] != "0":
+            N2.append(b_list[i])
+        else:
+            N2.append(hw_list[i])
+        N2[0] = "N2_layer"
+    return row,N2
+
+trans_2_run,N2_layer = create_n2_layer()
+
+
+def integrating_all_rows():
+    with open(sent_dir+'/srun_All_Resources.csv', 'w') as csvfile :
+        csvwriter = csv.writer(csvfile)
+        for i in all_rows:
+            csvwriter.writerow(i)
+        csvwriter.writerow(trans_2_run)
+        csvwriter.writerow(b_list)
+        csvwriter.writerow(hw_list)
+        csvwriter.writerow(N2_layer)
+
+integrating_all_rows()
 
 
 

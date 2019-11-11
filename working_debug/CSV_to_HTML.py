@@ -24,12 +24,14 @@ import anchor as a
 import pandas as pd
 import subprocess
 import numpy as np
+import H_Modules
 #Specify path of sentence:
 tmp_path=os.getenv('HOME_anu_tmp')+'/tmp/'
 
 #eng_file_name = 'ai1E'
 #sent_no = '2.2' #2.29, 2.21, 2.61, 2.14, 2.64
 eng_file_name = sys.argv[1]
+hin_file_name = eng_file_name.replace("E","H")
 sent_no = sys.argv[2]
 
 sent_dir = tmp_path + eng_file_name + "_tmp/" + sent_no
@@ -38,7 +40,7 @@ hfilename = sent_dir +  '/H_wordid-word_mapping.dat'
 efilename = sent_dir + '/E_wordid-word_mapping.dat'
 efilename_alternate = sent_dir + '/word.dat'
 
-log_file = sent_dir + '/log_csvtohtml'
+log_file = sent_dir + '/srun_log_csvtohtml'
 
 if os.path.exists(log_file):
     os.remove(log_file)
@@ -46,14 +48,14 @@ log = open(log_file,'a')
 
 ###################################################################################################################
 try:
-    dfs = pd.read_csv(sent_dir +'/'+ "All_Resources_id_word.csv")
+    dfs = pd.read_csv(sent_dir +'/'+ "srun_All_Resources_id_word.csv")
 #     del dfs['Unnamed: 0']
     no_of_eng_words = dfs.shape[1]
     title=list(dfs.columns.values)
 #     print(title)
 except:
-    print('All_Resources_id_word.csv missing')
-    log.write("FILE MISSING: " + "All_Resources_id_word.csv"  + "\n")
+    print('srun_All_Resources_id_word.csv missing')
+    log.write("FILE MISSING: " + "srun_All_Resources_id_word.csv"  + "\n")
 ##################################################################################################################
 try:
     e2w = a.create_dict(efilename, '(E_wordid-word')
@@ -83,8 +85,9 @@ except:
     
 try:   
     h2w = a.create_dict(hfilename, '(H_wordid-word')
-    hdf=pd.DataFrame(list(h2w.values()), index=h2w.keys())
-
+    hdf1=pd.DataFrame(list(h2w.values()), index=h2w.keys())
+    hdf_list_utf = [H_Modules.wx_utf_converter_sentence(i) for i in hdf1.iloc[:,0].tolist()]
+    hdf=pd.DataFrame(hdf_list_utf, index=h2w.keys())
     show_hindi ={}    
     for k,v in h2w.items():
         show_hindi[k] = str(k)+"_"+v
@@ -116,8 +119,8 @@ try:
     hcode = a.grouping_with_border_color_in_dataframe(hgroups, "hindi",hcolor)
     
 except:
-    print("E_Word_Group.txt not found")
-    log.write("FILE MISSING: " + 'E_Word_Group.txt'  + "\n")
+    print("E_Word_Group_Sanity.dat not found")
+    log.write("FILE MISSING: " + 'E_Word_Group_Sanity.dat'  + "\n")
 #############################################################################################################
 import numpy as np
 import H_Modules
@@ -489,12 +492,13 @@ a.buttons:not(:last-child):nth-last-child(4) {
     result += '{}' .format(hcode)
    
     result += '''
+
     
 </style>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-		<title>Anusaaraka Output</title>
+		<title>Alignment Output</title>
 		<link rel="stylesheet" type="text/css" href="../styles/css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="../styles/css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="../styles/css/component.css" />
@@ -518,14 +522,25 @@ if (!usingChrome) {
     '''
     result += '<p class="corner"><span>%s</span></p>' % sent_no
     result += '<button onclick="topFunction()" id="gotoTop" title="Go to top">&#8679;</button>'
-    result += '<br><h3> Sentence Number: %s &nbsp &nbsp &nbsp|&nbsp &nbsp &nbsp Reference English Text: <a href="iess102.pdf" target="_blank">English Chapter 2</a> &nbsp &nbsp &nbsp|&nbsp &nbsp &nbsp  Reference Hindi Text: <a href="ihss102.pdf" target="_blank">Hindi Chapter 2</a></h3><hr>' % sent_no
+    result += '<br><h3> Sentence Number:''' + sent_no + '''  &nbsp &nbsp &nbsp|&nbsp &nbsp &nbsp Reference English Text: <a href="iess102.pdf" target="_blank"> '''+ eng_file_name + '''</a> &nbsp &nbsp &nbsp|&nbsp &nbsp &nbsp  Reference Hindi Text: <a href="ihss102.pdf" target="_blank">''' + hin_file_name + ''' </a></h3><hr>'''
     result += '<h3> %s </h3>\n<hr>' % es
+    result += 'English Grouping (Parser with Sanity)'
+    try:
+        result += edf.T.to_html(classes="english", escape=False, index=False)
+    except:
+        print("edf try catch")
 #     result += '<h3> %s </h3><button onclick="myFunction()">i</button>\n<hr>' % es
 #     result += '<h4 class="tooltip"> {0} <span class="tooltiptext"> {1} </span></h4>\n' .format(eng_row,eng_row_tooltip)
-
     result += '<h3> %s </h3>\n' % hs
+    result += 'Hindi Grouping'
+    try:
+        result += hdf.T.to_html(classes="hindi", escape=False, index=False)
+    except:
+        print("hdf try catch")
 #     result += '<h4 class="tooltip"> {0} <span class="tooltiptext"> {1} </span></h4>\n' .format(hindi_row,hindi_row_tooltip)
 #     result += '<span class="tooltiptext"> %s </span>\n' % hindi_row_tooltip
+
+
     result += df.to_html(classes='wide overflow-y', escape=False)
     #result += '<center> <img src="{0}"> <hr> <img src="{1}"> <hr> </center>' .format(eimg,himg)
 #     result += '<center><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfoXq6rT-vfEl1eUU0-dVBbe5fajs5THxaatO2sxGg1YUx-vA/viewform?embedded=true" width="640" height="879" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe></center>'
@@ -614,15 +629,8 @@ if (!usingChrome) {
 
     '''
 #     result += '<center>{}></center>' .format(edf)
-    try:
-        result += edf.T.to_html(classes="english", escape=False, index=False)
-        result += hdf.T.to_html(classes="hindi", escape=False, index=False)
-    except:
-        print("edf try catch")
+
     
-    '''
-    
-    '''
 #     result += '<center style="padding-top:25px"><h4> Sentence Number: %s </h4></center>\n' % sent_no
 #     result += '<center><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfoXq6rT-vfEl1eUU0-dVBbe5fajs5THxaatO2sxGg1YUx-vA/viewform?embedded=true" width="800" height="700" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe></center>'
 
