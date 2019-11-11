@@ -7,10 +7,14 @@ sent_no = sys.argv[2]
 sent_dir = tmp_path + eng_file_name + "_tmp/" + sent_no
 e_file=sent_dir+"/E_wordid-word_mapping.dat"
 h_file=sent_dir+"/H_wordid-word_mapping.dat"
+efilename_alternate = sent_dir + '/word.dat'
+esent = sent_dir + '/E_sentence'
+hsent = sent_dir + '/H_sentence'
 log_file = sent_dir+"/All_Resources_id_word.log"
 if os.path.exists(log_file) :
     os.remove(log_file)
 log = open(log_file,'a')
+
 def create_dict(filename,string):
     with open(filename,"r") as f1: 
         text = f1.read().split("\n")
@@ -21,6 +25,7 @@ def create_dict(filename,string):
             t = line.lstrip(string).strip(')').split("\t")
             p2w[int(t[1].lstrip("P"))] = t[2]
     return(p2w)
+
 def eng_id_to_idword_pair_hash():
     e2w=[]
     show_eng ={}  
@@ -28,7 +33,6 @@ def eng_id_to_idword_pair_hash():
         e2w = create_dict(e_file, '(E_wordid-word')
         e2w=dict((k, v) for k,v in e2w.items())
 #         print(e2w)
-           
         for k,v in e2w.items():
             show_eng[k] = str(k)+"_"+v
 #         print(show_hindi)
@@ -36,14 +40,18 @@ def eng_id_to_idword_pair_hash():
     except FileNotFoundError:
         print("FILE MISSING: " + e_file )
         log.write("FILE MISSING: " + e_file + "\n")
-        sys.exit(0)
+        eng=open(esent,"r").read().strip("\n")
+        eng=eng.translate(eng.maketrans('', '', string.punctuation))
+        eng=eng.split(" ")
+        e2w = {i+1: eng[i] for i in range(0, len(eng))}
+        for k,v in e2w.items():
+            show_eng[k] = str(k)+"_"+v
+        #sys.exit(0)
 #     print(e2w)
     return show_eng
     
 eng_id_to_idword_pair=eng_id_to_idword_pair_hash()
 print(eng_id_to_idword_pair)
-for i in eng_id_to_idword_pair :
-    print
 def hin_id_to_idword_pair_hash():
     h2w=[]
     show_hin ={}  
@@ -51,19 +59,27 @@ def hin_id_to_idword_pair_hash():
         h2w = create_dict(h_file, '(H_wordid-word')
         h2w=dict((k, v) for k,v in h2w.items())
 #         print(e2w)
-           
         for k,v in h2w.items():
             show_hin[k] = str(k)+"_"+v
+           
+
 #         print(show_hindi)
         
     except FileNotFoundError:
         print("FILE MISSING: " + h_file )
         log.write("FILE MISSING: " + h_file + "\n")
-        sys.exit(0)
+        #sys.exit(0)
+        log.write("FILE MISSING: " + hfilename + "\n")
+        hin=open(hsent,"r").read().strip("\n")
+        hin=hin.translate(hin.maketrans('', '', string.punctuation))
+        hin=hin.split(" ")
+        h2w = {i+1: hin[i] for i in range(0, len(hin))}
+        for k,v in h2w.items():
+            show_hin[k] = str(k)+"_"+v 
 #     print(e2w)
     return show_hin
 hin_id_to_idword_pair=hin_id_to_idword_pair_hash()
-# print(hin_id_to_idword_pair)
+print(hin_id_to_idword_pair)
 
 def reading_all_resources():
     all_data=[]

@@ -87,7 +87,7 @@ def Processing_Single_Words(single_e_words,single_h_words) :
 #     print(final_list)
     for eid, eng in eng_hash.items():
         for edict,hdict in zip(single_e_words,single_h_words):
-            if eng == edict :
+            if eng.lower() == edict.lower() :
 #                 print(eid)
                 if final_list[int(eid)-1]== 0 :
                     if hdict in hin_hash.values() :

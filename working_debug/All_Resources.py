@@ -170,7 +170,7 @@ def creating_e2w_dict():
         eng=eng.split(" ")
         e2w = {i+1: eng[i] for i in range(0, len(eng))} 
     
-#     print(e2w)
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",e2w)
     return e2w
 e2w=creating_e2w_dict()
 

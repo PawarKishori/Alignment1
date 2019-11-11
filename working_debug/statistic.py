@@ -77,7 +77,7 @@ def left_and_mapping_list():
     return e_mapp,left
 e_mapp,left=left_and_mapping_list()
 
-eng_stopList = ['is','are','am','was','were','a','an','the','in','to','of']
+eng_stopList = ['a','an','the','in','to','of']
 hin_stopList = ['kA','kI','ke','ko','meM','ne','se','para','vAlA','vAlI','vAle','waka','xvArA']
 
 def e_mapping_info() :
@@ -122,9 +122,13 @@ def e_temp_mapped() :
         i[2] = i[2].strip(")")
         eids = i[1].split(" ")[1:]
         ewords = i[2].split(" ")[1:]
+        #print(eids,ewords)
         main_list = np.setdiff1d(eids,e_mapped_ids)
         for ids in main_list :
-            if ewords[eids.index(ids)] in eng_stopList :
+            #print(ids)
+            #print(ewords[eids.index(ids)])
+            if ewords[eids.index(ids)].lower() in eng_stopList :
+                #print(ids)
                 e_mapped_ids.append(ids)
     return len(e_mapped_ids),e_mapped_ids
 mapp_len,e_mapped_ids= e_temp_mapped()  
