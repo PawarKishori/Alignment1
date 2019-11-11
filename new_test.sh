@@ -17,7 +17,7 @@ sh $HOME_alignment/morph/generate_morph_facts.sh $1
 sh $HOME_alignment/canonical/remove_nukta.sh $1
 
 
-#sh $HOME_alignment/run_alignment.sh $1 $2
+#sh $HOME_alignment/run_alignment.sh $1 $2    #DON'T Foregt to remove comment
 
 ####################################################################################################################
 ## Given a Lookup_dict for a corpus, this module generates Tech_dict_lookup.dat for each 2.1, 2.2 etc. directories
@@ -40,8 +40,6 @@ while [ "$i" -lt $END ]
     i=`expr $i + 1` 
     done
 
-#####################################################################################################################
-
 
 #####################################################################################################################
 
@@ -52,7 +50,7 @@ sh $HOME_alignment/run_only_my_clips_module.sh $1
 ##Parser's Module
 source activate py3.6
 #python $HOME_alignment/H_Createdata.py $1
-#python $HOME_alignment/E_Createdata.py $1
+#python $HOME_alignment/E_Createdata.py $1     #DON'T Foregt to remove comment
 conda deactivate
 #sh $HOME_alignment/hindi_wordid_sanity.sh $1
 
@@ -65,7 +63,7 @@ sh $HOME_alignment/Definite_LWG/Run_Grouping_Files.sh $1
 conda deactivate
 #####################################################################################################################
 
-sh $HOME_alignment/hindi_root_processing/deciding_verb_tam.sh $1
+#sh $HOME_alignment/hindi_root_processing/deciding_verb_tam.sh $1    #DON'T Foregt to remove comment
 
 sh $HOME_alignment/csv_creation/create_html_csv.sh $1
 cd $HOME_anu_tmp/tmp/$1_tmp
@@ -89,19 +87,21 @@ sh $HOME_alignment/alignment_clips/test_bash_to_run_script.sh $1
 cp -r $HOME_alignment/styles $HOME_anu_tmp/tmp/$1_tmp/
 sh $HOME_alignment/working_debug/test4.sh $1
 
-#####################################################################################################################
-# 2 Run programs (H_wordnet and Bahri)
-sh $HOME_ailgnment/dict_suggest_srun/bahri_dict_suggestion/bahri_UTF_WX.sh $1
-python3 $HOME_ailgnment/dict_suggest_srun/h_wordnet_suggest/Srun_H_wordnet_suggested_words.py $1
 
 #####################################################################################################################
 
-sh $HOME_alignment/working_debug/statistic-shell.sh $1
-
-#####################################################################################################################
 sh $HOME_alignment/working_debug/generate_1st_iter_leftover.sh $1
 
+#####################################################################################################################
+# 2 Run programs (H_wordnet and Bahri)
+sh $HOME_alignment/dict_suggest_srun/bahri_dict_suggestion/bahri_UTF_WX.sh $1
+python3 $HOME_alignment/dict_suggest_srun/h_wordnet_suggest/Srun_H_wordnet_suggested_words.py $1
 sh $HOME_alignment/Transliteration/Transliteration_Second_Run-shell.sh $1
+
 
 sh $HOME_alignment/working_debug/test5.sh $1
 #####################################################################################################################
+sh $HOME_alignment/working_debug/statistic-shell.sh $1
+
+#####################################################################################################################
+
