@@ -138,13 +138,17 @@ def compare_two_cells(val, val1):
                    #v1_new = (v1[0],v1[1])
                    v1_new = ('0',0)
                    print("v[1] is smaller and v1_new= ", v1_new)
-               else:
-                   #[key,val] if len(val) > len(val1) else [key1,val1]
+               else:                                                 #Having equal priority
+                   print("KKKK", v[1], v1[1])
+                   print('LLLL', len(val), len(val1))
                    if len(val) > len(val1):
                        #v_new = (v[0],v[1])
                        v_new = ('0',0)
-                   else:
+                   elif len(val)< len(val1):
                        v1_new = ('0',0)
+                   else:
+                       print('cant do anything')
+                       pass
                #print(val_new)
                #print(val1_new)
             val_new.append(v_new)
@@ -152,7 +156,7 @@ def compare_two_cells(val, val1):
             #print(val1_new)
     val_new = remove_duplicates(val_new)
     val1_new = remove_duplicates(val1_new)
-    #print(val1_new)
+    #print(val_new, val1_new)
     return([val_new, val1_new, flag])
 
 
