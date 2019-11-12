@@ -66,7 +66,7 @@ Acoustic modem <> Xvanika modema
 Acoustic signal <> Xvanika saMkewa
 Acoustic storage <> Xvanika BaMdAraNa
 Acronym <> parivarNI Sabxa
-Action <> kriyA
+Action <> kriyA, kArravAI, kAryavAhI, saMkriyA
 Action cycle <> kriyA cakra
 Action line <> kriyA lAina
 Action message <> kriyA saMxeSa
@@ -176,6 +176,7 @@ Advanced information system <> unnawa sUcanA waMwra
 Advanced optical character reader <> unnawa prakASika saMprawIka paTiwra
 Advanced scientific computer <> unnawa vEjFAnika aBikaliwra
 Aerial <> eriyala
+Agent <> 1. kAraka 2. aBikarwA
 Aggregate <> puMja
 Aggregate expression <> puMja vyaMjaka
 Aiming circle <> saMXAniwra
@@ -1019,6 +1020,7 @@ Card-to-print program <> pawraka muxraNa kramAxeSa
 Card to tape converter <> pawraka tepa parivarwiwra
 Card track <> pawraka paWa
 Card verifying <> pawraka sawyAyana
+Cardiologist <> hqxayaroga viSeRajFa
 Caret <> kErata
 Carousel <> GUrNiwra
 Carriage <> vAhana
@@ -1348,6 +1350,7 @@ Coding form <> kUtaleKana PArma
 Coding scheme <> kUtaleKana yojanA
 Coding sheet <> kUtaleKana parNa
 Coefficient unit <> guNAMka ekaka
+Cognitive science <> saMjFAnAwmaka vijFAna
 Coherent modulation system <> saMsakwa mAdulana waMwra
 Coherent phase shift keying <> saMsakwa prAvasWA-visWApana kuMjIyana
 Coincidence circuit (= AND element) <> waWa' avayava, saMpAwa paripaWa
@@ -2185,6 +2188,7 @@ Dedicated deviced <> samarpiwa yukwi
 Dedicated line <> samarpiwa lAina
 Dedicated port <> samarpiwa saMxvAra
 Dedicated register <> samarpiwa paMjI
+Deductive reasoning <> nigamana paxXawi
 Default <> vyawikrama, cuka
 Default group <> vyawikrama samUha
 Default option <> vyawikrama vikalpa
@@ -2715,6 +2719,7 @@ Effective speed <> praBAvI cAla
 Effective Transmission Speed <> praBAvI saMcaraNa cAla
 Effective word <> praBAvI Sabxa
 Effective word Location <> praBAvI Sabxa sWAna
+Effector <> praBAvaka
 Eight-bit byte <> ATa xvayaMka bAita
 Either-way Communication <> pArasparika saMcAra
 Either-way Operation <> pArasparika saMkriyA
@@ -4085,6 +4090,7 @@ Kilobaud <> kilovoYda
 Kilobyte <> kilobAita
 Kilomega <> kilomegA
 Kips (kiloinstructions-persecond) <> kipsa
+Knowledge Base <> jFAnAXAra
 Label <> lebala
 Label constant <> lebala acara
 Labelled common <> lebaliwa sArva vyaMjaka
@@ -4534,7 +4540,7 @@ Machine sensible Information <> yaMwra saMvexa sUcanA
 Machine Simulation <> yaMwra anukAra
 Machine spoiled Time <> yaMwra apahawakAla
 Machine tool Control <> yaMwra OjAra niyaMwraNa
-Machine Translation <> yaMwra anuvAxa
+Machine Translation <> yaMwra anuvAxa, maSIna anuvAxa
 Machine usage Time <> yaMwra upayoga kAla
 Macroargument <> sWUla svawaMwra cara
 Macroassembler <> sWUla kodAMwaraka
@@ -4686,6 +4692,7 @@ Many-for-one Language <> eka se aneka BARA
 Many to one Decoder <> anekaka kUtavAcaka
 Map method <> prawiciwra viXi
 Mapped buffer <> prawiciwriwa cayaka
+Mapping <> mAnaciwraNa
 Mapping error <> prawiciwraNa wruti
 Margin <> upAMwa
 Margin-adjust Mode <> upAMwIya samAyojana viXA
@@ -5123,6 +5130,7 @@ Natural binary <> prAkqwika xvi-AXArI
 Coded decimal <> kUtaleKiwa xaSamalava
 Natural function Generator <> prAkqwika Palana janiwra
 Natural language <> prAkqwika BARA
+Natural language processing <> prakqwa BARA saMsAXana, prAkqwika BARA saMsAXana
 Natural language System <> prAkqwika BARA-waMwra
 Needle <> sUI
 Negate <> niReXa kriyA
@@ -7038,7 +7046,7 @@ Sentinel (= flag) <> pawAkA
 Separator <> pqWakkiwra, pqWakkArI
 Septenary number <> sapwAXArI saMKyA
 Septet <> sapwikA
-Sequence <> anukrama 
+Sequence <> anukrama
 Sequence check <> anukrama jAzca
 Sequence checking Routine <> anukrama jAzca nemakA
 Sequence Computer <> anukrama aBikaliwra
