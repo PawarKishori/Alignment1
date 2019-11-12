@@ -44,16 +44,24 @@ lo_eng = open(tmp_path + "english_leftover_ids.dat","r").read()
 hin_lo_dict={}
 eng_lo_dict={}
 
+
+
 #print(lo_hin.split())
 with open(tmp_path + "hindi_leftover_words.dat","w") as f:
     tmp = []
     for i in lo_hin.split():
         print(int(i),h2w[int(i)])
+        if (h2w[int(i)].endswith('M')):               # Handling ai1E/2.32 yahAM & yahAz case
+            print("&&",h2w[int(i)])
+            x= h2w[int(i)].replace(h2w[int(i)][-1],'z')
+            print("&&", x)
+            tmp.append(x)
+            with open(tmp_path + 'hindi_leftover_words_meta.dat', 'w') as meta:
+                meta.write(x +' <> '+ h2w[int(i)] )
         hin_lo_dict[int(i)]=h2w[int(i)]
         tmp.append(h2w[int(i)])
-
+    print(tmp)
     f.write(" ".join(tmp))
-
 
 print("------------------------")
 with open(tmp_path + "english_leftover_words.dat","w") as f:
