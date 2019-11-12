@@ -41,7 +41,7 @@ def unknown_function():
 
 
 #MAin function--------------------------------------------------------------------------------------------------------------------------------------------------
-for k in range(2,3):
+for k in range(1,125):
     try:
                 print()
                 print("----------------------------")
@@ -49,35 +49,27 @@ for k in range(2,3):
                 print("----------------------------")
                 path_=sys.argv[1]
                 path =os.getenv("HOME_anu_tmp")+"/tmp/"+path_+"_tmp/2."+str(k)
-                #df = pd.read_csv(path+"/final_id.csv")
                 df = pd.read_csv(path+"/All_Resources.csv")
-                new_f = open(path+"/deffact_anchors.dat", 'w')
-                #print(df)
+                new_f = open(path+"/Anchor_Facts.dat", 'w')
                 row_length = df.shape[0]
                 #column_of_names = df.columns.get_loc("Resources")                            #the nth number of column where the anchors' may lie
                 column_of_names = df.columns.get_loc("English_word_ids")                            #the nth number of column where the anchors' may lie
                 print(column_of_names)
                 # print(df.iloc[:,0])
                 for i in range(row_length):
-                    #if((df.iloc[:, column_of_names].tolist())[i]) == "Potential anchors v2":
-                    #if((df.iloc[:, column_of_names].tolist())[i]) == "Potential anchors (exact)":
-                    if((df.iloc[:, column_of_names].tolist())[i]) == "Potential Anchor:":
-                            #print(((df.iloc[:, column_of_names].tolist())[i])," ",((df.iloc[:, column_of_names].tolist())[i+1]))                         To check what's getting printed(Starting anchor and potential anchor)
+                    if((df.iloc[:, column_of_names].tolist())[i]) == "Potential":
                             store_potential = i
                             break
                 for i in range(row_length):
-                    #if((df.iloc[:, column_of_names].tolist())[i]) == "Starting anchor v2":
-                    if((df.iloc[:, column_of_names].tolist())[i]) == "Starting Anchor:":
-                            #print(((df.iloc[:, column_of_names].tolist())[i])," ",((df.iloc[:, column_of_names].tolist())[i+1]))                         To check what's getting printed(Starting anchor and potential anchor)
+                    if((df.iloc[:, column_of_names].tolist())[i]) == "Current":
                             store_start = i
                             break
-                #print("Potential anchors v2", i)
-                #print("Starting achor v2", i+1)
                 potential_anchors = (df.loc[store_potential].tolist())  # Potential Anchors
+                print("====>",len(potential_anchors))
                 starting_anchors = (df.loc[store_start].tolist())  # Starting Anchors
 
-                potential_anchors = (potential_anchors[2:])  # Removing the 2 starting columns
-                starting_anchors = (starting_anchors[2:])  # Removing the 2 starting columns
+                potential_anchors = (potential_anchors[1:])  # Removing the 2 starting columns
+                starting_anchors = (starting_anchors[1:])  # Removing the 2 starting columns
                 print(len(potential_anchors))
 
                 print()
@@ -90,7 +82,7 @@ for k in range(2,3):
     except Exception:
         path_=sys.argv[1]
         path =os.getenv("HOME_anu_tmp")+"/tmp/"+path_+"_tmp"
-        new_ = open(path+"/Apratim.log", 'a')
+        new_ = open(path+"/Anchor_Facts.log", 'a')
         print(traceback.format_exc())
         new_.write("------------------------------------------------------------------"+"\n")
         new_.write("2."+str(k)+"\n")

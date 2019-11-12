@@ -22,7 +22,8 @@ with open(sent_dir + '/save_facts_unknown', 'r') as f1:
     while "" in potential_data:
          potential_data.remove("")
     potential_eid = [x.split(' ')[2] for x in potential_data]
-    potential_hid = [" ".join(x.split(' ')[3:]).strip(')') for x in potential_data]
+    #potential_hid = [" ".join(x.split(' ')[3:]).strip(')') for x in potential_data]
+    potential_hid = ['0' for x in potential_data]
     #print(potential_data)
     print(potential_eid)
     print(potential_hid)

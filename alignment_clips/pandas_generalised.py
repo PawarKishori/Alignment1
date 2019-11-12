@@ -8,7 +8,7 @@ def starting_function():
         # print(numbers_from_starting_anchors)
         if((numbers_from_starting_anchors) != '0'):
             print("(anchor_type-english_id-hindi_id anchor ",i+1, " ", numbers_from_starting_anchors, ")")
-            new_f.write("(anchor_type-english_id-hindi_id anchor "+str(i+1)+" "+numbers_from_starting_anchors+")")
+            new_f.write("(anchor_type-english_id-hindi_id anchor "+str(i+1)+" "+numbers_from_starting_anchors+")\n")
             # starting_anchor_list.append(i)
             unknown_checker.append(i)
 
@@ -24,12 +24,12 @@ def potential_function():
                     xt = xt.split(' ')
                     unknown_checker.append(i)
                     print("(anchor_type-english_id-hindi_id potential ",i+1, " ", " ".join(xt), ")")
-                    new_f.write("(anchor_type-english_id-hindi_id potential "+str(i+1)+ " "+ " ".join(xt)+ ")")
+                    new_f.write("(anchor_type-english_id-hindi_id potential "+str(i+1)+ " "+ " ".join(xt)+ ")\n")
                     # print(potential_anchor_string.split("#"))
             else:
                     unknown_checker.append(i)
                     print("(anchor_type-english_id-hindi_id potential "+str(i+1)+ " "+potential_anchor_string+ ")")
-                    new_f.write("(anchor_type-english_id-hindi_id potential "+str(i+1)+ " "+potential_anchor_string+ ")")
+                    new_f.write("(anchor_type-english_id-hindi_id potential "+str(i+1)+ " "+potential_anchor_string+ ")\n")
 
 
 
@@ -37,7 +37,7 @@ def unknown_function():
     for j in range(len(potential_anchors)):
         if j not in unknown_checker:
             print("(anchor_type-english_id-hindi_id unknown "+str(j+1)+" 0)")
-            new_f.write("(anchor_type-english_id-hindi_id unknown "+str(j+1)+" 0)")
+            new_f.write("(anchor_type-english_id-hindi_id unknown "+str(j+1)+" 0)\n")
 
 
 #MAin function--------------------------------------------------------------------------------------------------------------------------------------------------
