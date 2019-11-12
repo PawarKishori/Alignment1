@@ -498,7 +498,8 @@ def load_row_from_csv(filename, row_number):
         raise e
 
 
-k_layer_ids_file= path_tmp + '/H_alignment_parserid.csv'
+#k_layer_ids_file= path_tmp + '/H_alignment_parserid.csv'
+k_layer_ids_file= path_tmp + '/H_alignment_parserid-new.csv'
 
 k_layer_ids= load_row_from_csv(k_layer_ids_file, 1)
 k_layer_ids = cleaning_list(k_layer_ids)

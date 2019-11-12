@@ -88,8 +88,6 @@ except:
     print(x2, len(x2), type(x2))
     title=["Resources"] + list(x2[:-1])
     
-    
-    
 try:   
     h2w = a.create_dict(hfilename, '(H_wordid-word')
     hdf1=pd.DataFrame(list(h2w.values()), index=h2w.keys())
@@ -149,6 +147,7 @@ eimg2 = 'E_tree_corrected.png'
 
 ###############################################################################################################
 #dfs.index=np.arange(1,len(dfs)+1)
+print(dfs)
 dfs=dfs.set_index('English_Word')
 dfs.index.name = None
 # display(edf)

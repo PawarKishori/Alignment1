@@ -119,14 +119,19 @@ all_columns_list = return_list_of_columns_from_df()
 # Called for every column/word entries
 def find_first_nonzero_entry_for_a_column_in_csv(l):
     leng = len(l)
-    i=0;final=0
+    i=0;final=0;index=0;chosen_=[]
     while (i < leng):
        if(l[i]!='0'):
            final = l[i]
+           index = i
+           chosen_ = [final,index]
            break
        i+=1
+    if len(chosen_)==0:
+        chosen_ = ['0',0]
     #print("final:",final) 
-    return(final)
+    #print(chosen_)
+    return(chosen_)
 ###################################################################################################################
         
 def generate_tmp_row_before_current_and_potential():
@@ -136,7 +141,8 @@ def generate_tmp_row_before_current_and_potential():
         #print(columns_except_label[val])
         column_list_except_eng_id_label = columns_except_label[val][1:]  
         chosen_entry = find_first_nonzero_entry_for_a_column_in_csv(column_list_except_eng_id_label)
-        tmp.append(chosen_entry) 
+        tmp.append(chosen_entry)
+    print(tmp) 
     return(tmp)
         
 
@@ -144,6 +150,130 @@ def generate_tmp_row_before_current_and_potential():
 tmp=[]
 tmp = generate_tmp_row_before_current_and_potential()
 #print(tmp)
+tmp_value = [x[0] for x in tmp]
+#print(tmp_value)
+
+#def check_intersecting_entries(v_list, v1_list):
+#    if len(v_list) < len(v1_list) : 
+        
+def intersection_of_two_list(lst1, lst2): 
+    common_element = [value for value in lst1 if value in lst2] 
+    return common_element 
+ 
+def set_difference(l1,l2):
+       l3 = [x for x in l1 if x not in l2] 
+       return l3
+def remove_weak_tuple(b,weak_choice):
+       to_be_removed=[]
+       for i in b:
+              if i[0] in weak_choice:
+                     to_be_removed.append(i)
+       b=set_difference(b, to_be_removed)
+       return(b)
+
+import operator
+def resolve_overlapping_entries(e2h_dict):
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    new_dict={}
+    e2h_dict={3: [('4', 0), ('7', 0), ('11', 0)], 6: [('10 11', 2)], 8: [('9 10 11', 0)]}
+    print(e2h_dict)
+    
+    for key, val in e2h_dict.items():
+        print(key)
+        #print("-",val)
+        for key1, val1 in e2h_dict.items():
+            if key!=key1:
+                print(key, val, "=>", key1, val1)
+                new_val=[]; new_val1=[]
+                for v in val:
+                    to_be_deleted = 0
+                    for v1 in val1:
+                        print(v[0], "--", v1[0])
+                        v_list = v[0].split(' ')
+                        v1_list = v1[0].split(' ')
+                        #print(v_list, v1_list)
+                        common = intersection_of_two_list(v_list,v1_list)
+                        if (len(common) > 0): 
+                            #vall = val
+                            
+                            if v[1] == v1[1]:                            # priority is same
+                               print("Priority:",v[1],v1[1])
+                               print("equal")
+                               print("**",key,v[1], key1,v1[1])
+                               entries_to_b_deleted_from = [key,val] if len(val) > len(val1) else [key1,val1]   # the entries whose vell contains multiple / is being removed
+                               print("))))",entries_to_b_deleted_from)
+                               print("--------------------------------")
+
+                                                                                           
+                            else:#if v[1] < v1[1]:                             # Highest priority element has choosen
+                               print("Priority:",v[1],v1[1])
+                               print(v[1],"</>", v1[1])
+                               print("**",key,v[1], key1,v1[1])
+                               entries_to_b_deleted_from = [key1,val1] if v1[1] > v[1] else [key,val]
+                               print("))))",entries_to_b_deleted_from)                                                                                           
+                               print("--------------------------------")
+
+                            '''elif v[1] > v1[1]:
+                               print("Priority:",v[1],v1[1])
+                               print(v[1],">", v1[1])
+                               print("**",key,v[1], key1,v1[1])
+                               entries_to_b_deleted_from = [key,val] if len(val) > len(val1) else [key1,val1]
+                               print("))))",entries_to_b_deleted_from)                                                                                           
+                               print("--------------------------------")'''
+                                  
+                             
+                        
+                            '''if v[1] < v1[1]:
+                                to_be_deleted = key1   
+ 
+                            if v[1] < v1[1]:
+                                to_be_deleted = key
+
+                            if v[1] == v1[1]:
+                                if len(v_list) < len(v1_list):
+                                    to_be_deleted = key1
+                                if len(v1_list) < len(v_list):
+                                    to_be_deleted = key
+                            print(to_be_deleted)
+                                                                        
+                        new_v =  v
+
+                        if to_be_deleted == key:
+                            new_v = '0'
+                        if to_be_deleted == key1:
+                            new_v = '0'
+        
+                                
+                new_val.append(new_v)   
+        print("=>",new_val)                       
+        if key not in new_dict.keys():
+                            new_dict[key] = [new_val]                         
+                        else:
+                            new_dict[key].append(new_val)'''
+                            
+    print(e2h_dict)
+    #print(new_dict)                    
+                         
+                              
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+
+def create_dict_from_tmp_row():
+    e2h_dict = {}
+    #for i, val in enumerate(tmp_value,1):
+    for i, val in enumerate(tmp,1):
+         #print(i,val,val[0])
+         for v in str(val[0]).split('/'):  
+             if i not in e2h_dict.keys():
+                 e2h_dict[i] = [(v,val[1])]
+             else:
+                 e2h_dict[i].append((v,val[1]))
+             #find_overlapping_entries(i,v) 
+         #print(i,val)
+    #print(e2h_dict)
+    return(e2h_dict)
+print("========== tmp dict:{eng_id1:[(hindi_id2, priority1)], eng_id2: [(hindi_id2,prority2), (hindi_id3, priority1)].....}\n ")
+e2h_dict = create_dict_from_tmp_row()
+print(e2h_dict)
 
 ###################################################################################################################
 def finding_potential_entries():
@@ -161,7 +291,7 @@ def finding_potential_entries():
                 dict1[j]=1
             else:
                 dict1[j]+=1  
-    print(dict1)
+    #print(dict1)
     
     for i, val in enumerate(tmp,1):
         for v in str(val).split('/'): 
@@ -171,13 +301,15 @@ def finding_potential_entries():
     #print(potential_eng_ids)
 
     #Handling eng 1 to hindi multiple entries eg. 6/9 in a cell
-    for i, val in enumerate(tmp,1):
+    resolve_overlapping_entries(e2h_dict) 
+    
+    '''for i, val in enumerate(tmp,1):
         if '/' in str(val):
             #print(i,val)
-            potential_eng_ids.append(i) 
+            potential_eng_ids.append(i) '''
 
+    
     return(potential_eng_ids)
-
 #-----------------------------------------------------------------------------------------------------------------
 potential_eng_ids = []
 potential_eng_ids = finding_potential_entries()
@@ -200,13 +332,13 @@ def generate_current_and_potential_from_tmp():
     #print(potential_eng_ids)
     #print(current_eng_ids)
 
-    for i, val in enumerate(tmp,1):
+    for i, val in enumerate(tmp_value,1):
         for eng_id in potential_eng_ids:
             if i == eng_id:
                 #print(i,val, eng_id)
                 potential[i-1] = val
             
-    for i, val in enumerate(tmp,1):
+    for i, val in enumerate(tmp_value,1):
         for eng_id in current_eng_ids:
             if i == eng_id:
                 #print(i,val, eng_id)
