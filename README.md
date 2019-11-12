@@ -11,8 +11,14 @@ One time compilation in Alignment1 for morph module:
 step 1: cd morph
 step 2: sh comp.sh morph
 This will create morph.out in morph/ directory, which is used by other shell.
+-----------------------------------------------------------------------------
+Prerequisite:
+1. cd $HOME
+2. git clone https://github.com/PawarKishori/Convert_utf_wx.git
+3. cd Convert_utf_wx
+4. sh Compile_all.sh
 
-
+-----------------------------------------------------------------------------
 
 1. Runing anusaaraka and alignment_Manju
    sh test_old.sh ai1E ai1H computer_science
