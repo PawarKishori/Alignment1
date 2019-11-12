@@ -29,6 +29,7 @@ lookup_dict_path = os.getenv('HOME_alignment')+'/Transliteration/dictionary/look
 t_dict={}
 with open( lookup_dict_path ,"r") as f:
     t = f.read().split("\n")
+    print(t)
     while "" in t:
         t.remove("")
     for i in t:

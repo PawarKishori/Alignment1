@@ -68,6 +68,7 @@ def chk_trans_from_files():
 					f.write("(E_word-H_word\t"+ e + "\t"+ h + ")\n")
 
 excep_dic = create_dictionary_from_exceptional_dictionary("/home/kishori/a/Alignment1/Transliteration/dictionary/Exception-dic.txt")
+
 if sys.argv[1]=="-f":		
 	if os.path.exists(tmp_path+"/Roja_chk_transliterated_words.dat"):
 		os.remove(tmp_path+"/Roja_chk_transliterated_words.dat")
