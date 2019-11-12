@@ -9,7 +9,7 @@ path = tmp_path
 filename = sys.argv[1] + '_tmp'
 exception_list = []
 error_flag = 0
-parse = path+'/'+filename+'/' + sys.argv[2] +"/E_conll_parse"
+path_des = path+'/'+filename+'/' + sys.argv[2] +"/E_conll_parse"
 
 
 E_Modules.clear_logs(path)
@@ -23,7 +23,7 @@ path_des = path+'/'+filename
 E_Modules.clear_files(path_des)
 
 #create dataframe and combine sentences
-[relation_df, error_flag] = E_Modules.create_dataframe(parse, path, filename)
+[relation_df, error_flag] = E_Modules.create_dataframe(path_des, path, filename)
 #if error_flag == 1:
 #	continue
 #elif error_flag == 2:

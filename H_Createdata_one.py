@@ -7,14 +7,11 @@ path = tmp_path
 filename = sys.argv[1] + '_tmp'
 exception_list = []
 error_flag = 0
-parse = path+'/'+filename+'/' + sys.argv[2] +"/hindi_parser_canonial.dat"
+path_des = path+'/'+filename+'/' + sys.argv[2] +"/hindi_parser_canonial.dat"
 
 H_Modules.clear_logs(path)
 
-#for parse in files:
-#print(parse)
-#res = re.split(r'/', parse)
-#filename = res[-2]
+
 filename = sys.argv[1]+ '_tmp'
 #print("=>", res)
 print("=>", filename)
