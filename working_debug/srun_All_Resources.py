@@ -16,6 +16,7 @@ roja_transliterate_file = sent_dir +  '/Tranliterated_words_2nd_run.dat'
 log_file = sent_dir + '/srun_All_Resources.log'
 bahri_dict_file = sent_dir + '/srun_bahri_dict_suggestion.dat'
 hindi_wordnet_file = sent_dir + '/srun_H_wordnet.dat'
+meta_for_idiosyncracy = sent_dir + '/hindi_leftover_words_meta.dat'
 
 ##############################################CREATING LOG OBJECT##################################################
 if os.path.exists(log_file):
@@ -259,6 +260,14 @@ def get_E_H_dict_Ids(filename):
 
 
 def E_H_IDS(filename):
+    if os.path.exists(meta_for_idiosyncracy) and os.path.getsize(meta_for_idiosyncracy) > 0:
+        with open(meta_for_idiosyncracy , 'r') as f:
+            change_hword={}
+            data = f.read().split('\n')
+            for i in data:
+                change_hword[i.split(' <> ')[0]] = i.split(' <> ')[1]
+    #print(change_hword)
+        
     with open(filename,'r') as file:
         data = file.read().strip("\n").split("\n")
         new_dict = dict()   
@@ -270,8 +279,17 @@ def E_H_IDS(filename):
                 else:
                     eword = i.split(" <> ")[0]
                     hword = i.split(" <> ")[1]
+
+                #print(list(change_hword.keys()), hword)  #handled cases in hindi_leftover_words_meta.dat
+                if hword in list(change_hword.keys()):
+                    #print("YSSSS") 
+                    hword = change_hword[hword]
+                    #print(hword) 
+
+
                 eid = return_key_from_value(e2w, eword)
                 hid = return_key_from_value(h2w, hword)
+                print(hword, hid)
                 new_dict[str(eid)] = str(hid)
     return(new_dict)
 

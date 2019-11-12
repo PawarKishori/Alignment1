@@ -549,7 +549,7 @@ if (!usingChrome) {
 
     result += df.to_html(classes='wide overflow-y', escape=False)
 
-    result += '<br><h3> Leftover Words &nbsp &nbsp &nbsp|&nbsp &nbsp &nbsp ''' + eleftw + '''  &nbsp &nbsp &nbsp|&nbsp &nbsp &nbsp ''' + hleftw
+    result += '<br><h3> Leftover Words after 1st run &nbsp &nbsp &nbsp|&nbsp &nbsp &nbsp ''' + eleftw + '''  &nbsp &nbsp &nbsp|&nbsp &nbsp &nbsp ''' + hleftw
 
     #result += '<center> <img src="{0}"> <hr> <img src="{1}"> <hr> </center>' .format(eimg,himg)
 #     result += '<center><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfoXq6rT-vfEl1eUU0-dVBbe5fajs5THxaatO2sxGg1YUx-vA/viewform?embedded=true" width="640" height="879" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe></center>'
