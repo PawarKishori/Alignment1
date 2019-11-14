@@ -32,6 +32,7 @@ def extract_groups(word_file, id_apertium):
     list1 = []
     list2 = []
     list3 = []
+    elist=[]
     ewords = word(word_file)
     # print(ewords)
     with open(id_apertium, "r") as f:
@@ -57,17 +58,18 @@ def extract_groups(word_file, id_apertium):
                 if "@PUNCT-OpenParen@PUNCT-OpenParen - )" in i[1] or "@PUNCT-OpenParen@PUNCT-OpenParen -- )" in i[1]:
                     c = i[0]
                     # print(c)
-                    # print(ewords[5])
+                    l=len(" @PUNCT-ClosedParen@PUNCT-ClosedParen )")
                     d = list2.index(i)
                     m = list2[d+1][0]
                     # print(list2[d+1][1])
-                    hword = list2[d +
-                                  1][1].strip(" @PUNCT-ClosedParen@PUNCT-ClosedParen )")
+                    str1 = list2[d+1][1]
+                    hword=str1[:-l]
                     # print(hword)
                     hword = hword.strip(" ")
                     hword = hword.replace(" ", "_")
                     for k in range(int(c)-1, int(m)):
                         eng = eng+ewords[k]+"_"
+                        elist.append(k+1)
                     eng = eng.strip("_")
                     final2.append(eng+"\t"+hword)
                     x=k-(int(m)-int(c))+1    
@@ -82,9 +84,16 @@ def extract_groups(word_file, id_apertium):
                     g = int(list2[d][0])
                     # print(g)
                     # print(ewords(g))
+                    elist.append(g)
                     hword = list2[d][1].strip(" )")
+                    if hword is "":
+                        hword="0"
                     final2.append(ewords[g-1]+"\t"+hword)
                     final.append(str(g)+"_"+ewords[g-1]+"\t"+hword)
+        for i in range(1,len(ewords)+1):
+            if i not in elist:
+                final2.append(ewords[i-1]+"\t"+"0")
+                final.append(str(i)+"_"+ewords[i-1]+"\t"+"0")      
         return final,final2
 
 
