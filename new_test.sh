@@ -65,6 +65,15 @@ conda deactivate
 
 #sh $HOME_alignment/hindi_root_processing/deciding_verb_tam.sh $1    #DON'T Foregt to remove comment
 
+
+#####################################################################################################################
+
+#Calling Shreya's module to get K_enhanced.dat
+
+sh $HOME_alignment/csv_creation/resolve_kth_grouping.sh $1
+
+
+#''''''''''''''''''''''''''''''''''''''''''''''''''''
 sh $HOME_alignment/csv_creation/create_html_csv.sh $1
 cd $HOME_anu_tmp/tmp/$1_tmp
 while read line 
