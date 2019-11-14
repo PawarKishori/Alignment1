@@ -49,8 +49,8 @@ def csv_conversion(csv):
             if "_"in j:
                 eng = j.split("_")
         if len(eng) != 0:
-            eng[0] = "("+eng[0]
-            eng[len(eng)-1] = eng[len(eng)-1]+")"
+            eng[0] = "(("+eng[0]
+            eng[len(eng)-1] = eng[len(eng)-1]+"))"
             for k in range(len(eng)):
                 list7.insert(x, eng[k])
                 x += 1
@@ -114,12 +114,12 @@ def csv_conversion(csv):
         tmp = i[1].strip("\n").strip(' ').strip('?')
         #print(tmp)
         neq = tmp
-        if '(' in j:
+        if '((' in j:
             #print(")))",j)
-            neq='('+tmp
+            neq='(('+tmp
             #print(neq)
-        if ')' in j:
-            neq=tmp+')'
+        if '))' in j:
+            neq=tmp+'))'
         #print(i[0],neq)
         final[i[0]]=neq
         kk.append(neq)
