@@ -5,6 +5,13 @@ rm $HOME_anu_tmp/tmp/$1_tmp/$line/english_leftover_ids.dat
 grep -P "^$line\t" $HOME_anu_tmp/tmp/$1_tmp/alignment_leftover_info.txt | cut -f2  > $HOME_anu_tmp/tmp/$1_tmp/$line/hindi_leftover_ids.dat
 echo $line"----------------------------------------"
 grep -P "^$line\t" $HOME_anu_tmp/tmp/$1_tmp/alignment_leftover_info.txt | cut -f3  > $HOME_anu_tmp/tmp/$1_tmp/$line/english_leftover_ids.dat
+
+x=`cat $HOME_anu_tmp/tmp/$1_tmp/$line/english_leftover_ids.dat`
+y=`cat $HOME_anu_tmp/tmp/$1_tmp/$line/hindi_leftover_ids.dat`
+
+echo "(left_over_english " $x ")" > $HOME_anu_tmp/tmp/$1_tmp/$line/english_leftover_ids_fact.dat
+echo "(left_over_hindi " $y ")" > $HOME_anu_tmp/tmp/$1_tmp/$line/hindi_leftover_ids_fact.dat
+
 cat $HOME_anu_tmp/tmp/$1_tmp/$line/hindi_leftover_ids.dat
 echo "-"
 cat $HOME_anu_tmp/tmp/$1_tmp/$line/english_leftover_ids.dat
