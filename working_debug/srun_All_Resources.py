@@ -84,9 +84,9 @@ def return_key_from_value(dictionary, value):
         if str(words) == str(value):
 #             print("###",ids)
             ids_to_return.append(ids)
-        if len(ids_to_return) == 1 :
-            id_to_return=ids_to_return[0]
-            return id_to_return
+    if len(ids_to_return) == 1 :
+        id_to_return=ids_to_return[0]
+        return id_to_return
         
     return ids_to_return
 
@@ -260,9 +260,11 @@ def get_E_H_dict_Ids(filename):
 
 
 def E_H_IDS(filename):
+    count = 0
     if os.path.exists(meta_for_idiosyncracy) and os.path.getsize(meta_for_idiosyncracy) > 0:
+        change_hword={}
+        count = 1
         with open(meta_for_idiosyncracy , 'r') as f:
-            change_hword={}
             data = f.read().split('\n')
             for i in data:
                 change_hword[i.split(' <> ')[0]] = i.split(' <> ')[1]
@@ -273,19 +275,16 @@ def E_H_IDS(filename):
         new_dict = dict()   
         if data[0] != "":
             for i in data:
-                if filename == sent_dir + '/bahri_dict_suggestion.dat':
+                if filename == sent_dir + '/srun_bahri_dict_suggestion.dat':
                     eword = i.split(" <> ")[1]
                     hword = i.split(" <> ")[0]
                 else:
                     eword = i.split(" <> ")[0]
                     hword = i.split(" <> ")[1]
 
-                #print(list(change_hword.keys()), hword)  #handled cases in hindi_leftover_words_meta.dat
-                if hword in list(change_hword.keys()):
-                    #print("YSSSS") 
-                    hword = change_hword[hword]
-                    #print(hword) 
-
+                if count == 1:
+                    if hword in list(change_hword.keys()):
+                        hword = change_hword[hword]
 
                 eid = return_key_from_value(e2w, eword)
                 hid = return_key_from_value(h2w, hword)

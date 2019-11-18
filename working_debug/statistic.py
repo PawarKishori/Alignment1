@@ -39,6 +39,10 @@ def ids_from_csv() :
         e_ids=id_split[0].split(",")
         h_ids=id_split[1].split(",")
         e_total=e_ids[-1]
+        
+        e_ids[-1]=e_ids[-1].strip("\r")
+        h_ids[-1]=h_ids[-1].strip("\r")
+        print("###",e_ids)
         return e_ids,h_ids,int(e_total)
     except(EmptyError) :
         log.write("In "+sent_no+" N1.csv file is absent\n")
@@ -122,7 +126,7 @@ def e_temp_mapped() :
         i[2] = i[2].strip(")")
         eids = i[1].split(" ")[1:]
         ewords = i[2].split(" ")[1:]
-        #print(eids,ewords)
+        print(eids,ewords)
         main_list = np.setdiff1d(eids,e_mapped_ids)
         for ids in main_list :
             #print(ids)

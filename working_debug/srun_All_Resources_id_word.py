@@ -9,6 +9,7 @@ def create_dict(filename,string):
             p2w[int(t[1].lstrip("P"))] = t[2]
     return(p2w)
 
+
 def eng_id_to_idword_pair_hash(e_file):
     e2w=[]
     show_eng ={}  
@@ -28,7 +29,6 @@ def eng_id_to_idword_pair_hash(e_file):
 #     print(e2w)
     return show_eng
     
-#print(eng_id_to_idword_pair)
 
 def hin_id_to_idword_pair_hash(h_file):
     h2w=[]
@@ -48,6 +48,7 @@ def hin_id_to_idword_pair_hash(h_file):
 #     print(e2w)
     return show_hin
 
+
 def reading_all_resources(all_resource_after_srun):
     all_data=[]
     try :
@@ -59,7 +60,7 @@ def reading_all_resources(all_resource_after_srun):
         print(all_resource_after_srun +" is missing")
         sys.exit(0)
     return rows
-#print(all_resources)
+
 
 def E_id_conversion(eng_id_to_idword_pair,all_resources):
     row0=[]
@@ -156,10 +157,12 @@ def H_id_conversion(hin_id_to_idword_pair,all_resources) :
 
 #print(all_rows)
 
-def add_k_layer():
+def add_anusaaraka_layer():
     k_data = [ i.rstrip("\n") for i in open(k_layer_file).readlines()]
-    e_data = [ i.rstrip("\n") for i in open(e_file).readlines()]
     k_data = [item.rstrip(")") for item in k_data]
+    e_data = [ i.rstrip("\n") for i in open(e_file).readlines()]
+    k_enhanced_data = open(k_enhanced_file).read()
+    k_enhanced_list = k_enhanced_data.split(",")
 
     k_list = list()
     k_list.append("Anusaaraka Layer")
@@ -177,18 +180,36 @@ def add_k_layer():
         else :
             hword = "0"
         k_list[int(eid)] = hword
+
     k_list_utf = [H_Modules.wx_utf_converter_sentence(i) for i in k_list]
     k_list_utf[0] = k_list[0]
-    return(k_list_utf)
+
+    for i in range(len(k_enhanced_list)):
+        if "((" in k_enhanced_list[i]:
+            if k_list_utf[i] =="0":
+                k_list_utf[i] = "(("
+            else:
+                k_list_utf[i] = "(( " + k_list_utf[i]
+
+        elif "))" in k_enhanced_list[i]:
+            if k_list_utf[i] =="0":
+                k_list_utf[i] = "))"
+            else:
+                k_list_utf[i] = k_list_utf[i] + " ))"
+
+    k_enhanced_list[0] = "Shreya's_Layer"
+    return(k_list_utf,k_enhanced_list)
 
 
 def creating_new_csv():
     with open(sent_dir+"/srun_All_Resources_id_word.csv","w") as csvfile :
         csvwriter = csv.writer(csvfile)
         csvwriter.writerow(row0)
+        csvwriter.writerow(anusaaraka_layer)
+        csvwriter.writerow(shreya_layer)
         print(row0)
-        csvwriter.writerow(k_layer)
-        print(k_layer)
+        print(anusaaraka_layer)
+        print(shreya_layer)
         for i in all_rows:
             print(i)
             csvwriter.writerow(i)  
@@ -207,23 +228,18 @@ e_file=sent_dir+"/E_wordid-word_mapping.dat"
 h_file=sent_dir+"/H_wordid-word_mapping.dat"
 log_file = sent_dir+"/srun_All_Resources.log"
 k_layer_file = sent_dir + '/id_Apertium_output.dat'
+k_enhanced_file = sent_dir + '/K_enhanced_corrected.dat'
 
 all_resource_after_srun = sent_dir+"/srun_All_Resources.csv"
-
-#bahri_dict_file = sent_dir + '/bahri_dict_suggestion.dat'
 
 if os.path.exists(log_file) :
     os.remove(log_file)
 log = open(log_file,'a')
 eng_id_to_idword_pair = eng_id_to_idword_pair_hash(e_file)
 hin_id_to_idword_pair = hin_id_to_idword_pair_hash(h_file)
-#print("==>",eng_id_to_idword_pair)
 all_resources = reading_all_resources(all_resource_after_srun)
 row0 = E_id_conversion(eng_id_to_idword_pair,all_resources)
-#print("\n",row0)
-
-
 all_rows = H_id_conversion(hin_id_to_idword_pair,all_resources)
-#print(all_rows)
-k_layer = add_k_layer()
+anusaaraka_layer,shreya_layer = add_anusaaraka_layer()
 creating_new_csv()
+
