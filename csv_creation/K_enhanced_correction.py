@@ -26,7 +26,7 @@ for i,j in enumerate(k,1):
 with open(k_id_word, 'w') as f:
     for i,j in enumerate(k,1):
         #print(i,j)
-        f.write("(K_id-word\t"+str(i)+'\t'+j+ ')\n')
+        f.write("(K_id-word\t"+str(i)+'\t'+j.lstrip("((").rstrip("))")+ ')\n')
 
 
 # Generation of K_grouping_id.dat from K_enhanced.dat
