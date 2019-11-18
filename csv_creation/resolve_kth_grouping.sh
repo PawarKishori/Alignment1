@@ -19,6 +19,8 @@ while [ "$i" -lt $END ]
 
  python3 $HOME_alignment/csv_creation/csv_conversion_id_final.py $tmp/input_to_K_enhanced_layer  $tmp/K_enhanced.dat
 
+ python3 $HOME_alignment/csv_creation/K_enhanced_correction.py $tmp/K_enhanced.dat $tmp/E_Group_Facts_Parser_POS.dat $tmp/H_Group_Facts_Parser_POS.dat
+
   conda deactivate
 
                 i=`expr $i + 1`

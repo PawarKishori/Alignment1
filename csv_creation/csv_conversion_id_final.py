@@ -131,8 +131,7 @@ def csv_conversion(csv):
 input_dict = sys.argv[1]
 output_csv = sys.argv[2]
 csv_final = csv_conversion(input_dict)
-print(csv_final)
-
+print("==>",csv_final)
 
 with open(output_csv, "w") as out:
     out.write(csv_final)
