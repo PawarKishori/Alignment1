@@ -165,6 +165,7 @@ class POS:
 		path = tmp_path + sys.argv[1] + '_tmp'
 		path1 = path + '/2.*'
 		sentences = sorted(glob.glob(path1))
+
 		
 		all_sent = str(path)+'/E_Sanity_POS_All_Sentences.txt'
 		all_sent_log = str(path)+'/E_Sanity_Log_All_Sentences.txt'
@@ -176,15 +177,20 @@ class POS:
 		for sentence in sentences:
 			print("\n",sentence)
 			#Reading the POS information of individual sentences
-			conll_path = str(sentence) + '/E_conll_parse'
+			try :
 
-			pos_details_file = str(sentence) + '/all_pos_details_combined.dat'
-			pos_output = open(pos_details_file,'w')
-			
-			outpath = str(sentence)+'/E_Sanity_Check.dat'
-			
-			# Reading the files as an input
-			english_file = open(conll_path).readlines()
+				conll_path = str(sentence) + '/E_conll_parse'
+
+				pos_details_file = str(sentence) + '/all_pos_details_combined.dat'
+				pos_output = open(pos_details_file,'w')
+				
+				outpath = str(sentence)+'/E_Sanity_Check.dat'
+				
+				# Reading the files as an input
+				english_file = open(conll_path).readlines()
+
+			except:
+				print("FILE MISSING!!!!")
 			
 			parser_pos_list = list()			#List to extract infromation
 			pos_wordnet = list()
@@ -209,6 +215,20 @@ class POS:
 					l.append(x[6])
 					parser_pos_list.append(l[:])	#Storing the value in a list to further operate on
 					l.clear()			#Clearing the list for further processing 
+
+			tmp_list = list()
+
+			for i in range(len(parser_pos_list)):
+				count = i
+				if (parser_pos_list[i][1]) != "'s":
+					tmp_list.append(parser_pos_list[i])
+				else:
+					tmp_list[i-1][1] = str(tmp_list[i-1][1]  + parser_pos_list[i][1])
+					while count < len(parser_pos_list):
+						parser_pos_list[count][0] = int(parser_pos_list[count][0]) - 1
+						count += 1
+
+			parser_pos_list = tmp_list
 
 			pos_wordnet = self.wordnet_pos(parser_pos_list, sentence)
 			pos_gcide = self.gcide_pos(parser_pos_list, sentence)
