@@ -17,6 +17,7 @@ anu_tam_dic = {}
 k_v_rt_dic = {}
 k_v_rt_par_dic = {}
 anu_km_dic_match = {}
+k_exact_tam_dic = {}
 ############################################
 #storing verb rt and tam info in dics:
 for line in open(sys.argv[1]):
@@ -67,13 +68,27 @@ for key in sorted(k_v_rt_dic):
 
 ##############################################
 new_list = []
+with open("K_tam_layer.csv", 'r') as csvfile:
+    csvreader = csv.reader(csvfile)
+    for row in csvreader:
+        for i in range(len(row)):
+            print(row[i])
+            k_exact_tam_dic[i] = row[i]
+
 with open('H_alignment_parserid.csv','r') as csvfile:
     csvreader = csv.reader(csvfile)
     for row in csvreader:
-        if row[0] == 'K_exact_without_vib' or row[0] =='K_Root' or row[0] == 'K_Dic':
+        if row[0] == 'K_exact_without_vib': # or row[0] =='K_Root' or row[0] == 'K_Dic':
+            for i in range(1, len(row)):
+                if k_exact_tam_dic[i] == '-':
+                    if i in k_v_rt_dic.keys():
+                        row[i] = k_v_rt_dic[i]
+                else:
+                    row[i] = '-'
+        elif row[0] =='K_Root' or row[0] == 'K_Dic':
             for i in range(len(row)):
                 if i in k_v_rt_dic.keys():
-                    row[i] = k_v_rt_dic[i]
+                     row[i] = k_v_rt_dic[i]
         elif row[0] == 'K_par':
             for i in range(len(row)):
                 if i in k_v_rt_par_dic.keys():

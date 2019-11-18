@@ -20,7 +20,8 @@ kriyA_mula_dic = {}
 anu_rt_dic = {}
 anu_tam_dic = {}
 verb_dic = {}
-
+man_tam_dic = {}
+gnp_dic = {}
 ##############################
 for line in fhw:
     lst = line[:-2].split('\t')
@@ -78,10 +79,19 @@ for line in fv:
                 v_rt_dic[int(each)] = rt
     if 'tam:' in line.strip():
         tam = line.strip()[4:-7]
-#       print(tam)
+        gnp = line.strip()[-7:]
+        print(gnp)
+#        print(tam,len(wrd.split()), out)
         if out != None:
+            ids = []
             for each in out:
                 tam_dic[int(each)] = tam
+                gnp_dic[int(each)] = gnp
+                if tam not in man_tam_dic.keys():
+                    for i in range(len(wrd.split())):
+                        ids.append(str(int(each+i)))
+                    print('^^', tam, ' '.join(ids))
+                    man_tam_dic[tam] = ' '.join(ids)
 
 ##############################
 #for key in sorted(v_rt_dic):
@@ -180,12 +190,15 @@ for key in sorted(v_rt_dic):
 #        print('&&', k , k_m_w)
         del v_rt_dic[key]
         if k_m_w not in v_rt_dic:
-            v_rt_dic[k_m_w] = str(k) + ' ' + str(key)
+            v_rt_dic[k_m_w] = str(k) + '+' + str(key)
         else:
-            v_rt_dic[k_m_w] = v_rt_dic[k_m_w] + '/'+ str(k) + ' ' + str(key)
-        new_key = str(k) + ' ' + str(key)    
+            v_rt_dic[k_m_w] = v_rt_dic[k_m_w] + '/'+ str(k) + '+' + str(key)
+        new_key = str(k) + '+' + str(key)   
         tam_dic[new_key] = tam_dic[key]
+        gnp_dic[new_key] = gnp_dic[key]
+        man_tam_dic[tam_dic[key]] = str(k) + '+'+ man_tam_dic[tam_dic[key]]
         del tam_dic[key]
+        del gnp_dic[key]
     else:
         val = v_rt_dic[key]
         del v_rt_dic[key]
@@ -193,6 +206,7 @@ for key in sorted(v_rt_dic):
 
 for key in sorted(v_rt_dic):
     val = v_rt_dic[key]
+    tam = tam_dic[val]
     print('(verb_root-id', key, val, ')')
-    print('(tam-id', tam_dic[val], val, ')')
-        
+    print('(tam-id', tam, man_tam_dic[tam], ')')
+    print('(verb_root-tam-gnp-v_id', key, tam, gnp_dic[val], val,')')    

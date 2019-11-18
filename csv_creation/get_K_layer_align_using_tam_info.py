@@ -15,8 +15,11 @@ anu_tam_dic = {}
 man_rt_dic = {}
 man_tam_dic = {}
 k_tam_dic = {}
+gnp_dic = {}
+k_v_t_gnp_dic = {}
 
-list_K_tam =['K_exact_with_tam']
+list_K_tam  = ['K_exact_with_tam_analysis']
+list_K_tam_v = ['K_exact_with_tam_analysis']
 
 ###########################################
 #Extarct anu root info
@@ -38,6 +41,11 @@ with open("verb_root_tam_info.dat", 'r') as f1:
         if 'verb_root-id' in line:
             lst = line[:-2].split()
             man_rt_dic[lst[1]] = '+'.join(lst[2:])
+        if 'verb_root-tam-gnp-v_id' in line:
+            lst = line[:-2].split()
+            key = '+'.join(lst[4:])
+            gnp_dic[key] = lst[3]
+
 #############################################            
 #Aligning with tam if anu root and manual root are different: 
 for key in sorted(anu_tam_dic):
@@ -45,21 +53,27 @@ for key in sorted(anu_tam_dic):
     if anu_tam_dic[key] in man_tam_dic.keys():
         k = anu_tam_dic[key]
         val = man_tam_dic[k]
+        print(val, man_rt_dic)
         man_rt = return_key('+'.join(val), man_rt_dic)
+        if man_rt == None:
+            man_rt =  return_key(val[0], man_rt_dic)
         if anu_rt_dic[key] != man_rt:
             k_tam_dic[key] = ' '.join(val)
+            k_v_t_gnp_dic[key] = man_rt + '+' + k + gnp_dic[val[0]] 
+#            print(key, man_rt, man_rt_dic, k)
 
 #############################################            
-
 fw = open("word.dat", "r").readlines()
 word_len = len(fw)-1
 
 for i in range(len(fw)):
    list_K_tam.append('-')
+   list_K_tam_v.append('-')
 
 for i in range(1, word_len+1):
     if i in k_tam_dic.keys():
         list_K_tam[i] = k_tam_dic[i]
+        list_K_tam_v[i] = k_v_t_gnp_dic[i]
 
 print('K tam layer' , list_K_tam)        
 #################################
@@ -67,6 +81,12 @@ print('K tam layer' , list_K_tam)
 with open("K_tam_layer.csv", 'w') as csvfile:
    csvwriter = csv.writer(csvfile)
    csvwriter.writerow(list_K_tam)
+#################################
+#Writing in csv for visualisation:
+with open("K_tam_layer_v.csv", 'w') as csvfile:
+   csvwriter = csv.writer(csvfile)
+   csvwriter.writerow(list_K_tam_v)
+
 #################################
 
 

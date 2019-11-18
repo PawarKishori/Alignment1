@@ -23,9 +23,10 @@ echo "Extract kriyA_mUla Root and ids info..."
 #Get ids for verb root , extracting verb root for kriyA mUla O/p: verb_root_tam_info.dat
 python3 $HOME_alignment/csv_creation/get_manual_root_nd_tam.py  $HOME_alignment/csv_creation/kriyA_mUla_default_dic.txt  $HOME_alignment/csv_creation/kriyA_mUla.txt_wx $HOME_alignment/csv_creation/verb_default_dic.txt > verb_root_tam_info.dat
 
+echo "Alignining Verb using tam..."
+python3 $HOME_alignment/csv_creation/get_K_layer_align_using_tam_info.py
+
 echo "Aligning Verb..."
 #Verb Alignment, O/p: H_alignment_parserid-new.csv
 python3 $HOME_alignment/csv_creation/verb_alignment.py  verb_root_tam_info.dat anu_root.dat
 
-echo "Alignining Verb using tam..."
-python3 $HOME_alignment/csv_creation/get_K_layer_align_using_tam_info.py
