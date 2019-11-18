@@ -33,8 +33,8 @@ for line in open(sys.argv[1]):
     extarct_rt_nd_tam(lst)
 
 for key in sorted(root_dic):
-    print('(id-anu_root ', key, root_dic[key], ')')
+    print('(id-anu_root', key, root_dic[key], ')')
 
 for key in sorted(tam_dic):
-    print('(id-anu_tam ', key, tam_dic[key], ')')
+    print('(id-anu_tam', key, tam_dic[key], ')')
 

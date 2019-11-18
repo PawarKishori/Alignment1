@@ -4,6 +4,9 @@
 echo "Extracting K layer root and Tam info..."
 python3 $HOME_alignment/csv_creation/extract_anu_root_nd_tam.py id_Apertium_input.dat > anu_root.dat
 
+echo "Extracting root info for manual..."
+python3 extract_hindi_id_root.py
+
 echo "Creating csv..."
 #Extracting K layer info to get K, K_exact_without_vib, K_par, K_Root, K_Dic layers , O/p: H_alignment_parserid.csv
 python3 $HOME_alignment/csv_creation/csv_format.py
@@ -23,3 +26,6 @@ python3 $HOME_alignment/csv_creation/get_manual_root_nd_tam.py  $HOME_alignment/
 echo "Aligning Verb..."
 #Verb Alignment, O/p: H_alignment_parserid-new.csv
 python3 $HOME_alignment/csv_creation/verb_alignment.py  verb_root_tam_info.dat anu_root.dat
+
+echo "Alignining Verb using tam..."
+python3 $HOME_alignment/csv_creation/get_K_layer_align_using_tam_info.py
