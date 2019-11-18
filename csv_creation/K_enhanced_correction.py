@@ -4,7 +4,7 @@ engG = sys.argv[2]
 hinG = sys.argv[3]
 
 tmp_path = '/'.join(k_en.split('/')[:-1])
-print(tmp_path)
+#print(tmp_path)
 
 k_grping_id =tmp_path + '/K_grouping_id.dat'
 k_grping_id_corrected = tmp_path + '/K_grouping_id_corrected.dat'
@@ -16,7 +16,7 @@ k_enhanced_corrected = tmp_path + '/K_enhanced_corrected.dat'
 with open (k_en, 'r') as f:
     data=f.read().split(",")
     k=data[1:]
-print(k)
+#print(k)
 
 k_id_word_dict = {}
 for i,j in enumerate(k,1):
@@ -32,6 +32,7 @@ with open(k_id_word, 'w') as f:
 # Generation of K_grouping_id.dat from K_enhanced.dat
 final=[]
 grp = []
+grp1 = []
 flag = 0
 f=0
 for i,j in enumerate(k,1):
@@ -55,6 +56,7 @@ for i,j in enumerate(k,1):
         final.append(grp)
 
 #print(final)
+all_grouping = []
 for x in final:
     if len(x) > 1:
         all_grouping = x
@@ -81,9 +83,9 @@ for i in all_grouping:
 #Final grouping information
 ff_grp_k = [x for x in final if len(x)==1] + final_grping    
 
-print("\n")
-print(ff_grp_k)
-print("\n")
+#print("\n")
+#print(ff_grp_k)
+#print("\n")
 
 # Writting into K_grouping_id.dat
 k_grps=[]
@@ -95,9 +97,8 @@ with open(k_grping_id,'w') as f:
         k_grps.append(x)
         f.write("(K_group_elements\t"+" ".join(x)+ ')\n')
 
-print(k_grps)
+#print(k_grps)
 
-print("----------------------")
 
 # Opening Saumya's grouping and storing into data
 egrp = []
@@ -111,7 +112,6 @@ with open (engG, "r") as f:
         egrp.append(x)
 #print(egrp)
 
-print("----------------------")
 
 def intersection_of_two_list(lst1, lst2): 
     common_element = [value for value in lst1 if value in lst2] 
@@ -154,8 +154,8 @@ print(k_grps)
     
 new_K_grp = correcting_k_grouping(k_grps, egrp)   # Corrected K layer grouping, using Saumya's grouping
 
-print(new_K_grp)
-print("----------------------\n\n")
+#print(new_K_grp)
+#print("----------------------\n\n")
 
 # Writing K_grouping_id_corrected.dat equivalent to K_grouping_id.dat in fact format
 with open(k_grping_id_corrected,'w') as f:
@@ -198,4 +198,6 @@ new_final_grp = generate_K_enhanced_corrected(new_K_grp)
 new_final_grp.insert(0,"K_enhanced_corrected")
 with open(k_enhanced_corrected, 'w') as f:
    f.write(", ".join(new_final_grp))
+print("\nFinal grouping of K")
 print(new_final_grp)
+print("----------------------")
