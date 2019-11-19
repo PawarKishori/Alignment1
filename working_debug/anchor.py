@@ -12,6 +12,26 @@ import re
     return(k_layer_ids)'''
 
 
+def return_key_from_value(dictionary, value):
+    ids_to_return=[]
+    for ids, words in dictionary.items(): 
+        if str(words) == str(value):
+            ids_to_return.append(str(ids))
+
+    ids = "/".join(ids_to_return) 
+    return ids
+
+def return_key_from_value_without_case(dictionary, value):
+    ids_to_return=[]
+    for ids, words in dictionary.items(): 
+        if str(words.lower()) == str(value.lower()):
+            ids_to_return.append(str(ids))
+    if len(ids_to_return) == 1 :
+        id_to_return=ids_to_return[0]
+    
+    ids = "/".join(ids_to_return) 
+       
+    return ids   
 
 def load_row_from_csv(filename, row_number):
     try:

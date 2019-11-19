@@ -134,6 +134,7 @@ def H_id_conversion(hin_id_to_idword_pair,all_resources) :
                     temp_list.append("/".join(hin_id_to_idword_pair[int(k)] for k in j))
                 elif " " in str(j) and "/" not in str(j) :
                     j=str(j).split(" ")
+                    print(j)
                     temp_list.append(" ".join(hin_id_to_idword_pair[int(k)] for k in j))
                 elif " " in str(j) and "/" in str(j) :
                     j=str(j).split(" ")
@@ -163,7 +164,8 @@ def add_anusaaraka_layer():
     e_data = [ i.rstrip("\n") for i in open(e_file).readlines()]
     k_enhanced_data = open(k_enhanced_file).read()
     k_enhanced_list = k_enhanced_data.split(",")
-
+    k_enhanced_corrected_data = open(k_enhanced_corrected_file).read()
+    k_enhanced_corrected_list = k_enhanced_corrected_data.split(",")
     k_list = list()
     k_list.append("Anusaaraka Layer")
 
@@ -183,7 +185,7 @@ def add_anusaaraka_layer():
 
     k_list_utf = [H_Modules.wx_utf_converter_sentence(i) for i in k_list]
     k_list_utf[0] = k_list[0]
-
+    
     for i in range(len(k_enhanced_list)):
         if "((" in k_enhanced_list[i]:
             if k_list_utf[i] =="0":
@@ -198,7 +200,8 @@ def add_anusaaraka_layer():
                 k_list_utf[i] = k_list_utf[i] + " ))"
 
     k_enhanced_list[0] = "Shreya's_Layer"
-    return(k_list_utf,k_enhanced_list)
+    k_enhanced_corrected_list[0] = "Shreya's_Grouping_Improved"
+    return(k_list_utf,k_enhanced_list,k_enhanced_corrected_list)
 
 
 def creating_new_csv():
@@ -210,9 +213,38 @@ def creating_new_csv():
         print(row0)
         print(anusaaraka_layer)
         print(shreya_layer)
+        if len(shreya_layer) == len(shreya_layer_corr):
+            csvwriter.writerow(shreya_layer_corr)
+            print(shreya_layer_corr)
         for i in all_rows:
-            print(i)
-            csvwriter.writerow(i)  
+            if i[0] == "K_exact_with_tam_analysis":
+                with open (sent_dir + '/K_tam_layer_v.csv','r')  as f:
+                   data = csv.reader(f)
+                   for r in data:
+                       j1=[ii.replace("-",'0') for ii in r]
+                       csvwriter.writerow(j1[:-1])
+                       print(j1[:-1])
+            else:
+                csvwriter.writerow(i) 
+                print(i)
+        '''pid = list()
+        with open(sent_dir + '/H_alignment_parserid.csv','r')as f:
+            data = csv.reader(f)
+            for i,j in enumerate(data):
+                if i == 10:
+                    pid=[ii.replace("_",'0') for ii in j]
+        print(pid)
+        with open(sent_dir + '/H_alignment_parserword.csv', 'r') as f:
+            data = csv.reader(f)
+            #for i in range(0,len(data)):
+            for i,j in enumerate(data):
+                if i == 6:
+                   j1=[ii.replace("_",'0') for ii in j]
+                   #plist = [k+"_"+l for k,l in zip(pid,j1)]
+                   #print(plist)
+                   #plist = [d[0] for d in plist if d == "0_0" ]
+                   print(j1)
+                   csvwriter.writerow(j1)'''
 
 
 
@@ -228,7 +260,8 @@ e_file=sent_dir+"/E_wordid-word_mapping.dat"
 h_file=sent_dir+"/H_wordid-word_mapping.dat"
 log_file = sent_dir+"/srun_All_Resources.log"
 k_layer_file = sent_dir + '/id_Apertium_output.dat'
-k_enhanced_file = sent_dir + '/K_enhanced_corrected.dat'
+k_enhanced_file = sent_dir + '/K_enhanced.dat'
+k_enhanced_corrected_file = sent_dir + '/K_enhanced_corrected.dat'
 
 all_resource_after_srun = sent_dir+"/srun_All_Resources.csv"
 
@@ -240,6 +273,6 @@ hin_id_to_idword_pair = hin_id_to_idword_pair_hash(h_file)
 all_resources = reading_all_resources(all_resource_after_srun)
 row0 = E_id_conversion(eng_id_to_idword_pair,all_resources)
 all_rows = H_id_conversion(hin_id_to_idword_pair,all_resources)
-anusaaraka_layer,shreya_layer = add_anusaaraka_layer()
+anusaaraka_layer,shreya_layer,shreya_layer_corr = add_anusaaraka_layer()
 creating_new_csv()
 

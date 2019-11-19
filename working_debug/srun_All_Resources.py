@@ -75,24 +75,6 @@ def convert_words_to_ids_in_list(listofwords,id_word_dict) :
 
 # In[349]:
 
-
-##############################FUNCTION FOR RETURNING MULTIPLE KEYS FOR VALUES######################################
-def return_key_from_value(dictionary, value):
-    ids_to_return=[]
-    for ids, words in dictionary.items(): 
-        #print(words,value)# for name, age in dictionary.iteritems():  (for Python 2.x)
-        if str(words) == str(value):
-#             print("###",ids)
-            ids_to_return.append(ids)
-    if len(ids_to_return) == 1 :
-        id_to_return=ids_to_return[0]
-        return id_to_return
-        
-    return ids_to_return
-
-# In[350]:
-
-
 #######################################ID-WORD PAIR DICTIONARY#####################################################
 def create_dict(filename,string):
     with open(filename,"r") as f1: 
@@ -213,14 +195,11 @@ def get_E_H_Ids_mfs(filename):
                     tmp[i] = "~"   
         else:
 #                 
-                eid = return_key_from_value(e2w, ewords)
-#                 print(e2w)
-#                 print(eid)
-                hid = return_key_from_value(h2w, hwords)
-#                 print(eid)
+                eid = anchor.return_key_from_value(e2w, ewords)
+                hid = anchor.return_key_from_value(h2w, hwords)
                 final_eids = eid
                 final_hids = hid           #IMP
-#                 print(final_hids)
+         
                 if final_eids not in tmp:
                     tmp[final_eids] = final_hids
         #print(tmp)
@@ -250,9 +229,9 @@ def get_E_H_dict_Ids(filename):
             #print(hword)
             #print(e2w)
             #print(h2w)
-            eid = return_key_from_value(e2w, eword)
+            eid = anchor.return_key_from_value(e2w, eword)
             #print("\nEID :\n",eid) 
-            hid = return_key_from_value(h2w, hword)
+            hid = anchor.return_key_from_value(h2w, hword)
 #             print(eid, hid)
             tmp[str(eid)] = str(hid)
         #print(tmp)
@@ -286,8 +265,8 @@ def E_H_IDS(filename):
                     if hword in list(change_hword.keys()):
                         hword = change_hword[hword]
 
-                eid = return_key_from_value(e2w, eword)
-                hid = return_key_from_value(h2w, hword)
+                eid = anchor.return_key_from_value(e2w, eword)
+                hid = anchor.return_key_from_value(h2w, hword)
                 print(hword, hid)
                 new_dict[str(eid)] = str(hid)
     return(new_dict)
@@ -378,7 +357,6 @@ with open(sent_dir + '/All_Resources.csv', 'r') as f:
 def create_n2_layer():
     row = Transliteration_Dict_old()
     row[0] = "Transliterate_2"
-    #print(row)
     N2 = list()
 
     for i in range(0,len(N1_layer)):
@@ -396,16 +374,34 @@ def create_n2_layer():
 trans_2_run,N2_layer = create_n2_layer()
 
 
+def add_p_layer():
+    pid = list()
+    with open(sent_dir + '/H_alignment_wordid.csv','r') as f:
+        data = csv.reader(f)
+        for i,j in enumerate(data):
+            if i == 6:
+                pid = [ii.lstrip(" ").rstrip(" ") for ii in j]
+                pid=[ii.replace("_",'0') for ii in pid]
+    return(pid)
+
+pid = add_p_layer()
+
 def integrating_all_rows():
     with open(sent_dir+'/srun_All_Resources.csv', 'w') as csvfile :
         csvwriter = csv.writer(csvfile)
         for i in all_rows:
             csvwriter.writerow(i)
+            print(i)
         csvwriter.writerow(trans_2_run)
         csvwriter.writerow(b_list)
         csvwriter.writerow(hw_list)
         csvwriter.writerow(N2_layer)
-
+        csvwriter.writerow(pid)
+        print(trans_2_run)
+        print(b_list)
+        print(hw_list)
+        print(N2_layer)
+        print(pid)
 integrating_all_rows()
 
 

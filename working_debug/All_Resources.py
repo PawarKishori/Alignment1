@@ -35,30 +35,6 @@ def convert_words_to_ids_in_list(listofwords,id_word_dict) :
 
     return listofwords
 
-###############################FUNCTION_FOR_RETURNING_MULTIPLE_KEYS_FOR_VALUES########################################
-
-def return_key_from_value(dictionary, value,):
-    ids_to_return=[]
-    for ids, words in dictionary.items(): 
-        if str(words) == str(value):
-            ids_to_return.append(ids)
-    if len(ids_to_return) == 1 :
-        id_to_return=ids_to_return[0]
-        return id_to_return
-       
-    return ids_to_return
-
-def return_key_from_value_without_case(dictionary, value):
-    ids_to_return=[]
-    for ids, words in dictionary.items(): 
-        if str(words.lower()) == str(value.lower()):
-            ids_to_return.append(ids)
-    if len(ids_to_return) == 1 :
-        id_to_return=ids_to_return[0]
-        return id_to_return
-        
-    return ids_to_return
-
 ###############################################ID-WORD_PAIR_DICTIONARY################################################
 
 def create_dict(filename,string):
@@ -164,8 +140,8 @@ def get_E_H_Ids_mfs(filename):
                 if i != head_in_english and i != e_pos[0]:
                     tmp[i] = "~"   
         else:    
-                eid = return_key_from_value(e2w, ewords)
-                hid = return_key_from_value(h2w, hwords)
+                eid =anchor.return_key_from_value(e2w, ewords)
+                hid =anchor.return_key_from_value(h2w, hwords)
                 final_eids = eid
                 final_hids = hid           
                 if final_eids not in tmp:
@@ -181,8 +157,8 @@ def get_E_H_dict_Ids(filename):
         for entry in entries:
             eword = entry.split("\t")[1]
             hword = entry.split("\t")[2]
-            eid = return_key_from_value(e2w, eword)
-            hid = return_key_from_value(h2w, hword)
+            eid =anchor.return_key_from_value(e2w, eword)
+            hid =anchor.return_key_from_value(h2w, hword)
             tmp[str(eid)] = str(hid)
 
     return(tmp) 
@@ -314,6 +290,7 @@ def Transliteration_Dict_old():
 
     return roja_transliterate_list
 
+
 ##############################################K_exact_mwe_word_align_csv##############################################
 
 def K_exact_mwe_word_align_csv():
@@ -400,10 +377,10 @@ def add_MW_PP_layer():
                 print(ewords)
                 print(hwords)
                 for i in ewords:
-                    eid = return_key_from_value_without_case(e2w,i)
+                    eid = anchor.return_key_from_value_without_case(e2w,i)
                     print(eid,i)
                 for i in hwords:
-                    hid = return_key_from_value(h2w,i)
+                    hid =anchor.return_key_from_value(h2w,i)
                     print(hid,i)
 
 ######################################################INTEGRATION#####################################################

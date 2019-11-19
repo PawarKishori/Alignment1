@@ -6,7 +6,7 @@ END=`expr $END + 1`
 while [ "$i" -lt $END ]
   do
   echo "2."$i
-  source activate py3.6
+  #source activate py3.6
   tmp=$HOME_anu_tmp/tmp/$1_tmp/"2."$i
   python3 $HOME_alignment/csv_creation/all_words_using_apertium.py $tmp/word.dat $tmp/id_Apertium_output_with_grp.dat $tmp/K_grouping_info.dat $tmp/K_grouping_info1.dat
   
@@ -21,7 +21,7 @@ while [ "$i" -lt $END ]
 
  python3 $HOME_alignment/csv_creation/K_enhanced_correction.py $tmp/K_enhanced.dat $tmp/E_Group_Facts_Parser_POS.dat $tmp/H_Group_Facts_Parser_POS.dat
 
-  conda deactivate
+  #conda deactivate
 
                 i=`expr $i + 1`
         done

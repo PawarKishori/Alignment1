@@ -54,15 +54,15 @@ eleftw = ", ".join(open(eleftover,'r').read().split(" "))
 hleftw = ", ".join([H_Modules.wx_utf_converter_sentence(i) for i in open(hleftover,'r').read().split(" ")])
 
 ###################################################################################################################
-try:
-    dfs = pd.read_csv(sent_dir +'/'+ "srun_All_Resources_id_word.csv")
+# try:
+dfs = pd.read_csv(sent_dir +'/'+ "srun_All_Resources_id_word.csv")
 #     del dfs['Unnamed: 0']
-    no_of_eng_words = dfs.shape[1]
-    title=list(dfs.columns.values)
+no_of_eng_words = dfs.shape[1]
+title=list(dfs.columns.values)
 #     print(title)
-except:
-    print('srun_All_Resources_id_word.csv missing')
-    log.write("FILE MISSING: " + "srun_All_Resources_id_word.csv"  + "\n")
+# except:
+#     print('srun_All_Resources_id_word.csv missing')
+#     log.write("FILE MISSING: " + "srun_All_Resources_id_word.csv"  + "\n")
 ##################################################################################################################
 try:
     e2w = a.create_dict(efilename, '(E_wordid-word')
@@ -147,7 +147,6 @@ eimg2 = 'E_tree_corrected.png'
 
 ###############################################################################################################
 #dfs.index=np.arange(1,len(dfs)+1)
-print(dfs)
 dfs=dfs.set_index('English_Word')
 dfs.index.name = None
 # display(edf)

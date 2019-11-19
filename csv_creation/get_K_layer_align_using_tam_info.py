@@ -80,7 +80,11 @@ print('K tam layer' , list_K_tam)
 #Writing in csv
 with open("K_tam_layer.csv", 'w') as csvfile:
    csvwriter = csv.writer(csvfile)
-   csvwriter.writerow(list_K_tam)
+   x= []
+   for item in list_K_tam:
+       x.append(item.replace("+"," "))
+   print(x)
+   csvwriter.writerow(x)
 #################################
 #Writing in csv for visualisation:
 with open("K_tam_layer_v.csv", 'w') as csvfile:

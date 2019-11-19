@@ -176,7 +176,8 @@ def generate_K_enhanced_corrected(new_K_grp):
    x=[]
    for i in new_K_grp:
        temp = [int(k) for k in i]
-       x.append(temp)
+       if temp not in x:
+           x.append(temp)
    print(x)
    y = Sort(x)
    print(y)
