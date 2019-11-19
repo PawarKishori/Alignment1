@@ -53,6 +53,7 @@ def root_for_the_sentence(e_sentence_file,h_sentence_file):
     #temp_dir=os.getenv("HOME_anu_tmp")+"/tmp/"+corpus+"_tmp/"+"2.88/"
     #temp_dir+"H_sentence"
     e_sentence=open(e_sentence_file,"r").read()
+    e_sentence = e_sentence.lower()
     h_sentence=open(h_sentence_file,"r").read()
     e_words=sentence_to_words(e_sentence)
     h_words=sentence_to_words(h_sentence)
@@ -109,9 +110,11 @@ def check_transliterate():
         for h in h_roots_with_h:
             #print(e[0],h[0])
             check_from_exceptional_dic(except_dict,e[0],h[0])
-            call_roja_prog = "python "+os.getenv("HOME_alignment")+"/Transliteration/check_transliteration.py "+ e[0] + " " + h[0] +" "+ os.getenv("HOME_alignment")+"/Transliteration/dictionary/Sound-dic.txt"
+###############################PYTHON 2 FOR ROJA MA'AM's MODULE#################################################
+            call_roja_prog = "python2 "+os.getenv("HOME_alignment")+"/Transliteration/check_transliteration.py "+ e[0] + " " + h[0] +" "+ os.getenv("HOME_alignment")+"/Transliteration/dictionary/Sound-dic.txt"
             #print(call_roja_prog)
             if subprocess.getoutput(call_roja_prog)=="Given word is transliterate word":
+                    #print(call_roja_prog)
                     print(e[1]," <> ",h[1])
                     tr.write(e[1]+" <> "+h[1]+"\n")
 
