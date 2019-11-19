@@ -1,0 +1,1408 @@
+abstract_symbol	abstract:amUrwa symbol:prawIka
+acceleration_period	acceleration:wvaraNa period:avaXi
+acceleration_time	acceleration:wvaraNa time:kAla
+acceptance_test	acceptance:svIkaraNa test:parIkRaNa
+access_arrangement	access:aBigama arrangement:vyavasWA
+access_authority	access:aBigama authority:prAXikAra
+access_charge	access:aBigama charge:Sulka
+access_class	access:aBigama class:varga
+access_environment	access:aBigama environment:pariveSa
+access_gap	access:aBigama gap:anwarAla
+access_index	access:aBigama index:sUcaka
+access_line	access:aBigama line:lAina
+access_method	access:aBigama method:viXi
+access_right	access:aBigama right:aXikAra
+access_time	access:aBigama time:kAla
+accounting_finance_system	accounting:leKAkArya finance:viwwa system:wanwra
+accounting_machine	accounting:leKA machine:yanwra
+account_number	account:KAwA number:safKyA
+accuracy_control_character	accuracy:pariSuxXawA control:niyanwraNa character:samprawIka character:samprawIka
+accuracy_control_system	accuracy:pariSuxXawA control:niyanwraNa system:wanwra
+action_cycle	action:kriyA cycle:cakra
+action_line	action:kriyA line:lAina
+action_message	action:kriyA message:sanxeSa
+active_line	active:sakriya line:lAina
+active_link	active:sakriya link:kadI
+active_master_item	active:sakriya master:praXAna item:maxa
+active_satellite	active:sakriya satellite:upagraha
+active_station	active:sakriya station:keMxra
+active_storage	active:sakriya storage:BaNdAraNa
+activity_level	activity:sakriyawA level:swara
+activity_loading	activity:sakriyawA loading:BAraNa
+activity_ratio	activity:sakriyawA ratio:anupAwa
+actual_decimal_point	actual:vAswavika decimal:xaSamalava point:biMxu
+actual_key	actual:vAswavika key:kuFjI
+actual_time	actual:vAswavika time:kAla
+actual_work_time	actual:vAswavika work:kArya time:kAla
+addition_table	addition:yoga table:sAraNI
+additive_attribute	additive:yojya attribute:guNa
+addressable_point	addressable:pawAyogya point:biMxu
+addressable_position	addressable:pawAyogya position:sWiwi
+addressable_storage	addressable:pawAyogya storage:BaNdAraNa
+address_bus	address:pawA bus:basa
+address_code	address:pawA code:kUta
+address_comparator	address:pawA comparator:wulaniwra
+address_computation	address:pawA computation:aBikalana
+address_conversion	address:pawA conversion:rUpAnwaraNa
+address_data	address:pawA data:Azkade
+address_effective	address:pawA effective:praBAvI
+address_field	address:pawA field:kRewra
+address_format	address:pawA format:saMrUpa
+addressing_character	addressing:pawABigamana character:samprawIka character:samprawIka
+addressing_loop	addressing:pawABigamana loop:pASa
+addressing_virtual_memory	addressing:pawABigamana virtual:ABAsI memory:smqwi
+address_line	address:pawA line:lAina
+address_mapping	address:pawA mapping:prawiciwraNa
+address_mark	address:pawA mark:cihna
+address_part	address:pawA part:BAga
+address_pointer	address:pawA pointer:safkewaka
+address_signal	address:pawA signal:safkewa
+address_space	address:pawA space:sWAna
+address_space_identifier	address:pawA space:sWAna identifier:aBijFApaka
+address_stop	address:pawA stop:virAma
+address_trace	address:pawA trace:anureKa
+address_track	address:pawA track:mArga
+address_translation	address:pawA translation:anuvAxa
+address_translator	address:pawA translator:anuvAxaka
+adjacency_structure	adjacency:saMlagnawA structure:saMracanA
+administrative_operator	administrative:praSAsanika operator:pracAlaka
+advanced_communication_service	advanced:unnawa communication:saFcAra service:sevA
+advanced_information_system	advanced:unnawa information:sUcanA system:wanwra
+advanced_scientific_computer	advanced:unnawa scientific:vEjFAnika computer:aBikaliwra
+airborne_computer_system	airborne:vAyuvAhiwa computer:aBikaliwra system:wanwra
+algol_feature	algol:ElgoYla feature:lakRaNa
+alphanumeric_character_set	alphanumeric:akRarAfkIya character:samprawIka character:samprawIka set:samuccaya
+alphanumeric_code	alphanumeric:akRarAfkIya code:kUta
+alphanumeric_data	alphanumeric:akRarAfkIya data:Azkade
+alphanumeric_field	alphanumeric:akRarAfkIya field:kRewra
+alphanumeric_instruction	alphanumeric:akRarAfkIya instruction:anuxeSa
+alphanumeric_storage	alphanumeric:akRarAfkIya storage:BaNdAraNa
+alteration_switch	alteration:parivarwana switch:svica
+alternative_attribute	alternative:vEkalpika attribute:guNa
+analog_adder	analog:anurUpa adder:yojaka
+analog_channel	analog:anurUpa channel:praNAla
+analog_computer	analog:anurUpa computer:aBikaliwra
+analog_converter	analog:anurUpa converter:parivarwaka
+analog_data	analog:anurUpa data:Azkade
+analog_facility_terminal	analog:anurUpa facility:suviXA terminal:tarminala
+analog_multiplier	analog:anurUpa multiplier:guNaka
+analog_signal	analog:anurUpa signal:safkewa
+analog_switch	analog:anurUpa switch:svica
+analog_system	analog:anurUpa system:wanwra
+analog_type	analog:anurUpa type:prakAra
+analysis_block	analysis:viSleRaNa block:KaNdaka
+analytical_engine	analytical:vESleRika engine:iMjana
+ancillary_equipment	ancillary:sahAyaka equipment:upakaraNa
+and_circuit	and:waWA' circuit:paripaWa
+and_element	and:waWA' element:avayava
+and_gate	and:waWA' gate:xvAra
+and_operation	and:waWA' operation:safkriyA
+answer_delay	answer:uwwara delay:vilamba
+answer_lamp	answer:uwwara lamp:bawwI
+answer_list	answer:uwwara list:sUcI
+answer_only	answer:uwwara only:kevala
+application_developer	application:anuprayoga developer:vikAsaka
+application_program	application:anuprayoga program:kramAxeSa program:kramAxeSa
+application_required_language	application:anuprayoga required:apekRiwa language:BARA
+area_code	area:kRewra code:kUta
+area_search	area:kRewra search:Koja
+area_transfer	area:kRewra transfer:sWAnAnwaraNa
+arithmetical_instruction	arithmetical:afkagaNiwIya instruction:anuxeSa
+arithmetic_check	arithmetic:afkagaNiwIya check:jAzca
+arithmetic_conversion	arithmetic:afkagaNiwIya conversion:rUpAnwara
+arithmetic_data	arithmetic:afkagaNiwIya data:Azkade
+arithmetic_exception	arithmetic:afkagaNiwIya exception:apavAxa
+arithmetic_fixed_point	arithmetic:afkagaNiwIya fixed:niyawa point:biMxu
+arithmetic_hierarchy	arithmetic:afkagaNiwIya hierarchy:paxAnukrama
+arithmetic_logic	arithmetic:afkagaNiwIya logic:warka
+arithmetic_logic_unit	arithmetic:afkagaNiwIya logic:warka unit:ekaka
+arithmetic_operation	arithmetic:afkagaNiwIya operation:safkriyA
+arithmetic_picture_data	arithmetic:afkagaNiwIya picture:ciwra data:Azkade
+arithmetic_primary	arithmetic:afkagaNiwIya primary:prAWamika
+arithmetic_relation	arithmetic:afkagaNiwIya relation:sambanXa
+arithmetic_statement	arithmetic:afkagaNiwIya statement:kaWana
+arithmetic_term	arithmetic:afkagaNiwIya term:paxa
+array_bound	array:saraNI bound:paribanXa
+array_computer	array:saraNI computer:aBikaliwra
+array_dimension	array:saraNI dimension:vimA
+array_element	array:saraNI element:avayava
+array_name	array:saraNI name:nAma
+array_processing	array:saraNI processing:saMsAXana
+articulation_point	articulation:sanXi point:biMxu
+artificial_intelligence	artificial:kqwrima intelligence:buxXi
+artificial_language	artificial:kqwrima language:BARA
+ascii_control_character	ascii:AskI control:niyanwraNa character:samprawIka character:samprawIka
+assemble_duration	assemble:kodAnwaraNa duration:avaXi
+assembler_directive	assembler:kodAnwaraka directive:nirxeSa
+assembler_facility	assembler:kodAnwaraka facility:suviXA
+assembling_time	assembling:kodAnwaraNa time:kAla
+assembly_language	assembly:kodAnwaraNa language:BARA
+assembly_time	assembly:kodAnwaraNa time:kAla
+assembly_unit	assembly:kodAnwaraNa unit:ekaka
+assumed_decimal_point	assumed:kalpiwa decimal:xaSamalava point:biMxu
+asymmetric_device	asymmetric:asamamiwa device:yukwi
+asynchronous_communication	asynchronous:awulyakAlI communication:saFcAra
+asynchronous_computer	asynchronous:awulyakAlika computer:aBikaliwra
+asynchronous_operation	asynchronous:awulyakAlI operation:safkriyA
+asynchronous_time_division_multiplexing	asynchronous:awulyakAlika time:samaya division:viBAjana multiplexing:bahusafkewana
+attached_processing	attached:saMlagna processing:saMsAXana
+attention_key	attention:XyAna key:kuFjI
+attenuation_distortion	attenuation:kRINana distortion:virUpaNa
+attenuation_equalizer	attenuation:kRINana equalizer:wulyakAraka
+audio_line	audio:Sravya line:lAina
+audio_telecommunication_line	audio:Sravya telecommunication:xUrasaFcAra line:lAina
+authoring_system	authoring:saMleKana system:praNAlI
+authorization_code	authorization:prAXikaraNa code:kUta
+automation_concept	automation:svacAlana concept:safkalpanA
+auxiliary_console	auxiliary:sahAyaka console:kansola
+auxiliary_equipment	auxiliary:sahAyaka equipment:upakaraNa
+auxiliary_memory	auxiliary:sahAyaka memory:smqwi
+auxiliary_storage	auxiliary:sahAyaka storage:BaNdAraNa
+auxiliary_store	auxiliary:sahAyaka store:BaNdAra
+average_information_content	average:Osawa information:sUcanA content:anwarvaswu
+average_information_rate	average:Osawa information:sUcanA rate:xara
+background_job	background:pqRTaBUmi job:kArya
+background_processing	background:pqRTaBUmi processing:saMsAXana
+background_program	background:pqRTaBUmi program:kramAxeSa program:kramAxeSa
+background_region	background:pqRTaBUmi region:praxeSa
+backspace_character	backspace:paScIyana character:samprawIka character:samprawIka
+backup_copy	backup:pUrwikara copy:prawilipi
+backup_store	backup:pUrwikara store:BaNdAra
+balanced_digit_system	balanced:sanwuliwa digit:afka system:praNAlI
+balanced_station	balanced:sanwuliwa station:keMxra
+base_address	base:AXAra address:pawA
+base_addressing	base:AXAra addressing:pawABigamana
+base_band	base:AXAra band:pattI
+base_band_channel	base:AXAra band:pattI channel:praNAla
+base_element	base:AXAra element:avayava
+base_item	base:AXAra item:maxa
+base_language	base:AXAra language:BARA
+base_number	base:AXAra number:safKyA
+basic_binary_loader	basic:mUla binary:xvi-AXArI loader:BAraka
+batch_header_document	batch:pracaya header:praveSikA document:praleKa
+batch_partition	batch:pracaya partition:viBAjana
+batch_position	batch:pracaya position:sWiwi
+batch_processing	batch:pracaya processing:saMsAXana
+batch_region	batch:pracaya region:praxeSa
+batch_session	batch:pracaya session:sawra
+batch_ticket	batch:pracaya ticket:tikata
+bias_distortion	bias:aBinawi distortion:virUpaNa
+bias_testing	bias:aBinawi testing:parIkRaNa
+binary_arithmetic_operation	binary:xvi-AXArI arithmetic:afkagaNiwIya operation:safkriyA
+binary_card	binary:xvi-AXArI card:pawraka
+binary_cell	binary:xvi-AXArI cell:koRTikA
+binary_chain	binary:xvi-AXArI chain:SqfKalA
+binary_choice	binary:xvi-AXArI choice:cayana
+binary_code	binary:xvi-AXArI code:kUta
+binary_conversion	binary:xvi-AXArI conversion:rUpAnwaraNa
+binary_counter	binary:xvi-AXArI counter:gaNiwra
+binary_digit	binary:xvi-AXArI digit:afka
+binary_digit_character	binary:xvi-AXArI digit:afka character:afka character:samprawIka
+binary_element	binary:xvi-AXArI element:avayava
+binary_loader	binary:xvi-AXArI loader:BAraka
+binary_number	binary:xvi-AXArI number:safKyA
+binary_number_system	binary:xvi-AXArI number:safKyA system:paxXawi
+binary_operation_code	binary:xvi-AXArI operation:safkriyA code:kUta
+binary_picture_data	binary:xvi-AXArI picture:ciwra data:Azkade
+binary_point	binary:xvi-AXArI point:biMxu
+binary_program	binary:xvi-AXArI program:kramAxeSa program:kramAxeSa
+binary_synchronous_communication	binary:xvi-AXArI synchronous:wulyakAlika communication:saFcAra
+binder_group	binder:banXaka group:samUha
+binding_time	binding:banXana time:samaya
+bipolar_memory	bipolar:xviXruvI memory:smqwi
+bistable_circuit	bistable:xvisWiwika circuit:paripaWa
+bistable_device	bistable:xvisWiwika device:yukwi
+bistable_multivibrator	bistable:xvisWiwika multivibrator:bahukampiwra
+blank_character	blank:rikwa character:samprawIka character:samprawIka
+blank_coil	blank:rikwa coil:kuNdalI
+blank_diskette	blank:rikwa diskette:namyikA
+blank_instruction	blank:rikwa instruction:anuxeSa
+block_check	block:KaNdaka check:jAzca
+block_check_character	block:KaNdaka check:jAzca character:samprawIka character:samprawIka
+block_control	block:KaNdaka control:niyanwraNa
+block_copy	block:KaNdaka copy:prawilipi
+block_diagram	block:KaNdaka diagram:AreKa
+block_head	block:KaNdaka head:SIrRa
+block_header	block:KaNdaka header:praveSikA
+block_length	block:KaNdaka length:lambAI
+block_list	block:KaNdaka list:sUcI
+block_movement	block:KaNdaka movement:gawiviXi
+block_separation	block:KaNdaka separation:pqWakkaraNa
+block_structure	block:KaNdaka structure:saMracanA
+block_synchronisation	block:KaNdaka synchronisation:wulyakAlana
+block_transfer	block:KaNdaka transfer:sWAnAnwaraNa
+blow_back	blow:Pullana back:punaH
+boundary_alignment	boundary:parisImA alignment:sareKaNa
+boundary_test	boundary:parisImA test:parIkRaNa
+branch_and_bound_method	branch:SAKA and:Ora bound:paribanXa method:viXi
+branch_instruction	branch:SAKA instruction:anuxeSa
+branch_processing	branch:SAKA processing:saMsAXana
+branch_table	branch:SAKA table:sAraNI
+break_key	break:vicCexa key:kuFjI
+break_point_instruction	break:vicCexa point:biMxu instruction:anuxeSa
+break_point_switch	break:vicCexa point:biMxu switch:svica
+break_sequence	break:vicCexa sequence:anukrama
+broad_band	broad:viswqwa band:bEMda
+broadcast_satellite	broadcast:prasAraNa satellite:upagraha
+buffer_management	buffer:cayaka management:prabanXa
+buffer_pad_character	buffer:cayaka pad:pEda character:samprawIka character:samprawIka
+buffer_pool	buffer:cayaka pool:pUla
+buffer_storage	buffer:cayaka storage:BaNdAraNa
+buffer_store	buffer:cayaka store:BaNdAra
+bus_bar	bus:basa bar:bAra
+bus_controller	bus:basa controller:niyanwraka
+bus_driver	bus:basa driver:cAlaka
+business_information_system	business:vyavasAya information:sUcanA system:wanwra
+business_machine	business:vyavasAya machine:yanwra
+business_machine_clocking	business:vyavasAya machine:yanwra clocking:samAyojana
+business_service	business:vyavasAya service:sevA
+bus_wire	bus:basa wire:wAra
+busy_hour	busy:vyaswa hour:GaNtA
+busy_signal	busy:vyaswa signal:safkewa
+byte_manipulation	byte:bAita manipulation:prakalana
+byte_multiplexer_channel	byte:bAita multiplexer:bahusafkewaka channel:praNAla
+byte_multiplexing	byte:bAita multiplexing:bahusafkewana
+calculator_chip	calculator:parikaliwra chip:cipa
+call_establishment	call:AhvAna establishment:sWApanA
+call_number	call:AhvAna number:safKyA
+call_progress_signal	call:safkewa progress:pragawi signal:safkewa
+call_store	call:AhvAna store:BaNdAra
+cancel_character	cancel:nirasana character:samprawIka character:samprawIka
+cancel_key	cancel:nirasana key:kuFjI
+capacitor_storage	capacitor:sanXAriwra storage:BaNdAraNa
+card_chassis	card:pawraka chassis:nyAXAra
+card_code	card:pawraka code:kUta
+card_column	card:pawraka column:swamBa
+card_cycle	card:pawraka cycle:cakra
+card_field	card:pawraka field:kRewra
+card_form	card:pawraka form:rUpa
+card_image	card:pawraka image:prawibiMba
+card_input	card:pawraka input:niveSa
+card_loader	card:pawraka loader:BAraka
+card_pack	card:pawraka pack:gaddI
+card_path	card:pawraka path:paWa
+card_row	card:pawraka row:pafkwi
+card_set	card:pawraka set:samuccaya
+card_storage	card:pawraka storage:BaNdAraNa
+card_track	card:pawraka track:paWa
+carriage_control_character	carriage:vAhana control:niyanwraNa character:samprawIka character:samprawIka
+carriage_control_tape	carriage:vAhana control:niyanwraNa tape:tepa
+carriage_return	carriage:vAhana return:vApasI
+carriage_return_character	carriage:vAhana return:vApasI character:samprawIka character:samprawIka
+carrier_return_character	carrier:vAhaka return:vApasI character:samprawIka character:samprawIka
+carrier_signal	carrier:vAhaka signal:safkewa
+carrier_system	carrier:vAhaka system:wanwra
+carrier_wave	carrier:vAhaka wave:warafga
+carry_complete_signal	carry:haswafgawa complete:pUrNa signal:safkewa
+carry_digit	carry:haswafgawa digit:afka
+carry_flag	carry:haswafgawa flag:Xvaja
+carry_time	carry:haswafgawa time:kAla
+catalogue_directory	catalogue:sUcI directory:nirxeSikA
+center_line	center:keMxra line:reKA
+central_control_unit	central:keMxrIya control:niyanwraNa unit:ekaka
+centralised_automatic_message_accounting	centralised:keMxrIkqwa automatic:svacAliwa message:sanxeSa accounting:leKA
+central_memory	central:keMxrIya memory:smqwi
+central_office	central:keMxrIya office:kAryAlaya
+central_office_code	central:keMxrIya office:kAryAlaya code:kUta
+central_office_work_order	central:keMxrIya office:kArya work:kArya order:AxeSa
+central_processing_unit	central:keMxrIya processing:saMsAXana unit:ekaka
+central_processing_unit_loop	central:keMxrIya processing:saMsAXana unit:ekaka loop:pASa
+central_office_work_order	central:keMxrIya office:kArya work:kArya order:AxeSa
+chain_code	chain:SqfKalA code:kUta
+chaining_search	chaining:SqfKalana search:Koja
+chain_link	chain:SqfKalA link:SqfKalA
+chain_maintenance_program	chain:SqfKalA maintenance:anurakRaNa program:kramAxeSa program:kramAxeSa
+change_character	change:parivarwana character:samprawIka character:samprawIka
+change_dump	change:parivarwana dump:sannikRepa
+change_sign	change:parivarwana sign:cihna
+change_tape	change:parivarwana tape:tepa
+channel_adapter	channel:praNAla adapter:anukUliwra
+channel_address_word	channel:praNAla address:pawA word:Sabxa
+channel_bank	channel:praNAla bank:bEMka
+channel_capacity	channel:praNAla capacity:kRamawA
+channel_command	channel:praNAla command:samAxeSa
+channel_command_word	channel:praNAla command:samAxeSa word:Sabxa
+channel_controller	channel:praNAla controller:niyanwraka
+channel_control_word	channel:praNAla control:niyanwraNa word:Sabxa
+channel_data	channel:praNAla data:Azkade
+channel_end	channel:praNAla end:sirA
+channel_mask	channel:praNAla mask:AcCaxa
+channel_program	channel:praNAla program:kramAxeSa program:kramAxeSa
+channel_program_translation	channel:praNAla program:kramAxeSa program:kramAxeSa translation:anuvAxa
+channel_queue	channel:praNAla queue:pafkwi
+channel_reliability	channel:praNAla reliability:viSvasanIyawA
+channel_service_unit	channel:praNAla service:sevA unit:ekaka
+channel_set	channel:praNAla set:samuccaya
+character_addressing	character:samprawIka character:samprawIka addressing:pawABigamana
+character_assembly	character:samprawIka character:samprawIka assembly:kodAnwaraNa
+character_boundary	character:samprawIka character:samprawIka boundary:parisImA
+character_cell	character:samprawIka character:samprawIka cell:koRTikA
+character_check	character:samprawIka character:samprawIka check:jAzca
+character_code	character:samprawIka character:samprawIka code:kUta
+character_crowding	character:samprawIka character:samprawIka crowding:aXisafKyana
+character_density	character:samprawIka character:samprawIka density:saGanawA
+character_device_control	character:samprawIka character:samprawIka device:yukwi control:niyanwraNa
+character_edge	character:samprawIka character:samprawIka edge:kora
+character_element	character:samprawIka character:samprawIka element:avayava
+character_format_memory	character:samprawIka character:samprawIka format:saMrUpa memory:smqwi
+character_instruction	character:samprawIka character:samprawIka instruction:anuxeSa
+characteristic_impedence	characteristic:aBilakRaNika impedence:prawibAXA
+character_key	character:samprawIka character:samprawIka key:kuFjI
+character_outline	character:samprawIka character:samprawIka outline:rUpareKA
+character_position	character:sWiwi character:samprawIka position:sWiwi
+character_relation	character:samprawIka character:samprawIka relation:sambanXa
+character_row	character:samprawIka character:samprawIka row:pafkwi
+character_set	character:samprawIka character:samprawIka set:samuccaya
+character_style	character:SElI character:samprawIka style:SElI
+character_tape	character:samprawIka character:samprawIka tape:tepa
+chart_making	chart:saFciwra making:nirmANa
+check_bus	check:jAzca bus:basa
+check_card	check:jAzca card:pawraka
+check_character	check:jAzca character:samprawIka character:samprawIka
+check_code	check:jAzca code:kUta
+check_condition	check:prawibanXa condition:prawibanXa
+check_digit	check:jAzca digit:afka
+check_indicator	check:jAzca indicator:sUcaka
+check_indicator_instruction	check:jAzca indicator:sUcaka instruction:anuxeSa
+check_key	check:jAzca key:kuFjI
+check_point	check:jAzca point:biMxu
+check_point_dump	check:jAzca point:biMxu dump:sannikRepa
+check_problem	check:jAzca problem:samasyA
+check_row	check:jAzca row:pafkwi
+check_solution	check:jAzca solution:hala
+check_sum	check:jAzca sum:yoga
+check_total	check:jAzca total:joda
+check_word	check:jAzca word:Sabxa
+chip_carrier	chip:cipa carrier:vAhaka
+chip_process	chip:cipa process:prakrama
+choice_device	choice:cayana device:yukwi
+circuit_card	circuit:paripaWa card:pawraka
+circuit_grade	circuit:paripaWa grade:koti
+circuit_load	circuit:paripaWa load:loda
+circuit_order	circuit:paripaWa order:AxeSa
+circuit_reliability	circuit:paripaWa reliability:viSvasanIyawA
+circuit_switch	circuit:paripaWa switch:svica
+circuit_unit_assembly	circuit:paripaWa unit:ekaka assembly:kodAnwaraNa
+circular_buffering	circular:vqwwIya buffering:cayakana
+clear_channel	clear:spaRta channel:praNAla
+clear_data	clear:spaRta data:Azkade
+clear_session	clear:spaRta session:sawra
+cluster_analysis	cluster:gucCa analysis:viSleRaNa
+cluster_controller	cluster:gucCa controller:niyanwraka
+cobol_character	cobol:kobola character:samprawIka character:samprawIka
+code_area	code:kUta area:kRewra
+code_chain	code:kUta chain:SqfKalA
+code_check	code:kUta check:jAzca
+code_element	code:kUta element:avayava
+code_extension_character	code:kUta extension:viswAra character:samprawIka character:samprawIka
+code_frame	code:kUta frame:Prema
+code_key	code:kUta key:kuFjI
+code_level	code:kUta level:swara
+code_line	code:kUta line:reKA
+code_line_index	code:kUta line:reKA index:sUcaka
+code_point_translator	code:kUta point:biMxu translator:anuvAxaka
+code_position	code:kUta position:sWiwi
+code_set	code:kUta set:samuccaya
+code_value	code:kUta value:mAna
+code_word	code:kUta word:Sabxa
+coding_check	coding:kUtaleKana check:jAzca
+coding_scheme	coding:kUtaleKana scheme:yojanA
+coefficient_unit	coefficient:guNAfka unit:ekaka
+combination_hub	combination:saMyojana hub:nABi
+command_and_control_system	command:samAxeSa and:Ora control:niyanwraNa system:wanwra
+command_chain	command:samAxeSa chain:SqfKalA
+command_control_program	command:samAxeSa control:niyanwraNa program:kramAxeSa program:kramAxeSa
+command_function	command:samAxeSa function:prakArya
+command_interpreter	command:samAxeSa interpreter:nirvacaka
+command_language	command:samAxeSa language:BARA
+command_list	command:samAxeSa list:sUcI
+command_name	command:samAxeSa name:nAma
+command_pointer	command:samAxeSa pointer:sUcaka
+command_processing	command:samAxeSa processing:saMsAXana
+command_statement	command:samAxeSa statement:kaWana
+command_system	command:samAxeSa system:wanwra
+comment_field	comment:tippaNI field:kRewra
+comment_statement	comment:tippaNI statement:kaWana
+communication_adapter	communication:saFcAra adapter:anukUliwra
+communication_channel	communication:saFcAra channel:praNAla
+communication_control_character	communication:saFcAra control:niyanwraNa character:samprawIka character:samprawIka
+communication_controller	communication:saFcAra controller:niyanwraka
+communication_control_unit	communication:saFcAra control:niyanwraNa unit:ekaka
+communication_interface	communication:saFcAra interface:anwarApqRTa
+communication_line	communication:saFcAra line:lAina
+communication_line_adapter	communication:saFcAra line:lAina adapter:anukUliwra
+communication_link	communication:saFcAra link:kadI
+communication_mix	communication:saFcAra mix:miSraNa
+communication_modem	communication:saFcAra modem:modema
+communication_theory	communication:saFcAra theory:sixXAnwa
+community_automatic_exchange	community:samuxAya automatic:svacAliwa exchange:keMxra
+community_dial_office	community:samuxAya dial:dAyala office:kAryAlaya
+companion_store_backup	companion:sahacara store:BaNdAra backup:pUrwikara
+comparison_operation	comparison:wulanA operation:safkriyA
+comparison_test	comparison:wulanA test:parIkRaNa
+compatibility_test	compatibility:susafgawi test:parIkRaNa
+compile_duration	compile:anuBARaNa duration:avaXi
+compiler_directive	compiler:anuBARaka directive:nirxeSa
+compiler_interface	compiler:anuBARaka interface:anwarApqRTa
+compiler_language	compiler:anuBARaka language:BARA
+compiler_option	compiler:anuBARaka option:vikalpa
+compile_time	compile:anuBARaNa time:kAla
+compile_time_diagnostics	compile:anuBARaNa time:kAla diagnostics:nixAnikI
+compile_time_statement	compile:anuBARaNa time:kAla statement:kaWana
+complementary_operation	complementary:pUraka operation:safkriyA
+complement_base	complement:pUraka base:AXAra
+complete_carry	complete:sampUrNa carry:haswafgawa
+complete_operation	complete:sampUrNa operation:safkriyA
+complexity_theory	complexity:jatilawA theory:sixXAnwa
+component_address	component:Gataka address:pawA
+compound_condition	compound:saMyukwa condition:prawibanXa
+compound_statement	compound:saMyukwa statement:kaWana
+computer_art	computer:aBikaliwra art:kalA
+computer_based_automation	computer:aBikaliwra based:AXAriwa automation:svacAlana
+computer_bureau	computer:aBikaliwra bureau:byUro
+computer_code	computer:aBikaliwra code:kUta
+computer_communication	computer:aBikaliwra communication:saFcAra
+computer_configuration	computer:aBikaliwra configuration:vinyAsa
+computer_console	computer:aBikaliwra console:kansola
+computer_control	computer:aBikaliwra control:niyanwraNa
+computer_domain	computer:aBikaliwra domain:prAnwa
+computer_equation	computer:aBikaliwra equation:samIkaraNa
+computer_expert	computer:aBikaliwra expert:viSeRajFa
+computer_game	computer:aBikaliwra game:Kela
+computer_generation	computer:aBikaliwra generation:pIDI
+computer_hardware	computer:aBikaliwra hardware:yanwrasAmagrI
+computer_instruction	computer:aBikaliwra instruction:anuxeSa
+computer_instruction_code	computer:aBikaliwra instruction:anuxeSa code:kUta
+computer_instruction_set	computer:aBikaliwra instruction:anuxeSa set:samuccaya
+computer_interface_unit	computer:aBikaliwra interface:anwarApqRTa unit:ekaka
+computer_language	computer:aBikaliwra language:BARA
+computer_language_symbol	computer:aBikaliwra language:BARA symbol:prawIka
+computer_letter	computer:aBikaliwra letter:pawra
+computer_limited	computer:aBikaliwra limited:sImiwa
+computer_maintenance	computer:aBikaliwra maintenance:anurakRaNa
+computer_music	computer:aBikaliwra music:safgIwa
+computer_operation	computer:aBikaliwra operation:safkriyA
+computer_program	computer:aBikaliwra program:kramAxeSa program:kramAxeSa
+computer_program_annotation	computer:aBikaliwra program:kramAxeSa program:kramAxeSa annotation:tippaNa
+computer_program_origin	computer:aBikaliwra program:kramAxeSa program:kramAxeSa origin:uxgama
+computer_science	computer:kampyUtara computer:aBikaliwra science:vijFAna
+computer_simulation	computer:aBikaliwra simulation:anukaraNa
+computer_specialist	computer:aBikaliwra specialist:viSeRajFa
+computer_system	computer:aBikaliwra system:wanwra
+computer_technology	computer:aBikaliwra technology:prOxyogikI
+computer_time	computer:aBikaliwra time:kAla
+computer_word	computer:aBikaliwra word:Sabxa
+concatenation_character	concatenation:saMSqfKalana character:samprawIka character:samprawIka
+concentrated_message	concentrated:safkeMxriwa message:sanxeSa
+concurrent_processing	concurrent:safgAmI processing:saMsAXana
+conditional_assembly	conditional:prawibanXI assembly:kodAnwaraNa
+conditional_assembly_instruction	conditional:prawibanXI assembly:kodAnwaraNa instruction:anuxeSa
+conditional_branch_instruction	conditional:prawibanXI branch:SAKA instruction:anuxeSa
+conditional_information_content	conditional:prawibanXI information:sUcanA content:anwarvaswu
+conditional_stop_instruction	conditional:prawibanXI stop:virAma instruction:anuxeSa
+conditional_transfer_instruction	conditional:prawibanXI transfer:sWAnAnwaraNa instruction:anuxeSa
+condition_cell	condition:prawibanXa cell:koRTikA
+condition_code	condition:prawibanXa code:kUta
+conditioning_equipment	conditioning:prAnukUlana equipment:upakaraNa
+condition_list	condition:prawibanXa list:sUcI
+condition_name	condition:prawibanXa name:nAma
+condition_name_condition	condition:prawibanXa name:nAma
+configuration_section	configuration:vinyAsa section:anuBAga
+confusion_matrix	confusion:Brama matrix:mEtriksa
+consecutive_operation	consecutive:kramAgawa operation:safkriyA
+consecutive_sequence_computer	consecutive:kramAgawa sequence:anukrama computer:aBikaliwra
+content_analysis	content:anwarvaswu analysis:viSleRaNa
+contention_system	contention:prawisparXA system:wanwra
+context_editor	context:sanxarBa editor:sampAxaka
+context_free_language	context:sanxarBa free:mukwa language:BARA
+control_area	control:niyanwraNa area:kRewra
+control_block	control:niyanwraNa block:KaNdaka
+control_bus	control:niyanwraNa bus:basa
+control_byte	control:niyanwraNa byte:bAita
+control_character	control:niyanwraNa character:samprawIka character:samprawIka
+control_circuit	control:niyanwraNa circuit:paripaWa
+control_clerk	control:niyanwraNa clerk:lipika
+control_computer	control:niyanwraNa computer:aBikaliwra
+control_counter	control:niyanwraNa counter:gaNiwra
+control_cycle	control:niyanwraNa cycle:cakra
+control_data	control:niyanwraNa data:Azkade
+control_dictionary	control:niyanwraNa dictionary:koSa
+control_field	control:niyanwraNa field:kRewra
+control_format_item	control:niyanwraNa format:saMrUpa item:maxa
+control_function	control:niyanwraNa function:Palana
+control_heading	control:niyanwraNa heading:SIrRaka
+control_instruction	control:niyanwraNa instruction:anuxeSa
+control_language	control:niyanwraNa language:BARA
+controlled_parameter	controlled:niyanwriwa parameter:prAcala
+controller_function	controller:niyanwriwra function:kArya
+control_line	control:niyanwraNa line:lAina
+control_logic	control:niyanwraNa logic:warka
+control_loop	control:niyanwraNa loop:pASa
+control_mark	control:niyanwraNa mark:cihna
+control_number	control:niyanwraNa number:safKyA
+control_objective	control:niyanwraNa objective:uxxeSya
+control_operator	control:niyanwraNa operator:pracAlaka
+control_point	control:niyanwraNa point:biMxu
+control_program	control:niyanwraNa program:kramAxeSa program:kramAxeSa
+control_section	control:niyanwraNa section:anuBAga
+control_sequence	control:niyanwraNa sequence:anukrama
+control_standard	control:niyanwraNa standard:mAnaka
+control_statement	control:niyanwraNa statement:kaWana
+control_storage	control:niyanwraNa storage:BaNdAraNa
+control_switch	control:niyanwraNa switch:svica
+control_system	control:niyanwraNa system:wanwra
+control_tape	control:niyanwraNa tape:tepa
+control_technique	control:niyanwraNa technique:wakanIka
+control_transfer_statement	control:niyanwraNa transfer:sWAnAnwaraNa statement:kaWana
+control_unit	control:niyanwraNa unit:ekaka
+control_volume	control:niyanwraNa volume:KaNda
+control_word	control:niyanwraNa word:Sabxa
+convention_equipment	convention:rUDi equipment:upakaraNa
+conversational_compiler	conversational:saMvAxI compiler:anuBARaka
+conversational_language	conversational:saMvAxI language:BARA
+conversational_system	conversational:saMvAxI system:wanwra
+conversion_cost	conversion:rUpAnwaraNa cost:lAgawa
+conversion_device	conversion:rUpAnwaraNa device:yukwi
+coordinate_addressed_memory	coordinate:nirxeSAfka addressed:pawA memory:smqwi
+coordinate_data	coordinate:nirxeSAfka data:Azkade
+coordinate_geometry_language	coordinate:nirxeSAfka geometry:jyAmiwi language:BARA
+cordless_plug	cordless:rajjuhIna plug:plaga
+core_dump	core:kroda dump:sannikRepa
+core_image	core:kroda image:prawibiMba
+core_memory	core:kroda memory:smqwi
+core_storage	core:kroda storage:BaNdAraNa
+core_system	core:kroda system:wanwra
+correction_information	correction:saMSoXana information:sUcanA
+cost_analysis	cost:lAgawa analysis:viSleRaNa
+country_code	country:xeSa code:kUta
+cumulative_index	cumulative:saFcayI index:sUcaka
+currency_symbol	currency:muxrA symbol:prawIka
+current_line_pointer	current:XArA line:reKA pointer:sUcaka
+cursor_control_key	cursor:prasafkewaka control:niyanwraNa key:kuFjI
+customer_access_area	customer:grAhaka access:aBigama area:kRewra
+customer_information_control_system	customer:grAhaka information:sUcanA control:niyanwraNa system:wanwra
+cut_method	cut:kAta method:viXi
+cycle_index	cycle:cakra index:sUcakAfka
+cycle_memory	cycle:cakra memory:smqwi
+cycle_time	cycle:cakra time:kAla
+daisy_chain	daisy:dejI chain:SqfKalA
+daisy_print_wheel	daisy:dejI print:muxraNa wheel:cakra
+daisy_wheel	daisy:dejI wheel:cakra
+database_administration	database:AzkadAsaFcaya administration:praSAsana
+database_management	database:AzkadAsaFcaya management:prabanXa
+database_management_system	database:AzkadAsaFcaya management:prabanXa system:paxXawi
+datagram_service	datagram:AzkadAreKa service:sevA
+datum_line	datum:AXAra line:reKA
+decimal_point	decimal:xaSamalava point:biMxu
+debug_statement	debug:xoRamArjana statement:kaWana
+decade_counter	decade:xaSaka counter:gaNiwra
+decision_table_language	decision:nirNaya table:sAraNI language:BARA
+decimal_arithmetic_operation	decimal:xaSamalava arithmetic:afkagaNiwIya operation:safkriyA
+decimal_alignment	decimal:xaSamalava alignment:sareKaNa
+decimal_digit	decimal:xaSamalava digit:afka
+decimal_marker	decimal:xaSamalava marker:cihnaka
+decimal_picture_data	decimal:xaSamalava picture:ciwra data:Azkade
+decimal_symbol	decimal:xaSamalava symbol:prawIka
+decision_circuit	decision:nirNaya circuit:paripaWa
+decision_element	decision:nirNaya element:avayava
+decision_instruction	decision:nirNaya instruction:anuxeSa
+decision_language	decision:nirNaya language:BARA
+decision_logic	decision:nirNaya logic:warka
+decision_principle	decision:nirNaya principle:sixXAnwa
+decision_rule	decision:nirNaya rule:niyama
+decision_structure	decision:nirNaya structure:saMracanA
+decision_table	decision:nirNaya table:sAraNI
+decision_theory	decision:nirNaya theory:sixXAnwa
+dedicated_channel	dedicated:samarpiwa channel:praNAla
+dedicated_circuit	dedicated:samarpiwa circuit:paripaWa
+dedicated_connection	dedicated:samarpiwa connection:sambanXa
+dedicated_line	dedicated:samarpiwa line:lAina
+default_group	default:vyawikrama group:samUha
+default_option	default:vyawikrama option:vikalpa
+default_parameter	default:vyawikrama parameter:prAcala
+default_value	default:vyawikrama value:mAna
+deflection_plate	deflection:vikRepaNa plate:pleta
+delay_counter	delay:vilamba counter:gaNiwra
+delay_digit	delay:vilamba digit:afka
+delay_distortion	delay:vilamba distortion:virUpaNa
+delay_element	delay:vilamba element:avayava
+delay_line_memory	delay:vilamba line:lAina memory:smqwi
+delay_line_storage	delay:vilamba line:lAina storage:BaNdAraNa
+delay_loop_store	delay:vilamba loop:pASa store:BaNdAra
+delay_time	delay:vilamba time:kAla
+delete_character	delete:vilopa character:samprawIka character:samprawIka
+delete_key	delete:vilopa key:kuFjI
+delimiter_statement	delimiter:parisImaka statement:kaWana
+demand_processing	demand:mAfga processing:saMsAXana
+demarcation_strip	demarcation:sImAfkana strip:pattI
+demographic_application	demographic:janasAfKyikIya application:anuprayoga
+dependent_unit	dependent:ASriwa unit:ekaka
+description_list	description:varNana list:sUcI
+design_modem	design:aBikalpanA modem:modema
+desk_calculator	desk:deska calculator:parikaliwra
+destination_address	destination:ganwavya address:pawA
+destination_field	destination:ganwavya field:kRewra
+destination_station	destination:ganwavya station:keMxra
+detail_card	detail:vivaraNa card:pawraka
+development_system	development:vikAsa system:wanwra
+development_time	development:vikAsa time:kAla
+development_tool	development:vikAsa tool:upakaraNa
+deviation_from_linearity	deviation:vicalana from:se linearity:rEKikawA
+device_address	device:yukwi address:pawA
+device_backup	device:yukwi backup:pUrwikara
+device_controller	device:yukwi controller:niyanwraka
+device_control_unit	device:yukwi control:niyanwraNa unit:ekaka
+device_coordinate	device:yukwi coordinate:nirxeSAfka
+device_dependent_program	device:yukwi dependent:ASriwa program:kramAxeSa program:kramAxeSa
+device_flag	device:yukwi flag:pawAkA
+device_independence	device:yukwi independence:svawanwrawA
+device_independent	device:yukwi independent:svawanwra
+device_independence_program	device:yukwi independence:svawanwra program:kramAxeSa program:kramAxeSa
+device_media_control_language	device:yukwi media:mAXyama control:niyanwraNa language:BARA
+device_name	device:yukwi name:nAma
+device_number	device:yukwi number:safKyA
+device_queue	device:yukwi queue:pafkwi
+device_type	device:yukwi type:prakAra
+dialed_line	dialed:dAyala line:lAina
+dial_exchange	dial:dAyala exchange:keMxra
+dial_line	dial:dAyala line:lAina
+dial_transfer	dial:dAyala transfer:sWAnAnwaraNa
+difference_engine	difference:anwara engine:iMjana
+difference_operation	difference:anwara operation:safkriyA
+difference_report	difference:anwara report:prawivexana
+digital_block	digital:afkIya block:KaNdaka
+digital_carrier_system	digital:afkIya carrier:vAhaka system:wanwra
+digital_computer	digital:afkIya computer:aBikaliwra
+digital_facility	digital:afkIya facility:suviXA
+digital_line_path	digital:afkIya line:lAina path:paWa
+digital_line_section	digital:afkIya line:lAina section:anuBAga
+digital_picture	digital:afkIya picture:ciwra
+digital_radio_path	digital:afkIya radio:rediyo path:paWa
+digital_radio_section	digital:afkIya radio:rediyo section:anuBAga
+digital_section	digital:afkIya section:anuBAga
+digital_signal	digital:afkIya signal:safkewa
+digital_storage_element	digital:afkIya storage:BaNdAraNa element:avayava
+digital_storage_media	digital:afkIya storage:BaNdAraNa media:mAXyama
+digit_delay_element	digit:afka delay:vilamba element:avayava
+digit_period	digit:afka period:avaXi
+digit_place	digit:afka place:sWAna
+digit_position	digit:afka position:sWiwi
+digit_time	digit:afka time:kAla
+direct_access	direct:prawyakRa access:aBigama
+direct_access_enquiry	direct:prawyakRa access:aBigama enquiry:pUCawACa
+direct_access_hash	direct:prawyakRa access:aBigama hash:xruwAnveRaNa
+direct_access_method	direct:prawyakRa access:aBigama method:viXi
+direct_access_storage	direct:prawyakRa access:aBigama storage:BaNdAraNa
+direct_address	direct:prawyakRa address:pawA
+direct_addressing	direct:prawyakRa addressing:pawABigamana
+direct_call	direct:prawyakRa call:AhvAna
+direct_code	direct:prawyakRa code:kUta
+direct_coding	direct:prawyakRa coding:kUtaleKana
+direct_coupling	direct:prawyakRa coupling:yugmana
+direct_device	direct:prawyakRa device:yukwi
+direct_digital_control	direct:prawyakRa digital:afkIya control:niyanwraNa
+direct_distance_dialing	direct:prawyakRa distance:xUrI dialing:dAyalana
+direct_hierarchy_control	direct:prawyakRa hierarchy:paxAnukrama control:niyanwraNa
+direct_instruction	direct:prawyakRa instruction:anuxeSa
+direct_memory_access	direct:prawyakRa memory:smqwi access:aBigama
+direct_numerical_control	direct:prawyakRa numerical:safKyAwmaka control:niyanwraNa
+directory_assistance_bureau	directory:nirxeSikA assistance:sahAyawA bureau:byUro
+directory_assistance_operator	directory:nirxeSikA assistance:sahAyawA operator:pracAlaka
+directory_device	directory:nirxeSikA device:yukwi
+direct_percentage	direct:prawyakRa percentage:prawiSawawA
+diskette_storage	diskette:namyikA storage:BaNdAraNa
+distribution_cable	distribution:viwaraNa cable:kebala
+distribution_frame	distribution:viwaraNa frame:DAFcA
+documentation_program	documentation:praleKana program:kramAxeSa program:kramAxeSa
+documentation_type	documentation:praleKana type:prakAra
+document_mark	document:praleKa mark:cihna
+document_preparation	document:praleKa preparation:wEyArI
+document_reference_edge	document:praleKa reference:sanxarBa edge:kora
+dot_matrix	dot:biMxu matrix:mEtriksa
+dummy_address	dummy:mUka address:pawA
+dummy_check	dummy:mUka check:jAzca
+dummy_control_section	dummy:mUka control:niyanwraNa section:anuBAga
+dummy_instruction	dummy:mUka instruction:anuxeSa
+dummy_section	dummy:mUka section:anuBAga
+dump_check	dump:sannikRepa check:jAzca
+dump_point	dump:sannikRepa point:biMxu
+duplicate_key	duplicate:anulipi key:kuFjI
+echo_check	echo:prawiXvani check:jAzca
+economic_application	economic:ArWika application:anuprayoga
+edition_number	edition:saMskaraNa number:afka
+editor_feature	editor:sampAxaka feature:lakRaNa
+editor_micro_computer	editor:sampAxaka micro:sUkRma computer:aBikaliwra
+editor_program	editor:sampAxaka program:kramAxeSa program:kramAxeSa
+educational_technology	educational:SEkRika technology:prOxyogikI
+effective_byte	effective:praBAvI byte:bAita
+effective_instruction	effective:praBAvI instruction:anuxeSa
+effective_procedure	effective:praBAvI procedure:kAryaviXi
+effective_speed	effective:praBAvI speed:cAla
+effective_word	effective:praBAvI word:Sabxa
+effective_word_location	effective:praBAvI word:Sabxa location:sWAna
+electrical_accounting_machine	electrical:vixyuwa accounting:leKA machine:yanwra
+electrical_circuit_analysis_program	electrical:vixyuwa circuit:paripaWa analysis:viSleRaNa program:kramAxeSa program:kramAxeSa
+enter_key	enter:praveSa key:kuFjI
+enterprise_number	enterprise:uxyama number:safKyA
+entry_block	entry:praviRti block:KaNdaka
+entry_condition	entry:praviRti condition:prawibanXa
+entry_instruction	entry:praviRti instruction:anuxeSa
+entry_name	entry:praviRti name:nAma
+entry_point	entry:praveSa point:biMxu
+entry_symbol	entry:praviRti symbol:prawIka
+entry_time	entry:praveSa time:kAla
+entry_value	entry:praviRti value:mAna
+environment_description_statement	environment:pariveSa description:vivaraNa statement:kaWana
+environment_pointer	environment:pariveSa pointer:sUcaka
+equipment_charge	equipment:upakaraNa charge:Sulka
+equipment_clock	equipment:upakaraNa clock:GadI
+equipment_compatibility	equipment:upakaraNa compatibility:safgawawA
+equipment_failure	equipment:upakaraNa failure:viPalawA
+equivalence_operation	equivalence:wulyawA operation:safkriyA
+equivalent_four_wire_system	equivalent:wulya four:cAra wire:wAra system:paxXawi
+erase_character	erase:vyAmArjana character:samprawIka character:samprawIka
+escape_character	escape:palAyana character:samprawIka character:samprawIka
+escape_code	escape:palAyana code:kUta
+event_chain	event:GatanA chain:SqfKalA
+event_completion	event:GatanA completion:samApana
+event_control_block	event:GatanA control:niyanwraNa block:KaNdaka
+event_start	event:GatanA start:prAramBa
+exception_message	exception:apavAxa message:sanxeSa
+exception_reporting	exception:apavAxa reporting:prawivexana
+exchange_area	exchange:vinimaya area:kRewra
+exchange_area_facility	exchange:vinimaya area:kRewra facility:suviXA
+exchange_buffering	exchange:vinimaya buffering:cayakana
+exchange_class	exchange:vinimaya class:varga
+exchange_instruction	exchange:vinimaya instruction:anuxeSa
+exchange_memory	exchange:vinimaya memory:smqwi
+exchange_service	exchange:vinimaya service:sevA
+execute_key	execute:niRpAxana key:kuFjI
+execute_phase	execute:niRpAxana phase:caraNa
+execute_statement	execute:niRpAxana statement:kaWana
+execution_cycle	execution:niRpAxana cycle:cakra
+execution_path	execution:niRpAxana path:paWa
+execution_time	execution:niRpAxana time:kAla
+expert_system	expert:viSeRajFa system:praNAlI
+exponential_failure_law	exponential:caraGAwAfkI failure:viPalawA law:niyama
+extension_character	extension:viswAra character:samprawIka character:samprawIka
+extension_memory	extension:viswAra memory:smqwi
+extension_station	extension:viswAra station:keMxra
+external_call	external:bAhya call:AhvAna
+external_delay	external:bAhya delay:vilamba
+external_device_address	external:bAhya device:yukwi address:pawA
+external_function	external:bAhya function:Palana
+external_line	external:bAhya line:lAina
+external_memory	external:bAhya memory:smqwi
+external_modem	external:bAhya modem:modema
+external_name	external:bAhya name:nAma
+external_number	external:bAhya number:safKyA
+external_procedure	external:bAhya procedure:prakriyA
+external_program_parameter	external:bAhya program:kramAxeSa program:kramAxeSa parameter:prAcala
+external_reference	external:bAhya reference:sanxarBa
+external_statement	external:bAhya statement:kaWana
+external_storage	external:bAhya storage:BaNdAraNa
+external_symbol	external:bAhya symbol:prawIka
+external_symbol_dictionary	external:bAhya symbol:prawIka dictionary:koSa
+extract_instruction	extract:niRkarRa instruction:anuxeSa
+face_change_character	face:Palaka change:parivarwana character:samprawIka character:samprawIka
+facilities_management	facilities:suviXA management:prabanXa
+facility_report	facility:suviXA report:prawivexana
+facility_work_order	facility:suviXA work:kArya order:AxeSa
+facsimile_signal_level	facsimile:prawikqwi signal:safkewa level:swara
+facsimile_system	facsimile:prawikqwi system:wanwra
+facsimile_telegraphy	facsimile:prawikqwi telegraphy:wArasaFcAra
+facsimile_transmitter	facsimile:prawikqwi transmitter:preRiwra
+fact_correlation	fact:waWya correlation:sahasambanXa
+failure_analysis	failure:viPalawA analysis:viSleRaNa
+failure_logging	failure:viPalawA logging:pracAleKana
+failure_rate	failure:viPalawA rate:xara
+failure_testing	failure:viPalawA testing:parIkRaNa
+false_add	false:miWyA add:joda
+false_code	false:miWyA code:kUta
+fault_defect	fault:xoRa defect:xoRa
+feature_extraction	feature:lakRaNa extraction:niRkarRaNa
+fetch_data	fetch:Anayana data:Azkade
+fetch_phase	fetch:Anayana phase:caraNa
+fetch_process	fetch:Anayana process:prakrama
+field_developed_program	field:kRewra developed:vikasiwa program:kramAxeSa program:kramAxeSa
+field_mark	field:kRewra mark:cihna
+field_name	field:kRewra name:nAma
+field_replaceable_unit	field:kRewra replaceable:prawisWApanIya unit:mAwraka
+fifth_generation_computer	fifth:paFcama generation:pIDI computer:aBikaliwra
+film_frame	film:Pilma frame:Prema
+film_making	film:Pilma making:nirmANa
+film_storage	film:Pilma storage:BaNdAraNa
+final_copy	final:anwima copy:prawilipi
+final_group	final:anwima group:samUha
+finite_state_machine	finite:parimiwa state:avasWA machine:yanwra
+first_element	first:praWama element:avayava
+first_generation_computer	first:praWama generation:pIDI computer:aBikaliwra
+first_level_addressing	first:praWama level:swara addressing:pawABigamana
+fixed_block	fixed:niyawa block:KaNdaka
+fixed_block_architecture_device	fixed:niyawa block:KaNdaka architecture:vAswukalA device:yukwi
+fixed_data	fixed:niyawa data:Azkade
+fixed_field	fixed:niyawa field:kRewra
+fixed_form	fixed:niyawa form:rUpa
+fixed_function_generator	fixed:niyawa function:kArya generator:janiwra
+fixed_line_number	fixed:niyawa line:lAina number:afka
+fixed_partition	fixed:niyawa partition:viBAjana
+fixed_point_number	fixed:niyawa point:biMxu number:safKyA
+fixed_program_computer	fixed:niyawa program:kramAxeSa program:kramAxeSa computer:aBikaliwra
+fixed_satellite	fixed:niyawa satellite:upagraha
+fixed_storage	fixed:niyawa storage:BaNdAraNa
+flag_event	flag:cihnaka event:GatanA
+flag_indicator	flag:cihnaka indicator:sUcaka
+flag_line	flag:cihnaka line:reKA
+flag_sequence	flag:cihnaka sequence:anukrama
+flag_test	flag:cihnaka test:parIkRaNa
+flash_card	flash:xamaka card:pawraka
+flow_analysis	flow:pravAha analysis:viSleRaNa
+flow_chart	flow:pravAha chart:saFciwra
+flow_diagram	flow:pravAha diagram:AreKa
+fluid_flow_analysis	fluid:warala flow:pravAha analysis:viSleRaNa
+folding_ratio	folding:valana ratio:anupAwa
+foreground_initiator	foreground:agraBUmi initiator:prAramBaka
+foreground_job	foreground:agraBUmi job:kArya
+foreground_processing	foreground:agraBUmi processing:saMsAXana
+foreground_program	foreground:agraBUmi program:kramAxeSa program:kramAxeSa
+foreground_region	foreground:agraBUmi region:praxeSa
+formal_language	formal:OpacArika language:BARA
+formal_logic	formal:OpacArika logic:warka
+format_character_set	format:saMrUpa character:samprawIka character:samprawIka set:samuccaya
+format_check	format:saMrUpa check:jAzca
+format_description_statement	format:saMrUpa description:vivaraNa statement:kaWana
+format_item	format:saMrUpa item:maxa
+format_list	format:saMrUpa list:sUcI
+formula_manipulation	formula:sUwra manipulation:prakalana
+fortran_control_character	fortran:PortrAna control:niyanwraNa character:samprawIka character:samprawIka
+fortran_feature	fortran:PortrAna feature:lakRaNa
+free_field	free:mukwa field:kRewra
+frequency_offset	frequency:Avqwi offset:oYPaseta
+full_adder	full:pUrNa adder:yojaka
+full_group	full:pUrNa group:samUha
+full_modem	full:pUrNa modem:modema
+function_code	function:Palana code:kUta
+function_computability	function:Palana computability:aBikalanIyawA
+function_declaration_statement	function:prakArya declaration:GoRaNA statement:kaWana
+function_digit	function:Palana digit:afka
+function_element	function:Palana element:avayava
+function_key	function:prakArya key:kuFjI
+function_keyboard	function:prakArya keyboard:kuFjIpatala
+function_name	function:Palana name:nAma
+function_reference	function:Palana reference:sanxarBa
+function_switch	function:Palana switch:svica
+function_table	function:Palana table:sAraNI
+fuzzy_set	fuzzy:aspaRta set:seta
+game_theory	game:Kela theory:sixXAnwa
+garbage_collection	garbage:kacarA collection:safgrahaNa
+general_program	general:vyApaka program:kramAxeSa program:kramAxeSa
+general_utility_function	general:vyApaka utility:upayogiwA function:prakArya
+generation_number	generation:pIDI number:safKyA
+grid_chart	grid:grida chart:saFciwra
+group_addressing	group:samUha addressing:pawABigamana
+group_authority	group:samUha authority:prAXikAra
+group_distribution_frame	group:samUha distribution:viwaraNa frame:Prema
+group_name	group:samUha name:nAma
+guard_band	guard:rakRaka band:bEMda
+guard_signal	guard:rakRaka signal:safkewa
+half-duplex_channel	half-duplex:arXa-xvEXa channel:praNAla
+half-duplex_service	half-duplex:arXa-xvEXa service:sevA
+hard_stop	hard:kaTora stop:virAma
+hardware_check	hardware:yanwrasAmagrI check:jAzca
+hardware_language	hardware:yanwrasAmagrI language:BARA
+hash_index	hash:xruwAnveRaNa index:sUcakAfka
+hashing_function	hashing:xruwAnveRaNa function:Palana
+hashing_technique	hashing:xruwAnveRaNa technique:wakanIka
+hash_value	hash:xruwAnveRaNa value:mAna
+header_card	header:praveSikA card:pawraka
+header_label	header:praveSikA label:lebala
+head_gap	head:SIrRa gap:anwarAla
+heuristic_method	heuristic:svAnuBavika method:viXi
+high_address	high:ucca address:pawA
+high_byte	high:ucca byte:bAita
+high_density	high:ucca density:saGanawA
+high_frequency_distribution_frame	high:ucca frequency:Avqwwi distribution:viwaraNa frame:Prema
+high_level_compiler	high:ucca level:swara compiler:anuBARaka
+high_level_assembler	high:ucca level:swara assembler:kodAnwaraka
+high_level_source_code	high:ucca level:swara source:srowa code:kUta
+hit_ratio	hit:lakRyaveXa ratio:anupAwa
+horizontal_system	horizontal:kREwija system:paxXawi
+horizontal_table	horizontal:kREwija table:sAraNI
+host_application_program	host:AwiWeya application:anuprayoga program:kramAxeSa program:kramAxeSa
+host_interface	host:AwiWeya interface:anwarApqRTa
+host_switch	host:AwiWeya switch:svica
+host_system	host:AwiWeya system:wanwra
+hybrid_coil	hybrid:safkara coil:kuNdalI
+hybrid_computer	hybrid:safkara computer:aBikaliwra
+hybrid_integrated_circuit	hybrid:safkara integrated:ekIkqwa circuit:paripaWa
+hybrid_interface	hybrid:safkara interface:anwarApqRTa
+hybrid_set	hybrid:safkara set:seta
+hybrid_system	hybrid:safkara system:wanwra
+identifier_word	identifier:aBijFApaka word:Sabxa
+image_area	image:prawibiMba area:kRewra
+image_processing	image:prawibiMba processing:saMsAXana
+image_space	image:prawibiMba space:sWAna
+immediate_access	immediate:wAwkAlika access:aBigama
+immediate_access_storage	immediate:wAwkAlika access:aBigama storage:BaNdAraNa
+immediate_address	immediate:wAwkAlika address:pawA
+immediate_addressing	immediate:wAwkAlika addressing:pawABigamana
+immediate_data	immediate:wAwkAlika data:Azkade
+immediate_instruction	immediate:wAwkAlika instruction:anuxeSa
+immediate_processing	immediate:wAwkAlika processing:saMsAXana
+imperative_operation	imperative:AxeSasUcaka operation:safkriyA
+imperative_statement	imperative:AxeSasUcaka statement:kaWana
+imprint_position	imprint:CApa position:sWiwi
+improved_mobile_telephone_service	improved:unnawa mobile:cala telephone:telIPona service:sevA
+inactive_link	inactive:niRkriya link:kadI
+inactive_station	inactive:niRkriya station:keMxra
+index_build	index:sUcaka build:gaTana
+index_character	index:sUcaka character:samprawIka character:samprawIka
+index_entry	index:sUcaka entry:praviRti
+index_name	index:sUcaka name:nAma
+index_plan	index:sUcaka plan:yojanA
+index_return_character	index:sUcaka return:vApasI character:samprawIka character:samprawIka
+index_slot	index:sUcaka slot:KAzcA
+index_term	index:sUcaka term:paxa
+index_word	index:sUcaka word:Sabxa
+indirect_access	indirect:parokRa access:aBigama
+indirect_address	indirect:parokRa address:pawA
+indirect_addressing	indirect:parokRa addressing:pawABigamana
+indirect_instruction	indirect:parokRa instruction:anuxeSa
+individual_line_service	individual:vyaRti line:lAina service:sevA
+infinite_pad_method	infinite:ananwa pad:pEda method:viXi
+information_channel	information:sUcanA channel:praNAla
+information_content	information:sUcanA content:anwarvaswu
+information_content_binary_unit	information:sUcanA content:anwarvaswu binary:xvi-AXArI unit:ekaka
+information_content_decimal_unit	information:sUcanA content:anwarvaswu decimal:xaSamalava unit:ekaka
+information_content_natural_unit	information:sUcanA content:anwarvaswu natural:svABAvika unit:ekaka
+information_cost	information:sUcanA cost:lAgawa
+information_flow_analysis	information:sUcanA flow:pravAha analysis:viSleRaNa
+information_function	information:sUcanA function:Palana
+information_measure	information:sUcanA measure:mApa
+information_processing	information:sUcanA processing:saMsAXana
+information_rate	information:sUcanA rate:xara
+information_source	information:sUcanA source:srowa
+information_technology	information:sUcanA technology:prOxyogikI
+information_theory	information:sUcanA theory:sixXAnwa
+information_word	information:sUcanA word:Sabxa
+initial_address	initial:prAramBika address:pawA
+initial_instruction	initial:prAramBika instruction:anuxeSa
+initial_order	initial:prAramBika order:AxeSa
+initial_procedure	initial:prAramBika procedure:prakriyA
+initial_program_load	initial:prAramBika program:kramAxeSa program:kramAxeSa load:BAra
+initial_program_loader	initial:prAramBika program:kramAxeSa program:kramAxeSa loader:BAraka
+initiator_procedure	initiator:prAramBaka procedure:prakriyA
+ink_uniformity	ink:syAhI uniformity:ekarUpawA
+input_process	input:niveSa process:prakrama
+input_program	input:niveSa program:kramAxeSa program:kramAxeSa
+input_section	input:niveSa section:anuBAga
+input_state	input:niveSa state:avasWA
+input_station	input:niveSa station:keMxra
+input_storage	input:niveSa storage:BaNdAraNa
+input_unit	input:niveSa unit:ekaka
+input_validation	input:niveSa validation:mAnyakaraNa
+inquiry_character	inquiry:pUCawACa character:samprawIka character:samprawIka
+inquiry_station	inquiry:pUCawACa station:keMxra
+inquiry_unit	inquiry:pUCawACa unit:ekaka
+insertion_picture_character	insertion:niveSana picture:ciwra character:samprawIka character:samprawIka
+insertion_sort	insertion:niveSana sort:CAzta
+inside_plant	inside:aByanwara plant:saMyanwra
+instruction_address	instruction:anuxeSa address:pawA
+instruction_address_stop	instruction:anuxeSa address:pawA stop:virAma
+instruction_area	instruction:anuxeSa area:kRewra
+instruction_code	instruction:anuxeSa code:kUta
+instruction_control_unit	instruction:anuxeSa control:niyanwraNa unit:ekaka
+instruction_counter	instruction:anuxeSa counter:gaNiwra
+instruction_format	instruction:anuxeSa format:saMrUpa
+instruction_mix	instruction:anuxeSa mix:miSraNa
+instruction_modifier	instruction:anuxeSa modifier:Aparivarwaka
+instruction_pack	instruction:anuxeSa pack:gaddI
+instruction_set	instruction:anuxeSa set:samuccaya
+instruction_statement	instruction:anuxeSa statement:kaWana
+instruction_storage	instruction:anuxeSa storage:BaNdAraNa
+instruction_word	instruction:anuxeSa word:Sabxa
+integrated_adapter	integrated:ekIkqwa adapter:anukUliwra
+integrated_communication_adapter	integrated:ekIkqwa communication:saFcAra adapter:anukUliwra
+integrated_modem	integrated:ekIkqwa modem:modema
+integrated_word_processing	integrated:ekIkqwa word:Sabxa processing:saMsAXana
+intermediate_buffer	intermediate:maXyavarwI buffer:maXyavarwI
+intermediate_equipment	intermediate:maXyavarwI equipment:upakaraNa
+internal_block	internal:Anwarika block:KaNdaka
+internal_format	internal:Anwarika format:saMrUpa
+internal_label	internal:Anwarika label:lebala
+internal_memory	internal:Anwarika memory:smqwi
+internal_name	internal:Anwarika name:nAma
+internal_procedure	internal:Anwarika procedure:prakriyA
+internal_storage	internal:Anwarika storage:BaNdAraNa
+interpreter_code	interpreter:nirvacaka code:kUta
+interval_service_value	interval:anwarAla service:sevA value:mAna
+invalid_character	invalid:amAnya character:samprawIka character:samprawIka
+irreversible_magnetic_process	irreversible:anuwkramaNIya magnetic:cumbakIya process:prakrama
+job_batch	job:kArya batch:pracaya
+job_class	job:kArya class:varga
+job_control	job:kArya control:niyanwraNa
+job_control_statement	job:kArya control:niyanwraNa statement:kaWana
+job_definition	job:kArya definition:pariBARA
+job_input_device	job:kArya input:niveSa device:yukwi
+job_input_stream	job:kArya input:niveSa stream:XArA
+job_management	job:kArya management:prabanXa
+job_name	job:kArya name:nAma
+job_pack_area	job:kArya pack:safkula area:kRewra
+job_processing	job:kArya processing:saMsAXana
+job_statement	job:kArya statement:kaWana
+job_step	job:kArya step:kArya
+job_stream	job:kArya stream:XArA
+joint_access_cost	joint:saMyukwa access:aBigama cost:lAgawa
+journal_report	journal:yaWArUpa report:prawivexana
+journal_tape	journal:yaWArUpa tape:tepa
+justification_range	justification:Ociwya range:parisara
+keyboard_computer	keyboard:kuFjIpatala computer:aBikaliwra
+keyboard_entry	keyboard:kuFjIpatala entry:praviRti
+keyboard_inquiry	keyboard:kuFjIpatala inquiry:pUCawACa
+keyboard_lockout	keyboard:kuFjIpatala lockout:wAlAbanxI
+key_entry	key:kuFjI entry:praviRti
+key_pad	key:kuFjI pad:pEda
+key_tape	key:kuFjI tape:tepa
+key_telephone_set	key:kuFjI telephone:xUraBARa set:seta
+key_to_tape	key:kuFjI to:se tape:tepa
+key_transformation	key:kuFjI transformation:rUpAnwaraNa
+label_list	label:lebala list:sUcI
+language_interpreter	language:BARA interpreter:nirvacaka
+language_processor	language:BARA processor:saMsAXaka
+language_statement	language:BARA statement:kaWana
+language_translation_feature	language:BARA translation:anuvAxa feature:lakRaNa
+language_translator	language:BARA translator:anuvAxaka
+letter_code	letter:akRara code:kUta
+level_indicator	level:swara indicator:sUcaka
+level_number	level:swara number:safKyA
+level_order	level:swara order:krama
+level_source_language	level:swara source:srowa language:BARA
+light_button	light:prakASa button:batana
+light_gun	light:prakASa gun:gana
+light_pen	light:prakASa pen:leKanI
+limit_check	limit:sImA check:jAzca
+limited_distance_adapter	limited:sImiwa distance:xUrI adapter:anukUliwra
+limiter_circuit	limiter:sImaka circuit:paripaWa
+line_adapter	line:lAina adapter:anukUliwra
+line_adapter_unit	line:lAina adapter:anukUliwra unit:ekaka
+line_character	line:reKA character:samprawIka character:samprawIka
+line_code	line:lAina code:kUta
+line_control	line:lAina control:niyanwraNa
+line_control_block	line:lAina control:niyanwraNa block:KaNdaka
+line_counter	line:reKA counter:gaNiwra
+line_delete_symbol	line:reKA delete:vilopa delete:vilopana symbol:prawIka
+line_equipment	line:lAina equipment:upakaraNa
+line_generator	line:reKA generator:janiwra
+line_group	line:lAina group:samUha
+line_impedance	line:lAina impedance:prawibAXA
+line_index	line:reKA index:sUcakAfka
+line_interface_base	line:lAina interface:anwarApqRTa base:AXAra
+line_key	line:reKA key:kuFjI
+line_level	line:lAina level:swara
+line_load	line:lAina load:BAra
+line_loop	line:lAina loop:pASa
+line_loop_resistance	line:lAina loop:pASa resistance:prawiroXa
+line_number	line:reKA number:safKyA
+line_relay	line:lAina relay:rile
+line_speed	line:lAina speed:cAla
+line_traffic	line:lAina traffic:yAwAyAwa
+linkage_editor	linkage:SqfKalana editor:sampAxaka
+linkage_section	linkage:SqfKalana section:anuBAga
+link-attached_station	link-attached:kadIbaxXa station:keMxra
+link_control	link:kadI control:niyanwraNa
+link_control_procedure	link:kadI control:niyanwraNa procedure:prakriyA
+link_edit	link:SqfKalA edit:sampAxana
+link_group	link:kadI group:samUha
+list_processing	list:sUcI processing:saMsAXana
+list_processing_program	list:sUcI processing:saMsAXana program:kramAxeSa program:kramAxeSa
+list_structure	list:sUcI structure:saMracanA
+literal_pool	literal:AkRara pool:pUla
+literal_search	literal:AkRara search:Koja
+literature_search	literature:sAhiwya search:Koja
+load_card	load:BAra card:pawraka
+load_coil	load:BAra coil:kuNdalI
+loaded_line	loaded:BAriwa line:lAina
+loaded_origin	loaded:BAriwa origin:mUla
+loader_type	loader:BAraka type:prakAra
+load_image	load:BAra image:prawibiMba
+loading_coil	loading:BAraNa coil:kuNdalI
+loading_procedure	loading:BAraNa procedure:prakriyA
+local_access	local:sWAnIya access:aBigama
+local_battery	local:sWAnika battery:bEtarI
+local_central_office	local:sWAnika central:keMxrIya office:kAryAlaya
+local_channel	local:sWAnIya channel:praNAla
+local_code	local:sWAnIya code:kUta
+local_exchange	local:sWAnIya exchange:keMxra
+local_format_storage	local:sWAnIya format:saMrUpa storage:BaNdAraNa
+local_line	local:sWAnIya line:lAina
+local_lock	local:sWAnIya lock:wAlaka
+local_loop	local:sWAnIya loop:pASa
+local_service_area	local:sWAnIya service:sevA area:kRewra
+local_side	local:sWAnIya side:pakRa
+local_station	local:sWAnIya station:keMxra
+logic_card	logic:warka card:pawraka
+logic_decoder	logic:warka decoder:kUtavAcaka
+logic_design	logic:warka design:aBikalpanA
+logic_device	logic:warka device:yukwi
+logic_diagram	logic:warka diagram:AreKa
+logic_element	logic:warka element:avayava
+logic_family	logic:warka family:parivAra
+logic_function	logic:warka function:Palana
+logic_instruction	logic:warka instruction:anuxeSa
+logic_light	logic:warka light:bawwI
+logic_operation	logic:warka operation:safkriyA
+logic_state	logic:warka state:sWiwi
+logic_symbol	logic:warka symbol:prawIka
+logic_unit	logic:warka unit:ekaka
+loop_box	loop:pASa box:baksa
+loop_check	loop:pASa check:jAzca
+loop_completion	loop:pASa completion:samApana
+loop_control	loop:pASa control:niyanwraNa
+loop_control_statement	loop:pASa control:niyanwraNa statement:kaWana
+loop_counter	loop:pASa counter:gaNiwra
+looping_execution	looping:pASana execution:niRpAxana
+loop_input_signal	loop:pASa input:niveSa signal:safkewa
+loop_jack_switchboard	loop:pASa jack:jEka switchboard:svicaborda
+loop_resistance	loop:pASa resistance:prawiroXa
+loop_testing	loop:pASa testing:parIkRaNa
+loop_transfer_function	loop:pASa transfer:sWAnAnwaraNa function:Palana
+loop_update	loop:pASa update:axyawanIkaraNa
+loudness_loss	loudness:prabalawA loss:hAni
+low_byte	low:nimna byte:bAita
+lower_bound	lower:nimna bound:paribanXa
+lower_curtate	lower:nimna curtate:laXvakRa
+low_order	low:nimna order:krama
+low_order_digit	low:nimna order:krama digit:afka
+low_speed	low:nimna speed:cAla
+low_speed_storage	low:nimna speed:cAla storage:BaNdAraNa
+machine_address	machine:yanwra address:pawA
+machine_check	machine:yanwra check:jAzca
+machine_check_indicator	machine:yanwra check:jAzca indicator:sUcaka
+machine_check_interruption	machine:yanwra check:jAzca interruption:bAXA
+machine_code	machine:yanwra code:kUta
+machine_cycle	machine:yanwra cycle:cakra
+machine_equation	machine:yanwra equation:samIkaraNa
+machine_equivalence	machine:yanwra equivalence:wulyawA
+machine_instruction	machine:yanwra instruction:anuxeSa
+machine_instruction_code	machine:yanwra instruction:anuxeSa code:kUta
+machine_instruction_statement	machine:yanwra instruction:anuxeSa statement:kaWana
+machine_intelligence	machine:yanwra intelligence:buxXi
+machine_language_code	machine:yanwra language:BARA code:kUta
+machine_logic	machine:yanwra logic:warka
+machine_readable	machine:yanwra readable:paTanIya
+machine_readable_medium	machine:yanwra readable:paTanIya medium:mAXyama
+machine_run	machine:yanwra run:xOra
+machine_tool_control	machine:yanwra tool:OjAra control:niyanwraNa
+machine_translation	machine:yanwra translation:anuvAxa
+machine_usage_time	machine:yanwra usage:upayoga time:kAla
+magnetic_card	magnetic:cumbakIya card:pawraka
+magnetic_card_storage	magnetic:cumbakIya card:pawraka storage:BaNdAraNa
+magnetic_cell	magnetic:cumbakIya cell:koRTikA
+magnetic_character	magnetic:cumbakIya character:samprawIka character:samprawIka
+magnetic_core	magnetic:cumbakIya core:kroda
+magnetic_core_storage	magnetic:cumbakIya core:kroda storage:BaNdAraNa
+magnetic_delay_time	magnetic:cumbakIya delay:vilamba time:kAla
+magnetic_encoding	magnetic:cumbakIya encoding:kUtaleKana
+magnetic_memory	magnetic:cumbakIya memory:smqwi
+magnetic_reading	magnetic:cumbakIya reading:paTana
+magnetic_storage	magnetic:cumbakIya storage:BaNdAraNa
+magnetic_strip	magnetic:cumbakIya strip:pattI
+magnetic_tape_cartridge	magnetic:cumbakIya tape:tepa cartridge:AgutikA
+magnetic_tape_label	magnetic:cumbakIya tape:tepa label:lebala
+magnetic_tape_leader	magnetic:cumbakIya tape:tepa leader:agraga
+magnetic_tape_storage	magnetic:cumbakIya tape:tepa storage:BaNdAraNa
+magnetic_tape_unit	magnetic:cumbakIya tape:tepa unit:ekaka
+magnetic_track	magnetic:cumbakIya track:paWa
+magnetic_wire_storage	magnetic:cumbakIya wire:wAra storage:BaNdAraNa
+mail_box	mail:dAka box:baksa
+main_control_unit	main:muKya control:niyanwraNa unit:ekaka
+main_lobe	main:muKya lobe:pAli
+main_memory	main:muKya memory:smqwi
+main_memory_mapping	main:muKya memory:smqwi mapping:prawiciwraNa
+main_path	main:muKya path:paWa
+main_program	main:muKya program:kramAxeSa program:kramAxeSa
+main_station	main:muKya station:keMxra
+main_storage	main:muKya storage:BaNdAraNa
+main_storage_unit	main:muKya storage:BaNdAraNa unit:ekaka
+main_switch	main:muKya switch:svica
+maintenance_time	maintenance:anurakRaNa time:kAla
+major_control_field	major:muKya control:niyanwraNa field:kRewra
+major_cycle	major:muKya cycle:cakra
+majority_element	majority:bahusafKyaka element:avayava
+majority_operation	majority:bahusafKyaka operation:safkriyA
+major_key	major:muKya key:kuFjI
+major_lobe	major:muKya lobe:pAli
+major_state	major:muKya state:avasWA
+major_structure	major:muKya structure:saMracanA
+management_science	management:prabanXa science:vijFAna
+manual_address_switch	manual:haswacAliwa address:pawA switch:svica
+manual_exchange	manual:haswacAliwa exchange:keMxra
+margin_control	margin:upAnwa control:niyanwraNa
+marking_bias	marking:uccaga bias:aBinawi
+marking_wave	marking:uccaga wave:warafga
+mark_reading	mark:cihna reading:paTana
+master_card	master:praWAna card:pawraka
+master_console	master:praWAna console:kansola
+master_data	master:praXAna data:Azkade
+master_frequency_generator	master:praXAna frequency:Avqwwi generator:janiwra
+master_group	master:praXAna group:samUha
+master_instruction_tape	master:praXAna instruction:anuxeSa tape:tepa
+master_program	master:praXAna program:kramAxeSa program:kramAxeSa
+master_station	master:praXAna station:keMxra
+master_tape	master:praXAna tape:tepa
+mathematical_check	mathematical:gaNiwIya check:jAzca
+mathematical_function	mathematical:gaNiwIya function:Palana
+mathematical_logic	mathematical:gaNiwIya logic:warka
+matrix_storage	matrix:mEtriksa storage:BaNdAraNa
+matrix_table	matrix:mEtriksa table:sAraNI
+mechanical_calculator	mechanical:yAnwrika calculator:parikaliwra
+mechanical_dictionary	mechanical:yAnwrika dictionary:koSa
+mechanical_translation	mechanical:yAnwrika translation:anuvAxa
+medium_speed	medium:mAXyama speed:cAla
+medium_term_storage_device	medium:mAXyama term:paxa storage:BaNdAraNa device:yukwi
+memory_bus	memory:smqwi bus:basa
+memory_capacity	memory:smqwi capacity:kRamawA
+memory_cell	memory:smqwi cell:koRTikA
+memory_character_format	memory:smqwi character:samprawIka character:samprawIka format:saMrUpa
+memory_compaction	memory:smqwi compaction:safGanana
+memory_core	memory:smqwi core:kroda
+memory_cycle_time	memory:smqwi cycle:cakra time:kAla
+memory_exchange	memory:smqwi exchange:vinimaya
+memory_guard	memory:smqwi guard:rakRaka
+memory_hierarchy	memory:smqwi hierarchy:paxAnukrama
+memory_management	memory:smqwi management:prabanXa
+memory_mapping	memory:smqwi mapping:prawiciwraNa
+memory_page	memory:smqwi page:pqRTa
+memory_power	memory:smqwi power:Sakwi
+memory_reference_instruction	memory:smqwi reference:sanxarBa instruction:anuxeSa
+memory_unit	memory:smqwi unit:ekaka
+message_block	message:sanxeSa block:KaNdaka
+message_buffering	message:sanxeSa buffering:cayakana
+message_circuit	message:sanxeSa circuit:paripaWa
+message_control_flag	message:sanxeSa control:niyanwraNa flag:pawAkA
+message_exchange	message:sanxeSa exchange:vinimaya
+message_field	message:sanxeSa field:kRewra
+message_format	message:sanxeSa format:saMrUpa
+message_header	message:sanxeSa header:praveSikA
+message_processing_program	message:sanxeSa processing:saMsAXana program:kramAxeSa program:kramAxeSa
+message_queue	message:sanxeSa queue:pafkwi
+message_source	message:sanxeSa source:srowa
+message_switch	message:sanxeSa switch:svica
+message_transfer_part	message:sanxeSa transfer:sWAnAnwaraNa part:BAga
+micro_code	micro:sUkRma code:kUta
+micro_controller	micro:sUkRma controller:niyanwraka
+micro_instruction	micro:sUkRma instruction:anuxeSa
+microprogram_field	microprogram:sUkRmAxeSa field:kRewra
+microprogram_instruction_set	microprogram:sUkRmAxeSa instruction:anuxeSa set:samuccaya
+microprogram_sequencer	microprogram:sUkRmAxeSa sequencer:anukramaka
+microprogram_store	microprogram:sUkRmAxeSa store:BaNdAra
+migration_path	migration:pravAsana path:paWa
+minor_control_field	minor:gONa control:niyanwraNa field:kRewra
+minor_cycle	minor:gONa cycle:cakra
+minor_structure	minor:laGu structure:saMracanA
+miscellaneous_time	miscellaneous:viviXa time:kAla
+mnemonic_address	mnemonic:smaraka address:pawA
+mnemonic_name	mnemonic:smaraka name:nAma
+mnemonic_operation_code	mnemonic:smaraka operation:safkriyA code:kUta
+mnemonic_symbol	mnemonic:smaraka symbol:prawIka
+monadic_operation	monadic:eka-aka operation:safkriyA
+monostable_multivibrater	monostable:ekasWiwika multivibrater:bahukampiwra
+mount_attribute	mount:Aroha attribute:guNa
+mutual_exclusion	mutual:paraspara exclusion:apavarjana
+mutual_information	mutual:paraspara information:sUcanA
+narrow_band	narrow:safkIrNa band:bEMda
+natural_binary	natural:prAkqwika binary:xvi-AXArI
+natural_function_generator	natural:prAkqwika function:Palana generator:janiwra
+natural_language	natural:prAkqwika language:BARA
+negative_entry	negative:qNAwmaka entry:praviRti
+new_pack	new:nayA pack:safkula
+nickel_delay_line	nickel:nikala delay:vilamba line:lAina
+ninety_column_card	ninety:nabbe column:swamBa card:pawraka
+non_dial_trunk	non:gEra dial:dAyala trunk:trafka
+normal_contact	normal:sAmAnya contact:samparka
+normal_direction_flow	normal:sAmAnya direction:xiSA flow:pravAha
+normally_closed_contact	normally:sAmAnyawaH closed:banxa contact:samparka
+normally_open_contact	normally:sAmAnyawaH open:KulA contact:samparka
+not_circuit	not:pUraka' circuit:paripaWa
+not_element	not:pUraka' element:avayava
+not_equivalence_gate	not:pUraka' equivalence:wulyawA gate:xvAra
+not_gate	not:pUraka' gate:xvAra
+not_operation	not:pUraka' operation:safkriyA
+nought_state	nought:SUnya state:avasWA
+null_cycle	null:SUnya cycle:cakra
+null_line	null:SUnya line:reKA
+number_control	number:safKyA control:niyanwraNa
+number_group	number:samUha group:samUha
+number_range	number:safKyA range:parisara
+number_sequence	number:safKyA sequence:anukrama
+numerical_analysis	numerical:safKyAwmaka analysis:viSleRaNa
+numerical_code	numerical:safKyAwmaka code:kUta
+numerical_control	numerical:safKyAwmaka control:niyanwraNa
+numerical_data	numerical:safKyAwmaka data:Azkade
+office_automation	office:kAryAlaya automation:svacAlana
+office_information_system	office:kAryAlaya information:sUcanA system:wanwra
+off-line_equipment	off-line:lAinewara equipment:upakaraNa
+off-line_processing	off-line:lAinewara processing:saMsAXana
+off-line_storage	off-line:lAinewara storage:BaNdAraNa
+off-line_system	off-line:lAinewara system:wanwra
+off-line_unit	off-line:lAinewara unit:ekaka
+offset_system	offset:oYPaseta system:praNAlI
+one-for-one_translation	one-for-one:ekEka translation:anuvAxa
+on-line_batch_processing	on-line:yugapaw batch:pracaya processing:saMsAXana
+on-line_input	on-line:yugapaw input:niveSa
+on-line_system	on-line:yugapaw system:wanwra
+on-line_testing	on-line:yugapaw testing:parIkRaNa
+on-line_test_system	on-line:yugapaw test:parIkRaNa system:wanwra
+on-line_unit	on-line:yugapaw unit:ekaka
+open-ended_line	open-ended:vivqwAnwa line:lAina
+page_lock	page:pqRTa lock:wAlakana lock:wAlaka
+paper_tape	paper:kAgaja tape:tepa
+parameter_descriptor	parameter:prAcala descriptor:nirUpaka
+process_control	process:prakrama control:niyanwraNa
+program_check	program:kramAxeSa program:kramAxeSa check:jAzca
+program_control	program:kramAxeSa program:kramAxeSa control:niyanwraNa
+program_design	program:kramAxeSa program:kramAxeSa design:aBikalpanA
+program_execution	program:kramAxeSa program:kramAxeSa execution:niRpAxana
+rapid_access	rapid:xruwa access:aBigama
+real_storage	real:vAswavika storage:BaNdAraNa
+relative_address	relative:sApekRa address:pawA
+relative_code	relative:sApekRa code:kUta
+remote_access	remote:suxUra access:aBigama
+remote_batch	remote:suxUra batch:pracaya
+resource_management	resource:sAXana management:prabanXa
+row_column	row:pafkwi column:pafkwi
+sequence_check	sequence:anukrama check:jAzca
+sign_character	sign:cihna character:cihna
+significant_digit	significant:sArWaka digit:afka
+single_address	single:ekala address:pawA
+solid_state	solid:Tosa state:avasWA
+source_code	source:srowa code:kUta
+source_coding	source:srowa coding:kUtaleKana
+source_language	source:srowa language:BARA
+source_program	source:srowa program:kramAxeSa program:kramAxeSa
+source_statement	source:srowa statement:kaWana
+specific_code	specific:viSiRta code:kUta
+start_stop	start:prAramBa stop:virAma
+statement_label	statement:kaWana label:lebala
+static_storage	static:sWEwika storage:BaNdAraNa
+storage_location	storage:BaNdAraNa location:sWAna
+store_controller	store:BaNdAra controller:niyanwraka
+store_loop	store:BaNdAra loop:pASa
+symbolic_address	symbolic:prawIkAwmaka address:pawA
+system_check	system:wanwra check:jAzca
+system_interface	system:wanwra interface:anwarApqRTa
+system_program	system:wanwra program:kramAxeSa program:kramAxeSa
+system_resource	system:wanwra resource:sAXana
+time_division	time:kAla division:viBAjana
+transverse_check	transverse:anuprasWa check:jAzca
+two_address	two:xo address:pawA
+two_plus_one_address	two:xo plus:Xana one:eka address:pawA
+variable_field	variable:parivarwI field:kRewra
+variable_information	variable:parivarwI information:sUcanA
+variable_point	variable:parivarwI point:biMxu
+variable_word	variable:parivarwI word:Sabxa
+variable_word_length	variable:parivarwI word:Sabxa length:lambAI
+virtual_storage	virtual:ABAsI storage:BaNdAraNa
+word_processing	word:Sabxa processing:saMsAXana
+word_time	word:Sabxa time:kAla
+zero_level_address	zero:SUnya level:swara address:pawA
