@@ -1,3 +1,5 @@
+sh $HOME_alignment/csv_creation/create_html_csv.sh $1
+
 cd $HOME_anu_tmp/tmp/$1_tmp
 while read line 
 do

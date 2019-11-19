@@ -221,39 +221,13 @@ def creating_new_csv():
                 with open (sent_dir + '/K_tam_layer_v.csv','r')  as f:
                    data = csv.reader(f)
                    for r in data:
-<<<<<<< HEAD
+
                        j1=[ii.replace("-",'0') for ii in r]
                        csvwriter.writerow(j1[:-1])
                        print(j1[:-1])
             else:
                 csvwriter.writerow(i) 
-                print(i)
-        '''pid = list()
-        with open(sent_dir + '/H_alignment_parserid.csv','r')as f:
-            data = csv.reader(f)
-            for i,j in enumerate(data):
-                if i == 10:
-                    pid=[ii.replace("_",'0') for ii in j]
-        print(pid)
-        with open(sent_dir + '/H_alignment_parserword.csv', 'r') as f:
-            data = csv.reader(f)
-            #for i in range(0,len(data)):
-            for i,j in enumerate(data):
-                if i == 6:
-                   j1=[ii.replace("_",'0') for ii in j]
-                   #plist = [k+"_"+l for k,l in zip(pid,j1)]
-                   #print(plist)
-                   #plist = [d[0] for d in plist if d == "0_0" ]
-                   print(j1)
-                   csvwriter.writerow(j1)'''
-=======
-                       print(r)
-                       csvwriter.writerow(r)
-            else:
-                csvwriter.writerow(i)  
->>>>>>> d145814e595168cb0404f04065a59fb7a1a30252
-
-
+                
 
 import csv,sys, os, string,re,H_Modules
 tmp_path=os.getenv('HOME_anu_tmp')+'/tmp/'

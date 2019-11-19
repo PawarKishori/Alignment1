@@ -80,9 +80,9 @@ sh $HOME_alignment/csv_creation1/create_html_csv.sh $1
 
 
 #''''''''''''''''''''''''''''''''''''''''''''''''''''
-#sh $HOME_alignment/csv_creation/create_html_csv.sh $1        #No more needed for roja mam's module
+sh $HOME_alignment/csv_creation/run_K_layer.sh $1
 
-#sh $HOME_alignment/csv_creation/run_K_layer.sh $1
+sh $HOME_alignment/csv_creation/create_html_csv.sh $1        #No more needed for roja mam's module
 
 cd $HOME_anu_tmp/tmp/$1_tmp
 while read line 
