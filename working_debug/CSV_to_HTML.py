@@ -54,15 +54,13 @@ eleftw = ", ".join(open(eleftover,'r').read().split(" "))
 hleftw = ", ".join([H_Modules.wx_utf_converter_sentence(i) for i in open(hleftover,'r').read().split(" ")])
 
 ###################################################################################################################
-# try:
-dfs = pd.read_csv(sent_dir +'/'+ "srun_All_Resources_id_word.csv")
-#     del dfs['Unnamed: 0']
-no_of_eng_words = dfs.shape[1]
-title=list(dfs.columns.values)
-#     print(title)
-# except:
-#     print('srun_All_Resources_id_word.csv missing')
-#     log.write("FILE MISSING: " + "srun_All_Resources_id_word.csv"  + "\n")
+try:
+    dfs = pd.read_csv(sent_dir +'/'+ "srun_All_Resources_id_word.csv")
+    no_of_eng_words = dfs.shape[1]
+    title=list(dfs.columns.values)
+except:
+    print('srun_All_Resources_id_word.csv missing')
+    log.write("FILE MISSING: " + "srun_All_Resources_id_word.csv"  + "\n")
 ##################################################################################################################
 try:
     e2w = a.create_dict(efilename, '(E_wordid-word')
