@@ -98,7 +98,9 @@ if(flagfile==0):
                     for k in range(3,length):
                         res[2]=res[2]+" "+res[k]
                 temparray=res[0:3]
-                if(int(temparray[1])==int(list1[i])):
+                
+                #if(int(temparray[1])==int(list1[i])):
+                if(temparray[1]==list1[i]):
                     temp=1
                     list_temp.append(temparray[2])
                     break
