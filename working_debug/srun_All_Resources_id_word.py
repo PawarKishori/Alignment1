@@ -211,8 +211,14 @@ def creating_new_csv():
         print(anusaaraka_layer)
         print(shreya_layer)
         for i in all_rows:
-            print(i)
-            csvwriter.writerow(i)  
+            if i[0] == "K_exact_with_tam_analysis":
+                with open (sent_dir + '/K_tam_layer_v.csv','r')  as f:
+                   data = csv.reader(f)
+                   for r in data:
+                       print(r)
+                       csvwriter.writerow(r)
+            else:
+                csvwriter.writerow(i)  
 
 
 

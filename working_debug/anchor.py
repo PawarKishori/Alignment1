@@ -163,11 +163,14 @@ def cleaning_list(k_layer_ids):
     return(k_layer_ids)
 
 #Extracting a row from csv file
-def load_row_from_csv(filename, row_number):
+'''def load_row_from_csv(filename, row_number):
     try:
         with open(filename, newline='') as iris:
             # returning from 2nd row
             return list(csv.reader(iris, delimiter=','))[row_number]
     except FileNotFoundError as e:
-        raise e
+        raise e'''
+
+
+
 
