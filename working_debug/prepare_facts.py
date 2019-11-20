@@ -14,6 +14,7 @@ print(wsd_modulo)
 print('================')
 with open(facts , 'w') as f:
     for i in range(1,len(k_dict)):
-        print("(E_id-k_dict-mfs-wsd_modulo\t"+ str(i) +"\t"+k_dict[i] + '\tmfs\t'+ wsd_modulo[i]+ ')')
-        f.write("(E_id-k_dict-mfs-wsd_modulo\t"+ str(i) +"\t" +k_dict[i] + '\tmfs\t'+ wsd_modulo[i]+ ')\n')
+        print("(E_id-k_dict-mfs-wsd_modulo\t"+ str(i)+"\t"+k_dict[i].replace("_", '0') + '\tmfs\t'+ wsd_modulo[i]+ ')')
+        f.write("(E_id-k_dict-mfs-wsd_modulo\t"+ str(i) +"\t" +k_dict[i].replace("_", '0') + '\tmfs\t'+ wsd_modulo[i]+ ')\n')
+
 
