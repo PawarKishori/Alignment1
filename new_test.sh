@@ -111,11 +111,13 @@ sh $HOME_alignment/working_debug/statistic-shell.sh $1
 sh $HOME_alignment/working_debug/generate_1st_iter_leftover.sh $1
 
 #####################################################################################################################
+sh $HOME_alignment/working_debug/phrase.sh $1
+
+#####################################################################################################################
 # 2 Run programs (H_wordnet and Bahri)
 sh $HOME_alignment/dict_suggest_srun/bahri_dict_suggestion/bahri_UTF_WX.sh $1
 python3 $HOME_alignment/dict_suggest_srun/h_wordnet_suggest/Srun_H_wordnet_suggested_words.py $1
 sh $HOME_alignment/Transliteration/Transliteration_Second_Run-shell.sh $1
-
 
 sh $HOME_alignment/working_debug/test5.sh $1
 #####################################################################################################################
