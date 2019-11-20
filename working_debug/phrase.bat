@@ -9,7 +9,6 @@
 (load-facts "K_id_word.dat")
 (load-facts "H_wordid-word_mapping.dat")
 (load-facts "E_wordid-word_mapping.dat")
-(load "/home/kishori/a/Alignment1/working_debug/phrase.clp" )
 (open "Proposed_H_grps_using_dict.dat" debug_v "w")
 (watch facts)
 (run)
