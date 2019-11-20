@@ -37,7 +37,7 @@ A rational agent is one that acts rationally, that is, is in the best possible m
 While studying the typical range of tasks that we might expect an "intelligent entity" to perform, we need to consider both "common-place" tasks as well as expert tasks.
 These tasks cannot be done by all people, and can only be performed by skilled specialists.
 Clearly tasks of the first type are easy for humans to perform, and almost all are able to master them.
-The second range of tasks requires skill development and/or intelligence and only some specialists can perform them well.
+The second range of tasks requires skill development and intelligence and only some specialists can perform them well.
 However, when we look at what computer systems have been able to achieve to date, we see that their achievements include performing sophisticated tasks like medical diagnosis, performing symbolic integration, proving theorems and playing chess.
 On the other hand it has proved to be very hard to make computer systems perform many routine tasks that all humans and a lot of animals can do.
 Examples of such tasks include navigating our way without running into things, catching prey and avoiding predators.
@@ -94,7 +94,7 @@ In the 19th century, George Boole developed binary algebra representing (some) "
 Charles Babbage and Ada Byron worked on programmable mechanical calculating machines.
 In the late 19th century and early 20th century, mathematical philosophers like Gottlob Frege, Bertram Russell, Alfred North Whitehead, and Kurt Godel built on Boole's initial logic concepts to develop mathematical representations of logic problems.
 The advent of electronic computers provided a revolutionary advance in the ability to study intelligence.
-In 1943 McCulloch & Pitts developed a Boolean circuit model of brain.
+In 1943 McCulloch and Pitts developed a Boolean circuit model of brain.
 In 1950 Turing wrote an article on "Computing Machinery and Intelligence" which articulated a complete vision of AI.
 Turing's paper talked of many things, of solving problems by searching through the space of possible solutions, guided by heuristics.
 He illustrated his ideas on machine intelligence by reference to chess.
