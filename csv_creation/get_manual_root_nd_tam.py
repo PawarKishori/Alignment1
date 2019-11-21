@@ -59,9 +59,9 @@ def return_id(word):
             ids = out.split('/')
             for each in ids:
                 ind = check_wrd(int(each), length, word, lst[0])
-                print('^^', each,ind)
+                #print('^^', each,ind)
                 if ind != None:
-                    print(ind)
+                    #print(ind)
                     ind_lst.append(ind)
     return ind_lst
 ##############################
@@ -80,7 +80,7 @@ for line in fv:
     if 'tam:' in line.strip():
         tam = line.strip()[4:-7]
         gnp = line.strip()[-7:]
-        print(gnp)
+        #print(gnp)
 #        print(tam,len(wrd.split()), out)
         if out != None:
             ids = []
@@ -90,7 +90,7 @@ for line in fv:
                 if tam not in man_tam_dic.keys():
                     for i in range(len(wrd.split())):
                         ids.append(str(int(each+i)))
-                    print('^^', tam, ' '.join(ids))
+                    #print('^^', tam, ' '.join(ids))
                     man_tam_dic[tam] = ' '.join(ids)
 
 ##############################
@@ -162,11 +162,12 @@ for key in sorted(anu_tam_dic):
 #                    print(each, h_wrd_dict[wrd[0]])
                     print('(anu_id-manu_verb_root-ids',  key, each , out, ')' )
                 else:
-                    mngs = verb_dic[eng_rt].split('/') 
-                    for each in mngs:
-                        v_id = return_key(each, v_rt_dic)
-                        if v_id != None:
-                            print('(anu_id-manu_verb_root-ids',  key,  each,  v_id, ')' )  #ai1E, 2.50, pA
+                    if eng_rt in verb_dic.keys():
+                        mngs = verb_dic[eng_rt].split('/') 
+                        for each in mngs:
+                            v_id = return_key(each, v_rt_dic)
+                            if v_id != None:
+                                print('(anu_id-manu_verb_root-ids',  key,  each,  v_id, ')' )  #ai1E, 2.50, pA
 
 ########################################################
 #Get kriyA_mUla info from hindi side:

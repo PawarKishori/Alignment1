@@ -4,6 +4,7 @@
 #RUN: python ~/Alignment1/csv_creation/align_mwe.py  multi_word_expressions.dat  <technical_mwe_dic>
 #Ex:  python ~/Alignment1/csv_creation/align_mwe.py  multi_word_expressions.dat  mwe_tech_dic.txt 
 #O/p: K_exact_mwe_word_align.csv
+#NOTE: << >> This notation is used for guessing . If any mng or word is guessed then in O/p it is stored in this format
 ############################################################
 import sys
 import csv

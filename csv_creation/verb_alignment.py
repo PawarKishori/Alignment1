@@ -75,7 +75,7 @@ with open("K_tam_layer.csv", 'r') as csvfile:
             print(row[i])
             k_exact_tam_dic[i] = row[i]
 
-with open('H_alignment_parserid.csv','r') as csvfile:
+with open('K_alignment_wordid.csv','r') as csvfile:
     csvreader = csv.reader(csvfile)
     for row in csvreader:
         if row[0] == 'K_exact_without_vib': # or row[0] =='K_Root' or row[0] == 'K_Dic':
@@ -96,6 +96,6 @@ with open('H_alignment_parserid.csv','r') as csvfile:
         new_list.append(row)
 #        print(row)
 
-with open('H_alignment_parserid-new.csv','w') as csvfile:
+with open('K_alignment_wordid-new.csv','w') as csvfile:
     csvwriter=csv.writer(csvfile)
     csvwriter.writerows(new_list)
