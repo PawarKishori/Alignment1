@@ -260,10 +260,13 @@ if(flag13==0):
         if line.startswith('(pada_info'):
             t = re.split(r'\)', line.strip())
             key =  t[0].split()[-1]
-            print(key, t[8])
-            tam_info = t[8].split('_')[-1]
-            if tam_info in restricted_wrds:
+            print(key, t[8][8:])
+            tam = t[8][8:]
+            if tam != '0':
                 tam_dic[int(key)] = 'yes'
+#            tam_info = t[8].split('_')[-1]
+#            if tam_info in restricted_wrds:
+#                tam_dic[int(key)] = 'yes'
 
 #print tam_dic.keys()
 ##===================
@@ -295,18 +298,18 @@ for i in f11:
 #                print('Manual_mng is', man_mng)
                 out = check_for_vib(man_mng, f12)
                 if out == True:
-                    #print('%%', man_mng, '**', anu_mng)
+                    print('%%', man_mng, '**', anu_mng, tam_dic.keys())
                     if man_mng not in restricted_wrds:
                         if len(man_mng.split()) == len(mngs): #Counter ex: ai2E/2.83 , ai1E/2.15, So wrote this if else condition 
                             print('K exact without vib', anu_mng, man_mng, ' '.join(ids), int(ap_out[1]))
                             k_ex_without_vib_dic[int(ap_out[1])] = ' '.join(ids)
-                        else:
-                            print('Testing::', anu_mng, '&&', man_mng)
+                        elif int(ap_out[1]) not in tam_dic.keys():
+#                            print('Testing::', anu_mng, '&&', man_mng)
                             print('partial', anu_mng, man_mng, ' '.join(ids), int(ap_out[1]))
                             k_par_dic[int(ap_out[1])] = ' '.join(ids)
-                    elif man_mng in restricted_wrds and int(ap_out[1]) not in tam_dic.keys() and man_mng != 'nahIM': #Added nahIM for ai1, 2.19 (need to improve)
-                        print('partial', anu_mng, man_mng, ' '.join(ids), int(ap_out[1]))
-                        k_par_dic[int(ap_out[1])] = ' '.join(ids)
+#                    elif man_mng in restricted_wrds and int(ap_out[1]) not in tam_dic.keys() and man_mng != 'nahIM': #Added nahIM for ai1, 2.19 (need to improve)
+#                        print('partial', anu_mng, man_mng, ' '.join(ids), int(ap_out[1]))
+#                        k_par_dic[int(ap_out[1])] = ' '.join(ids)
                     else:
                         k_par_dic[int(ap_out[1])] = '-'
         ############ K Root code            
