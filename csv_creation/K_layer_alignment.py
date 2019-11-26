@@ -29,10 +29,10 @@ except:
     flag11=1
     log.write("id_Apertium_output.dat not found\n")
 try:
-    f12=open("vibhakti", "r").read()
+    f12=open(sys.argv[1], "r").read()
 except:
     flag12=1
-    log.write("vibhakti file not found\n")
+    log.write(sys.argv[1],"file not found\n")
 try:
     f13=open("GNP_agmt_info.dat", "r").readlines()
 except:

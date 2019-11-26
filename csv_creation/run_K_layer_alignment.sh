@@ -10,7 +10,7 @@ python3 $HOME_alignment/csv_creation/extract_hindi_id_root.py
 echo "Creating csv..."
 #Extracting K layer info to get K, K_exact_without_vib, K_par, K_Root, K_Dic layers , O/p: H_alignment_parserid.csv
 #python3 $HOME_alignment/csv_creation/csv_format.py
-python3 $HOME_alignment/csv_creation/K_layer_alignment.py
+python3 $HOME_alignment/csv_creation/K_layer_alignment.py $HOME_alignment/csv_creation/vibhakti
 
 echo "Creating csv for 1st word capital..."
 #Extracting Proper noun info : O/p: K_1st_letter_capital_word.csv
