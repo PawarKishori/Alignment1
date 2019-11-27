@@ -40,24 +40,22 @@ for line in fr:
     add_data_in_dic(h_wrd_dic, lst[2], lst[1])
 ############################################################
 #Checking multi_word_expressions.dat
+mwe_list = []
 for line in open(sys.argv[1]):
-    if line[0] !=';':
-        lst = line.strip().split()
-        pri = lst[-1]
-        head_type = lst[-2]
-        head_cat = lst[-3]
-        mwe_mng = lst[-4]
-        fact = lst[0]
-        ids = lst[1:-5]
-        #print ids
-        mwe_lst = []
-        for each in ids:
-            mwe_lst.append(wrd_dic[each])
-            #print each, wrd_dic[each], h_wrd_dic.keys()
-        mwe = '_'.join(mwe_lst) #finite_state_machine
-#        print mwe, mwe_dic.keys()
-        if mwe in mwe_dic.keys():
-            #print mwe, 
+    mwe_mng = ''
+    lst = line[:-2].split()
+    if 'compound' in lst[3]:
+        mwe_mng = lst[2]
+    ids = lst[4:]
+    print(ids, mwe_mng)
+    mwe_lst = []
+    for each in ids:
+        mwe_lst.append(wrd_dic[each])
+        #print each, wrd_dic[each], h_wrd_dic.keys()
+    mwe = '_'.join(mwe_lst) #finite_state_machine
+#    print(mwe)#, mwe_dic.keys())
+    if mwe in mwe_dic.keys():
+            print(mwe), 
             expr = mwe_dic[mwe]
             #print expr
             expr_lst = expr.split()

@@ -122,6 +122,18 @@ if(flag15==0):
 #	print(key + '\t' + m_root_dic[key])
 
 ##===================
+#Return key for a known value:
+def return_key(val, dic):
+    for key in dic:
+        if val == dic[key]:
+            return key
+        elif val in dic[key].split('/'):
+            return key
+##===================
+def check_for_vib(m_mng, vib):
+    if m_mng not in vib:
+        return True
+##===================
 def check_for_consecutive_ids(ids, id2):
     if '/' in ids:
         ids_lst = ids.split('/')
@@ -140,6 +152,14 @@ def check_for_consecutive_ids(ids, id2):
             if int(id2) == int(each) + 1:
                 out = 'True' + ' ' + each 
                 return out
+            if int(id2) == int(each) + 2:  #anuvAxa kI [guNavawwA]
+                mid_id = int(each) + 1  #kI
+                m_mng = return_key(str(mid_id), m_dic)
+                o =  check_for_vib(m_mng, f12)
+                if o != True:               
+                    out = 'True' + ' ' + each #Even if vib is not matched moving to next wrd and checking 
+                    return out
+
 ##===================
 #print in k_dic
 def store_data_in_k_dic(key, inp, val1, val2):
@@ -164,16 +184,16 @@ if(flag11==0):
                 for wrd in mngs:
                     wrd_id = int(ap_out[1]) #to get eng_wrd_id in id_Apertium_output
                     #print wrd, wrd_id, k_dic.keys()
-                    if wrd_id not in k_dic.keys() and wrd in m_dic.keys():
+                    if wrd_id not in k_dic.keys() and wrd in m_dic.keys():  #Initial storage of wrd_id in k_dic
                         k_dic[wrd_id] = str(m_dic[wrd])
-#                        print '$$$', wrd, wrd_id, k_dic[wrd_id], m_dic[wrd]
+#                        print('$$$', wrd, wrd_id, k_dic[wrd_id], m_dic[wrd])
                     elif wrd_id in k_dic.keys() and wrd in m_dic.keys():
                         if ' ' not in k_dic[wrd_id] and '/' not in str(m_dic[wrd]):
-#                            print '&&',  k_dic[wrd_id], m_dic[wrd], wrd, m_dic.keys(), m_dic.values()
+#                            print('&&',  k_dic[wrd_id], m_dic[wrd], wrd, m_dic.keys(), m_dic.values())
                             o = check_for_consecutive_ids(k_dic[wrd_id], m_dic[wrd])
                             store_data_in_k_dic(wrd_id, o, k_dic[wrd_id], str(m_dic[wrd]))
                         elif '/' not in str(m_dic[wrd]):
-#                            print '^^', k_dic[wrd_id], m_dic[wrd], wrd, m_dic.keys(), m_dic.values()
+#                            print('^^', k_dic[wrd_id], m_dic[wrd], wrd, m_dic.keys(), m_dic.values())
                             o = check_for_consecutive_ids(k_dic[wrd_id], m_dic[wrd])
                             store_data_in_k_dic(wrd_id, o, k_dic[wrd_id], str(m_dic[wrd]))
                         else:
@@ -199,15 +219,6 @@ if(flag11==0):
                 #print('1111', ap_out[2:])
 
 ##===================
-#Return key for a known value:
-def return_key(val, dic):
-    for key in dic:
-        if val == dic[key]:
-            return key
-        elif val in dic[key].split('/'):
-            return key
-
-##===================
 #return manual mngs:
 def return_mng(ids, dic):
     mng = []
@@ -221,10 +232,6 @@ def return_mng(ids, dic):
             mng.append(m)
     return ' '.join(mng)
 
-##===================
-def check_for_vib(m_mng, vib):
-    if m_mng not in vib:
-        return True
 ##===================
 def check_for_root(a_root, m_root):
 	if a_root == m_root :
@@ -298,7 +305,7 @@ for i in f11:
 #                print('Manual_mng is', man_mng)
                 out = check_for_vib(man_mng, f12)
                 if out == True:
-                    print('%%', man_mng, '**', anu_mng, tam_dic.keys())
+#                    print('%%', man_mng, '**', anu_mng, tam_dic.keys())
                     if man_mng not in restricted_wrds:
                         if len(man_mng.split()) == len(mngs): #Counter ex: ai2E/2.83 , ai1E/2.15, So wrote this if else condition 
                             print('K exact without vib', anu_mng, man_mng, ' '.join(ids), int(ap_out[1]))

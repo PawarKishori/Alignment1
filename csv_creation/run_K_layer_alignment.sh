@@ -10,7 +10,7 @@ python3 $HOME_alignment/csv_creation/extract_hindi_id_root.py
 echo "Creating csv..."
 #Extracting K layer info to get K, K_exact_without_vib, K_par, K_Root, K_Dic layers , O/p: H_alignment_parserid.csv
 #python3 $HOME_alignment/csv_creation/csv_format.py
-python3 $HOME_alignment/csv_creation/K_layer_alignment.py $HOME_alignment/csv_creation/vibhakti
+python3 $HOME_alignment/csv_creation/K_layer_alignment.py $HOME_alignment/vibhakti
 
 echo "Creating csv for 1st word capital..."
 #Extracting Proper noun info : O/p: K_1st_letter_capital_word.csv
@@ -18,7 +18,7 @@ python3 $HOME_alignment/csv_creation/check_proper_noun_mng.py $HOME_anu_test/Anu
 
 echo "Aligning MWE..."
 #Aligning MWE words : O/p: K_exact_mwe_word_align.csv
-python3 $HOME_alignment/csv_creation/align_mwe.py  multi_word_expressions.dat  $HOME_alignment/csv_creation/mwe_tech_dic.txt
+python3 $HOME_alignment/csv_creation/align_mwe.py  hindi_meanings_with_grp_ids.dat  $HOME_alignment/csv_creation/mwe_tech_dic.txt
 
 echo "Extract kriyA_mUla Root and ids info..."
 #Get ids for verb root , extracting verb root for kriyA mUla O/p: verb_root_tam_info.dat
