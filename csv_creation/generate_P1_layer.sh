@@ -26,14 +26,13 @@ python3 $HOME_alignment/csv_creation/convert_new_layer_fact_to_csv.py new_p_laye
 #Replacing new layer id with id_wrd format
 python3 $HOME_alignment/csv_creation/replace_id_with_wrd.py   H_wordid-word_mapping.dat p1_layer.csv > p1_layer_with_wrd.csv
 
-#Appending in final csv's to get html
-var=`grep "P1" srun_All_Resources.csv`
-if [ "$var" == "" ] ; then 
-	cat p1_layer.csv  >> srun_All_Resources.csv 
-	cat p1_layer_with_wrd.csv >> srun_All_Resources_id_word.csv 
-fi
+
+python3 $HOME_alignment/csv_creation/add_p1_layer.py  srun_All_Resources.csv srun_All_Resources_id_word.csv
+
+cp j srun_All_Resources.csv
+cp k srun_All_Resources_id_word.csv
 
 #Appending new layer P1 in new-final.html
-#cd $HOME_anu_tmp/tmp/$1_tmp
-#python3 $HOME_alignment/working_debug/CSV_to_HTML.py $1 $line
+cd $HOME_anu_tmp/tmp/$1_tmp
+python3 $HOME_alignment/working_debug/CSV_to_HTML.py $1 $2
 
