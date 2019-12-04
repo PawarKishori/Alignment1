@@ -1,4 +1,6 @@
-(load "/home/roja/Alignment1/csv_creation/correct_grouping.clp")
+(load "alignment_path.clp")
+(bind ?*path* (str-cat ?*path* "/csv_creation/correct_grouping.clp"))
+(load ?*path*)
 (load-facts "E_grouping.dat")
 (load-facts "H_grouping.dat")
 (load-facts "all_layer_facts.dat")
@@ -11,7 +13,9 @@
 (run)
 (clear)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(load "/home/roja/Alignment1/csv_creation/correct_hindi_grouping.clp")
+(load "alignment_path.clp")
+(bind ?*path* (str-cat ?*path* "/csv_creation/correct_hindi_grouping.clp"))
+(load ?*path*)
 (load-facts "wrong_grouping_id.dat")
 (load-facts "E_grouping.dat")
 (load-facts "H_grouping.dat")

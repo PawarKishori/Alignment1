@@ -16,7 +16,8 @@ python3 $HOME_alignment/csv_creation/check_each_word_occurences.py eng_wrd_occur
 #Get each row grouping info. For ex: In P col 5 val is 7 8 then we get that info
 python3 $HOME_alignment/csv_creation/get_grouping_info.py  > get_all_layer_group_info.dat
 
-#Generating P1 later
+#Generating P1 layer
+echo "(defglobal ?*path* = $HOME_alignment)" > alignment_path.clp
 myclips -f $HOME_alignment/csv_creation/run.bat > new_layer.error
 
 #Converting P1 layer fact to csv 
@@ -33,9 +34,6 @@ if [ "$var" == "" ] ; then
 fi
 
 #Appending new layer P1 in new-final.html
-cd $HOME_anu_tmp/tmp/$1_tmp
-while read line
-do
-	python3 $HOME_alignment/working_debug/CSV_to_HTML.py $1 $line
+#cd $HOME_anu_tmp/tmp/$1_tmp
+#python3 $HOME_alignment/working_debug/CSV_to_HTML.py $1 $line
 
-done < dir_names.txt
