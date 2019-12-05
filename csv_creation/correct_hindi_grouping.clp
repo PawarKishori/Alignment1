@@ -25,12 +25,16 @@
 (H_wordid-word	?hid&=(nth$ (- ?id 1) $?ids) ?hwrd)
 (hin_wrd-occurrences ?hwrd 1)
 (Hnd_label-group_elements ?hlabel  $?h_gids)
+(P-head_id-grp_ids ?h_id $?hgids)
 (test (member$ ?hid $?h_gids))
+(test (member$ ?h_id $?h_gids))
+(test (neq ?hid ?h_id))
 =>
 	(printout t (nth$ (- ?id 1) $?ids) " " ?hid " " (+ ?hid 1) " " crlf)
+	(bind ?new_hids (explode$ (implode$ (remove_character " " (implode$ $?hgids) ","))))
 	(assert (grouping_corrected_id-prev_val ?id (nth$ ?id $?ids)))
+	(bind ?new_ids (replace$ $?ids ?id ?id ?new_hids))
 	(retract ?f0 ?f1)
-	(bind ?new_ids (replace$ $?ids ?id ?id (+ ?hid 1)))
 	(assert (P ?new_ids))
 )
 
@@ -63,12 +67,13 @@
 (Hnd_label-group_elements ?hlabel  $?h_gids)
 (test (member$ ?hid $?h_gids))
 (test (member$ ?h_id $?h_gids))
+(test (neq ?hid ?h_id))
 =>
 	(printout t (nth$ (- ?id 1) $?ids) " " ?hid " " (+ ?hid 1) " " crlf)
 	(bind ?new_hids (explode$ (implode$ (remove_character " " (implode$ $?hgids) ","))))
-        (assert (grouping_corrected_id-prev_val ?id (nth$ ?id $?ids)))
+        (assert (grouping_corrected_id-prev_val ?id ?new_hids))
         (retract ?f0 ?f1)
-        (bind ?new_ids (replace$ $?ids ?id ?id $?new_hids))
+        (bind ?new_ids (replace$ $?ids ?id ?id ?new_hids))
         (assert (P ?new_ids))
 )
 

@@ -7,21 +7,32 @@ import sys
 f = open('p1_layer.csv', 'r').readlines()
 p1_with_id = f[0]
 f1 = open('p1_layer_with_wrd.csv', 'r').readlines()
-p1_with_wrd = f[0]
+p1_with_wrd = f1[0]
 
 fid = open('j' ,'w')
 fid1 = open('k' ,'w')
 
-for line in open(sys.argv[1]):
-    if line[0] == 'P1':
-        fid.write(p1_with_id+'\n')
+f2 = open(sys.argv[1], 'r').readlines()
+f3 = open(sys.argv[2], 'r').readlines()
+
+for i in range(0, len(f2)):
+    lst = f2[i].split(',')
+    if lst[0] == 'P1':
+        fid.write(p1_with_id)
+    elif lst[0] == 'P' and i == len(f2)-1:
+        fid.write(f2[i])
+        fid.write(p1_with_id)
     else:
-        fid.write(line)
+        fid.write(f2[i])
 
 
-for line in open(sys.argv[2]):
-    if line[0] == 'P1':
-        fid1.write(p1_with_wrd+'\n')
+for i in range(0, len(f3)):
+    lst = f3[i].split(',')
+    if lst[0]== 'P1':
+        fid1.write(p1_with_wrd)
+    elif lst[0] == 'P' and i == len(f3)-1:
+        fid1.write(f3[i])
+        fid1.write(p1_with_wrd)
     else:    
-        fid1.write(line)
+        fid1.write(f3[i])
 

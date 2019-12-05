@@ -32,6 +32,9 @@ python3 $HOME_alignment/csv_creation/add_p1_layer.py  srun_All_Resources.csv sru
 cp j srun_All_Resources.csv
 cp k srun_All_Resources_id_word.csv
 
+python3 ~/Alignment1/csv_creation/get_hindi_sentence_with_id_wrd.py  H_wordid-word_mapping.dat > H_sentence_with_ids.dat
+cat H_sentence_with_ids.dat srun_All_Resources_id_word.csv > complete_alignment.csv
+
 #Appending new layer P1 in new-final.html
 cd $HOME_anu_tmp/tmp/$1_tmp
 python3 $HOME_alignment/working_debug/CSV_to_HTML.py $1 $2
