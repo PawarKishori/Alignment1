@@ -16,6 +16,12 @@ python3 $HOME_alignment/csv_creation/check_each_word_occurences.py eng_wrd_occur
 #Get each row grouping info. For ex: In P col 5 val is 7 8 then we get that info
 python3 $HOME_alignment/csv_creation/get_grouping_info.py  > get_all_layer_group_info.dat
 
+python3 $HOME_alignment/csv_creation/map_punctuations_in_conll.py E_conll_parse_enhanced > E_conll_parse_enhanced_without_punc.tsv
+python3 $HOME_alignment/csv_creation/map_punctuations_in_conll.py hindi_dep_parser_original.dat > hindi_dep_parser_original_without_punc.tsv
+
+#Get parent sanwawi info 
+bash $HOME_alignment/csv_creation/get_parent_sanwawi.sh Eng Hnd   
+
 #Generating P1 layer
 echo "(defglobal ?*path* = $HOME_alignment)" > alignment_path.clp
 myclips -f $HOME_alignment/csv_creation/run.bat > new_layer.error
@@ -32,8 +38,9 @@ python3 $HOME_alignment/csv_creation/add_p1_layer.py  srun_All_Resources.csv sru
 cp j srun_All_Resources.csv
 cp k srun_All_Resources_id_word.csv
 
-python3 ~/Alignment1/csv_creation/get_hindi_sentence_with_id_wrd.py  H_wordid-word_mapping.dat > H_sentence_with_ids.dat
-cat H_sentence_with_ids.dat srun_All_Resources_id_word.csv > complete_alignment.csv
+python3 $HOME_alignment/csv_creation/get_hindi_sentence_with_id_wrd.py  H_wordid-word_mapping.dat > H_sentence_with_ids.dat
+wx_utf8 < H_sentence_with_ids.dat > H_sentence_with_ids_utf8.dat
+cat H_sentence_with_ids_utf8.dat srun_All_Resources_id_word.csv > complete_alignment.csv
 
 #Appending new layer P1 in new-final.html
 cd $HOME_anu_tmp/tmp/$1_tmp
