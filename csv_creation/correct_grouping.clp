@@ -29,6 +29,8 @@
  (declare (salience 2))
  (id-word ?id1 ?w)
  ?f<-(id-HM-source-grp_wrds ?id ?mng ?s $?pre ?id1 $?post)
+ (test (neq (numberp ?w) TRUE))
+
  =>
         (retract ?f)
         (assert (id-HM-source-grp_wrds ?id ?mng ?s $?pre ?w $?post))

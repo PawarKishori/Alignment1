@@ -2021,7 +2021,7 @@ finagle	kAma_nikAla
 finalise	anwima_nirNaya_le/anwima_rUpa_xe
 finalize	anwima_nirNaya_le/anwima_rUpa_xe
 finance	ArWika_prabanXa/viwwapoRaNa_kara
-find	upalabXa_kara/pAyA_jA/Koja_kara/jAzca_kara/DUzDa_nikAla/anuBava_kara
+find	upalabXa_kara/pAyA_jA/Koja_kara/jAzca_kara/DUzDa_nikAla/anuBava_kara/pawA_lagA/pawA_laga
 find-out	pawA_kara
 fine	jurmAnA_lagA/arWa_xaNda_xe
 fine-tune	TIka_kara
@@ -2996,7 +2996,7 @@ log	xarjEYa_kara/waya_kara/kunxe_ban/gawi_mApa/Age_baDa/vqkRa_kAta
 loiter	AvArA_Pira/mataragaSwI_kara
 loll	DIle_DAle_Dafga_se_lete/Kade_raha
 long	icCA_kara
-look	XyAna_raKa/xeKaBAla_kara/vyakwa_kara/rUKa_ho/parIkRaNa_kara/nigAha_dAla/laga_ho/iSArA_kara/baxala_xe/XyAna_xe/xiKAI_xe/xiSA_kI_ora_ho
+look	XyAna_raKa/xeKaBAla_kara/vyakwa_kara/rUKa_ho/parIkRaNa_kara/nigAha_dAla/laga_ho/iSArA_kara/baxala_xe/XyAna_xe/xiKAI_xe/xiSA_kI_ora_ho/najara_dAla
 loom	safkata_mazdarA/hAvI_ho/aspaRta_sA_xiKAI_xe/aspaRta_CAyA_xIKa/samBAvanA_ho
 loop	PanxA_banA/PanxA_dAlakara_bAzXa
 loose	wIra_mAra/golI_cala/DIlA_pada/Coda_xa
