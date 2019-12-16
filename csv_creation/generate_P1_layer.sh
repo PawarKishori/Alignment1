@@ -41,12 +41,12 @@ cp k srun_All_Resources_id_word.csv
 python3 $HOME_alignment/csv_creation/get_hindi_sentence_with_id_wrd.py  H_wordid-word_mapping.dat > H_sentence_with_ids.dat
 wx_utf8 < H_sentence_with_ids.dat > H_sentence_with_ids_utf8.dat
 
-python3 $HOME_alignment/csv_creation/group.py E_grouping.dat > E_grouping.tsv
-python3 $HOME_alignment/csv_creation/group.py H_grouping.dat > H_grouping.tsv
+python3 $HOME_alignment/csv_creation/group.py E_grouping.dat English_grouping > E_grouping.tsv
+python3 $HOME_alignment/csv_creation/group.py H_grouping.dat Hindi_grouping > H_grouping.tsv
 
 sed 's/,/\t/g' srun_All_Resources_id_word.csv > srun_All_Resources_id_word.tsv
 
-cat H_sentence_with_ids_utf8.dat E_grouping.tsv H_grouping.tsv srun_All_Resources_id_word.tsv > complete_alignment.tsv
+cat E_sentence E_grouping.tsv H_sentence_with_ids_utf8.dat H_grouping.tsv srun_All_Resources_id_word.tsv > complete_alignment.tsv
 
 #Appending new layer P1 in new-final.html
 cd $HOME_anu_tmp/tmp/$1_tmp
