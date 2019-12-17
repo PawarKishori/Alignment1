@@ -52,40 +52,94 @@
 	(assert (grouping_decided ?id1))
 )
 
-
-(defrule get_mng_for_kriyA_mUla
-(id-HM-source-grp_ids ?id ?mng ?source $?gids)
-(grouping_decided ?id)
-(H_wordid-word	?hid ?hwrd)
-(test (neq (str-index ?hwrd ?mng) FALSE))
-(id-root ?id ?rt)
-(test (neq (gdbm_lookup "default-iit-bombay-shabdanjali-dic.gdbm" (str-cat ?rt "_verb")) "FALSE"))
+;ai3E, 2.50 pawA_lagA
+(defrule correct_hnd_grouping_kriyA_mUla
+(kriyA_mUla_wrd-ids ?wrd $?ids)
+?f<-(Hnd_label-group_elements ?lab $?gids)
+?f1<-(Hnd_label-group_elements ?lab1 $?gids1 )
+(test (neq ?lab ?lab1))
+(test (member$ (first$ $?ids) $?gids))
+(test (member$ (nth$ 2 $?ids) $?gids1))
 =>
-	(bind ?mng (gdbm_lookup "default-iit-bombay-shabdanjali-dic.gdbm" (str-cat ?rt "_verb")))
-        (bind $?mng_lst (create$ (remove_character "/" ?mng " ")))
-	(printout t $?mng_lst crlf)
-	(loop-for-count (?i 1 (length $?mng_lst)) 
-		(if (neq (str-index ?hwrd (nth$ ?i $?mng_lst)) FALSE) then
-			(assert (eng_id-hin_id-hin_mng  ?id ?hid (nth$ ?i $?mng_lst)))
-			(printout t "hello " ?hid  "  "   (nth$ ?i $?mng_lst) crlf)
+	(loop-for-count (?i 1 (length $?ids))
+		(if (and (member$ (nth$ ?i $?ids) $?gids) (member$ (nth$ (+ ?i 1) $?ids) $?gids1)) then 
+			(retract ?f ?f1)
+			(bind ?new_lab (string-to-field (str-cat ?lab "_" ?lab1)))
+			(assert (Hnd_label-group_elements ?new_lab $?gids $?gids1))
 		)
 	)
 )
 
 
-;(defrule insert_mng_in_P
-;(eng_id-hin_id-hin_mng  ?id ?hid ?hmng)
-;(P $?ids)
-;(H_wordid-word  ?hid ?hwrd)
-;(H_wordid-word  ?hid1 ?hwrd1)
-;=>
-;	(bind ?i (str-index ?hwrd ?hmng))
-;	(bind ?i (+ ?i (length ?hwrd)))
-;	(bind ?mng (string-to-field (sub-string (+ ?i 1) (length ?hmng) ?hmng) ))
-;	(if (neq (str-index ?mng ?hwrd1) FALSE) then
-;		(printout t ?hid1 crlf)
-;	)
-;
-;)
+(defrule correct_p_layer1
+(kriyA_mUla_wrd-ids ?wrd ?id $?ids)
+(Hnd_label-group_elements ?lab $?gids)
+(test (member$ ?id $?gids))
+?f<-(P $?pids)
+=>
+	(loop-for-count (?i 1 (length $?pids))
+		(bind ?pid (nth$ ?i $?pids))
+		(bind ?pid (create$ ?pid))
+        	(bind $?var (explode$ (implode$ (remove_character "," (implode$ ?pid) " "))))
+		(if (member$ (first$ $?ids) $?var) then
+			(assert (replace_e_id-hid-val ?i ?pid 0))
+		)
+	)
+)
+
+(defrule correct_p_layer
+(kriyA_mUla_wrd-ids ?wrd ?id $?ids)
+(Hnd_label-group_elements ?lab $?gids)
+(test (member$ ?id $?gids))
+?f<-(P $?pids)
+(replace_e_id-hid-val ?w_eid ?hids ?val)
+(not (fact_corrected_eng_id-hids ?id ?hids))
+=>
+	(bind ?hids (create$ ?hids))
+	(bind $?var (explode$ (implode$ (remove_character "," (implode$ ?hids) " "))))
+	(if (member$ (first$ $?ids)  $?var) then
+	(loop-for-count (?i 1 (length $?pids)) 
+		(bind ?pid (nth$ ?i $?pids))
+		(if (eq ?pid ?id) then
+			(bind ?newids (create$ ?id ?hids))
+		        (bind ?var1 (explode$ (implode$ (remove_character " " (implode$ ?newids) ","))))
+		        	(bind $?new_pids (replace$ $?pids ?i ?i ?var1))
+				(printout t ?i "  " (nth$  ?i $?pids) crlf)
+				(assert (P1 $?new_pids))
+				(assert (fact_corrected_eng_id-hids ?id ?hids))
+				(retract ?f)
+		)
+	))
+)
 
 
+(defrule replace_id
+(fact_corrected_eng_id-hids ?engid ?hids)
+?f<-(replace_e_id-hid-val ?w_eid ?hids ?val)
+?f1<-(P1 $?pids)
+=>
+        (bind $?new_pids (replace$ $?pids ?w_eid ?w_eid ?val))
+	(retract ?f ?f1)
+	(assert (P1 $?new_pids))
+)
+
+
+;ai3E, 2.48
+(defrule default_kriyA_mUla_rule
+(kriyA_mUla_wrd-ids ?wrd ?id $?ids)
+(Hnd_label-group_elements ?lab $?gids)
+(test (member$ ?id $?gids))
+?f<-(P $?pids)
+(test (neq (str-index "_" ?lab) FALSE))
+(not (fact_corrected_eng_id-hids ?id ?))
+=>
+	(loop-for-count (?i 1 (length $?pids)) 
+		(bind ?pid (nth$ ?i $?pids))
+		(if (member$ ?pid $?gids) then
+		        (bind ?var1 (explode$ (implode$ (remove_character " " (implode$ $?gids) ","))))
+		        (bind $?new_pids (replace$ $?pids ?i ?i ?var1))
+			(retract ?f)
+			(assert (P1 $?new_pids))
+		)
+	)
+)

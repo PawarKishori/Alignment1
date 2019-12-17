@@ -22,6 +22,9 @@ python3 $HOME_alignment/csv_creation/map_punctuations_in_conll.py hindi_dep_pars
 #Get parent sanwawi info 
 bash $HOME_alignment/csv_creation/get_parent_sanwawi.sh Eng Hnd   
 
+#Get kriyA_mUla info from Hindi sentence:
+python3 $HOME_alignment/csv_creation/check_for_kriyA_mUla.py H_headid-root_info.dat $HOME_alignment/csv_creation/kriyA_mUla_default_dic.txt > kriyA_mUla_info.dat
+
 #Generating P1 layer
 echo "(defglobal ?*path* = $HOME_alignment)" > alignment_path.clp
 myclips -f $HOME_alignment/csv_creation/run.bat > new_layer.error

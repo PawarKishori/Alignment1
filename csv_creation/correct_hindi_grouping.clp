@@ -21,7 +21,7 @@
 (test (member$ (- ?id 1) $?e_gids))
 (eng_wrd-occurrences ?wrd 1)
 (id-word =(- ?id 1) ?wrd)
-?f1<-(P $?ids)
+?f1<-(P1 $?ids)
 (H_wordid-word	?hid&=(nth$ (- ?id 1) $?ids) ?hwrd)
 (hin_wrd-occurrences ?hwrd 1)
 (Hnd_label-group_elements ?hlabel  $?h_gids)
@@ -35,7 +35,7 @@
 	(assert (grouping_corrected_id-prev_val ?id (nth$ ?id $?ids)))
 	(bind ?new_ids (replace$ $?ids ?id ?id ?new_hids))
 	(retract ?f0 ?f1)
-	(assert (P ?new_ids))
+	(assert (P1 ?new_ids))
 )
 
 (defrule interchange_grp_val_aft_correction
@@ -44,12 +44,12 @@
 (id-word ?id1  ?wrd)
 ?f1<-(eng_wrd-occurrences ?wrd ?count&~1)
 (test (neq ?id ?id1))
-?f<-(P $?ids)
+?f<-(P1 $?ids)
 =>
 	(if (eq (nth$ ?id1 $?ids) (nth$ ?id $?ids)) then 
 		(retract ?f ?f1)
 		(bind ?new_ids (replace$ $?ids ?id1 ?id1 $?val))
-		(assert (P ?new_ids))
+		(assert (P1 ?new_ids))
 		(assert (eng_wrd-occurrences ?wrd (- ?count 1)))
 	)
 )
@@ -61,7 +61,7 @@
 (test (member$ ?id $?e_gids))
 (test (member$ (- ?id 1) $?e_gids))
 (id-word =(- ?id 1) ?wrd)
-?f1<-(P $?ids)
+?f1<-(P1 $?ids)
 (P-head_id-grp_ids ?h_id $?hgids)
 (H_wordid-word  ?hid&=(nth$ (- ?id 1) $?ids) ?hwrd)
 (Hnd_label-group_elements ?hlabel  $?h_gids)
@@ -74,15 +74,15 @@
         (assert (grouping_corrected_id-prev_val ?id ?new_hids))
         (retract ?f0 ?f1)
         (bind ?new_ids (replace$ $?ids ?id ?id ?new_hids))
-        (assert (P ?new_ids))
+        (assert (P1 ?new_ids))
 )
 
 
-(defrule modify_fact
-(declare (salience -10))
-?f<- (P $?ids)
-=>
-	(retract ?f)
-	(assert (P1 $?ids))
-)
+;(defrule modify_fact
+;(declare (salience -10))
+;?f<- (P $?ids)
+;=>
+;	(retract ?f)
+;	(assert (P1 $?ids))
+;)
 
