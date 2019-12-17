@@ -143,3 +143,12 @@
 		)
 	)
 )
+
+(defrule default_p1_rule
+(declare (salience -1000))
+?f<-(P $?ids)
+=>
+	(retract ?f)
+	(assert (P1 $?ids))
+)
+
