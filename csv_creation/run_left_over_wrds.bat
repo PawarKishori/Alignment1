@@ -1,0 +1,16 @@
+(load "alignment_path.clp")
+(bind ?*path* (str-cat ?*path* "/csv_creation/align_left_over_wrds.clp"))
+(load ?*path*)
+(load-facts "kriyA_mUla_info.dat")
+(load-facts "p1_left_over_wrds.dat")
+(load-facts "new_p_layer.dat")
+(load-facts "revised_root.dat")
+(load-facts "H_grouping1.dat")
+(watch rules)
+(watch facts)
+(agenda)
+(run)
+
+(clear)
+(exit)
+

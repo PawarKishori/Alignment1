@@ -10,5 +10,5 @@ for line in open(sys.argv[1]):
     lst = line[:-2].split('\t')
     hin_lst.append(lst[1] + '_' + lst[2])
 
-print('\t'.join(hin_lst))
+print('@Hindi_@sentence'+ '\t'+'\t'.join(hin_lst))
 

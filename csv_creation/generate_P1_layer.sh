@@ -35,12 +35,14 @@ python3 $HOME_alignment/csv_creation/convert_new_layer_fact_to_csv.py new_p_laye
 #Replacing new layer id with id_wrd format
 python3 $HOME_alignment/csv_creation/replace_id_with_wrd.py   H_wordid-word_mapping.dat p1_layer.csv > p1_layer_with_wrd.csv
 
-
 python3 $HOME_alignment/csv_creation/add_p1_layer.py  srun_All_Resources.csv srun_All_Resources_id_word.csv
 
 cp j srun_All_Resources.csv
 cp k srun_All_Resources_id_word.csv
 
+python3 $HOME_alignment/csv_creation/get_left_over_wrds.py srun_All_Resources.csv  P1 > p1_left_over_wrds.dat
+
+#For debugging purpose 
 python3 $HOME_alignment/csv_creation/get_hindi_sentence_with_id_wrd.py  H_wordid-word_mapping.dat > H_sentence_with_ids.dat
 wx_utf8 < H_sentence_with_ids.dat > H_sentence_with_ids_utf8.dat
 
@@ -49,7 +51,21 @@ python3 $HOME_alignment/csv_creation/group.py H_grouping.dat Hindi_grouping > H_
 
 sed 's/,/\t/g' srun_All_Resources_id_word.csv > srun_All_Resources_id_word.tsv
 
-cat E_sentence E_grouping.tsv H_sentence_with_ids_utf8.dat H_grouping.tsv srun_All_Resources_id_word.tsv > complete_alignment.tsv
+head -1 srun_All_Resources_id_word.tsv > e_sent
+tail -n +2 srun_All_Resources_id_word.tsv > rest 
+
+cut -f1  rest > f1
+cut -f2-1000  rest > f2
+wx_utf8 < f2 > f2_utf8
+paste f1 f2_utf8 > rest.utf8
+cat e_sent rest.utf8 > srun_All_Resources_id_word_utf8.tsv
+
+sed 's/(//g' p1_left_over_wrds.dat | sed 's/)//g' | sed 's/ /,/g'> p1_left_over_wrds.txt
+
+cat H_sentence_with_ids_utf8.dat  H_grouping.tsv E_grouping.tsv srun_All_Resources_id_word_utf8.tsv p1_left_over_wrds.txt > complete_alignment_utf8.csv
+cat H_sentence_with_ids_utf8.dat  H_grouping.tsv E_grouping.tsv srun_All_Resources_id_word.tsv p1_left_over_wrds.txt > complete_alignment.csv
+
+####################
 
 #Appending new layer P1 in new-final.html
 cd $HOME_anu_tmp/tmp/$1_tmp
