@@ -75,7 +75,7 @@
 (kriyA_mUla_wrd-ids ?wrd ?id $?ids)
 (Hnd_label-group_elements ?lab $?gids)
 (test (member$ ?id $?gids))
-?f<-(P $?pids)
+?f<-(P1 $?pids)
 =>
 	(loop-for-count (?i 1 (length $?pids))
 		(bind ?pid (nth$ ?i $?pids))
@@ -91,7 +91,7 @@
 (kriyA_mUla_wrd-ids ?wrd ?id $?ids)
 (Hnd_label-group_elements ?lab $?gids)
 (test (member$ ?id $?gids))
-?f<-(P $?pids)
+?f<-(P1 $?pids)
 (replace_e_id-hid-val ?w_eid ?hids ?val)
 (not (fact_corrected_eng_id-hids ?id ?hids))
 =>
@@ -129,26 +129,19 @@
 (kriyA_mUla_wrd-ids ?wrd ?id $?ids)
 (Hnd_label-group_elements ?lab $?gids)
 (test (member$ ?id $?gids))
-?f<-(P $?pids)
-(test (neq (str-index "_" ?lab) FALSE))
+(test (> (length $?gids) 1))
+?f<-(P1 $?pids)
 (not (fact_corrected_eng_id-hids ?id ?))
+(test (neq (integerp ?lab) TRUE))
+(test (neq (str-index "_" ?lab) FALSE))
 =>
 	(loop-for-count (?i 1 (length $?pids)) 
 		(bind ?pid (nth$ ?i $?pids))
 		(if (member$ ?pid $?gids) then
-		        (bind ?var1 (explode$ (implode$ (remove_character " " (implode$ $?gids) ","))))
+	        	(bind ?var1 (explode$ (implode$ (remove_character " " (implode$ $?gids) ","))))
 		        (bind $?new_pids (replace$ $?pids ?i ?i ?var1))
 			(retract ?f)
 			(assert (P1 $?new_pids))
 		)
 	)
 )
-
-(defrule default_p1_rule
-(declare (salience -1000))
-?f<-(P $?ids)
-=>
-	(retract ?f)
-	(assert (P1 $?ids))
-)
-

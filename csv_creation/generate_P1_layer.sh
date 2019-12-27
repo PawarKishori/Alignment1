@@ -30,7 +30,12 @@ echo "(defglobal ?*path* = $HOME_alignment)" > alignment_path.clp
 myclips -f $HOME_alignment/csv_creation/run.bat > new_layer.error
 
 #Converting P1 layer fact to csv 
-python3 $HOME_alignment/csv_creation/convert_new_layer_fact_to_csv.py new_p_layer.dat  > p1_layer.csv
+python3 $HOME_alignment/csv_creation/convert_new_layer_fact_to_csv.py new_p_layer_tmp3.dat  > p1_layer.csv
+
+
+#python3 $HOME_alignment/csv_creation/get_left_over_wrds.py srun_All_Resources.csv  P1 > p1_left_over_wrds.dat
+python3 $HOME_alignment/csv_creation/get_left_over_wrds.py p1_layer.csv  P1 > p1_left_over_wrds.dat
+myclips -f $HOME_alignment/csv_creation/run_left_over_wrds.bat >> new_layer.error
 
 #Replacing new layer id with id_wrd format
 python3 $HOME_alignment/csv_creation/replace_id_with_wrd.py   H_wordid-word_mapping.dat p1_layer.csv > p1_layer_with_wrd.csv
@@ -40,7 +45,9 @@ python3 $HOME_alignment/csv_creation/add_p1_layer.py  srun_All_Resources.csv sru
 cp j srun_All_Resources.csv
 cp k srun_All_Resources_id_word.csv
 
-python3 $HOME_alignment/csv_creation/get_left_over_wrds.py srun_All_Resources.csv  P1 > p1_left_over_wrds.dat
+python3 $HOME_alignment/csv_creation/check_P_nd_P1_mismatch.py > P_P1_mismatch.dat
+
+
 
 #For debugging purpose 
 python3 $HOME_alignment/csv_creation/get_hindi_sentence_with_id_wrd.py  H_wordid-word_mapping.dat > H_sentence_with_ids.dat

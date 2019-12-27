@@ -3,14 +3,14 @@
 (load ?*path*)
 (load-facts "kriyA_mUla_info.dat")
 (load-facts "p1_left_over_wrds.dat")
-(load-facts "new_p_layer.dat")
+(load-facts "new_p_layer_tmp3.dat")
 (load-facts "revised_root.dat")
 (load-facts "H_grouping1.dat")
 (watch rules)
 (watch facts)
 (agenda)
 (run)
-
+(save-facts "new_p_layer.dat" local P1)
 (clear)
 (exit)
 
