@@ -25,9 +25,14 @@ bash $HOME_alignment/csv_creation/get_parent_sanwawi.sh Eng Hnd
 #Get kriyA_mUla info from Hindi sentence:
 python3 $HOME_alignment/csv_creation/check_for_kriyA_mUla.py H_headid-root_info.dat $HOME_alignment/csv_creation/kriyA_mUla_default_dic.txt > kriyA_mUla_info.dat
 
+#Get P layer anchors:
+python3 $HOME_alignment/csv_creation/get_anch_and_pot_info.py slot_debug_input.txt word.dat  H_wordid-word_mapping.dat  > anchor.dat
+
+
 #Generating P1 layer
 echo "(defglobal ?*path* = $HOME_alignment)" > alignment_path.clp
-myclips -f $HOME_alignment/csv_creation/run.bat > new_layer.error
+myclips -f $HOME_alignment/csv_creation/run1.bat > new_layer.error
+
 
 #Converting P1 layer fact to csv 
 python3 $HOME_alignment/csv_creation/convert_new_layer_fact_to_csv.py new_p_layer_tmp3.dat  > p1_layer.csv
