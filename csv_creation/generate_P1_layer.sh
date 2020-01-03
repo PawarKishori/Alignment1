@@ -31,7 +31,8 @@ python3 $HOME_alignment/csv_creation/get_anch_and_pot_info.py slot_debug_input.t
 
 #Generating P1 layer
 echo "(defglobal ?*path* = $HOME_alignment)" > alignment_path.clp
-myclips -f $HOME_alignment/csv_creation/run1.bat > new_layer.error
+myclips -f $HOME_alignment/csv_creation/run.bat > new_layer.error
+myclips -f $HOME_alignment/csv_creation/run1.bat >> new_layer.error
 
 
 #Converting P1 layer fact to csv 
