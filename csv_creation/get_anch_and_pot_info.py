@@ -54,6 +54,9 @@ for line in open(sys.argv[1]):
             else:
                 if wrdid not in e_lst[int(col)-1].split('/'):
                     e_lst[int(col)-1] =  e_lst[int(col)-1] + '/' + wrdid
+    if 'no_match_found' in line.strip():
+        lst = line.strip().split()
+        print('(no_match_found', lst[1], ')')
 
 #print(e_lst)
 g_lst = define_array(g_lst, hwrd_len+1)
@@ -110,6 +113,7 @@ for i in range(1, hwrd_len):
 #print('Hindi lst', h_lst)
 
 #Deciding Anchors and potential facts 
+anc_lst = [] 
 for i in range(0, wrd_len-1):
     lst = new_lst[i].split('/')
     if lst != ['']:
@@ -121,3 +125,10 @@ for i in range(0, wrd_len-1):
                 print('(iter-type-eng_g_id-h_g_id 1 potential', i+1, ' '.join(lst), ')')
         else:
             print('(iter-type-eng_g_id-h_g_id 1 potential', i+1, ' '.join(lst), ')')
+        anc_lst.append(','.join(lst))
+    else:
+        anc_lst.append('0')
+
+print('(iter-h_g_id ',  1, ' '.join(anc_lst), ')')
+
+    

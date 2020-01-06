@@ -6,6 +6,8 @@ import sys, re
 
 hwrd_dic = {}
 
+label = str(sys.argv[3])
+
 for line in open(sys.argv[1]):
     lst = line[:-2].split('\t')
     hwrd_dic[lst[1]] = lst[2]
@@ -15,7 +17,7 @@ for line in open(sys.argv[2]):
     lst = line.strip().split(',')
     new_lst=[]
     for each in lst:
-        if ' ' not in each and each != 'P1' and each != '0':
+        if ' ' not in each and each != label and each != '0':
             new_lst.append(each+'_'+hwrd_dic[each])
         elif ' ' in each:
             item = each.split()

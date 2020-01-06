@@ -4,9 +4,13 @@
 #####################################################################################
 import sys, re
 
+label = str(sys.argv[2])
+
 for line in open(sys.argv[1]):
     lst = line[1:-2].split()
     new_lst = []
+    if lst[0] != label:
+        lst[0] = label
     for each in lst:
         if ',' in each:
             each = re.sub(r',', ' ', each)

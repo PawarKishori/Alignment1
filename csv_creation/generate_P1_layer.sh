@@ -36,18 +36,27 @@ myclips -f $HOME_alignment/csv_creation/run1.bat >> new_layer.error
 
 
 #Converting P1 layer fact to csv 
-python3 $HOME_alignment/csv_creation/convert_new_layer_fact_to_csv.py new_p_layer_tmp3.dat  > p1_layer.csv
+python3 $HOME_alignment/csv_creation/convert_new_layer_fact_to_csv.py new_p_layer_tmp3.dat P1 > p1_layer.csv
 
+sed -i 's/dummy //g' new_layer_p2.dat
+#Converting P2 layer fact to csv 
+python3 $HOME_alignment/csv_creation/convert_new_layer_fact_to_csv.py new_layer_p2.dat P2 > p2_layer.csv
 
 #python3 $HOME_alignment/csv_creation/get_left_over_wrds.py srun_All_Resources.csv  P1 > p1_left_over_wrds.dat
 python3 $HOME_alignment/csv_creation/get_left_over_wrds.py p1_layer.csv  P1 > p1_left_over_wrds.dat
+python3 $HOME_alignment/csv_creation/get_left_over_wrds.py p2_layer.csv  P2 > p2_left_over_wrds.dat
 myclips -f $HOME_alignment/csv_creation/run_left_over_wrds.bat >> new_layer.error
 
 #Replacing new layer id with id_wrd format
-python3 $HOME_alignment/csv_creation/replace_id_with_wrd.py   H_wordid-word_mapping.dat p1_layer.csv > p1_layer_with_wrd.csv
+python3 $HOME_alignment/csv_creation/replace_id_with_wrd.py   H_wordid-word_mapping.dat p1_layer.csv P1 > p1_layer_with_wrd.csv
+python3 $HOME_alignment/csv_creation/replace_id_with_wrd.py   H_wordid-word_mapping.dat p2_layer.csv P2 > p2_layer_with_wrd.csv
 
-python3 $HOME_alignment/csv_creation/add_p1_layer.py  srun_All_Resources.csv srun_All_Resources_id_word.csv
+python3 $HOME_alignment/csv_creation/add_p1_layer.py  srun_All_Resources.csv srun_All_Resources_id_word.csv P1 p1_layer.csv p1_layer_with_wrd.csv 
+cp j srun_All_Resources.csv
+cp k srun_All_Resources_id_word.csv
 
+
+python3 $HOME_alignment/csv_creation/add_p1_layer.py srun_All_Resources.csv  srun_All_Resources_id_word.csv   P2 p2_layer.csv p2_layer_with_wrd.csv  
 cp j srun_All_Resources.csv
 cp k srun_All_Resources_id_word.csv
 
@@ -74,9 +83,10 @@ paste f1 f2_utf8 > rest.utf8
 cat e_sent rest.utf8 > srun_All_Resources_id_word_utf8.tsv
 
 sed 's/(//g' p1_left_over_wrds.dat | sed 's/)//g' | sed 's/ /,/g'> p1_left_over_wrds.txt
+sed 's/(//g' p2_left_over_wrds.dat | sed 's/)//g' | sed 's/ /,/g'> p2_left_over_wrds.txt
 
-cat H_sentence_with_ids_utf8.dat  H_grouping.tsv E_grouping.tsv srun_All_Resources_id_word_utf8.tsv p1_left_over_wrds.txt > complete_alignment_utf8.csv
-cat H_sentence_with_ids_utf8.dat  H_grouping.tsv E_grouping.tsv srun_All_Resources_id_word.tsv p1_left_over_wrds.txt > complete_alignment.csv
+cat H_sentence_with_ids_utf8.dat  H_grouping.tsv E_grouping.tsv srun_All_Resources_id_word_utf8.tsv p1_left_over_wrds.txt p2_left_over_wrds.txt > complete_alignment_utf8.csv
+cat H_sentence_with_ids_utf8.dat  H_grouping.tsv E_grouping.tsv srun_All_Resources_id_word.tsv p1_left_over_wrds.txt p2_left_over_wrds.txt > complete_alignment.csv
 
 ####################
 
