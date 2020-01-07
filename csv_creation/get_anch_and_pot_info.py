@@ -1,6 +1,6 @@
 #Writtem by Roja(02-01-2020)
 #Programme to decide type of anchors using slot_debug_info.txt
-#RUN: python3 ~/Alignment1/csv_creation/get_anch_and_pot_info.py slot_debug_input.txt word.dat  H_wordid-word_mapping.dat  > anchor.dat
+#RUN: python3 ~/Alignment1/csv_creation/get_anch_and_pot_info.py slot_debug_input.txt word.dat  manual_id_mapped.dat  > anchor.dat
 ################################################################################
 import sys, re
 

@@ -15,7 +15,7 @@
 
 (defrule check_for_yaxi_clause
 (Hnd_parent-sanwawi ?hid $?hids)
-(H_wordid-word	?id yaxi)
+(manual_mapped_id-word	?id yaxi)
 (test (member$ ?id $?hids))
 =>
 	(printout t "yaxi clause " $?hids crlf)
@@ -69,7 +69,7 @@
 (defrule check_for_wo_clause
 (declare (salience 10))
 ?f<-(Hnd_parent-sanwawi ?hid $?hids)
-(H_wordid-word  ?id wo)
+(manual_mapped_id-word  ?id wo)
 (test (member$ ?id $?hids))
 (yaxi_clause_head_id-gids ?yaxi_h_id $?gids)
 (test (subsetp $?gids $?hids))

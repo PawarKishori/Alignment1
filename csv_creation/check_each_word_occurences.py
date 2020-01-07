@@ -5,7 +5,8 @@
 import sys
 
 fw = open("word.dat", "r").readlines()
-fh = open("H_wordid-word_mapping.dat", "r").readlines()
+#fh = open("H_wordid-word_mapping.dat", "r").readlines()
+fh = open("manual_id_mapped.dat", "r").readlines()
 
 fe = open(sys.argv[1], 'w')
 fhin =  open(sys.argv[2], 'w')
@@ -22,7 +23,7 @@ for line in fw:
             wrd_dic[lst[2]] = wrd_dic[lst[2]] + 1
 
 for line in fh:
-    lst = line[:-2].split('\t')
+    lst = line[:-2].split(' ')
     if lst[2] not in hwrd_dic.keys():
         hwrd_dic[lst[2]] = 1
     else:

@@ -39,9 +39,9 @@
 (id-word ?id ?wrd)
 (test (neq (numberp ?wrd) TRUE))
 (test (eq (sub-string (- (length ?wrd) 1) (length ?wrd) ?wrd) "ly"))
-(H_wordid-word	?hid ?hwrd)
-(H_wordid-word  =(+ ?hid 1) rUpa)
-(H_wordid-word  =(+ ?hid 2) se)
+(manual_mapped_id-word	?hid ?hwrd)
+(manual_mapped_id-word  =(+ ?hid 1) rUpa)
+(manual_mapped_id-word  =(+ ?hid 2) se)
 ?f<-(P1_tmp $?pids)
 (not (p1_corrected ?id))
 (not (hid_decided ?hid))
@@ -77,6 +77,9 @@
 		)
 	)
 )
+
+
+
 
 ;check ai2E, 
 ;2.35 sir discuss

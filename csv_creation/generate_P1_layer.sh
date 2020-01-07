@@ -1,5 +1,8 @@
 #To generate P1 layer
 
+#map manual_word.dat
+python3 $HOME_alignment/csv_creation/map_par_id_to_wrdid.py manual_word.dat  manual_id_mapped.dat manual_id_wrdid.dat
+
 #Convert srun_All_Resources.csv to facts
 python3 $HOME_alignment/csv_creation/convert_csv_to_facts.py srun_All_Resources.csv > all_layer_facts.dat
 
@@ -25,8 +28,10 @@ bash $HOME_alignment/csv_creation/get_parent_sanwawi.sh Eng Hnd
 #Get kriyA_mUla info from Hindi sentence:
 python3 $HOME_alignment/csv_creation/check_for_kriyA_mUla.py H_headid-root_info.dat $HOME_alignment/csv_creation/kriyA_mUla_default_dic.txt > kriyA_mUla_info.dat
 
-#Get P layer anchors:
-python3 $HOME_alignment/csv_creation/get_anch_and_pot_info.py slot_debug_input.txt word.dat  H_wordid-word_mapping.dat  > anchor.dat
+#Get anchors:
+python3 $HOME_alignment/csv_creation/map_slot_debug_info.py manual_id_wrdid.dat slot_debug_input.txt  > slot_debug_input_mapped.txt
+#python3 $HOME_alignment/csv_creation/get_anch_and_pot_info.py slot_debug_input_mapped.txt word.dat  H_wordid-word_mapping.dat  > anchor.dat
+python3 $HOME_alignment/csv_creation/get_anch_and_pot_info.py slot_debug_input_mapped.txt word.dat  manual_id_mapped.dat  > anchor.dat
 
 
 #Generating P1 layer
@@ -48,8 +53,10 @@ python3 $HOME_alignment/csv_creation/get_left_over_wrds.py p2_layer.csv  P2 > p2
 myclips -f $HOME_alignment/csv_creation/run_left_over_wrds.bat >> new_layer.error
 
 #Replacing new layer id with id_wrd format
-python3 $HOME_alignment/csv_creation/replace_id_with_wrd.py   H_wordid-word_mapping.dat p1_layer.csv P1 > p1_layer_with_wrd.csv
-python3 $HOME_alignment/csv_creation/replace_id_with_wrd.py   H_wordid-word_mapping.dat p2_layer.csv P2 > p2_layer_with_wrd.csv
+#python3 $HOME_alignment/csv_creation/replace_id_with_wrd.py   H_wordid-word_mapping.dat p1_layer.csv P1 > p1_layer_with_wrd.csv
+python3 $HOME_alignment/csv_creation/replace_id_with_wrd.py   manual_id_mapped.dat p1_layer.csv P1 > p1_layer_with_wrd.csv
+#python3 $HOME_alignment/csv_creation/replace_id_with_wrd.py   H_wordid-word_mapping.dat p2_layer.csv P2 > p2_layer_with_wrd.csv
+python3 $HOME_alignment/csv_creation/replace_id_with_wrd.py   manual_id_mapped.dat p2_layer.csv P2 > p2_layer_with_wrd.csv
 
 python3 $HOME_alignment/csv_creation/add_p1_layer.py  srun_All_Resources.csv srun_All_Resources_id_word.csv P1 p1_layer.csv p1_layer_with_wrd.csv 
 cp j srun_All_Resources.csv
@@ -65,7 +72,8 @@ python3 $HOME_alignment/csv_creation/check_P_nd_P1_mismatch.py > P_P1_mismatch.d
 
 
 #For debugging purpose 
-python3 $HOME_alignment/csv_creation/get_hindi_sentence_with_id_wrd.py  H_wordid-word_mapping.dat > H_sentence_with_ids.dat
+#python3 $HOME_alignment/csv_creation/get_hindi_sentence_with_id_wrd.py  H_wordid-word_mapping.dat > H_sentence_with_ids.dat
+python3 $HOME_alignment/csv_creation/get_hindi_sentence_with_id_wrd.py  manual_id_mapped.dat > H_sentence_with_ids.dat
 wx_utf8 < H_sentence_with_ids.dat > H_sentence_with_ids_utf8.dat
 
 python3 $HOME_alignment/csv_creation/group.py E_grouping.dat English_grouping > E_grouping.tsv

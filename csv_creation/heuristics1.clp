@@ -29,9 +29,9 @@
 (id-word ?id ?wrd)
 (test (neq (numberp ?wrd) TRUE))
 (test (eq (sub-string (- (length ?wrd) 1) (length ?wrd) ?wrd) "ly"))
-(H_wordid-word	?hid ?hwrd)
-(H_wordid-word  =(+ ?hid 1) rUpa)
-(H_wordid-word  =(+ ?hid 2) se)
+(manual_mapped_id-word	?hid ?hwrd)
+(manual_mapped_id-word  =(+ ?hid 1) rUpa)
+(manual_mapped_id-word  =(+ ?hid 2) se)
 (not (hid_id_decided ?hid))
 =>
 	(bind ?rt (string-to-field (sub-string 1 (- (length ?wrd) 2) ?wrd)))
@@ -39,8 +39,6 @@
 	(if (neq ?mng FALSE) then
 		(bind $?mngs  (explode$ (implode$ (remove_character "/"  ?mng " "))))
 		(if (member$ ?hwrd $?mngs) then
-			;(bind ?new_id (string-to-field (str-cat ?hid "," (+ ?hid 1) "," (+ ?hid 2))))
-			;(assert (P1_tmp ?id ?new_id))
 			(assert (P1_tmp ?id ?hid (+ ?hid 1) (+ ?hid 2)))
 			(assert (eng_id_decided ?id))
 			(assert (hid_id_decided ?hid))
@@ -49,3 +47,17 @@
 		)
 	)
 )
+
+;it rule when 'it' is not dummy. 'it becomes subject
+;[It] can be measured in terms of speed or efficiency of the agent.
+;[yaha] ejeMta kI gawi yA xakRawA ke sanxarBa meM mApA jA sakawA hE.
+(defrule it_rule
+(id-word ?id it)
+(kriyA-subject  ? ?id)
+(manual_mapped_id-word  ?hid yaha)
+=>
+        (assert (P1_tmp ?id ?hid))
+	(assert (eng_id_decided ?id))
+        (assert (hid_decided ?hid))
+)
+

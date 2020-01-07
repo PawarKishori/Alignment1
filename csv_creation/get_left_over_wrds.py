@@ -8,7 +8,8 @@ import sys
 
 lab = str(sys.argv[2])
 
-f = open("H_wordid-word_mapping.dat", 'r').readlines()
+#f = open("H_wordid-word_mapping.dat", 'r').readlines()
+f = open("manual_id_mapped.dat", 'r').readlines()
 count = len(f) #To get file count (no: of words in a sentence)
 
 lab_lst = ''

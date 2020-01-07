@@ -38,7 +38,7 @@
 
  (defrule create_hindi_wrd_info
  (declare (salience 12))
- (H_wordid-word	?id ?wrd)
+ (manual_mapped_id-word	?id ?wrd)
  ?f<-(E_head_id-Hindi_ids ?eid $?pre ?id $?post)
  =>
 	(retract ?f)

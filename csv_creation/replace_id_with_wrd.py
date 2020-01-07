@@ -1,6 +1,6 @@
 #Programme to generate id with word if id is present to display in html
 #Written by Roja (04-12-19)
-#python3 $HOME_alignment/csv_creation/replace_id_with_wrd.py H_wordid-word_mapping.dat p1_layer.csv > p1_layer_with_wrd.csv
+#python3 $HOME_alignment/csv_creation/replace_id_with_wrd.py manual_id_mapped.dat p1_layer.csv > p1_layer_with_wrd.csv
 ############################################################################################
 import sys, re
 
@@ -9,7 +9,7 @@ hwrd_dic = {}
 label = str(sys.argv[3])
 
 for line in open(sys.argv[1]):
-    lst = line[:-2].split('\t')
+    lst = line[:-2].split(' ')
     hwrd_dic[lst[1]] = lst[2]
 
 
