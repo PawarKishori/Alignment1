@@ -3,6 +3,9 @@
 #map manual_word.dat
 python3 $HOME_alignment/csv_creation/map_par_id_to_wrdid.py manual_word.dat  manual_id_mapped.dat manual_id_wrdid.dat
 
+echo "Extracting root info for manual..."
+python3 $HOME_alignment/csv_creation/get_manual_root.py  manual_id_wrdid.dat manual_lwg_new.dat > manual_mapped_id_root_info.dat
+
 #Create Eng and Hindi Soumya grouping facts
 python3 $HOME_alignment/csv_creation/create_facts_from_grouping.py E_Word_Group_Sanity.dat Eng > E_grouping.dat
 python3 $HOME_alignment/csv_creation/create_facts_from_grouping.py H_Word_Group.dat Hnd > H_grouping.dat
@@ -17,7 +20,7 @@ python3 $HOME_alignment/csv_creation/check_each_word_occurences.py eng_wrd_occur
 #bash $HOME_alignment/csv_creation/get_parent_sanwawi.sh Eng Hnd   
 
 #Get kriyA_mUla info from Hindi sentence:
-python3 $HOME_alignment/csv_creation/check_for_kriyA_mUla.py H_headid-root_info.dat $HOME_alignment/csv_creation/kriyA_mUla_default_dic.txt > kriyA_mUla_info.dat
+python3 $HOME_alignment/csv_creation/check_for_kriyA_mUla.py manual_mapped_id_root_info.dat $HOME_alignment/csv_creation/kriyA_mUla_default_dic.txt > kriyA_mUla_info.dat
 
 #Get anchors:
 python3 $HOME_alignment/csv_creation/map_slot_debug_info.py manual_id_wrdid.dat slot_debug_input.txt  > slot_debug_input_mapped.txt

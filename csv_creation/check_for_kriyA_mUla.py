@@ -8,7 +8,7 @@ hrt_dic = {}
 hid_dic = {}
 kriyA_mUla = []
 for line in open(sys.argv[1]):
-    lst = line[:-2].split('\t')
+    lst = line[:-2].split()
     add_data_in_dic(hrt_dic, lst[2], lst[1])
     add_data_in_dic(hid_dic, int(lst[1]), lst[2])
 
