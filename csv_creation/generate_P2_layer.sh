@@ -13,7 +13,7 @@ python3 $HOME_alignment/csv_creation/create_facts_from_grouping.py H_Word_Group.
 #Get each word with count of occurences
 python3 $HOME_alignment/csv_creation/check_each_word_occurences.py eng_wrd_occurence.dat hnd_wrd_occurence.dat
 
-python3 $HOME_alignment/csv_creation/map_punctuations_in_conll.py E_conll_parse_enhanced > E_conll_parse_enhanced_without_punc.tsv
+python3 $HOME_alignment/csv_creation/map_punctuations_in_conll.py E_conll_enhanced > E_conll_enhanced_without_punc.tsv
 python3 $HOME_alignment/csv_creation/map_punctuations_in_conll.py hindi_dep_parser_original.dat > hindi_dep_parser_original_without_punc.tsv
 
 #Get parent sanwawi info 
@@ -28,7 +28,7 @@ python3 $HOME_alignment/csv_creation/map_slot_debug_info.py manual_id_wrdid.dat 
 python3 $HOME_alignment/csv_creation/get_anch_and_pot_info.py slot_debug_input_mapped.txt word.dat  manual_id_mapped.dat  > anchor.dat
 
 #Create conll facts 
-python3 $HOME_alignment/csv_creation/create_facts_from_coll.py E_conll_parse_enhanced_without_punc.tsv eng > eng_conll_facts.dat
+python3 $HOME_alignment/csv_creation/create_facts_from_coll.py E_conll_enhanced_without_punc.tsv eng > eng_conll_facts.dat
 python3 $HOME_alignment/csv_creation/create_facts_from_coll.py hindi_dep_parser_original_without_punc.tsv hnd > hnd_conll_facts.dat
 
 
