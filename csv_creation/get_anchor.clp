@@ -23,7 +23,7 @@
 	(retract ?f)
 	(bind ?new_ids (delete-member$ $?ids ?hid))
 	(printout t ?new_ids  crlf)
-	(if (> (length ?new_ids) 1) then 
+	(if (>= (length ?new_ids) 1) then 
 		(assert (iter-type-eng_g_id-h_g_id (+ ?iter 1) potential ?id1 ?new_ids))
 	else
 		(assert (iter-type-eng_g_id-h_g_id (+ ?iter 1) potential ?id1 0))
