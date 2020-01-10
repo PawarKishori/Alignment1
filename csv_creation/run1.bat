@@ -56,6 +56,8 @@
 ;(load-facts "H_wordid-word_mapping.dat")
 (load-facts "manual_id_mapped.dat")
 (load-facts "revised_root.dat")
+(load-facts "eng_conll_root.dat")
+(load-facts "manual_mapped_id_root_info.dat")
 (watch rules)
 (watch facts)
 (agenda)

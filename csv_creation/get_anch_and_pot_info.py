@@ -68,6 +68,14 @@ for line in open(sys.argv[1]):
         wrdid = lst[1].split(',')[0]
         col = lst[1].split(',')[1]
         g_lst[int(hid)-1] = wrdid
+    if 'no_match_found' in line.strip():
+        lst = line.strip().split()
+        if '+' not in lst[1]:
+            g_lst[int(lst[1])-1] = lst[1]
+        else:
+            a = lst[1].split('+')
+            g_lst[int(a[0])-1] = lst[1]
+
 
 
 
