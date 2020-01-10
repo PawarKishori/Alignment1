@@ -28,8 +28,8 @@ python3 $HOME_alignment/csv_creation/map_slot_debug_info.py manual_id_wrdid.dat 
 python3 $HOME_alignment/csv_creation/get_anch_and_pot_info.py slot_debug_input_mapped.txt word.dat  manual_id_mapped.dat  > anchor.dat
 
 #Create conll facts 
-python3 $HOME_alignment/csv_creation/create_facts_from_coll.py E_conll_enhanced_without_punc.tsv eng > eng_conll_facts.dat
-python3 $HOME_alignment/csv_creation/create_facts_from_coll.py hindi_dep_parser_original_without_punc.tsv hnd > hnd_conll_facts.dat
+python3 $HOME_alignment/csv_creation/create_facts_from_conll.py E_conll_enhanced_without_punc.tsv eng > eng_conll_facts.dat
+python3 $HOME_alignment/csv_creation/create_facts_from_conll.py hindi_dep_parser_original_without_punc.tsv hnd > hnd_conll_facts.dat
 
 python3 $HOME_alignment/csv_creation/get_root_frm_conll.py E_conll_enhanced_without_punc.tsv > eng_conll_root.dat
 
