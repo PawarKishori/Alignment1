@@ -33,9 +33,10 @@ for i in range(0, len(f)-1):
     lst = f[i].strip().split('\t')
     if i <= len(f)-4:
         n_lst = f[i+1].strip().split('\t')
-    if int(lst[0]) in w_id_dic.keys() and lst[6] != '0':
+    if int(lst[0]) in w_id_dic.keys():
             lst[0] = str(w_id_dic[int(lst[0])])
-            lst[6] = str(w_id_dic[int(lst[6])])
+            if lst[6] != '0':
+                lst[6] = str(w_id_dic[int(lst[6])])
             if lst[8] != '_':
                 lst[8] = replace_dep_rel(lst[8])
     if n_lst[1] in punct_lst:
